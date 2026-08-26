@@ -1,0 +1,5 @@
+site/
+.venv/
+__pycache__/
+guia-docente/
+apuntes_JC/

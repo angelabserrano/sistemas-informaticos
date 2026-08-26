@@ -1,0 +1,67 @@
+site_name: "Módulo: Sistemas Informáticos"
+site_url: https://angelabserrano.github.io/sistemas-informaticos/
+site_description: Apuntes del módulo Sistemas Informáticos - CFGS Desarrollo de Aplicaciones Web
+site_author: Angela B. Serrano
+
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Modo oscuro
+    - scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+  features:
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+  - tables
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search:
+      lang: es
+
+nav:
+  - Inicio: index.md
+  - "UT1. Arquitectura y componentes de los sistemas informáticos": ut1.md
+  - "Catálogo visual de componentes": catalogo-componentes.md
+  - "Plantilla: ficha técnica de un equipo": plantilla-ficha-tecnica.md
+  - "UT2. Sistemas operativos: Instalación y primeros pasos": ut2.md
+  - "Plantilla: informe técnico de instalación": plantilla-informe-instalacion.md
+  - "UT3. Sistemas operativos: Configuración y administración": ut3.md
+  - "UT4. Redes y sistemas operativos en red": ut4.md
