@@ -3,6 +3,11 @@
 !!! tip "Duración"
     45 horas
 
+!!! abstract "Resultado de aprendizaje que se trabaja"
+    **RA2.** Instala sistemas operativos planificando el proceso e interpretando documentación técnica.
+
+    *Transversal:* **RA7** (parcial) — instalación y uso de aplicaciones informáticas de propósito general (ofimática, trabajo colaborativo y utilidades).
+
 ## 2.1. Evolución, clasificación y funciones de los SO
 
 Un **sistema operativo (SO)** es el software que gestiona los recursos hardware de un equipo (procesador, memoria, almacenamiento, periféricos) y ofrece a los programas y al usuario una interfaz para utilizarlos, sin necesidad de conocer los detalles técnicos del hardware subyacente.

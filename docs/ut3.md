@@ -3,6 +3,11 @@
 !!! tip "Duración"
     35 horas
 
+!!! abstract "Resultados de aprendizaje que se trabajan"
+    **RA3.** Gestiona la información del sistema identificando estructuras de almacenamiento y aplicando medidas para asegurar la integridad de los datos.
+
+    **RA4.** Gestiona sistemas operativos utilizando comandos y herramientas gráficas evaluando las necesidades del sistema.
+
 ## 3.1. Sistemas de archivos y estructura de directorios
 
 Un **sistema de archivos** define cómo se organiza, nombra y almacena la información en una unidad de almacenamiento (qué metadatos se guardan de cada archivo, cómo se gestiona el espacio libre, qué tamaño máximo admite, etc.).

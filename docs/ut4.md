@@ -3,6 +3,13 @@
 !!! tip "Duración"
     35 horas
 
+!!! abstract "Resultados de aprendizaje que se trabajan"
+    **RA5.** Interconecta sistemas en red configurando dispositivos y protocolos.
+
+    **RA6.** Opera sistemas en red gestionando sus recursos e identificando restricciones de seguridad.
+
+    *Transversal:* **RA7** (parcial) — uso de sistemas de correo y mensajería y de servicios de transferencia de ficheros.
+
 ## 4.1. Fundamentos de redes: tipos, topologías y componentes
 
 Una **red informática** es un conjunto de dispositivos interconectados que comparten recursos (datos, impresoras, conexión a Internet) y se comunican mediante un conjunto de reglas (protocolos).
@@ -157,7 +164,7 @@ graph TD
 
 **IPv6:** dirección de 128 bits, representada en 8 grupos hexadecimales (p. ej. `2001:0db8:0000:0000:0000:ff00:0042:8329`, simplificable a `2001:db8::ff00:42:8329`), diseñada para resolver el agotamiento de direcciones de IPv4 y simplificar el direccionamiento.
 
-**DNS (Domain Name System):** servicio distribuido y jerárquico que traduce nombres de dominio legibles (`www.ejemplo.com`) a direcciones IP. El proceso de **resolución** consigue el equipo consulta a un servidor DNS (a menudo el del proveedor de Internet o uno público como `8.8.8.8`), que responde directamente si conoce la respuesta o la reenvía a otros servidores DNS hasta obtenerla.
+**DNS (Domain Name System):** servicio distribuido y jerárquico que traduce nombres de dominio legibles (`www.ejemplo.com`) a direcciones IP. En el proceso de **resolución**, el equipo consulta a un servidor DNS (a menudo el del proveedor de Internet o uno público como `8.8.8.8`), que responde directamente si conoce la respuesta o la reenvía a otros servidores DNS hasta obtenerla.
 
 ## 4.4. Configuración de redes cableadas e inalámbricas
 

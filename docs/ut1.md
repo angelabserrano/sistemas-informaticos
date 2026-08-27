@@ -3,6 +3,11 @@
 !!! tip "Duración"
     25 horas
 
+!!! abstract "Resultado de aprendizaje que se trabaja"
+    **RA1.** Evalúa sistemas informáticos, identificando sus componentes y características.
+
+    *Transversal:* **RA7** (parcial) — búsqueda y valoración de la fiabilidad de documentación técnica en Internet.
+
 ## 1.1. Arquitectura de un sistema informático
 
 Un **sistema informático** es el conjunto de elementos hardware y software que trabajan de forma coordinada para procesar información: capturarla, almacenarla, tratarla y comunicar el resultado. Antes de estudiar cada componente por separado (secciones siguientes), conviene tener una visión de conjunto de cómo se organizan y se comunican entre sí.
