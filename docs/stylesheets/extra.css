@@ -62,6 +62,20 @@
   box-shadow: none;
 }
 
+/* Insignia "Próximamente" para unidades aún no publicadas */
+.md-typeset .badge-proximamente {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.2rem;
+  background-color: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  vertical-align: middle;
+}
+
 /* Barra de título para actividades */
 .md-typeset .actividad-titulo {
   background-color: var(--md-primary-fg-color);

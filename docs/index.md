@@ -12,9 +12,9 @@ Apuntes del módulo profesional **Sistemas Informáticos** (código 0483), del c
 ## Índice de unidades
 
 - [UT1. Arquitectura y componentes de los sistemas informáticos](ut1.md)
-- [UT2. Sistemas operativos: Instalación y primeros pasos](ut2.md)
-- [UT3. Sistemas operativos: Configuración y administración](ut3.md)
-- [UT4. Redes y sistemas operativos en red](ut4.md)
+- [UT2. Sistemas operativos: Instalación y primeros pasos](ut2.md) <span class="badge-proximamente">Próximamente</span>
+- [UT3. Sistemas operativos: Configuración y administración](ut3.md) <span class="badge-proximamente">Próximamente</span>
+- [UT4. Redes y sistemas operativos en red](ut4.md) <span class="badge-proximamente">Próximamente</span>
 
 ## Resultados de aprendizaje
 
