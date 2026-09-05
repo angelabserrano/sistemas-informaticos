@@ -14,7 +14,7 @@
 
 Un **sistema informático** es el conjunto de elementos hardware y software que trabajan de forma coordinada para procesar información: capturarla, almacenarla, tratarla y comunicar el resultado. Antes de estudiar cada componente por separado (secciones siguientes), conviene tener una visión de conjunto de cómo se organizan y se comunican entre sí.
 
-**El modelo de von Neumann:** la inmensa mayoría de los ordenadores actuales siguen este modelo, que organiza el sistema en tres bloques funcionales conectados por un bus común:
+**El modelo de von Neumann:** organiza conceptualmente un sistema informático en tres bloques funcionales —unidad de procesamiento, memoria y entrada/salida— conectados mediante un sistema de buses.
 
 - **Unidad central de proceso (CPU)**: ejecuta las instrucciones (ver 1.4).
 - **Memoria principal**: almacena, con el mismo formato y en la misma memoria, tanto los datos como las instrucciones de los programas en ejecución (el llamado **concepto de programa almacenado**).
