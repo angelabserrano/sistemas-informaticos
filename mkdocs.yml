@@ -60,7 +60,6 @@ plugins:
 nav:
   - Inicio: index.md
   - "UT1. Arquitectura y componentes de los sistemas informáticos": ut1.md
-  - "Catálogo visual de componentes": catalogo-componentes.md
   - "Plantilla: ficha técnica de un equipo": plantilla-ficha-tecnica.md
   - "UT2. Sistemas operativos: Instalación y primeros pasos": ut2.md
   - "Plantilla: informe técnico de instalación": plantilla-informe-instalacion.md
