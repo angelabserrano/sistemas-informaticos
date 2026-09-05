@@ -109,16 +109,16 @@ Toca o haz clic en cualquier miniatura para verla a tamaño completo. También p
 | Modelo | Situación | Características |
 | --- | --- | --- |
 | AT | En desuso | Alimentaba la placa mediante dos conectores de 6 contactos; interruptor de encendido externo por el que circulaba mucho voltaje (poco seguro) |
-| ATX | Estándar actual | Conector único de 20/24 pines; salidas a 3,3V, 5V, 12V y -12V; apagado gestionado por la propia placa base |
+| ATX | Estándar muy extendido en equipos de sobremesa | Conector principal de 20/24 pines; proporciona líneas de +3,3 V, +5 V y +12 V, además de −12 V en el diseño tradicional; apagado y encendido gestionados por la placa base |
 | SFX / SFX-L | Formatos reducidos | Dimensiones inferiores a ATX, para barebones y equipos de perfil bajo; el SFX-L es algo mayor que el SFX |
 
 **Conector principal ATX (24 pines) — voltajes y colores habituales de los cables:**
 
 | Color del cable | Voltaje / señal | Uso típico |
 | --- | --- | --- |
-| Naranja | +3,3V | Chipset y algunos módulos de memoria |
+| Naranja | +3,3 V | Algunos circuitos de la placa base y otros componentes |
 | Rojo | +5V | Electrónica auxiliar |
-| Amarillo | +12V | Procesador, tarjeta gráfica y motores (discos, ventiladores) |
+| Amarillo | +12 V | Procesador, tarjeta gráfica, motores de discos y ventiladores |
 | Negro | Tierra (GND) | Referencia común (0V) |
 | Morado | +5V standby | Alimenta el circuito de encendido aunque el equipo esté "apagado" |
 | Verde | PS_ON | Señal de encendido, activada por la placa base |
