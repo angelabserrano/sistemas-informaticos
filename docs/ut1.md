@@ -58,7 +58,7 @@ Un **sistema informático** es el conjunto de elementos hardware y software que 
     | 14 | 1110 | 16 | E |
     | 15 | 1111 | 17 | F |
 
-    Se usan continuamente en este módulo, aunque no siempre se diga de forma explícita: los **permisos de Linux** se expresan en octal (`chmod 754`, ver UT3 — cada cifra agrupa exactamente los 3 bits rwx de propietario, grupo y otros), y las **direcciones MAC** y las **IPv6** (ver UT4) se escriben en hexadecimal, donde cada pareja de dígitos representa un byte completo. Y la propia anchura del bus de direcciones, mencionada más arriba, se mide en potencias de 2 precisamente porque cada línea que se añade duplica el número de posiciones representables en binario.
+    Se usan continuamente en este módulo, aunque no siempre se diga de forma explícita: los **permisos de Linux** se expresan en octal (`chmod 754`, ver UT4 — cada cifra agrupa exactamente los 3 bits rwx de propietario, grupo y otros), y las **direcciones MAC** y las **IPv6** (ver UT2) se escriben en hexadecimal, donde cada pareja de dígitos representa un byte completo. Y la propia anchura del bus de direcciones, mencionada más arriba, se mide en potencias de 2 precisamente porque cada línea que se añade duplica el número de posiciones representables en binario.
 
 **Clasificación de los sistemas informáticos**
 

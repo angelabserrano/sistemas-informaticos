@@ -61,7 +61,7 @@ nav:
   - Inicio: index.md
   - "UT1. Sistemas Informáticos. Hardware y Software": ut1.md
   - "Plantilla: ficha técnica de un equipo": plantilla-ficha-tecnica.md
-  - "UT2. Sistemas operativos: Instalación y primeros pasos": ut2.md
+  - "UT2. Redes": ut2.md
+  - "UT3. Sistemas operativos: Instalación y primeros pasos": ut3.md
   - "Plantilla: informe técnico de instalación": plantilla-informe-instalacion.md
-  - "UT3. Sistemas operativos: Configuración y administración": ut3.md
-  - "UT4. Sistemas operativos en red": ut4.md
+  - "UT4. Sistemas operativos: Configuración y administración": ut4.md

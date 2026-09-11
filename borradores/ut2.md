@@ -1,293 +1,373 @@
-# UT2. Sistemas operativos: Instalación y primeros pasos
+# UT2. Redes
 
 [:material-arrow-left: Volver al índice de todas las unidades](index.md)
 
 !!! tip "Duración"
-    45 horas
+    35 horas
 
-!!! abstract "Resultado de aprendizaje que se trabaja"
-    **RA2.** Instala sistemas operativos planificando el proceso e interpretando documentación técnica.
+!!! abstract "Resultados de aprendizaje que se trabajan"
+    **RA5.** Interconecta sistemas en red configurando dispositivos y protocolos.
 
-    *Transversal:* **RA7** (parcial) — instalación y uso de aplicaciones informáticas de propósito general (ofimática, trabajo colaborativo y utilidades).
+    **RA6.** Opera sistemas en red gestionando sus recursos e identificando restricciones de seguridad.
 
-## 2.1. Evolución, clasificación y funciones de los SO
+    *Transversal:* **RA7** (parcial) — uso de sistemas de correo y mensajería y de servicios de transferencia de ficheros.
 
-Un **sistema operativo (SO)** es el software que gestiona los recursos hardware de un equipo (procesador, memoria, almacenamiento, periféricos) y ofrece a los programas y al usuario una interfaz para utilizarlos, sin necesidad de conocer los detalles técnicos del hardware subyacente.
+## 2.1. Fundamentos de redes: tipos, topologías y componentes
 
-**Evolución histórica (resumen):**
+Una **red informática** es un conjunto de dispositivos interconectados que comparten recursos (datos, impresoras, conexión a Internet) y se comunican mediante un conjunto de reglas (protocolos).
 
-- **Sistemas por lotes (batch, años 50-60)**: los trabajos se agrupaban y ejecutaban secuencialmente sin interacción del usuario.
-- **Sistemas de tiempo compartido (timesharing, años 60-70)**: varios usuarios comparten el mismo equipo mediante turnos muy cortos de CPU, dando sensación de simultaneidad.
-- **Sistemas multiusuario/multitarea (años 80-90)**: consolidación de Unix y, más adelante, de sistemas personales como MS-DOS y Windows.
-- **Sistemas gráficos modernos**: Windows, macOS, distribuciones Linux con entorno de escritorio.
-- **Sistemas móviles y embebidos**: Android, iOS, sistemas orientados a un único dispositivo o tarea concreta.
+**Tipos de redes según su extensión geográfica:**
 
-**Funciones principales de un sistema operativo:**
+| Tipo | Nombre | Alcance típico |
+| --- | --- | --- |
+| PAN | Personal Area Network | Unos pocos metros (Bluetooth, USB) |
+| LAN | Local Area Network | Un edificio o campus |
+| WLAN | Wireless LAN | LAN inalámbrica (Wi-Fi) |
+| MAN | Metropolitan Area Network | Una ciudad |
+| WAN | Wide Area Network | Países o continentes (ej. Internet) |
 
-- **Gestión de procesos**: crear, planificar y finalizar los programas en ejecución, repartiendo el tiempo de CPU entre ellos.
-- **Gestión de memoria**: asignar y liberar espacio en RAM a cada proceso, y gestionar la memoria virtual.
-- **Gestión de almacenamiento y archivos**: organizar la información en sistemas de archivos (carpetas, permisos, metadatos).
-- **Gestión de dispositivos de E/S**: comunicarse con los periféricos a través de controladores (drivers).
-- **Interfaz con el usuario**: línea de comandos (CLI) y/o interfaz gráfica (GUI).
-- **Seguridad y control de acceso**: autenticación de usuarios y gestión de permisos.
+**Topologías de red** (disposición física o lógica de los dispositivos):
 
-**Clasificación de los sistemas operativos:**
+- **Bus**: todos los equipos comparten un mismo cable troncal. Sencilla pero un fallo en el cable afecta a toda la red.
+- **Estrella**: todos los equipos se conectan a un dispositivo central (switch). Es la topología física más usada actualmente; un fallo en un equipo no afecta al resto.
+- **Anillo**: cada equipo se conecta a otros dos formando un círculo cerrado.
+- **Árbol**: combinación jerárquica de varias topologías en estrella.
+- **Malla**: cada equipo se conecta con varios (o todos) los demás, aportando redundancia y tolerancia a fallos, a costa de más cableado.
 
-| Criterio | Categorías |
-| --- | --- |
-| Número de usuarios | Monousuario / Multiusuario |
-| Número de tareas | Monotarea / Multitarea |
-| Número de procesadores atendidos | Monoprocesador / Multiprocesador |
-| Tipo de interfaz | Texto (CLI) / Gráfica (GUI) |
-| Arquitectura del núcleo | Monolítico, microkernel, híbrido |
-| Ámbito de uso | Escritorio, servidor, móvil, embebido |
+=== "Bus"
 
-**Grandes familias actuales:** Windows, distribuciones **GNU/Linux** (Ubuntu, Debian, Fedora, etc.), **macOS**, y sistemas móviles **Android** e **iOS**.
+    ```mermaid
+    graph LR
+        PC1[Equipo 1] --- Bus[Cable troncal]
+        PC2[Equipo 2] --- Bus
+        PC3[Equipo 3] --- Bus
+        PC4[Equipo 4] --- Bus
+    ```
 
-## 2.2. Tipos de aplicaciones y licencias de software
+=== "Estrella"
 
-**Software de sistema vs. software de aplicación:**
+    ```mermaid
+    graph TD
+        S((Switch)) --- PC1[Equipo 1]
+        S --- PC2[Equipo 2]
+        S --- PC3[Equipo 3]
+        S --- PC4[Equipo 4]
+    ```
 
-- **Software de sistema**: el propio SO y las herramientas que gestionan el hardware (drivers, utilidades de sistema).
-- **Software de aplicación**: programas orientados a que el usuario realice una tarea concreta (ofimática, navegación, edición, etc.).
+=== "Anillo"
 
-**Clasificación según el tipo de licencia:**
+    ```mermaid
+    graph LR
+        PC1[Equipo 1] --> PC2[Equipo 2]
+        PC2 --> PC3[Equipo 3]
+        PC3 --> PC4[Equipo 4]
+        PC4 --> PC1
+    ```
 
-| Tipo de licencia | Código fuente | Coste | Ejemplo |
-| --- | --- | --- | --- |
-| Software libre | Disponible, se puede modificar y redistribuir | Puede ser gratuito o de pago | LibreOffice, GNU/Linux |
-| Software propietario | Cerrado | Habitualmente de pago | Microsoft Windows, Adobe Photoshop |
-| Freeware | No necesariamente disponible | Gratuito, sin acceso al código | Adobe Acrobat Reader |
-| Shareware | No necesariamente disponible | Gratuito por tiempo/funciones limitadas, después de pago | Versiones de prueba (*trial*) |
-| Dominio público | Puede estar disponible | Gratuito, sin restricciones de autor | Software con copyright expirado |
-| OEM | — | Vinculado a la venta de hardware | Windows preinstalado en un equipo nuevo |
+=== "Malla"
 
-**Licencias de software libre más comunes:** GPL (copyleft: las modificaciones deben mantenerse libres), MIT y BSD (permisivas: permiten uso en proyectos propietarios), Apache 2.0.
+    ```mermaid
+    graph TD
+        PC1[Equipo 1] --- PC2[Equipo 2]
+        PC1 --- PC3[Equipo 3]
+        PC1 --- PC4[Equipo 4]
+        PC2 --- PC3
+        PC2 --- PC4
+        PC3 --- PC4
+    ```
 
-**Modalidades de licenciamiento comercial:** licencia individual (*retail*), licencia por volumen (para empresas/centros educativos), licencia OEM (atada a un equipo), suscripción (SaaS, pago periódico, p. ej. Microsoft 365).
+**Componentes principales de una red informática:**
+
+- **Tarjeta de red (NIC)**: interfaz que conecta un equipo a la red, con una dirección MAC única.
+- **Switch (conmutador)**: interconecta equipos dentro de una misma LAN, dirigiendo el tráfico según la dirección MAC de destino.
+- **Router (encaminador)**: interconecta redes distintas y decide la ruta que deben seguir los paquetes entre ellas.
+- **Punto de acceso (AP)**: da conectividad inalámbrica a los dispositivos de una WLAN.
+- **Hub (concentrador)**: dispositivo antiguo que repite el tráfico a todos los puertos por igual (en desuso, sustituido por el switch).
+- **Medio de transmisión**: cable de cobre, fibra óptica u ondas de radio, según el caso.
 
 !!! note "Idea clave"
-    "Gratuito" (freeware) y "libre" (open source) no son sinónimos: un programa puede ser gratuito y a la vez cerrado (no se puede ver ni modificar su código).
+    Este apartado da una visión general de los componentes de red; el punto 2.5 profundiza en el funcionamiento de switch y router (tablas de conmutación y de encaminamiento, NAT).
 
-## 2.3. Planificación y procedimiento de instalación de un SO
+## 2.2. Cableado, conectores y mapa físico/lógico de una red local
 
-Antes de instalar un sistema operativo conviene planificar el proceso:
+**Tipos de cableado más habituales en redes LAN:**
 
-1. **Comprobar requisitos hardware** (procesador, RAM, espacio en disco, controladores compatibles).
-2. **Elegir el tipo de instalación**:
-    - **Instalación limpia**: formatea el disco/partición e instala el SO desde cero.
-    - **Actualización (upgrade)**: instala una versión nueva conservando aplicaciones y datos.
-    - **Arranque dual / multiarranque (dual boot)**: instala varios sistemas operativos en particiones distintas del mismo equipo.
-3. **Realizar copia de seguridad** de los datos importantes antes de empezar.
-4. **Preparar el medio de instalación**: USB o DVD de arranque, o instalación por red (PXE) en entornos con muchos equipos.
-5. **Planificar el particionado** del disco (tamaño y sistema de archivos de cada partición), incluyendo el espacio para memoria de intercambio si procede (ver más abajo).
-
-???+ tip "Medios de arranque con varios sistemas"
-    Herramientas como **Rufus** o **balenaEtcher** graban una única imagen ISO en un USB. Para llevar varias ISO de instalación distintas en el mismo pendrive (varias distribuciones Linux, herramientas de recuperación...) sin tener que reformatearlo cada vez, se usan herramientas de "USB multiboot" como **Ventoy**: se instala una sola vez en el USB y, a partir de ahí, basta con copiar o borrar archivos ISO con el explorador de archivos para añadir o quitar sistemas arrancables.
-
-**Memoria de intercambio (swap / archivo de paginación):** además de la RAM física, el sistema operativo puede usar espacio en disco como memoria virtual cuando la RAM se agota, a costa de una velocidad mucho menor.
-
-- **Windows** usa un **archivo de paginación** (`pagefile.sys`), ubicado en la propia partición del sistema y gestionado automáticamente por defecto.
-- **GNU/Linux** suele reservar una **partición o un archivo swap** independiente, configurable durante el particionado.
-
-| RAM instalada | Swap orientativa |
-| --- | --- |
-| ≤ 2 GB | El doble de la RAM |
-| 2-8 GB | Igual a la RAM |
-| > 8 GB | Entre 4 y 8 GB suele bastar |
-
-Conviene aumentar esta orientación si se va a usar **hibernación** (necesita una swap al menos igual a la RAM instalada, para volcar en ella todo su contenido) o en equipos con cargas de trabajo que consumen mucha memoria. En Linux, el parámetro `vm.swappiness` (0-100) regula cuánto tiende el sistema a usar la swap en lugar de liberar RAM: un valor bajo (5-10) es preferible en un equipo de escritorio con SSD, para minimizar tanto el impacto en el rendimiento como el desgaste de la unidad.
-
-**Fases típicas del proceso de instalación:**
-
-1. Arranque desde el medio de instalación (configurando el orden de arranque en la BIOS/UEFI).
-2. Selección de idioma, zona horaria y distribución de teclado.
-3. Particionado y selección del sistema de archivos.
-4. Copia de archivos e instalación del sistema base.
-5. Configuración inicial: usuario administrador, contraseña, nombre del equipo, red.
-6. Instalación de controladores y actualizaciones posteriores a la instalación.
-
-## 2.4. Gestores de arranque: configuración y reparación
-
-Al encender un equipo, el firmware (**BIOS** o **UEFI**) localiza un dispositivo de arranque y cede el control al **gestor de arranque (bootloader)**, el programa encargado de cargar el sistema operativo.
-
-**Estilo de partición del disco:**
-
-- **MBR (Master Boot Record)**: esquema clásico, máximo 4 particiones primarias, discos de hasta 2 TiB.
-- **GPT (GUID Partition Table)**: esquema moderno, sin ese límite de particiones ni de tamaño de disco; requiere arranque en modo UEFI.
-
-**Gestores de arranque habituales:**
-
-- **GRUB2**: gestor de arranque estándar en la mayoría de distribuciones Linux; permite arrancar varios sistemas operativos (multiarranque) mostrando un menú de selección.
-- **Windows Boot Manager (bootmgr)**: gestor de arranque de los sistemas Windows actuales.
-
-**Reparación del gestor de arranque:** situaciones típicas en las que deja de funcionar (tras instalar otro SO que lo sobrescribe, tras un fallo de disco) y herramientas para repararlo:
-
-- En Windows: entorno de recuperación, comandos como `bootrec /fixmbr`, `bootrec /fixboot` y `bootrec /rebuildbcd`.
-- En Linux: reinstalación de GRUB desde un *live CD* (`grub-install`, `update-grub`).
-
-!!! warning "Multiarranque"
-    En un sistema con arranque dual, es recomendable instalar primero Windows y después Linux, ya que GRUB puede detectar e incluir automáticamente las instalaciones de Windows en su menú; en el orden inverso, el instalador de Windows suele sobrescribir el gestor de arranque de Linux.
-
-## 2.5. Virtualización: tipos y herramientas
-
-La **virtualización** permite ejecutar uno o varios sistemas operativos "invitados" (guest) de forma aislada sobre un mismo equipo físico "anfitrión" (host), compartiendo sus recursos hardware.
-
-**Tipos de hipervisor** (software que crea y gestiona las máquinas virtuales):
-
-| Tipo | Descripción | Ejemplos |
+| Cableado | Descripción | Uso |
 | --- | --- | --- |
-| Tipo 1 (bare metal) | Se ejecuta directamente sobre el hardware, sin SO anfitrión | VMware ESXi, Microsoft Hyper-V, Proxmox VE |
-| Tipo 2 (hosted) | Se ejecuta como una aplicación sobre un SO anfitrión ya instalado | VirtualBox, VMware Workstation, Parallels |
+| UTP (par trenzado no apantallado) | 4 pares trenzados, sin blindaje | Redes de oficina y hogar |
+| STP/FTP (par trenzado apantallado) | Igual que UTP pero con blindaje | Entornos con interferencias electromagnéticas |
+| Coaxial | Conductor central + malla | Prácticamente en desuso en LAN |
+| Fibra óptica | Transmisión por pulsos de luz | Backbones, largas distancias, alta velocidad |
 
-**Ventajas de la virtualización:** aislamiento entre sistemas, aprovechamiento del hardware, facilidad para probar sistemas operativos sin arriesgar el equipo real, uso de **instantáneas (snapshots)** para volver a un estado anterior, portabilidad de las máquinas virtuales entre equipos.
+**Categorías de cable UTP/FTP** (a mayor categoría, mayor ancho de banda soportado): Cat 5e (hasta 1 Gbit/s), Cat 6 (hasta 10 Gbit/s a distancias cortas), Cat 6A y Cat 7/8 (10 Gbit/s y más, mayor apantallamiento).
 
-**Conceptos relacionados:**
+**Conectores más comunes:**
 
-- **Máquina virtual (VM)**: equipo completo simulado por software, con su propio SO, disco virtual y recursos asignados.
-- **Contenedores** (Docker, LXC): virtualización a nivel de sistema operativo, más ligera que una VM completa porque comparten el kernel del host; se estudian en detalle en otros módulos, pero conviene conocer la diferencia con una VM tradicional.
+- **RJ-45**: conector del cableado de par trenzado (Ethernet).
+- **SC / LC**: conectores típicos de fibra óptica.
 
-???+ example "Ampliación: contenedor vs. máquina virtual con Docker"
-    Si ya has terminado las actividades básicas de esta unidad, puedes comprobar por ti mismo/a la diferencia entre contenedor y VM:
+**Tipos de cable UTP según el cableado interno:**
 
-    1. Instala Docker Desktop (o Docker Engine en Linux) en tu equipo o en una VM.
-    2. Arranca el mismo servicio de dos formas: como contenedor (`docker run -d -p 8080:80 nginx`) y como máquina virtual completa con ese mismo servicio instalado.
-    3. Compara el tiempo desde que lo lanzas hasta que responde, el espacio en disco ocupado y la memoria RAM consumida (`docker stats` frente al Administrador de tareas/`htop` de la VM).
-    4. Con `docker exec -it <contenedor> bash` y luego `uname -a`, comprueba que el kernel que ve el contenedor es el mismo que el de tu equipo anfitrión — a diferencia de la VM, que tiene el suyo propio.
+- **Cable directo (straight-through)**: los pines siguen el mismo orden en ambos extremos. Se usa para conectar dispositivos de distinto nivel (equipo-switch, switch-router).
+- **Cable cruzado (crossover)**: los pares de transmisión y recepción están cruzados. Se usa tradicionalmente para conectar dispositivos del mismo nivel (switch-switch, PC-PC), aunque la mayoría de equipos actuales incorporan detección automática (*Auto-MDI-X*) y ya no lo requieren.
 
-    No es una actividad evaluada: es una forma de comprobar de primera mano por qué un contenedor no sirve para las actividades de esta unidad (no tiene BIOS/UEFI, gestor de arranque ni disco que particionar) y, en cambio, resulta mucho más ligero y rápido para desplegar un servicio ya construido — algo que se estudiará en detalle en módulos posteriores de despliegue.
+**Mapa físico vs. mapa lógico de una red:**
 
-**Discos virtuales:** cada VM almacena su disco como uno o varios archivos en el sistema de archivos del anfitrión, en formatos como **VDI** (nativo de VirtualBox), **VMDK** (VMware, el más extendido para el intercambio entre plataformas) o **VHD/VHDX** (Hyper-V). Al crear el disco se elige entre:
+- **Mapa físico**: representa la ubicación real de los dispositivos, el cableado y su disposición en el espacio (racks, plantas, salas).
+- **Mapa lógico**: representa cómo fluye la información entre los dispositivos con independencia de su ubicación física: direccionamiento IP, segmentación en subredes/VLAN, rutas.
 
-- **Tamaño dinámico**: el archivo ocupa en el anfitrión solo el espacio realmente usado por la VM, y va creciendo hasta el máximo definido. Es la opción recomendada en la mayoría de los casos.
-- **Tamaño fijo**: reserva de entrada todo el espacio máximo en el anfitrión. Ofrece un rendimiento algo más constante, a costa de ocupar desde el principio todo el espacio, tanto se use como si no.
+**Mapa físico** (disposición real de los equipos y el cableado):
+
+```mermaid
+graph LR
+    Internet((Internet)) --- R[Router]
+    R --- SW[Switch de aula]
+    SW --- PC1[PC1]
+    SW --- PC2[PC2]
+    SW --- PC3[PC3]
+```
+
+**Mapa lógico** (segmentación en subredes/VLAN, con independencia de la ubicación física):
+
+```mermaid
+graph TD
+    R[Router]
+    subgraph VLAN10["VLAN 10 · 192.168.10.0/24"]
+        PC1["PC1 · 192.168.10.11"]
+        PC2["PC2 · 192.168.10.12"]
+    end
+    subgraph VLAN20["VLAN 20 · 192.168.20.0/24"]
+        PC3["PC3 · 192.168.20.11"]
+    end
+    R --- PC1
+    R --- PC2
+    R --- PC3
+```
 
 !!! note "Idea clave"
-    Con un disco de tamaño dinámico, el sistema operativo invitado "cree" que dispone de todo el espacio del disco virtual, aunque el anfitrión no le haya asignado aún ese espacio real; si el disco del anfitrión se llena antes de alcanzar ese máximo, la máquina virtual puede fallar de forma abrupta.
+    Dos equipos pueden estar físicamente muy cerca (mismo armario de comunicaciones) y pertenecer a segmentos lógicos completamente distintos (VLAN distintas), y viceversa.
 
-**Guest Additions / VMware Tools:** paquete de controladores y utilidades que se instala *dentro* del sistema operativo invitado (no en el anfitrión) y mejora la integración entre ambos: resolución de pantalla ajustable, portapapeles compartido, arrastrar y soltar archivos, carpetas compartidas y mejor rendimiento gráfico y de red. Sin este paquete instalado, la máquina virtual funciona, pero con prestaciones e integración limitadas.
+## 2.3. Protocolo TCP/IP: direccionamiento IPv4/IPv6, DNS
 
-**Exportación e importación de máquinas virtuales:** para trasladar una VM completa a otro equipo o hipervisor se usa el estándar **OVF** (*Open Virtualization Format*), admitido por VirtualBox, VMware y otros fabricantes. Un paquete OVF consta de un archivo de configuración y uno o varios discos virtuales (normalmente convertidos a VMDK); empaquetado todo junto en un único archivo comprimido, se usa la extensión **OVA**. Esto permite migrar una VM entre plataformas de virtualización distintas, aunque no siempre se conservan todas sus características si el hipervisor de destino no las soporta.
+**TCP/IP** es el conjunto de protocolos que hace posible la comunicación en la mayoría de redes actuales, incluida Internet. Se organiza en capas, donde cada una se apoya en los servicios de la inferior:
 
-## 2.6. Instalación, desinstalación y actualización de aplicaciones
-
-**Formas de instalar aplicaciones según el sistema operativo:**
-
-- **Windows**: instaladores ejecutables (`.exe`, `.msi`), tiendas de aplicaciones (Microsoft Store), instalación silenciosa mediante parámetros de línea de comandos (útil para despliegues masivos).
-- **GNU/Linux**: gestores de paquetes que resuelven automáticamente las dependencias:
-    - `apt` / `dpkg` (Debian, Ubuntu)
-    - `dnf` / `rpm` (Fedora, RHEL)
-    - `pacman` (Arch Linux)
-- **macOS**: paquetes `.pkg`, aplicaciones `.app`, App Store.
-
-**Desinstalación:** debe eliminar tanto los archivos del programa como sus entradas de configuración asociadas (registro en Windows, archivos de configuración en `/etc` o el directorio personal en Linux) para no dejar residuos.
-
-**Actualización de aplicaciones:** puede hacerse de forma manual, mediante el propio gestor de paquetes, o mediante mecanismos de autoactualización integrados en la aplicación.
-
-**Verificación de la integridad del software descargado:**
-
-- **Sumas de comprobación (checksums)**: valores hash (MD5, SHA-256) que permiten comprobar que el archivo descargado no está corrupto ni manipulado.
-- **Firma digital**: garantiza la autenticidad del editor del software.
-
-!!! tip "Buena práctica"
-    Descargar siempre el software desde la web oficial del fabricante o repositorios oficiales, y comprobar la suma de comprobación cuando esté disponible, especialmente en instalaciones de sistemas o software crítico.
-
-## 2.7. Actualización y recuperación del sistema
-
-**Actualización del sistema operativo:**
-
-- **Windows Update**: distribuye actualizaciones de seguridad, correcciones y nuevas funciones.
-- **Gestores de paquetes en Linux** (`apt upgrade`, `dnf upgrade`...): actualizan tanto el sistema base como las aplicaciones instaladas desde los repositorios.
-- Es recomendable distinguir entre actualizaciones de seguridad (críticas, a aplicar cuanto antes) y actualizaciones de funcionalidad (pueden planificarse).
-
-**Mecanismos de recuperación del sistema:**
-
-- **Puntos de restauración (Windows)**: permiten volver la configuración del sistema a un estado anterior sin afectar a los archivos personales.
-- **Partición/entorno de recuperación**: partición oculta con herramientas de diagnóstico y reparación, o entorno de recuperación desde un medio externo.
-- **Imágenes de sistema (system image / clonado)**: copia completa del disco o partición del sistema, que permite restaurar el equipo por completo tras un fallo grave.
-- **Modo seguro (Safe Mode) / modo de emergencia**: arranque del sistema con el mínimo de controladores y servicios, útil para diagnosticar problemas.
-
-## 2.8. Documentación de instalaciones e incidencias
-
-Documentar el trabajo técnico es una parte esencial de la profesión: facilita el mantenimiento futuro, permite a otros técnicos entender lo realizado y sirve como evidencia ante el cliente.
-
-**Qué documentar en una instalación:**
-
-- Fecha, equipo/s afectados y técnico responsable.
-- Versión del sistema operativo y software instalado.
-- Configuración aplicada (particionado, red, usuarios).
-- Incidencias encontradas durante el proceso y solución aplicada.
-
-**Gestión de incidencias:** en un entorno profesional, las incidencias suelen registrarse en un sistema de *tickets* (helpdesk) que recoge, como mínimo: descripción del problema, prioridad, técnico asignado, acciones realizadas y estado (abierta, en curso, resuelta).
-
-!!! tip "Estructura de un informe técnico"
-    Un buen informe de instalación o de incidencia debe ser breve, ordenado cronológicamente y reproducible por otra persona: **qué se hizo, por qué, cómo, y qué resultado se obtuvo**.
-
-## 2.9. Herramientas ofimáticas y de trabajo colaborativo
-
-Las **suites ofimáticas** agrupan aplicaciones para las tareas más comunes en un entorno de oficina:
-
-| Tipo de aplicación | Función | Ejemplos |
+| Capa (modelo TCP/IP) | Función | Ejemplos de protocolo |
 | --- | --- | --- |
-| Procesador de texto | Redacción y maquetación de documentos | Word, Writer (LibreOffice), Google Docs |
-| Hoja de cálculo | Cálculos, tablas y gráficos | Excel, Calc, Google Sheets |
-| Presentaciones | Diapositivas para exposiciones | PowerPoint, Impress, Google Slides |
-| Gestor de bases de datos de escritorio | Bases de datos sencillas | Access, Base (LibreOffice) |
+| Aplicación | Servicios usados directamente por los programas | HTTP, DNS, SMTP, FTP |
+| Transporte | Comunicación extremo a extremo | TCP (fiable), UDP (sin conexión) |
+| Internet | Direccionamiento y encaminamiento entre redes | IP, ICMP |
+| Acceso a la red | Transmisión física de los datos | Ethernet, Wi-Fi |
 
-**Suites más habituales:** Microsoft 365 (propietaria, de suscripción), LibreOffice (libre y gratuita), Google Workspace (basada en la nube).
+**Direccionamiento IPv4:** dirección de 32 bits, representada en 4 grupos decimales (0-255) separados por puntos (p. ej. `192.168.1.10`).
 
-**Herramientas de trabajo colaborativo:**
+- **Máscara de subred**: determina qué parte de la dirección identifica la red y cuál el equipo (host). Se puede expresar en notación decimal (`255.255.255.0`) o **CIDR** (`/24`).
+- **Direcciones privadas** (uso interno, no enrutables en Internet): `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`.
+- **Puerta de enlace (gateway)**: dirección del dispositivo (router) por el que un equipo envía el tráfico destinado a otras redes.
 
-- **Almacenamiento y edición compartida en la nube**: Google Drive, OneDrive, Nextcloud, que permiten que varias personas editen un mismo documento simultáneamente.
-- **Control de versiones de documentos**: historial de cambios y posibilidad de recuperar versiones anteriores.
+**IPv6:** dirección de 128 bits, representada en 8 grupos hexadecimales (p. ej. `2001:0db8:0000:0000:0000:ff00:0042:8329`, simplificable a `2001:db8::ff00:42:8329`), diseñada para resolver el agotamiento de direcciones de IPv4 y simplificar el direccionamiento.
 
-**Edición colaborativa en tiempo real frente a sincronización de archivos:** son dos modelos distintos, aunque a veces se confunden. Un editor colaborativo (Google Docs, Office Online) mantiene una conexión permanente con el servidor y **fusiona los cambios de cada persona a nivel de carácter**, casi al instante, mediante algoritmos de resolución de conflictos (fuera del alcance de este módulo). Un servicio de sincronización de carpetas (Dropbox, OneDrive/Google Drive de escritorio) sincroniza en cambio **el archivo completo** de vez en cuando: si dos personas editan el mismo archivo sin conexión a la vez, no hay fusión automática y se genera un archivo de "copia en conflicto" que hay que resolver a mano.
-- **Comunicación y videoconferencia**: Google Meet, Microsoft Teams, Zoom.
-- **Gestión de tareas y proyectos en equipo**: Trello, Asana, Microsoft Planner.
+**DNS (Domain Name System):** servicio distribuido y jerárquico que traduce nombres de dominio legibles (`www.ejemplo.com`) a direcciones IP. En el proceso de **resolución**, el equipo consulta a un servidor DNS (a menudo el del proveedor de Internet o uno público como `8.8.8.8`), que responde directamente si conoce la respuesta o la reenvía a otros servidores DNS hasta obtenerla.
 
-## 2.10. Utilidades de propósito general (antimalware, mantenimiento, recuperación de datos)
+## 2.4. Configuración de redes cableadas e inalámbricas
 
-**Herramientas antimalware:** software que detecta y elimina programas maliciosos (virus, troyanos, ransomware, spyware). Suelen combinar análisis por firmas (comparación con una base de datos de amenazas conocidas) y análisis heurístico/de comportamiento (detección de patrones sospechosos). Ejemplos: Windows Defender, ClamAV (libre, muy usado en servidores Linux).
+**Configuración de la dirección IP de un equipo:**
 
-**Utilidades de mantenimiento del sistema:** liberación de espacio en disco (archivos temporales, caché), gestión de programas que se inician automáticamente, limpieza de entradas obsoletas de configuración.
+- **Estática**: se asigna manualmente (IP, máscara, puerta de enlace, DNS). Habitual en servidores e impresoras, donde interesa que la dirección no cambie.
+- **Dinámica (DHCP)**: un servidor **DHCP** asigna automáticamente la configuración de red a cada equipo que se conecta, durante un tiempo determinado (concesión o *lease*). Es la opción por defecto en la mayoría de redes domésticas y de oficina.
 
-**Recuperación de datos:** herramientas capaces de intentar recuperar archivos borrados accidentalmente o dañados por un fallo del sistema de archivos, aprovechando que al borrar un archivo normalmente solo se elimina su referencia en el sistema de archivos, no el contenido en sí (hasta que ese espacio se reutiliza). Ejemplos: Recuva, TestDisk/PhotoRec.
+| SO | Configuración gráfica | Comandos / archivos |
+| --- | --- | --- |
+| Windows | Configuración > Red e Internet | `netsh`, PowerShell `Get-NetIPConfiguration` |
+| Linux | NetworkManager (GUI) | `nmcli`, `/etc/netplan/*.yaml` (Ubuntu), `ip` |
 
-**Utilidades de compresión:** reducen el tamaño de los archivos y permiten agrupar varios en uno solo, facilitando su almacenamiento y transferencia. Formatos habituales: ZIP, RAR, 7z, TAR+GZIP (este último muy usado en Linux).
+**Redes inalámbricas (Wi-Fi):**
 
-!!! warning "El antimalware no sustituye las buenas prácticas"
-    Ninguna herramienta antimalware sustituye a unas buenas prácticas básicas: mantener el sistema actualizado, desconfiar de archivos adjuntos y enlaces desconocidos, y hacer copias de seguridad periódicas.
+- **SSID**: nombre que identifica la red inalámbrica.
+- **Estándares 802.11**: sucesivas generaciones (a/b/g/n/ac/ax...) con mejoras de velocidad y alcance; los nombres comerciales actuales son Wi-Fi 4 (802.11n), Wi-Fi 5 (802.11ac) y Wi-Fi 6 (802.11ax).
+- **Seguridad**: protocolos de cifrado del tráfico inalámbrico, de menor a mayor seguridad: WEP (obsoleto e inseguro) → WPA → **WPA2** (estándar durante años) → **WPA3** (actual).
+- **Ampliación de cobertura**: un único punto de acceso no siempre cubre todo el espacio necesario. Un **repetidor** (o un AP en modo repetidor, mediante el estándar **WDS**, *Wireless Distribution System*) retransmite la señal para ampliar el alcance, a costa de reducir el ancho de banda disponible en cada salto adicional. Las **redes mesh** modernas (varios puntos que se coordinan entre sí, con el mismo SSID e itinerancia automática entre ellos) resuelven el mismo problema de forma más eficiente y con gestión centralizada.
+
+## 2.5. Dispositivos de interconexión y encaminamiento
+
+- **Switch (conmutador)**: opera a nivel de enlace, interconectando equipos de una misma LAN. Aprende qué dirección **MAC** está conectada a cada puerto (tabla de conmutación) y reenvía el tráfico solo al puerto correspondiente, en lugar de a todos (a diferencia del antiguo hub).
+- **Router (encaminador)**: opera a nivel de red, interconectando redes distintas (por ejemplo, la LAN doméstica con Internet). Mantiene una **tabla de encaminamiento (routing table)** que indica por qué interfaz/siguiente salto se debe enviar el tráfico según la red de destino.
+
+**Tipos de encaminamiento:**
+
+- **Estático**: las rutas se configuran manualmente; sencillo pero poco escalable.
+- **Dinámico**: los routers intercambian información de rutas automáticamente mediante protocolos de encaminamiento (p. ej. OSPF, RIP), adaptándose a cambios en la red.
+
+**NAT (Network Address Translation):** técnica, habitual en routers domésticos, que traduce las direcciones IP privadas de la LAN a una única IP pública para acceder a Internet, permitiendo que muchos equipos compartan una sola dirección pública.
+
+**VLAN (Virtual LAN):** segmenta lógicamente una misma red física en varias redes independientes, sin necesidad de cablear switches separados. Requiere un **switch gestionable** (o switch L3), en cuya configuración se asignan los puertos a una VLAN u otra.
+
+- **Puerto de acceso (access)**: pertenece a una única VLAN; es el modo habitual para conectar equipos finales (PC, impresora).
+- **Puerto troncal (trunk)**: transporta el tráfico de varias VLAN a la vez, etiquetando cada trama con el identificador de VLAN correspondiente (estándar **802.1Q**); se usa para enlazar switches entre sí o conectar un router que hace de puerta de enlace de varias VLAN.
+
+!!! note "Idea clave"
+    Dos equipos conectados al mismo switch físico, pero en VLAN distintas, no pueden comunicarse entre sí sin pasar por un router (o una función de encaminamiento entre VLAN) — exactamente igual que si estuvieran en dos redes físicamente separadas.
+
+## 2.6. Acceso a redes de área extensa y seguridad en comunicaciones
+
+**Tecnologías de acceso a redes WAN / Internet:**
+
+| Tecnología | Medio | Características |
+| --- | --- | --- |
+| ADSL | Par de cobre telefónico | Velocidad asimétrica, en desuso |
+| Cable (DOCSIS) | Coaxial | Compartido por zona, buena velocidad de bajada |
+| Fibra óptica (FTTH) | Fibra hasta el hogar | Alta velocidad simétrica, tecnología actual de referencia |
+| Redes móviles | Radiofrecuencia | 4G/5G, cobertura amplia, uso también fijo (FWA) |
+
+**VPN (Virtual Private Network):** crea un túnel cifrado a través de una red no confiable (como Internet), permitiendo acceder de forma segura a una red privada remota como si el equipo estuviera físicamente conectado a ella. Muy usada para el teletrabajo y para interconectar sedes de una empresa.
+
+**Servidor proxy:** actúa como intermediario entre los equipos de una red local e Internet, reenviando las peticiones en su nombre. Es habitual en redes de empresas o centros educativos, con dos funciones principales:
+
+- **Caché de contenidos**: guarda copia de los recursos más solicitados, reduciendo el consumo de ancho de banda y acelerando el acceso a lo que ya han consultado otros equipos de la red.
+- **Filtrado de contenidos**: permite bloquear el acceso a determinados sitios o categorías (redes sociales, contenido no apropiado...) de forma centralizada, sin configurar cada equipo por separado.
+
+**Squid** es la implementación libre de proxy más extendida en entornos Linux.
+
+!!! note "Idea clave"
+    Un proxy actúa en nombre del cliente hacia Internet (*forward proxy*); no debe confundirse con un **proxy inverso** (*reverse proxy*), que actúa en nombre de un servidor hacia sus clientes y que se estudia en otros módulos relacionados con el despliegue de aplicaciones web.
+
+**Protocolos seguros de comunicación:**
+
+| Protocolo inseguro | Alternativa segura |
+| --- | --- |
+| HTTP | **HTTPS** (HTTP sobre TLS/SSL) |
+| Telnet | **SSH** |
+| FTP | **FTPS** / **SFTP** |
+
+**TLS/SSL:** protocolos que cifran la comunicación entre cliente y servidor, garantizando confidencialidad (nadie puede leer los datos), integridad (no se pueden modificar sin detectarlo) y autenticidad (mediante certificados digitales).
+
+## 2.7. Recursos compartidos, permisos de red y directivas
+
+Compartir un recurso (carpeta, impresora) en red implica dos niveles de permisos que se combinan:
+
+- **Permisos de recurso compartido (permisos de red)**: se aplican solo al acceder desde la red (por ejemplo, "Lectura" o "Lectura/Escritura" al compartir una carpeta en Windows).
+- **Permisos locales del sistema de archivos** (NTFS o los permisos Linux vistos en la UT4): se aplican siempre, se acceda local o remotamente.
+
+!!! note "Idea clave"
+    Cuando ambos niveles de permisos existen (típico en Windows), se aplica el **más restrictivo** de los dos. Por ejemplo, si el recurso compartido permite "control total" pero el permiso NTFS de la carpeta es "solo lectura", el resultado final es solo lectura.
+
+**Modelos de administración de una red:**
+
+- **Grupo de trabajo (workgroup)**: cada equipo gestiona sus propios usuarios y permisos de forma independiente; adecuado para redes muy pequeñas.
+- **Dominio**: la gestión de usuarios, equipos y directivas se centraliza en un servidor (ver 2.10); adecuado a partir de cierto número de equipos.
+
+**Unidades de red:** una carpeta compartida remota puede **mapearse** como si fuera una unidad más del propio equipo, facilitando su uso habitual.
+
+## 2.8. Servidores de archivos, impresión y aplicaciones
+
+- **Servidor de archivos**: centraliza el almacenamiento y el acceso a carpetas y documentos compartidos por varios usuarios, con sus correspondientes permisos. Puede implementarse con Windows Server, con **Samba** (que permite a un servidor Linux compartir recursos usando el protocolo SMB de Windows), o mediante dispositivos **NAS** dedicados.
+- **Servidor de impresión**: centraliza la gestión de una o varias impresoras, permitiendo que los equipos de la red impriman sin necesidad de tener el dispositivo conectado directamente ni el driver instalado en cada equipo. Gestiona colas de impresión y prioridades.
+- **Servidor de aplicaciones**: ejecuta la lógica de una aplicación y la sirve a los clientes de la red (por ejemplo, un ERP o una aplicación web), de forma que los equipos cliente no necesitan tener instalada ni ejecutar la aplicación localmente.
+
+## 2.9. Conexión remota y cortafuegos
+
+**Técnicas de conexión remota**, para administrar un equipo sin acceso físico a él:
+
+| Protocolo/herramienta | Tipo de acceso | SO típico |
+| --- | --- | --- |
+| **RDP** (Remote Desktop Protocol) | Escritorio remoto gráfico | Windows |
+| **SSH** (Secure Shell) | Línea de comandos cifrada | Linux (y disponible en Windows) |
+| **VNC** | Escritorio remoto gráfico | Multiplataforma |
+| TeamViewer / AnyDesk | Escritorio remoto gráfico, suele atravesar NAT sin configuración | Multiplataforma |
+
+**Cortafuegos (firewall):** sistema (hardware o software) que filtra el tráfico de red entrante y saliente según un conjunto de reglas, permitiendo o bloqueando conexiones según criterios como el puerto, el protocolo o la dirección IP de origen/destino.
+
+| SO | Herramienta |
+| --- | --- |
+| Windows | Firewall de Windows Defender |
+| Linux | `iptables` / `nftables`, con interfaces simplificadas como `ufw` (Ubuntu) o `firewalld` (Fedora/RHEL) |
+
+!!! warning "Puertos abiertos = superficie de ataque"
+    Cada puerto abierto en un cortafuegos es un posible punto de entrada. La buena práctica es aplicar el principio de mínimo privilegio también en red: abrir únicamente los puertos estrictamente necesarios para los servicios que se ofrecen.
+
+## 2.10. Dominios: implantación y explotación
+
+Un **dominio** (en el ecosistema Windows, típicamente **Active Directory**) centraliza en uno o varios servidores llamados **controladores de dominio** la gestión de usuarios, equipos, grupos y directivas de seguridad de toda una organización.
+
+**Ventajas frente al modelo de grupo de trabajo:**
+
+- Inicio de sesión único (el mismo usuario y contraseña sirve en cualquier equipo del dominio).
+- Aplicación centralizada de directivas de grupo (GPO): configuración de seguridad, restricciones, instalación de software.
+- Gestión centralizada de permisos sobre recursos compartidos.
+- Escalable a cientos o miles de equipos.
+
+**Componentes principales:**
+
+- **Controlador de dominio (DC)**: servidor que almacena la base de datos del dominio y autentica a los usuarios.
+- **Servicio de directorio**: base de datos jerárquica de objetos (usuarios, equipos, grupos, unidades organizativas), basada en el protocolo estándar **LDAP**.
+- **DNS integrado**: un dominio Active Directory depende de un servicio DNS correctamente configurado para que los equipos puedan localizar al controlador de dominio.
+
+**Unirse a un dominio:** proceso por el que un equipo pasa de gestionarse de forma local (grupo de trabajo) a que sus usuarios y configuración puedan ser gestionados desde el controlador de dominio.
+
+???+ tip "Alternativa libre: Samba AD DC / Zentyal"
+    En el mundo Linux, **Samba** (ya mencionado en 2.8 para compartir archivos) puede configurarse también como **controlador de dominio compatible con Active Directory** (modo *Samba AD DC*), autenticando por igual a clientes Windows y Linux. **Zentyal** es una distribución basada en esta tecnología que ofrece esta función mediante un panel de administración gráfico, como alternativa libre a Windows Server para pymes.
+
+## 2.11. Correo y mensajería electrónica
+
+El correo electrónico se apoya en varios protocolos con funciones distintas:
+
+| Protocolo | Función | Puerto habitual |
+| --- | --- | --- |
+| **SMTP** | Envío de correo (entre servidores, y del cliente al servidor) | 25 / 587 |
+| **POP3** | Descarga del correo al cliente (habitualmente eliminándolo del servidor) | 110 |
+| **IMAP** | Sincronización del correo con el servidor (el correo permanece en el servidor, accesible desde varios dispositivos) | 143 |
+
+Todos ellos cuentan con versión cifrada mediante TLS/SSL (SMTPS, POP3S, IMAPS), sobre puertos distintos.
+
+**Formas de acceder al correo:**
+
+- **Cliente de correo** (Outlook, Thunderbird, apps móviles): requiere configurar los servidores de entrada (IMAP/POP3) y salida (SMTP).
+- **Webmail**: acceso a través del navegador, sin necesidad de configuración local (Gmail, Outlook Web).
+
+**Mensajería instantánea:** herramientas de comunicación en tiempo real de uso habitual en el entorno profesional (Microsoft Teams, Slack), complementarias al correo para comunicaciones más ágiles.
+
+## 2.12. Servicios de transferencia de ficheros
+
+**FTP (File Transfer Protocol):** protocolo clásico para transferir archivos entre un cliente y un servidor. Usa dos canales: uno de control (puerto 21) y otro de datos.
+
+- **FTP**: transmite las credenciales y los datos **sin cifrar** — desaconsejado salvo en entornos controlados.
+- **FTPS**: FTP sobre TLS/SSL.
+- **SFTP**: protocolo distinto (no es FTP cifrado, sino un protocolo de transferencia de archivos que funciona sobre **SSH**, puerto 22); es la opción más extendida hoy en día por combinar seguridad y sencillez de configuración (un único puerto).
+
+**Clientes de transferencia de archivos habituales:** FileZilla (gráfico, multiplataforma), `scp` y `sftp` (línea de comandos, incluidos con SSH), y clientes integrados en los propios exploradores de archivos.
+
+**Transferencia de archivos en la nube:** servicios como WeTransfer, o el propio almacenamiento en la nube (Drive, OneDrive) con enlaces compartidos, como alternativa a FTP para transferencias puntuales sin necesidad de configurar un servidor.
+
+!!! note "Idea clave"
+    Ante la duda de qué protocolo usar para transferir archivos de forma segura entre dos equipos, **SFTP** es hoy la opción recomendada por defecto: reutiliza la seguridad y la configuración de SSH, sin necesidad de abrir puertos ni certificados adicionales.
 
 ## Actividades
 
-**Actividad 2.1 — Instalación documentada de un SO**
+**Actividad 2.1 — Mapa físico y lógico de una red**
 {: .actividad-titulo}
 
-Instala una distribución Linux (por ejemplo, Ubuntu) en una máquina virtual, documentando cada fase del proceso (particionado elegido, configuración inicial, incidencias encontradas) a partir de esta **[plantilla de informe técnico de instalación](plantilla-informe-instalacion.md)**, siguiendo la estructura vista en el punto 2.8.
+A partir del plano de un aula con 15 puestos, un switch y un router con salida a Internet, dibuja el **mapa físico** (ubicación de equipos y cableado) y el **mapa lógico** (direccionamiento IP, segmento de red) de esa red.
 
-**Actividad 2.2 — Licenciamiento de sistemas operativos: comparativa aplicada**
+**Actividad 2.2 — Direccionamiento IP**
 {: .actividad-titulo}
 
-Una empresa se plantea dos escenarios de renovación de equipos:
+Dada la red `192.168.10.0/24`, calcula la dirección de red, la de broadcast y el rango de direcciones válidas para host. Configura después esa dirección de forma estática en una máquina virtual y verifica la conectividad con `ping` hacia otro equipo de la misma red.
 
-a) Comprar **5 equipos nuevos** para el departamento de administración, que necesitan compatibilidad total con Microsoft Office y una aplicación de gestión que solo existe para Windows.
-
-b) Reutilizar **20 equipos antiguos** dados de baja de otro departamento, con hardware modesto, para montar un aula de formación.
-
-Para cada escenario:
-
-- Indica qué modalidad de licencia de Windows (OEM, retail o por volumen) o qué distribución Linux recomendarías, razonando el coste aproximado y las condiciones de cada modalidad (a qué equipo queda ligada la licencia, si se puede trasladar a otro, si permite redistribución o modificación).
-- Explica la diferencia legal y práctica entre instalar una copia de evaluación, una versión OEM comprada sin equipo asociado y una distribución GNU/Linux, en términos de lo que la empresa puede y no puede hacer con cada una.
-- Justifica, para el escenario (b), si compensaría migrar a una distribución Linux en lugar de licenciar Windows para esos 20 equipos, considerando el coste y la compatibilidad de software necesaria.
-
-Presenta la comparativa en una tabla con, al menos: tipo de licencia, coste aproximado, posibilidad de redistribución/modificación y escenario recomendado.
-
-**Actividad 2.3 — Arranque dual y reparación de GRUB**
+**Actividad 2.3 — DHCP vs. IP estática**
 {: .actividad-titulo}
 
-En un entorno virtualizado, instala Windows y a continuación Linux en el mismo disco para configurar un arranque dual. Simula después un fallo del gestor de arranque (por ejemplo, reinstalando Windows) y documenta el procedimiento para reparar GRUB desde un *live CD*.
+En un entorno con dos máquinas virtuales y un servicio DHCP, observa qué configuración de red recibe automáticamente un cliente. Cambia después esa misma máquina a configuración estática y razona en qué casos (servidor, impresora, PC de usuario) conviene cada modalidad.
 
-**Actividad 2.4 — Snapshots y virtualización**
+**Actividad 2.4 — Carpeta compartida y combinación de permisos**
 {: .actividad-titulo}
 
-Crea una máquina virtual, instala una aplicación y toma una instantánea (snapshot). Desinstala después la aplicación y restaura la instantánea, explicando en qué escenarios reales de un departamento de informática resulta útil esta técnica.
+Comparte una carpeta en red con permiso de "solo lectura" a nivel de recurso compartido, pero con permiso NTFS de "control total" a nivel local. Accede desde otro equipo y comprueba qué permiso prevalece, relacionándolo con la idea clave del punto 2.7.
+
+**Actividad 2.5 — SSH y transferencia segura**
+{: .actividad-titulo}
+
+Configura el servicio SSH en una máquina virtual Linux, conéctate desde otro equipo con un cliente SSH y transfiere un archivo mediante `scp` o `sftp`. Documenta los comandos utilizados y los puertos implicados.
+
+**Actividad 2.6 — Grupo de trabajo vs. dominio**
+{: .actividad-titulo}
+
+Plantea el caso de una pyme que pasa de 5 a 60 empleados. Redacta un informe breve razonando si conviene mantener el modelo de grupo de trabajo o migrar a un dominio con Active Directory, describiendo al menos tres ventajas concretas de la opción elegida para ese escenario.

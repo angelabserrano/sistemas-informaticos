@@ -1,4 +1,4 @@
-# UT3. Sistemas operativos: Configuración y administración
+# UT3. Sistemas operativos: Instalación y primeros pasos
 
 [:material-arrow-left: Volver al índice de todas las unidades](index.md)
 
