@@ -14,7 +14,7 @@ Apuntes del módulo profesional **Sistemas Informáticos** (código 0483), del c
 - [UT1. Sistemas Informáticos. Hardware y Software](ut1.md)
 - [UT2. Sistemas operativos: Instalación y primeros pasos](ut2.md) <span class="badge-proximamente">Próximamente</span>
 - [UT3. Sistemas operativos: Configuración y administración](ut3.md) <span class="badge-proximamente">Próximamente</span>
-- [UT4. Redes y sistemas operativos en red](ut4.md) <span class="badge-proximamente">Próximamente</span>
+- [UT4. Sistemas operativos en red](ut4.md) <span class="badge-proximamente">Próximamente</span>
 
 ## Resultados de aprendizaje
 
@@ -37,6 +37,6 @@ El módulo se organiza en 4 unidades de trabajo, con un total de **140 horas en 
 | UT1. Sistemas Informáticos. Hardware y Software | 25 |
 | UT2. Sistemas operativos: Instalación y primeros pasos | 45 |
 | UT3. Sistemas operativos: Configuración y administración | 35 |
-| UT4. Redes y sistemas operativos en red | 35 |
+| UT4. Sistemas operativos en red | 35 |
 | **Total en el centro** | **140** |
 | Formación en la empresa | 26 |

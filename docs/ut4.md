@@ -1,4 +1,4 @@
-# UT4. Redes y sistemas operativos en red
+# UT4. Sistemas operativos en red
 
 [:material-arrow-left: Volver al índice de todas las unidades](index.md)
 
