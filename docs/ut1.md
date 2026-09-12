@@ -1,4 +1,4 @@
-# UT1. Sistemas Informáticos. Hardware y Software
+# UT1. Arquitectura y componentes del sistema informático
 
 [:material-arrow-left: Volver al índice de todas las unidades](index.md)
 

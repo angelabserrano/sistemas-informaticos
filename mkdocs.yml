@@ -59,9 +59,11 @@ plugins:
 
 nav:
   - Inicio: index.md
-  - "UT1. Sistemas Informáticos. Hardware y Software": ut1.md
+  - "UT1. Arquitectura y componentes del sistema informático": ut1.md
   - "Plantilla: ficha técnica de un equipo": plantilla-ficha-tecnica.md
   - "UT2. Redes": ut2.md
-  - "UT3. Sistemas operativos: Instalación y primeros pasos": ut3.md
+  - "UT3. Instalación de sistemas operativos": ut3.md
   - "Plantilla: informe técnico de instalación": plantilla-informe-instalacion.md
-  - "UT4. Sistemas operativos: Configuración y administración": ut4.md
+  - "UT4. Configuración de sistemas GNU/Linux": ut4.md
+  - "UT5. Administración de sistemas GNU/Linux": ut5.md
+  - "UT6. Sistemas operativos en red": ut6.md

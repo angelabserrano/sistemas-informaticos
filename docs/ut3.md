@@ -1,4 +1,4 @@
-# UT3. Sistemas operativos: Instalación y primeros pasos
+# UT3. Instalación de sistemas operativos
 
 [:material-arrow-left: Volver al índice de todas las unidades](index.md)
 

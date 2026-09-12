@@ -1,4 +1,4 @@
-# UT4. Configuración de sistemas GNU/Linux
+# UT6. Sistemas operativos en red
 
 [:material-arrow-left: Volver al índice de todas las unidades](index.md)
 
