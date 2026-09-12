@@ -112,6 +112,47 @@ Leyendo los restos de abajo hacia arriba: **45 = 101101₂**
 !!! tip "La ruta más corta pasa por el binario"
     Para convertir directamente entre octal y hexadecimal (o entre cualquier par de bases poco habituales), suele ser más rápido pasar primero por binario como paso intermedio, en lugar de operar directamente entre las dos bases originales.
 
+**Ejemplos resueltos**
+
+**Ejemplo 1 — Decimal a binario:** convierte 100 (decimal) a binario.
+
+??? success "Solución"
+    | División | Cociente | Resto |
+    | --- | --- | --- |
+    | 100 ÷ 2 | 50 | 0 |
+    | 50 ÷ 2 | 25 | 0 |
+    | 25 ÷ 2 | 12 | 1 |
+    | 12 ÷ 2 | 6 | 0 |
+    | 6 ÷ 2 | 3 | 0 |
+    | 3 ÷ 2 | 1 | 1 |
+    | 1 ÷ 2 | 0 | 1 |
+
+    Leyendo los restos de abajo hacia arriba: **100 = 1100100₂**
+
+**Ejemplo 2 — Binario a decimal:** convierte 11011₂ a decimal.
+
+??? success "Solución"
+    11011₂ = 1×2⁴ + 1×2³ + 0×2² + 1×2¹ + 1×2⁰ = 16 + 8 + 0 + 2 + 1 = **27**
+
+**Ejemplo 3 — Decimal a hexadecimal:** convierte 202 (decimal) a hexadecimal.
+
+??? success "Solución"
+    | División | Cociente | Resto |
+    | --- | --- | --- |
+    | 202 ÷ 16 | 12 | 10 (A) |
+    | 12 ÷ 16 | 0 | 12 (C) |
+
+    Leyendo los restos de abajo hacia arriba: **202 = CA₁₆**
+
+**Ejemplo 4 — Hexadecimal a binario y a octal:** convierte 3F₁₆ a binario y a octal.
+
+??? success "Solución"
+    Cada cifra hexadecimal se expande a su grupo de 4 bits: 3 = `0011`, F = `1111` → **3F₁₆ = 00111111₂** (= 111111₂ sin los ceros no significativos).
+
+    Agrupando esos mismos bits de 3 en 3 desde la derecha: `111 111` = 7, 7 → **3F₁₆ = 77₈**
+
+    Comprobación en decimal: 3F₁₆ = 3×16 + 15 = 63; 77₈ = 7×8 + 7 = 63. ✓
+
 **Bit, nibble y byte:** el **bit** (*binary digit*) es la unidad mínima de información (0 o 1). Un grupo de 4 bits se llama **nibble** (equivale exactamente a una cifra hexadecimal) y un grupo de 8 bits, **byte** (equivale a dos cifras hexadecimales), la unidad básica con la que se mide la capacidad de memoria y almacenamiento.
 
 !!! note "Dónde aparecen en el resto del módulo"
