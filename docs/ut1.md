@@ -477,16 +477,38 @@ Una parte importante del trabajo con sistemas informáticos consiste en localiza
 
 ## Catálogo visual de componentes
 
-Antes de hacer la **Actividad 1.1**, consulta el **[catálogo visual de componentes](catalogo-componentes.md)**: fotografías reales de placas base, procesadores, memoria, almacenamiento, tarjetas y dispositivos de red, y periféricos, con los rasgos que ayudan a reconocer cada uno físicamente.
+Antes de hacer la **Actividad 1.3**, consulta el **[catálogo visual de componentes](catalogo-componentes.md)**: fotografías reales de placas base, procesadores, memoria, almacenamiento, tarjetas y dispositivos de red, y periféricos, con los rasgos que ayudan a reconocer cada uno físicamente.
 
 ## Actividades
 
-**Actividad 1.1 — Diagnóstico de un equipo desmontado**
+**Actividad 1.1 — El modelo de von Neumann en acción**
+{: .actividad-titulo}
+
+a) A partir del diagrama del modelo de von Neumann, identifica sus tres bloques funcionales y explica brevemente la función de cada uno.
+
+b) Describe paso a paso qué ocurre en los buses de direcciones, datos y control cuando la CPU lee un dato de una posición de memoria.
+
+c) Explica con tus propias palabras el "concepto de programa almacenado" y por qué es una característica definitoria del modelo de von Neumann.
+
+d) Un microcontrolador de un electrodoméstico usa arquitectura Harvard en lugar de von Neumann. ¿Qué ventaja le aporta y qué contrapartida tiene?
+
+**Actividad 1.2 — Sistemas de numeración: cambios de base**
+{: .actividad-titulo}
+
+a) Convierte el número decimal 172 a binario, octal y hexadecimal, mostrando el proceso de las divisiones sucesivas.
+
+b) Convierte el número binario 11010110 a decimal, octal y hexadecimal.
+
+c) La dirección MAC de una tarjeta de red es `A4:C3:F0:85:AC:2D`. Indica cuántos bits ocupa en total y convierte su primer byte (`A4`) a binario y a decimal.
+
+d) Un archivo en Linux tiene permisos `rwxr-xr--`. Exprésalos como tres cifras en binario (una por categoría: propietario, grupo, otros) y conviértelas después a su cifra octal equivalente.
+
+**Actividad 1.3 — Diagnóstico de un equipo desmontado**
 {: .actividad-titulo}
 
 Con un equipo de sobremesa desmontado (o un catálogo de imágenes proporcionado por el profesorado), identifica y fotografía/etiqueta: chasis (formato) y fuente de alimentación, sistema de refrigeración, placa base (formato), procesador y zócalo, módulos de memoria RAM, unidades de almacenamiento e interfaz que usan, alguna tarjeta de expansión si el equipo dispone de ella, y al menos tres periféricos con su tipo de conector. Elabora una ficha técnica del equipo a partir de esta **[plantilla de ficha técnica](plantilla-ficha-tecnica.md)**.
 
-**Actividad 1.2 — Identifica los elementos de una placa base (modelo antiguo)**
+**Actividad 1.4 — Identifica los elementos de una placa base (modelo antiguo)**
 {: .actividad-titulo}
 
 Esta placa base es una **Foxconn P55MX/H55MX**, con zócalo **LGA1156** y chipset **Intel P55** — una gama pensada para los primeros Core i5/i7 ("Lynnfield"), de en torno a **2009-2010**. Consulta el **[catálogo visual de componentes](catalogo-componentes.md)** si lo necesitas y, antes de mirar la solución, intenta identificar tú mismo/a los 23 elementos señalados.
@@ -496,7 +518,7 @@ Esta placa base es una **Foxconn P55MX/H55MX**, con zócalo **LGA1156** y chipse
 ??? note "Solución"
     ![Leyenda con los 23 elementos identificados: conectores de alimentación, ranuras PCI/PCIe, zócalo LGA1156, chipset, conectores SATA, etc.](img/ut1_placa_base_diagrama_leyenda.png)
 
-**Actividad 1.3 — Identifica los elementos de una placa base (modelo actual)**
+**Actividad 1.5 — Identifica los elementos de una placa base (modelo actual)**
 {: .actividad-titulo}
 
 Repite el ejercicio anterior sobre esta placa base más reciente, una **ASUS Prime X570-P** (zócalo **AM4**, chipset **AMD X570**, de **2019**, con ranuras DDR4 y M.2). Compárala con la de la actividad anterior: ¿qué elementos han cambiado de aspecto o posición y cuáles siguen cumpliendo la misma función?
@@ -515,12 +537,12 @@ Repite el ejercicio anterior sobre esta placa base más reciente, una **ASUS Pri
     9. Batería CMOS
     10. Panel de E/S trasero (USB, red, audio...)
 
-**Actividad 1.4 — CISC vs. RISC**
+**Actividad 1.6 — CISC vs. RISC**
 {: .actividad-titulo}
 
 Elabora una tabla comparativa entre arquitecturas CISC y RISC, y busca al menos tres dispositivos reales (PC, smartphone, consola, microcontrolador) indicando qué arquitectura de procesador utiliza cada uno y por qué crees que se eligió.
 
-**Actividad 1.5 — Memoria RAM: comparación de módulos**
+**Actividad 1.7 — Memoria RAM: comparación de módulos**
 {: .actividad-titulo}
 
 Se dispone de tres módulos de memoria con estas características:
@@ -539,7 +561,7 @@ c) Calcula la latencia real aproximada, en nanosegundos, de los módulos A y C c
 
 d) Busca en el **[catálogo visual de componentes](catalogo-componentes.md)** una fotografía de un módulo DIMM y otra de un módulo SO-DIMM, y señala dos diferencias visuales entre ambos.
 
-**Actividad 1.6 — Interfaces de almacenamiento y tarjetas de expansión**
+**Actividad 1.8 — Interfaces de almacenamiento y tarjetas de expansión**
 {: .actividad-titulo}
 
 Consulta el **[catálogo visual de componentes](catalogo-componentes.md)** y responde:
@@ -550,12 +572,12 @@ b) Un equipo de sobremesa necesita capturar vídeo de una cámara externa y su p
 
 c) Un SSD SATA y un SSD M.2 NVMe tienen la misma capacidad. Explica por qué el NVMe puede ofrecer mucha más velocidad, y en qué situación un disco externo por Thunderbolt superaría a uno conectado por USB 3.0.
 
-**Actividad 1.7 — Checklist de seguridad antes de manipular un equipo**
+**Actividad 1.9 — Checklist de seguridad antes de manipular un equipo**
 {: .actividad-titulo}
 
 Redacta un checklist de comprobaciones de seguridad (riesgo eléctrico, ESD, ergonomía) que un técnico debería seguir antes de abrir la carcasa de un PC para ampliar la memoria RAM. Justifica cada punto citando el riesgo que previene.
 
-**Actividad 1.8 — Búsqueda de documentación técnica**
+**Actividad 1.10 — Búsqueda de documentación técnica**
 {: .actividad-titulo}
 
 Busca la hoja de características (*datasheet*) oficial de cada uno de estos módulos de memoria RAM:
@@ -566,14 +588,3 @@ Busca la hoja de características (*datasheet*) oficial de cada uno de estos mó
 - Crucial 8 GB DDR5-4800 (SO-DIMM, portátil)
 
 Para cada módulo, extrae sus características principales (capacidad, velocidad, CAS Latency, voltaje, interfaz) y cita la URL exacta del datasheet utilizado, valorando su fiabilidad (¿es la web oficial del fabricante? ¿está actualizado?). Presenta los resultados en una tabla comparativa.
-
-**Actividad 1.9 — Sistemas de numeración: cambios de base**
-{: .actividad-titulo}
-
-a) Convierte el número decimal 172 a binario, octal y hexadecimal, mostrando el proceso de las divisiones sucesivas.
-
-b) Convierte el número binario 11010110 a decimal, octal y hexadecimal.
-
-c) La dirección MAC de una tarjeta de red es `A4:C3:F0:85:AC:2D`. Indica cuántos bits ocupa en total y convierte su primer byte (`A4`) a binario y a decimal.
-
-d) Un archivo en Linux tiene permisos `rwxr-xr--`. Exprésalos como tres cifras en binario (una por categoría: propietario, grupo, otros) y conviértelas después a su cifra octal equivalente.
