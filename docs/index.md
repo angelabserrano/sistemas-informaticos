@@ -28,11 +28,11 @@ Apuntes del módulo profesional **Sistemas Informáticos** (código 0483), del c
 | RA4 | Gestiona sistemas operativos utilizando comandos y herramientas gráficas evaluando las necesidades del sistema. | UT5 |
 | RA5 | Interconecta sistemas en red configurando dispositivos y protocolos. | UT2 |
 | RA6 | Opera sistemas en red gestionando sus recursos e identificando restricciones de seguridad. | UT6 |
-| RA7 | Elabora documentación valorando y utilizando aplicaciones informáticas de propósito general. | UT1, UT2, UT3 (transversal) |
+| RA7 | Elabora documentación valorando y utilizando aplicaciones informáticas de propósito general. | Formación en la empresa |
 
 ## Distribución horaria
 
-El módulo se organiza en 6 unidades de trabajo, con un total de **115 horas en el centro educativo** y **26 horas de formación en la empresa**, a razón de **5 horas semanales**.
+El módulo se organiza en 6 unidades de trabajo, con un total de **132 horas en el centro educativo** y **34 horas de formación en la empresa**, a razón de **5 horas semanales**.
 
 | Unidad de trabajo | Horas |
 | --- | --- |
@@ -42,5 +42,6 @@ El módulo se organiza en 6 unidades de trabajo, con un total de **115 horas en 
 | UT4. Configuración de sistemas GNU/Linux | 20 |
 | UT5. Administración de sistemas GNU/Linux | 30 |
 | UT6. Sistemas operativos en red | 25 |
-| **Total en el centro** | **115** |
-| Formación en la empresa | 26 |
+| Exámenes y pruebas | 17 |
+| **Total en el centro** | **132** |
+| Formación en la empresa | 34 |
