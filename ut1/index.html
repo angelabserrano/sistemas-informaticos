@@ -1,0 +1,1857 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes del módulo Sistemas Informáticos - CFGS Desarrollo de Aplicaciones Web">
+      
+      
+        <meta name="author" content="Angela B. Serrano">
+      
+      
+        <link rel="canonical" href="https://angelabserrano.github.io/sistemas-informaticos/ut1/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../plantilla-ficha-tecnica/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UT1. Arquitectura y componentes del sistema informático - Módulo: Sistemas Informáticos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ut1-arquitectura-y-componentes-del-sistema-informatico" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Módulo: Sistemas Informáticos" class="md-header__button md-logo" aria-label="Módulo: Sistemas Informáticos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Módulo: Sistemas Informáticos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UT1. Arquitectura y componentes del sistema informático
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Módulo: Sistemas Informáticos" class="md-nav__button md-logo" aria-label="Módulo: Sistemas Informáticos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Módulo: Sistemas Informáticos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1. Arquitectura y componentes del sistema informático
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1. Arquitectura y componentes del sistema informático
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-arquitectura-de-un-sistema-informatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Arquitectura de un sistema informático
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-sistemas-de-numeracion-binario-octal-y-hexadecimal-cambios-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Sistemas de numeración: binario, octal y hexadecimal. Cambios de base
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-chasis-alimentacion-y-refrigeracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Chasis, alimentación y refrigeración
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-placas-base-y-formatos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Placas base y formatos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-el-procesador-arquitectura-registros-unidad-aritmetico-logica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5. El procesador: arquitectura, registros, unidad aritmético-lógica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-tipos-y-caracteristicas-de-la-memoria-interna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6. Tipos y características de la memoria interna
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-interfaces-de-entradasalida-discos-y-unidades-opticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7. Interfaces de entrada/salida, discos y unidades ópticas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-tarjetas-de-expansion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8. Tarjetas de expansión
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-perifericos-clasificacion-instalacion-y-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.9. Periféricos: clasificación, instalación y configuración
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110-normativa-de-seguridad-y-prevencion-de-riesgos-laborales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.10. Normativa de seguridad y prevención de riesgos laborales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#111-busqueda-y-gestion-de-documentacion-tecnica-en-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.11. Búsqueda y gestión de documentación técnica en Internet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#catalogo-visual-de-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Catálogo visual de componentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actividades
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plantilla-ficha-tecnica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plantilla: ficha técnica de un equipo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2. Redes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3. Instalación de sistemas operativos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plantilla-informe-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plantilla: informe técnico de instalación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT4. Configuración de sistemas GNU/Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT5. Administración de sistemas GNU/Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT6. Sistemas operativos en red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ut1-arquitectura-y-componentes-del-sistema-informatico">UT1. Arquitectura y componentes del sistema informático<a class="headerlink" href="#ut1-arquitectura-y-componentes-del-sistema-informatico" title="Permanent link">&para;</a></h1>
+<p><a href="../"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span> Volver al índice de todas las unidades</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Duración</p>
+<p>20 horas</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Resultado de aprendizaje que se trabaja</p>
+<p><strong>RA1.</strong> Evalúa sistemas informáticos, identificando sus componentes y características.</p>
+</div>
+<h2 id="11-arquitectura-de-un-sistema-informatico">1.1. Arquitectura de un sistema informático<a class="headerlink" href="#11-arquitectura-de-un-sistema-informatico" title="Permanent link">&para;</a></h2>
+<p>Un <strong>sistema informático</strong> es el conjunto de elementos hardware y software que trabajan de forma coordinada para procesar información: capturarla, almacenarla, tratarla y comunicar el resultado. Antes de estudiar cada componente por separado (secciones siguientes), conviene tener una visión de conjunto de cómo se organizan y se comunican entre sí.</p>
+<p><strong>El modelo de von Neumann:</strong> organiza conceptualmente un sistema informático en tres bloques funcionales —unidad de procesamiento, memoria y entrada/salida— conectados mediante un sistema de buses.</p>
+<ul>
+<li><strong>Unidad central de proceso (CPU)</strong>: ejecuta las instrucciones (ver 1.5).</li>
+<li><strong>Memoria principal</strong>: almacena, con el mismo formato y en la misma memoria, tanto los datos como las instrucciones de los programas en ejecución (el llamado <strong>concepto de programa almacenado</strong>).</li>
+<li><strong>Módulos de entrada/salida</strong>: comunican el sistema con el exterior (periféricos, almacenamiento secundario, redes).</li>
+</ul>
+<p><img alt="Modelo de von Neumann: CPU (UC + ALU), memoria principal y módulos de E/S conectados mediante un bus de direcciones, datos y control" src="../img/ut1_modelo_von_neumann.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Arquitectura Harvard</p>
+<p>Algunos sistemas especializados (microcontroladores, DSP) usan memorias físicamente separadas para instrucciones y datos, lo que permite acceder a ambas a la vez y ganar velocidad. Es la <strong>arquitectura Harvard</strong>, alternativa al modelo von Neumann.</p>
+</div>
+<p><strong>El bus del sistema</strong> es el conjunto de líneas físicas que permite la comunicación entre la CPU, la memoria y los módulos de E/S. Se compone de tres subconjuntos:</p>
+<table>
+<thead>
+<tr>
+<th>Bus</th>
+<th>Sentido</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bus de direcciones</td>
+<td>Unidireccional (CPU → resto)</td>
+<td>Indica la posición de memoria o el dispositivo de E/S al que se quiere acceder. Su anchura (nº de líneas) determina la cantidad máxima de memoria direccionable.</td>
+</tr>
+<tr>
+<td>Bus de datos</td>
+<td>Bidireccional</td>
+<td>Transporta la información que se lee o escribe. Su anchura determina cuántos bits se transfieren en cada ciclo.</td>
+</tr>
+<tr>
+<td>Bus de control</td>
+<td>Bidireccional</td>
+<td>Transporta señales de sincronización: lectura/escritura, interrupciones, señal de reloj, etc.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Idea clave</p>
+<p>Este esquema general de bloques y buses es el que se concreta físicamente en la placa base (ver 1.4): el chipset y sus buses de expansión son, en la práctica, una implementación moderna de este mismo modelo.</p>
+</div>
+<p>Los ordenadores solo manejan dos estados eléctricos (0/1), por lo que representan internamente toda la información en binario. El apartado 1.2 trata en detalle los sistemas de numeración que se usan para representarla y cómo convertir cantidades entre ellos.</p>
+<p><strong>Clasificación de los sistemas informáticos</strong></p>
+<p>Según el <strong>número de usuarios</strong> que pueden trabajar simultáneamente sobre el mismo sistema:</p>
+<ul>
+<li><strong>Monousuario</strong>: un único usuario utiliza todos los recursos del sistema en cada momento (un PC doméstico o de oficina habitual).</li>
+<li><strong>Multiusuario</strong>: varios usuarios acceden y comparten simultáneamente los recursos del mismo sistema, normalmente a través de terminales o sesiones remotas (servidores, mainframes).</li>
+</ul>
+<p>Según su <strong>tamaño y potencia de cálculo</strong>, de menor a mayor:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Ejemplo</th>
+<th>Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sistema embebido</td>
+<td>Microcontrolador de un electrodoméstico o un coche</td>
+<td>Una función específica y dedicada</td>
+</tr>
+<tr>
+<td>Dispositivo móvil</td>
+<td>Smartphone, tablet</td>
+<td>Uso personal, movilidad</td>
+</tr>
+<tr>
+<td>Equipo de sobremesa/portátil</td>
+<td>PC, portátil</td>
+<td>Uso personal u ofimático</td>
+</tr>
+<tr>
+<td>Estación de trabajo (workstation)</td>
+<td>Equipo de diseño 3D, edición de vídeo</td>
+<td>Tareas profesionales de alto rendimiento</td>
+</tr>
+<tr>
+<td>Servidor</td>
+<td>Servidor de ficheros, web o base de datos</td>
+<td>Prestar servicio a otros equipos de la red</td>
+</tr>
+<tr>
+<td>Mainframe</td>
+<td>Sistema central de un banco o una administración</td>
+<td>Procesar grandes volúmenes de transacciones críticas</td>
+</tr>
+<tr>
+<td>Superordenador (HPC)</td>
+<td>Clúster de cálculo científico</td>
+<td>Cálculo masivo en paralelo</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-sistemas-de-numeracion-binario-octal-y-hexadecimal-cambios-de-base">1.2. Sistemas de numeración: binario, octal y hexadecimal. Cambios de base<a class="headerlink" href="#12-sistemas-de-numeracion-binario-octal-y-hexadecimal-cambios-de-base" title="Permanent link">&para;</a></h2>
+<p>Un <strong>sistema de numeración</strong> define cómo se representan las cantidades mediante un conjunto de símbolos (cifras) y unas reglas de posición. Un sistema es <strong>posicional</strong> cuando el valor de cada cifra depende tanto del símbolo como del lugar que ocupa: en el número 345, el 3 vale 300 porque ocupa la posición de las centenas. En un sistema posicional de <strong>base (o radix) <em>b</em></strong>, cada posición representa una potencia de <em>b</em>, y se usan <em>b</em> símbolos distintos (del 0 al <em>b</em>-1).</p>
+<p>Como escribir números binarios largos resulta poco práctico para las personas, se usan además dos notaciones intermedias que agrupan bits: el <strong>octal</strong> (base 8, agrupa de 3 en 3 bits) y, mucho más habitual hoy, el <strong>hexadecimal</strong> (base 16, agrupa de 4 en 4 bits, con las cifras 0-9 y A-F).</p>
+<table>
+<thead>
+<tr>
+<th>Decimal</th>
+<th>Binario</th>
+<th>Octal</th>
+<th>Hexadecimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0001</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0010</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0011</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0100</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0101</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0110</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0111</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1000</td>
+<td>10</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1001</td>
+<td>11</td>
+<td>9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1010</td>
+<td>12</td>
+<td>A</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1011</td>
+<td>13</td>
+<td>B</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1100</td>
+<td>14</td>
+<td>C</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1101</td>
+<td>15</td>
+<td>D</td>
+</tr>
+<tr>
+<td>14</td>
+<td>1110</td>
+<td>16</td>
+<td>E</td>
+</tr>
+<tr>
+<td>15</td>
+<td>1111</td>
+<td>17</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cambios de base</strong></p>
+<p><strong>De decimal a otra base — divisiones sucesivas:</strong> se divide el número entre la base de destino de forma sucesiva, anotando el resto de cada división, hasta que el cociente sea 0. El resultado se lee de abajo hacia arriba (el último resto obtenido es la cifra más significativa).</p>
+<p><em>Ejemplo: 45 (decimal) a binario (base 2)</em></p>
+<table>
+<thead>
+<tr>
+<th>División</th>
+<th>Cociente</th>
+<th>Resto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>45 ÷ 2</td>
+<td>22</td>
+<td>1</td>
+</tr>
+<tr>
+<td>22 ÷ 2</td>
+<td>11</td>
+<td>0</td>
+</tr>
+<tr>
+<td>11 ÷ 2</td>
+<td>5</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5 ÷ 2</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2 ÷ 2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1 ÷ 2</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Leyendo los restos de abajo hacia arriba: <strong>45 = 101101₂</strong></p>
+<p><strong>De binario (o cualquier base) a decimal — suma de potencias:</strong> se multiplica cada cifra por la base elevada a la posición que ocupa (empezando en 0 desde la derecha) y se suman los resultados.</p>
+<p><em>Ejemplo:</em> 101101₂ = 1×2⁵ + 0×2⁴ + 1×2³ + 1×2² + 0×2¹ + 1×2⁰ = 32 + 0 + 8 + 4 + 0 + 1 = <strong>45</strong></p>
+<p><strong>Entre binario y octal/hexadecimal — agrupación de bits:</strong> al ser el octal y el hexadecimal potencias de 2 (2³ y 2⁴), la conversión con el binario no requiere cálculo, solo agrupar cifras:</p>
+<ul>
+<li><strong>Binario → octal</strong>: se agrupan los bits de 3 en 3 desde la derecha (rellenando con ceros a la izquierda si falta), y cada grupo se traduce directamente con la tabla.</li>
+<li><strong>Binario → hexadecimal</strong>: igual, pero agrupando de 4 en 4 bits.</li>
+<li><strong>Octal/hexadecimal → binario</strong>: el proceso inverso — cada cifra se expande a su grupo de 3 o 4 bits.</li>
+</ul>
+<p><em>Ejemplo:</em> 101101₂ → agrupando de 4 en 4 (con relleno): <code>0010 1101</code> = <strong>2D₁₆</strong>; agrupando de 3 en 3: <code>101 101</code> = <strong>55₈</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">La ruta más corta pasa por el binario</p>
+<p>Para convertir directamente entre octal y hexadecimal (o entre cualquier par de bases poco habituales), suele ser más rápido pasar primero por binario como paso intermedio, en lugar de operar directamente entre las dos bases originales.</p>
+</div>
+<p><strong>Ejemplos resueltos</strong></p>
+<p><strong>Ejemplo 1 — Decimal a binario:</strong> convierte 100 (decimal) a binario.</p>
+<details class="success">
+<summary>Solución</summary>
+<table>
+<thead>
+<tr>
+<th>División</th>
+<th>Cociente</th>
+<th>Resto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100 ÷ 2</td>
+<td>50</td>
+<td>0</td>
+</tr>
+<tr>
+<td>50 ÷ 2</td>
+<td>25</td>
+<td>0</td>
+</tr>
+<tr>
+<td>25 ÷ 2</td>
+<td>12</td>
+<td>1</td>
+</tr>
+<tr>
+<td>12 ÷ 2</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6 ÷ 2</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3 ÷ 2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1 ÷ 2</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Leyendo los restos de abajo hacia arriba: <strong>100 = 1100100₂</strong></p>
+</details>
+<p><strong>Ejemplo 2 — Binario a decimal:</strong> convierte 11011₂ a decimal.</p>
+<details class="success">
+<summary>Solución</summary>
+<p>11011₂ = 1×2⁴ + 1×2³ + 0×2² + 1×2¹ + 1×2⁰ = 16 + 8 + 0 + 2 + 1 = <strong>27</strong></p>
+</details>
+<p><strong>Ejemplo 3 — Decimal a hexadecimal:</strong> convierte 202 (decimal) a hexadecimal.</p>
+<details class="success">
+<summary>Solución</summary>
+<table>
+<thead>
+<tr>
+<th>División</th>
+<th>Cociente</th>
+<th>Resto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>202 ÷ 16</td>
+<td>12</td>
+<td>10 (A)</td>
+</tr>
+<tr>
+<td>12 ÷ 16</td>
+<td>0</td>
+<td>12 (C)</td>
+</tr>
+</tbody>
+</table>
+<p>Leyendo los restos de abajo hacia arriba: <strong>202 = CA₁₆</strong></p>
+</details>
+<p><strong>Ejemplo 4 — Hexadecimal a binario y a octal:</strong> convierte 3F₁₆ a binario y a octal.</p>
+<details class="success">
+<summary>Solución</summary>
+<p>Cada cifra hexadecimal se expande a su grupo de 4 bits: 3 = <code>0011</code>, F = <code>1111</code> → <strong>3F₁₆ = 00111111₂</strong> (= 111111₂ sin los ceros no significativos).</p>
+<p>Agrupando esos mismos bits de 3 en 3 desde la derecha: <code>111 111</code> = 7, 7 → <strong>3F₁₆ = 77₈</strong></p>
+<p>Comprobación en decimal: 3F₁₆ = 3×16 + 15 = 63; 77₈ = 7×8 + 7 = 63. ✓</p>
+</details>
+<p><strong>Bit, nibble y byte:</strong> el <strong>bit</strong> (<em>binary digit</em>) es la unidad mínima de información (0 o 1). Un grupo de 4 bits se llama <strong>nibble</strong> (equivale exactamente a una cifra hexadecimal) y un grupo de 8 bits, <strong>byte</strong> (equivale a dos cifras hexadecimales), la unidad básica con la que se mide la capacidad de memoria y almacenamiento.</p>
+<div class="admonition note">
+<p class="admonition-title">Dónde aparecen en el resto del módulo</p>
+<p>Aunque no siempre se diga de forma explícita, estos sistemas de numeración se usan continuamente: los <strong>permisos de Linux</strong> se expresan en octal (<code>chmod 754</code>, ver UT5 — cada cifra agrupa exactamente los 3 bits rwx de propietario, grupo y otros), y las <strong>direcciones MAC</strong> y las <strong>IPv6</strong> (ver UT2) se escriben en hexadecimal, donde cada pareja de dígitos representa un byte completo. La propia anchura del bus de direcciones (ver 1.1) se mide en potencias de 2 precisamente porque cada línea que se añade duplica el número de posiciones representables en binario.</p>
+</div>
+<h2 id="13-chasis-alimentacion-y-refrigeracion">1.3. Chasis, alimentación y refrigeración<a class="headerlink" href="#13-chasis-alimentacion-y-refrigeracion" title="Permanent link">&para;</a></h2>
+<p><strong>Chasis (caja):</strong> recinto metálico o de plástico que alberga los componentes principales del ordenador. A la hora de elegirlo se valoran su estructura y distribución interna, la ventilación, las posibilidades de expansión (número de bahías para discos y unidades) y la estética.</p>
+<p><strong>Formatos de chasis habituales</strong>, de menor a mayor tamaño:</p>
+<table>
+<thead>
+<tr>
+<th>Foto</th>
+<th>Formato</th>
+<th>Altura aprox.</th>
+<th>Bahías</th>
+<th>Placas que admite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../img/ut1_chasis_mini.jpg"><img alt="Mini" src="../img/ut1_chasis_mini.jpg" width="64" /></a></td>
+<td>Mini</td>
+<td>—</td>
+<td>Muy pocas</td>
+<td>Formatos pequeños (Mini-ITX); puede llevar placa y fuente integradas (<strong>barebone</strong>)</td>
+</tr>
+<tr>
+<td><a href="../img/ut1_chasis_slim.jpg"><img alt="Slim" src="../img/ut1_chasis_slim.jpg" width="64" /></a></td>
+<td>Slim</td>
+<td>—</td>
+<td>1-2</td>
+<td>Micro-ATX, Flex-ATX</td>
+</tr>
+<tr>
+<td><a href="../img/ut1_chasis_sobremesa.jpg"><img alt="Sobremesa" src="../img/ut1_chasis_sobremesa.jpg" width="64" /></a></td>
+<td>Sobremesa (desktop)</td>
+<td>—</td>
+<td>Variable</td>
+<td>Cualquier formato; caja apaisada, cómoda para apoyar el monitor encima</td>
+</tr>
+<tr>
+<td><a href="../img/ut1_chasis_microtorre.jpg"><img alt="Microtorre" src="../img/ut1_chasis_microtorre.jpg" width="64" /></a></td>
+<td>Microtorre</td>
+<td>25-32 cm</td>
+<td>2-4</td>
+<td>Micro-ATX, Flex-ATX y formatos ajustados</td>
+</tr>
+<tr>
+<td><a href="../img/ut1_chasis_minitorre.jpg"><img alt="Minitorre" src="../img/ut1_chasis_minitorre.jpg" width="64" /></a></td>
+<td>Minitorre</td>
+<td>32-37 cm</td>
+<td>3-4</td>
+<td>Formatos que no requieren espacio ajustado</td>
+</tr>
+<tr>
+<td><a href="../img/ut1_chasis_semitorre.jpg"><img alt="Semitorre" src="../img/ut1_chasis_semitorre.jpg" width="64" /></a></td>
+<td>Semitorre</td>
+<td>37-45 cm</td>
+<td>Hasta 6</td>
+<td>Todos los formatos; es la más habitual</td>
+</tr>
+<tr>
+<td><a href="../img/ut1_chasis_torre.jpg"><img alt="Torre" src="../img/ut1_chasis_torre.jpg" width="64" /></a></td>
+<td>Torre</td>
+<td>45-55 cm</td>
+<td>6 o más</td>
+<td>Todos los formatos; buena ventilación</td>
+</tr>
+<tr>
+<td><a href="../img/ut1_chasis_gran_torre.jpg"><img alt="Gran torre" src="../img/ut1_chasis_gran_torre.jpg" width="64" /></a></td>
+<td>Gran torre</td>
+<td>55-72 cm</td>
+<td>8 o más</td>
+<td>Todos los formatos; servidores de gama baja</td>
+</tr>
+<tr>
+<td><a href="../img/ut1_chasis_rack.jpg"><img alt="Armario rack" src="../img/ut1_chasis_rack.jpg" width="64" /></a></td>
+<td>Armario rack</td>
+<td>—</td>
+<td>Según U</td>
+<td>Servidores montados en bastidor; excelente flujo de aire y cableado ordenado</td>
+</tr>
+</tbody>
+</table>
+<p>Toca o haz clic en cualquier miniatura para verla a tamaño completo. También puedes ver todas las fotografías juntas en el <strong><a href="../catalogo-componentes/#formatos-de-caja">catálogo visual — Formatos de caja</a></strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Idea clave</p>
+<p>El formato del chasis debe ser compatible con el formato de la placa base (ver 1.4) y con el tamaño de la fuente de alimentación; no son elecciones independientes.</p>
+</div>
+<p><strong>Fuente de alimentación (PSU):</strong> transforma la corriente alterna de la red eléctrica (220V) en las distintas corrientes continuas que necesitan los componentes. Es un elemento clave para la estabilidad del sistema, las posibilidades de expansión (cuánta potencia puede entregar a componentes adicionales) y el consumo energético del equipo; las certificaciones como <strong>Energy Star</strong> indican una mayor eficiencia energética.</p>
+<p><strong>Evolución de los modelos de fuente de alimentación:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Situación</th>
+<th>Características</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AT</td>
+<td>En desuso</td>
+<td>Alimentaba la placa mediante dos conectores de 6 contactos; interruptor de encendido externo por el que circulaba mucho voltaje (poco seguro)</td>
+</tr>
+<tr>
+<td>ATX</td>
+<td>Estándar muy extendido en equipos de sobremesa</td>
+<td>Conector principal de 20/24 pines; proporciona líneas de +3,3 V, +5 V y +12 V, además de −12 V en el diseño tradicional; apagado y encendido gestionados por la placa base</td>
+</tr>
+<tr>
+<td>SFX / SFX-L</td>
+<td>Formatos reducidos</td>
+<td>Dimensiones inferiores a ATX, para barebones y equipos de perfil bajo; el SFX-L es algo mayor que el SFX</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conector principal ATX (24 pines) — voltajes y colores habituales de los cables:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Color del cable</th>
+<th>Voltaje / señal</th>
+<th>Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Naranja</td>
+<td>+3,3 V</td>
+<td>Algunos circuitos de la placa base y otros componentes</td>
+</tr>
+<tr>
+<td>Rojo</td>
+<td>+5V</td>
+<td>Electrónica auxiliar</td>
+</tr>
+<tr>
+<td>Amarillo</td>
+<td>+12 V</td>
+<td>Procesador, tarjeta gráfica, motores de discos y ventiladores</td>
+</tr>
+<tr>
+<td>Negro</td>
+<td>Tierra (GND)</td>
+<td>Referencia común (0V)</td>
+</tr>
+<tr>
+<td>Morado</td>
+<td>+5V standby</td>
+<td>Alimenta el circuito de encendido aunque el equipo esté "apagado"</td>
+</tr>
+<tr>
+<td>Verde</td>
+<td>PS_ON</td>
+<td>Señal de encendido, activada por la placa base</td>
+</tr>
+<tr>
+<td>Gris</td>
+<td>Power Good</td>
+<td>Confirma que los voltajes son estables antes de permitir el arranque</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Comprobación con multímetro</p>
+<p>Antes de dar por averiada una fuente de alimentación, puede comprobarse con un multímetro que entrega los voltajes esperados en los pines del conector principal (fuente encendida y, si es necesario, con el cable verde puenteado a uno negro para forzar el encendido sin la placa base conectada).</p>
+</div>
+<p><strong>Sistemas de refrigeración:</strong> mantener el equipo a una temperatura adecuada es fundamental para su rendimiento y su vida útil. Los componentes que más calor generan son el microprocesador, la tarjeta gráfica, el chipset de la placa base, la memoria RAM y el disco duro.</p>
+<ul>
+<li><strong>Refrigeración por aire</strong>: ventiladores del chasis, disipadores metálicos y <em>coolers</em> (disipador + ventilador) sobre los componentes que más calientan. Es la solución más habitual, sencilla y económica.</li>
+<li><strong>Refrigeración líquida</strong>: un líquido refrigerante circula por un circuito cerrado, absorbiendo el calor de los componentes (normalmente la CPU) y disipándolo en un radiador externo. Permite disipar más calor y con menos ruido que el aire, a cambio de mayor coste y complejidad de instalación.</li>
+</ul>
+<h2 id="14-placas-base-y-formatos">1.4. Placas base y formatos<a class="headerlink" href="#14-placas-base-y-formatos" title="Permanent link">&para;</a></h2>
+<p>La <strong>placa base</strong> (motherboard) es el circuito impreso principal de un ordenador: interconecta el procesador, la memoria, el almacenamiento, los periféricos y las tarjetas de expansión a través de un conjunto de buses y controladores.</p>
+<p><strong>Elementos principales de una placa base:</strong></p>
+<ul>
+<li><strong>Chipset</strong>: conjunto de circuitos integrados que gestiona la comunicación entre CPU, memoria y periféricos. En placas modernas suele reducirse a un único chip, el <strong>PCH</strong> (Platform Controller Hub), que sustituye a los antiguos <em>northbridge</em> (gestión de memoria y gráfica) y <em>southbridge</em> (gestión de E/S).</li>
+<li><strong>Zócalo (socket)</strong> del procesador: define qué modelos de CPU son compatibles físicamente. Según dónde se ubiquen los pines de contacto, existen tres tipos: <strong>PGA</strong> (<em>Pin Grid Array</em>, pines en el propio procesador), <strong>LGA</strong> (<em>Land Grid Array</em>, pines en la placa base; habitual en Intel) y <strong>BGA</strong> (<em>Ball Grid Array</em>, procesador soldado directamente a la placa, sin zócalo desmontable; típico de portátiles y equipos embebidos). La mayoría de zócalos PGA/LGA actuales son de tipo <strong>ZIF</strong> (<em>Zero Insertion Force</em>): una palanca lateral libera y sujeta el procesador sin necesidad de ejercer presión sobre los pines al instalarlo o retirarlo, evitando dañarlos.</li>
+<li><strong>Ranuras de memoria</strong> (DIMM/SO-DIMM).</li>
+<li>
+<p><strong>Buses de expansión</strong>: ranuras PCIe para tarjetas gráficas, capturadoras, controladoras adicionales, etc. El ancho de banda depende del número de líneas (<em>lanes</em>, x1/x4/x8/x16) y de la generación del estándar:</p>
+<table>
+<thead>
+<tr>
+<th>Generación</th>
+<th>x1</th>
+<th>x4</th>
+<th>x8</th>
+<th>x16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PCIe 3.0</td>
+<td>1 GB/s</td>
+<td>4 GB/s</td>
+<td>8 GB/s</td>
+<td>16 GB/s</td>
+</tr>
+<tr>
+<td>PCIe 4.0</td>
+<td>2 GB/s</td>
+<td>8 GB/s</td>
+<td>16 GB/s</td>
+<td>32 GB/s</td>
+</tr>
+<tr>
+<td>PCIe 5.0</td>
+<td>4 GB/s</td>
+<td>16 GB/s</td>
+<td>32 GB/s</td>
+<td>64 GB/s</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Conectores de almacenamiento</strong>: SATA, M.2 (NVMe/SATA).</p>
+</li>
+<li><strong>BIOS/UEFI</strong>: firmware almacenado en una memoria no volátil que inicializa el hardware al arrancar.</li>
+<li><strong>Conectores de alimentación</strong> (ATX de 24 pines, EPS de 4/8 pines para la CPU) y <strong>panel de conectores traseros</strong> (USB, red, audio, vídeo).</li>
+</ul>
+<p><strong>Formatos (form factor):</strong> determinan el tamaño físico de la placa, la disposición de los taladros de anclaje y, por tanto, la compatibilidad con las cajas.</p>
+<table>
+<thead>
+<tr>
+<th>Formato</th>
+<th>Dimensiones aprox.</th>
+<th>Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E-ATX</td>
+<td>305 × 330 mm</td>
+<td>Estaciones de trabajo, servidores de gama alta</td>
+</tr>
+<tr>
+<td>ATX</td>
+<td>305 × 244 mm</td>
+<td>Equipos de sobremesa estándar</td>
+</tr>
+<tr>
+<td>Micro-ATX</td>
+<td>244 × 244 mm</td>
+<td>Equipos compactos, buena relación precio/expansión</td>
+</tr>
+<tr>
+<td>Mini-ITX</td>
+<td>170 × 170 mm</td>
+<td>Equipos muy compactos, un único slot PCIe</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Comparativa a escala de los formatos de placa base: WTX, ATX, MicroATX, FlexATX, Mini-ITX, NanoITX y otros, de mayor a menor tamaño" src="../img/ut1_placa_formatos_diagrama.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Idea clave</p>
+<p>El formato de la placa base condiciona la caja, la fuente de alimentación y la capacidad de expansión del equipo, pero no determina por sí solo el rendimiento.</p>
+</div>
+<p><strong>Esquema de interconexión de una placa base:</strong></p>
+<pre class="mermaid"><code>graph TD
+    CPU[Procesador] --- Chipset[Chipset / PCH]
+    Chipset --- RAM[Memoria RAM]
+    Chipset --- Storage[Almacenamiento SATA / M.2]
+    Chipset --- PCIe[Ranuras PCIe]
+    Chipset --- USB[Puertos USB]
+    Chipset --- BIOS[BIOS/UEFI]
+    Chipset --- Red[Tarjeta de red]</code></pre>
+<p><strong>El proceso de arranque (POST):</strong> al encender el equipo, el firmware BIOS/UEFI de la placa base ejecuta el <strong>POST</strong> (<em>Power-On Self-Test</em>), una secuencia de comprobaciones automáticas del hardware básico antes de ceder el control al sistema operativo:</p>
+<ol>
+<li>Al recibir alimentación, la placa base entrega el control al firmware BIOS/UEFI.</li>
+<li>El POST comprueba, por orden, la memoria RAM, la tarjeta gráfica, el teclado/ratón y las unidades de almacenamiento conectadas.</li>
+<li>Si todo es correcto, el firmware localiza el dispositivo de arranque según el orden configurado y le cede el control (sector de arranque MBR o partición EFI en GPT — ver 1.7).</li>
+<li>Si detecta un fallo grave, detiene el arranque y lo notifica: en sistemas con <strong>BIOS heredada (legacy)</strong>, mediante una secuencia de pitidos (<em>beep codes</em>) del altavoz interno, ya que todavía no hay salida de vídeo; en el firmware <strong>UEFI</strong> moderno, habitualmente mediante un código o mensaje en pantalla, o un display/LEDs de diagnóstico en la propia placa.</li>
+</ol>
+<details class="note" open="open">
+<summary>Códigos de pitidos POST (BIOS heredada)</summary>
+<p>El significado exacto varía según el fabricante del firmware (AMI, Award/Phoenix...), pero algunos patrones habituales son:</p>
+<table>
+<thead>
+<tr>
+<th>Patrón</th>
+<th>Causa probable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 pitido corto</td>
+<td>Arranque correcto</td>
+</tr>
+<tr>
+<td>Sin pitido y sin vídeo</td>
+<td>Fuente de alimentación, placa base o altavoz interno mal conectado</td>
+</tr>
+<tr>
+<td>Pitidos repetidos cortos</td>
+<td>Memoria RAM mal asentada o incompatible</td>
+</tr>
+<tr>
+<td>Pitido largo continuo</td>
+<td>Fallo de alimentación o sobrecalentamiento</td>
+</tr>
+<tr>
+<td>1 largo + 2/3 cortos</td>
+<td>Tarjeta gráfica no detectada o mal conectada</td>
+</tr>
+</tbody>
+</table>
+<p>Antes de sustituir cualquier componente conviene reasentar los módulos de memoria y la tarjeta gráfica, y revisar los cables de alimentación: la mayoría de estos errores tienen un origen mecánico, no una avería real.</p>
+</details>
+<details class="tip" open="open">
+<summary>Herramientas de verificación y diagnóstico</summary>
+<p>Más allá del propio POST, con el sistema operativo ya arrancado se usan utilidades específicas para comprobar el estado del hardware: <strong>HWiNFO64</strong> o <strong>AIDA64</strong> (identificación completa del hardware y sensores de temperatura/voltaje), <strong>CPU-Z</strong>/<strong>GPU-Z</strong> (verificación de procesador, memoria y tarjeta gráfica), <strong>MemTest86</strong> (test de estabilidad de la memoria RAM, arrancado desde USB) y <strong>CrystalDiskInfo</strong> (estado de salud S.M.A.R.T. de discos HDD/SSD).</p>
+</details>
+<h2 id="15-el-procesador-arquitectura-registros-unidad-aritmetico-logica">1.5. El procesador: arquitectura, registros, unidad aritmético-lógica<a class="headerlink" href="#15-el-procesador-arquitectura-registros-unidad-aritmetico-logica" title="Permanent link">&para;</a></h2>
+<p>El <strong>procesador</strong> (CPU) ejecuta las instrucciones de los programas. Sus bloques funcionales principales son:</p>
+<ul>
+<li><strong>Unidad de control (UC)</strong>: interpreta las instrucciones y genera las señales que coordinan el resto de unidades.</li>
+<li><strong>Unidad aritmético-lógica (ALU)</strong>: realiza operaciones aritméticas (suma, resta, multiplicación...) y lógicas (AND, OR, comparaciones).</li>
+<li><strong>Registros</strong>: memorias muy pequeñas y extremadamente rápidas dentro del propio procesador, usadas para almacenar datos e instrucciones en curso. Algunos registros destacados:<ul>
+<li><strong>Contador de programa (PC)</strong>: dirección de la siguiente instrucción a ejecutar.</li>
+<li><strong>Registro de instrucción (IR)</strong>: instrucción que se está decodificando/ejecutando.</li>
+<li><strong>Acumulador y registros de propósito general</strong>: operandos y resultados intermedios.</li>
+</ul>
+</li>
+<li><strong>Memoria caché</strong> (L1, L2, L3): niveles de memoria intermedia, cada vez más grandes y lentos a medida que se alejan del núcleo, que reducen los accesos a la memoria RAM.</li>
+</ul>
+<p><strong>Ciclo de instrucción (fetch-decode-execute):</strong></p>
+<ol>
+<li><strong>Fetch (búsqueda)</strong>: se lee de memoria la instrucción señalada por el contador de programa.</li>
+<li><strong>Decode (decodificación)</strong>: la unidad de control interpreta qué operación hay que realizar.</li>
+<li><strong>Execute (ejecución)</strong>: la ALU (u otra unidad) realiza la operación.</li>
+<li><strong>Almacenamiento del resultado</strong> y actualización del contador de programa.</li>
+</ol>
+<pre class="mermaid"><code>flowchart LR
+    A[Fetch\nBúsqueda de la instrucción] --&gt; B[Decode\nDecodificación]
+    B --&gt; C[Execute\nEjecución en la ALU]
+    C --&gt; D[Store\nAlmacenamiento del resultado]
+    D --&gt; A</code></pre>
+<p><strong>Conjunto de instrucciones (ISA):</strong> define el repertorio de instrucciones que el procesador es capaz de ejecutar. Las dos grandes filosofías de diseño son:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CISC</th>
+<th>RISC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instrucciones</td>
+<td>Muchas y complejas</td>
+<td>Pocas y simples</td>
+</tr>
+<tr>
+<td>Ciclos por instrucción</td>
+<td>Variable, más ciclos</td>
+<td>Habitualmente 1 ciclo</td>
+</tr>
+<tr>
+<td>Ejemplos</td>
+<td>x86 / x86-64 (Intel, AMD)</td>
+<td>ARM, RISC-V</td>
+</tr>
+<tr>
+<td>Uso típico</td>
+<td>PC y servidores</td>
+<td>Móviles, tablets, SoC embebidos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interrupciones:</strong> señales que indican al procesador que debe detener momentáneamente su tarea actual para atender un evento (por ejemplo, una pulsación de teclado o el aviso de un disco). El procesador guarda el estado actual, ejecuta la rutina de servicio de interrupción (ISR) asociada y retoma después la tarea interrumpida. Pueden ser:</p>
+<ul>
+<li><strong>Hardware</strong>: generadas por un dispositivo físico (periférico, temporizador).</li>
+<li><strong>Software</strong>: generadas por una instrucción del propio programa (por ejemplo, para solicitar un servicio del sistema operativo).</li>
+</ul>
+<p><strong>Núcleos y hilos:</strong> un procesador puede integrar varios <strong>núcleos</strong> (cores) capaces de ejecutar instrucciones de forma independiente y simultánea, y cada núcleo puede exponer varios <strong>hilos de ejecución</strong> lógicos (p. ej. mediante <em>Hyper-Threading</em>) para aprovechar mejor sus recursos internos.</p>
+<p><strong>Otras características del procesador:</strong></p>
+<ul>
+<li><strong>Arquitectura de 32 o 64 bits</strong>: tamaño de los datos y direcciones de memoria que el procesador maneja de forma nativa; condiciona, entre otras cosas, la cantidad máxima de memoria RAM direccionable (un sistema de 32 bits está limitado a 4 GB). Prácticamente todos los procesadores y sistemas operativos actuales son de 64 bits.</li>
+<li><strong>Proceso de fabricación (litografía)</strong>: tamaño de los transistores del chip, medido en nanómetros (nm). Cuanto menor es esta medida, más transistores caben en la misma superficie, lo que generalmente se traduce en más rendimiento y menor consumo (por ejemplo, 14 nm, 10 nm, 7 nm, 5 nm...).</li>
+<li><strong>TDP (Thermal Design Power)</strong>: potencia térmica de diseño, en vatios (W); indica el calor que el sistema de refrigeración debe ser capaz de disipar en condiciones normales de uso. Es un dato clave para elegir un disipador o <em>cooler</em> adecuado (ver 1.3) y para calcular el consumo y la fuente de alimentación necesaria.</li>
+</ul>
+<h2 id="16-tipos-y-caracteristicas-de-la-memoria-interna">1.6. Tipos y características de la memoria interna<a class="headerlink" href="#16-tipos-y-caracteristicas-de-la-memoria-interna" title="Permanent link">&para;</a></h2>
+<p>La memoria interna se organiza en una <strong>jerarquía</strong> que equilibra velocidad, capacidad y coste: cuanto más rápida es una memoria, más cara y más pequeña suele ser.</p>
+<p><img alt="Jerarquía de memoria: registros, caché L1/L2/L3, memoria RAM y almacenamiento secundario, de más rápido y caro a más lento y barato" src="../img/ut1_jerarquia_memoria.png" /></p>
+<p><strong>RAM (Random Access Memory):</strong> memoria volátil (pierde su contenido al apagar el equipo) donde se cargan el sistema operativo y los programas en ejecución.</p>
+<ul>
+<li><strong>DRAM</strong> (Dynamic RAM): necesita refrescarse periódicamente; es la base de la memoria RAM principal. Tecnologías <strong>DDR4</strong> y <strong>DDR5</strong> son las generaciones actuales, caracterizadas por su frecuencia (MHz/MT/s), latencia (CL) y capacidad.</li>
+<li><strong>SRAM</strong> (Static RAM): más rápida y cara que la DRAM, no necesita refresco; se usa en las memorias caché del procesador.</li>
+</ul>
+<p><strong>Formato físico del módulo:</strong> los zócalos de memoria de la placa base (ver 1.4) alojan módulos en formato <strong>DIMM</strong>, de tamaño estándar para equipos de sobremesa, o <strong>SO-DIMM</strong> (<em>Small Outline</em> DIMM), más compactos y utilizados en portátiles y equipos de formato reducido (Mini-ITX). Ambos existen en las mismas tecnologías (DDR4, DDR5...), pero no son intercambiables entre sí.</p>
+<p><strong>Latencia (CAS Latency, CL):</strong> número de ciclos de reloj que transcurren entre que el controlador de memoria solicita un dato y este está disponible en la salida; se expresa como una secuencia de valores (por ejemplo, CL16-18-18-36). A igual frecuencia, una latencia CL más baja implica una respuesta más rápida, aunque la latencia real en nanosegundos depende tanto del valor de CL como de la frecuencia del módulo.</p>
+<p><strong>Canal dual/triple/cuádruple (Dual/Triple/Quad Channel):</strong> las placas base modernas pueden acceder simultáneamente a dos, tres o cuatro módulos de memoria idénticos instalados en los zócalos correspondientes (identificables normalmente por su color en la placa), multiplicando el ancho de banda disponible respecto a un único módulo. Para aprovechar esta característica, los módulos deben instalarse por parejas o grupos de igual capacidad y velocidad, en los zócalos que indique el manual de la placa.</p>
+<p><strong>Memoria de solo lectura (ROM) y variantes:</strong> memorias no volátiles usadas tradicionalmente para almacenar firmware.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Se puede regrabar</th>
+<th>Método de borrado/escritura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROM</td>
+<td>No</td>
+<td>Grabada de fábrica</td>
+</tr>
+<tr>
+<td>PROM</td>
+<td>Una vez</td>
+<td>Grabación eléctrica única</td>
+</tr>
+<tr>
+<td>EPROM</td>
+<td>Sí</td>
+<td>Borrado con luz ultravioleta</td>
+</tr>
+<tr>
+<td>EEPROM</td>
+<td>Sí</td>
+<td>Borrado eléctrico, byte a byte</td>
+</tr>
+<tr>
+<td>Memoria Flash</td>
+<td>Sí</td>
+<td>Borrado eléctrico por bloques (base de SSD, pendrives, BIOS/UEFI actuales)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Características que definen una memoria:</strong></p>
+<ul>
+<li><strong>Capacidad</strong>: cantidad de información que puede almacenar (GB).</li>
+<li><strong>Velocidad/frecuencia</strong>: ciclos por segundo a los que opera.</li>
+<li><strong>Latencia</strong>: tiempo que tarda en responder a una solicitud.</li>
+<li><strong>Volatilidad</strong>: si pierde o no la información al cortar la alimentación.</li>
+<li><strong>Ancho de banda</strong>: cantidad de datos que puede transferir por unidad de tiempo.</li>
+</ul>
+<h2 id="17-interfaces-de-entradasalida-discos-y-unidades-opticas">1.7. Interfaces de entrada/salida, discos y unidades ópticas<a class="headerlink" href="#17-interfaces-de-entradasalida-discos-y-unidades-opticas" title="Permanent link">&para;</a></h2>
+<p>Las <strong>interfaces de entrada/salida (E/S)</strong> son los buses y conectores que permiten a la placa base comunicarse con los dispositivos de almacenamiento y otros periféricos.</p>
+<p><strong>Interfaces de almacenamiento más habituales:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Interfaz</th>
+<th>Tipo de conexión</th>
+<th>Velocidad orientativa</th>
+<th>Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SATA III</td>
+<td>Cable</td>
+<td>6 Gbit/s</td>
+<td>HDD y SSD 2,5"/3,5"</td>
+</tr>
+<tr>
+<td>M.2 (SATA)</td>
+<td>Ranura directa en placa</td>
+<td>6 Gbit/s</td>
+<td>SSD compactos</td>
+</tr>
+<tr>
+<td>M.2 (NVMe, sobre PCIe)</td>
+<td>Ranura directa en placa</td>
+<td>Varios GB/s</td>
+<td>SSD de alto rendimiento</td>
+</tr>
+<tr>
+<td>USB (2.0/3.x/USB4)</td>
+<td>Externa</td>
+<td>480 Mbit/s – 40 Gbit/s</td>
+<td>Discos externos, pendrives</td>
+</tr>
+<tr>
+<td>Thunderbolt</td>
+<td>Externa</td>
+<td>Hasta 40 Gbit/s</td>
+<td>Almacenamiento externo de alta gama</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tipos de discos:</strong></p>
+<ul>
+<li><strong>HDD (disco duro magnético)</strong>: platos magnéticos giratorios y cabezal de lectura/escritura; gran capacidad a bajo coste, pero más lento y sensible a golpes. Sus partes físicas principales son el plato, el brazo, el cabezal y el eje; a nivel lógico se organiza en un sector de arranque (MBR/GPT), una tabla de particiones y las particiones. Su rendimiento depende de varias características: la <strong>velocidad de rotación</strong> (RPM), el <strong>tiempo de acceso</strong> (lo que tarda el cabezal en posicionarse sobre el dato buscado), la <strong>caché del disco</strong> (memoria intermedia que amortigua lecturas/escrituras) y la velocidad de transferencia, tanto interna (plato-caché) como externa (caché-interfaz).</li>
+<li><strong>SSD (unidad de estado sólido)</strong>: memoria flash sin partes móviles; mucha mayor velocidad de lectura/escritura y resistencia física, coste por GB más alto.</li>
+<li><strong>Discos híbridos (SSHD)</strong>: combinan un HDD con una pequeña caché en SSD.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">SSD frente a HDD: ventajas e inconvenientes</p>
+<ul>
+<li><strong>Ventajas</strong>: arranque y carga de aplicaciones más rápidos, mayor velocidad de lectura/escritura, tiempo de acceso y latencia mucho menores, resistencia a golpes y vibraciones (sin partes mecánicas), funcionamiento silencioso, menor consumo y generación de calor.</li>
+<li><strong>Inconvenientes</strong>: mayor precio por GB, menor capacidad máxima disponible que un HDD equivalente, y peor recuperación de datos en caso de fallo (la información de una celda dañada suele perderse por completo).</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Idea clave</p>
+<p>La interfaz (SATA, NVMe...) determina el <strong>ancho de banda máximo teórico</strong>; el tipo de disco (HDD/SSD) determina el rendimiento real de acceso a los datos. Un SSD SATA está limitado por la interfaz, mientras que un SSD NVMe aprovecha directamente el bus PCIe.</p>
+</div>
+<p><strong>Unidades y soportes ópticos:</strong> los lectores/grabadores ópticos leen y graban datos mediante un láser que incide sobre la superficie del disco, distinguiendo zonas con distinta reflectividad (<em>land</em> y <em>pit</em>). A menor longitud de onda del láser, menor es el punto que puede leer y mayor la capacidad del soporte:</p>
+<table>
+<thead>
+<tr>
+<th>Soporte</th>
+<th>Capacidad orientativa</th>
+<th>Tecnología de láser</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CD</td>
+<td>700 MB</td>
+<td>Láser infrarrojo</td>
+</tr>
+<tr>
+<td>DVD</td>
+<td>4,7 GB (capa simple)</td>
+<td>Láser rojo</td>
+</tr>
+<tr>
+<td>Blu-ray</td>
+<td>25 GB (capa simple)</td>
+<td>Láser azul</td>
+</tr>
+</tbody>
+</table>
+<p>Cada soporte existe además en varias variantes según su capacidad de grabación: <strong>-ROM</strong> (solo lectura, grabado de fábrica), <strong>-R</strong> (grabable una única vez) y <strong>-RW</strong> (regrabable). El DVD, al admitir una o dos caras y una o dos capas por cara, ofrece varias capacidades posibles (4,7 GB a una cara/capa, hasta 17 GB a dos caras y dos capas).</p>
+<p><strong>Tarjetas de memoria flash:</strong> soportes de almacenamiento extraíbles de estado sólido, muy utilizados en cámaras, móviles y otros dispositivos portátiles. Existen varios formatos (SD, microSD, miniSD, CompactFlash, Memory Stick...), con distinta capacidad, velocidad y tamaño físico; los lectores de tarjetas suelen admitir varios formatos mediante adaptadores.</p>
+<h2 id="18-tarjetas-de-expansion">1.8. Tarjetas de expansión<a class="headerlink" href="#18-tarjetas-de-expansion" title="Permanent link">&para;</a></h2>
+<p>Las <strong>tarjetas de expansión</strong> son dispositivos con circuitos integrados que se insertan en las ranuras de expansión de la placa base (habitualmente PCIe) para ampliar las capacidades del equipo. Las más habituales son:</p>
+<ul>
+<li><strong>Tarjeta gráfica (GPU)</strong>: genera la imagen que se envía al monitor; imprescindible en equipos con necesidades gráficas exigentes (diseño, edición de vídeo, videojuegos), aunque muchos procesadores ya integran gráficos básicos. Sus conectores de salida actuales son <strong>HDMI</strong> y <strong>DisplayPort</strong> (vídeo y audio digital de alta definición); VGA y DVI son conectores más antiguos, en desuso. Las tarjetas de gama alta necesitan alimentación adicional de la fuente mediante conectores PCIe de 6/8 pines, además de la que reciben de la propia ranura.</li>
+<li><strong>Tarjeta de sonido</strong>: procesa el audio de entrada y salida; la mayoría de placas base ya integran una, por lo que una tarjeta dedicada solo se justifica para necesidades de audio profesional.</li>
+<li><strong>Tarjeta de red</strong> (cableada o inalámbrica): permite conectar el equipo a una red, cuando la placa base no la integra o se necesita una interfaz adicional. Cada tarjeta tiene una <strong>dirección MAC</strong> única de fábrica; las cableadas alcanzan velocidades Ethernet/Fast Ethernet/Gigabit (10/100/1000 Mbps) y muchas admiten <strong>Wake on LAN</strong>, que permite encender el equipo de forma remota a través de la red.</li>
+<li><strong>Tarjeta capturadora/sintonizadora de vídeo o TV</strong>: permite capturar vídeo de una fuente externa o recibir la señal de televisión.</li>
+<li><strong>Tarjeta controladora (PCI-SCSI, expansión USB, Firewire...)</strong>: añade puertos o interfaces adicionales de los que la placa base no dispone o que se han quedado insuficientes.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Tecnologías en desuso</p>
+<p>Hace unos años era habitual combinar dos tarjetas gráficas idénticas para sumar su potencia (<strong>SLI</strong> en Nvidia, <strong>Crossfire</strong> en AMD). Hoy en día ambos fabricantes la han abandonado casi por completo, en favor de tarjetas individuales cada vez más potentes.</p>
+</div>
+<h2 id="19-perifericos-clasificacion-instalacion-y-configuracion">1.9. Periféricos: clasificación, instalación y configuración<a class="headerlink" href="#19-perifericos-clasificacion-instalacion-y-configuracion" title="Permanent link">&para;</a></h2>
+<p>Un <strong>periférico</strong> es cualquier dispositivo que se conecta al ordenador para introducir, extraer o intercambiar información con él.</p>
+<p><strong>Clasificación según el sentido del flujo de información:</strong></p>
+<ul>
+<li><strong>Entrada</strong>: introducen datos al sistema. Ej.: teclado, ratón, escáner, cámara, micrófono.</li>
+<li><strong>Salida</strong>: el sistema emite información hacia ellos. Ej.: monitor, impresora, altavoces.</li>
+<li><strong>Entrada/salida (mixtos)</strong>: permiten ambos sentidos. Ej.: pantalla táctil, módem, dispositivos de almacenamiento externo, tarjetas de red.</li>
+</ul>
+<p><strong>Proceso de instalación de un periférico:</strong></p>
+<ol>
+<li><strong>Conexión física</strong> mediante la interfaz correspondiente (USB, HDMI, Bluetooth, etc.).</li>
+<li><strong>Detección</strong> por parte del sistema operativo.</li>
+<li><strong>Instalación del controlador (driver)</strong>: software que traduce las órdenes del sistema operativo a comandos específicos del dispositivo. Puede instalarse automáticamente (<strong>Plug &amp; Play</strong>) o requerir un driver del fabricante.</li>
+<li><strong>Configuración</strong>: ajuste de parámetros específicos (resolución, calidad de impresión, sensibilidad, perfiles de color, etc.) desde el propio sistema operativo o desde software del fabricante.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Plug &amp; Play no siempre es suficiente</p>
+<p>Aunque la mayoría de periféricos actuales son <em>Plug &amp; Play</em>, algunos dispositivos (impresoras multifunción, tarjetas gráficas, capturadoras...) requieren instalar manualmente el driver o el paquete de software completo del fabricante para funcionar con todas sus prestaciones.</p>
+</div>
+<h2 id="110-normativa-de-seguridad-y-prevencion-de-riesgos-laborales">1.10. Normativa de seguridad y prevención de riesgos laborales<a class="headerlink" href="#110-normativa-de-seguridad-y-prevencion-de-riesgos-laborales" title="Permanent link">&para;</a></h2>
+<p>El trabajo con equipos informáticos está sujeto a la <strong>Ley 31/1995 de Prevención de Riesgos Laborales (LPRL)</strong> y, específicamente para puestos con pantallas de visualización de datos, al <strong>Real Decreto 488/1997</strong>.</p>
+<p><strong>Principales riesgos al manipular equipos informáticos:</strong></p>
+<ul>
+<li><strong>Riesgo eléctrico</strong>: contacto con partes bajo tensión, cortocircuitos. Medidas: desconectar el equipo de la red eléctrica antes de manipular componentes internos, no trabajar con las manos húmedas, usar herramientas aisladas.</li>
+<li><strong>Descargas electrostáticas (ESD)</strong>: la electricidad estática del cuerpo puede dañar componentes electrónicos sensibles (placas, memorias, procesadores). Medidas: usar <strong>muñequera antiestática</strong> conectada a tierra, manipular los componentes por los bordes, guardarlos en bolsas antiestáticas.</li>
+<li><strong>Riesgos ergonómicos</strong>: posturas forzadas, movimientos repetitivos, fatiga visual por el uso prolongado de pantallas. Medidas: altura correcta de silla y pantalla, pausas periódicas, iluminación adecuada.</li>
+<li><strong>Manipulación manual de cargas</strong>: al mover equipos pesados (torres, servidores, SAI). Medidas: técnicas correctas de levantamiento, uso de ayudas mecánicas.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Antes de abrir un equipo</p>
+<p>Desconectar siempre el cable de alimentación (no basta con apagarlo) y utilizar muñequera antiestática antes de manipular componentes internos.</p>
+</div>
+<h2 id="111-busqueda-y-gestion-de-documentacion-tecnica-en-internet">1.11. Búsqueda y gestión de documentación técnica en Internet<a class="headerlink" href="#111-busqueda-y-gestion-de-documentacion-tecnica-en-internet" title="Permanent link">&para;</a></h2>
+<p>Una parte importante del trabajo con sistemas informáticos consiste en localizar, evaluar y organizar documentación técnica: manuales de fabricante, hojas de características (<em>datasheets</em>), foros especializados, documentación oficial de fabricantes de hardware y software, o estándares técnicos.</p>
+<p><strong>Fuentes habituales de documentación técnica:</strong></p>
+<ul>
+<li><strong>Documentación oficial del fabricante</strong>: manuales, <em>datasheets</em>, notas de la versión (release notes), bases de conocimiento (knowledge base).</li>
+<li><strong>Documentación de proyectos de software</strong>: wikis y documentación oficial (por ejemplo, la de una distribución Linux o un sistema operativo).</li>
+<li><strong>Foros y comunidades técnicas</strong>: útiles para resolver incidencias concretas, pero conviene contrastar la información.</li>
+<li><strong>Estándares y organismos</strong>: RFC (Internet), IEEE, ISO.</li>
+</ul>
+<p><strong>Criterios para evaluar la fiabilidad de una fuente:</strong></p>
+<ul>
+<li>Autoría reconocida (fabricante, organismo oficial, comunidad consolidada).</li>
+<li>Fecha de publicación/actualización (la documentación técnica queda obsoleta rápido).</li>
+<li>Coherencia con la versión exacta del producto que se está utilizando.</li>
+<li>Contraste entre varias fuentes ante información dudosa o contradictoria.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Buenas prácticas de búsqueda</p>
+<ul>
+<li>Acotar la búsqueda incluyendo el nombre exacto del producto y su número de versión.</li>
+<li>Usar operadores de búsqueda avanzada (comillas para frases exactas, <code>site:</code> para limitar a un dominio, <code>filetype:</code> para tipos de archivo concretos).</li>
+<li>Guardar y organizar la documentación relevante (marcadores, gestores de notas) para no tener que volver a buscarla.</li>
+</ul>
+</div>
+<h2 id="catalogo-visual-de-componentes">Catálogo visual de componentes<a class="headerlink" href="#catalogo-visual-de-componentes" title="Permanent link">&para;</a></h2>
+<p>Antes de hacer la <strong>Actividad 1.3</strong>, consulta el <strong><a href="../catalogo-componentes/">catálogo visual de componentes</a></strong>: fotografías reales de placas base, procesadores, memoria, almacenamiento, tarjetas y dispositivos de red, y periféricos, con los rasgos que ayudan a reconocer cada uno físicamente.</p>
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<p class="actividad-titulo"><strong>Actividad 1.1 — El modelo de von Neumann en acción</strong></p>
+<p>a) A partir del diagrama del modelo de von Neumann, identifica sus tres bloques funcionales y explica brevemente la función de cada uno.</p>
+<p>b) Describe paso a paso qué ocurre en los buses de direcciones, datos y control cuando la CPU lee un dato de una posición de memoria.</p>
+<p>c) Explica con tus propias palabras el "concepto de programa almacenado" y por qué es una característica definitoria del modelo de von Neumann.</p>
+<p>d) Un microcontrolador de un electrodoméstico usa arquitectura Harvard en lugar de von Neumann. ¿Qué ventaja le aporta y qué contrapartida tiene?</p>
+<p class="actividad-titulo"><strong>Actividad 1.2 — Sistemas de numeración: cambios de base</strong></p>
+<p>a) Convierte el número decimal 172 a binario, octal y hexadecimal, mostrando el proceso de las divisiones sucesivas.</p>
+<p>b) Convierte el número binario 11010110 a decimal, octal y hexadecimal.</p>
+<p>c) La dirección MAC de una tarjeta de red es <code>A4:C3:F0:85:AC:2D</code>. Indica cuántos bits ocupa en total y convierte su primer byte (<code>A4</code>) a binario y a decimal.</p>
+<p>d) Un archivo en Linux tiene permisos <code>rwxr-xr--</code>. Exprésalos como tres cifras en binario (una por categoría: propietario, grupo, otros) y conviértelas después a su cifra octal equivalente.</p>
+<p class="actividad-titulo"><strong>Actividad 1.3 — Diagnóstico de un equipo desmontado</strong></p>
+<p>Con un equipo de sobremesa desmontado (o un catálogo de imágenes proporcionado por el profesorado), identifica y fotografía/etiqueta: chasis (formato) y fuente de alimentación, sistema de refrigeración, placa base (formato), procesador y zócalo, módulos de memoria RAM, unidades de almacenamiento e interfaz que usan, alguna tarjeta de expansión si el equipo dispone de ella, y al menos tres periféricos con su tipo de conector. Elabora una ficha técnica del equipo a partir de esta <strong><a href="../plantilla-ficha-tecnica/">plantilla de ficha técnica</a></strong>.</p>
+<p class="actividad-titulo"><strong>Actividad 1.4 — Identifica los elementos de una placa base (modelo antiguo)</strong></p>
+<p>Esta placa base es una <strong>Foxconn P55MX/H55MX</strong>, con zócalo <strong>LGA1156</strong> y chipset <strong>Intel P55</strong> — una gama pensada para los primeros Core i5/i7 ("Lynnfield"), de en torno a <strong>2009-2010</strong>. Consulta el <strong><a href="../catalogo-componentes/">catálogo visual de componentes</a></strong> si lo necesitas y, antes de mirar la solución, intenta identificar tú mismo/a los 23 elementos señalados.</p>
+<p><img alt="Placa base con 23 elementos señalados y numerados, pendientes de identificar" src="../img/ut1_placa_base_diagrama_numerado.png" /></p>
+<details class="note">
+<summary>Solución</summary>
+<p><img alt="Leyenda con los 23 elementos identificados: conectores de alimentación, ranuras PCI/PCIe, zócalo LGA1156, chipset, conectores SATA, etc." src="../img/ut1_placa_base_diagrama_leyenda.png" /></p>
+</details>
+<p class="actividad-titulo"><strong>Actividad 1.5 — Identifica los elementos de una placa base (modelo actual)</strong></p>
+<p>Repite el ejercicio anterior sobre esta placa base más reciente, una <strong>ASUS Prime X570-P</strong> (zócalo <strong>AM4</strong>, chipset <strong>AMD X570</strong>, de <strong>2019</strong>, con ranuras DDR4 y M.2). Compárala con la de la actividad anterior: ¿qué elementos han cambiado de aspecto o posición y cuáles siguen cumpliendo la misma función?</p>
+<p><img alt="Placa base ASUS Prime X570-P con 10 elementos señalados y numerados, pendientes de identificar" src="../img/ut1_placa_base_actual_numerada.jpg" /></p>
+<details class="note">
+<summary>Solución</summary>
+<ol>
+<li>Conector de alimentación ATX (24 pines)</li>
+<li>Ranuras de memoria RAM (DIMM, DDR4)</li>
+<li>Disipador de los reguladores de voltaje (VRM)</li>
+<li>Procesador y disipador (zócalo AM4, procesador oculto bajo el cooler)</li>
+<li>Chipset (X570) con ventilador activo</li>
+<li>Ranura PCIe x16 (nº1, para la tarjeta gráfica principal)</li>
+<li>Ranura PCIe x16 (nº2)</li>
+<li>Conectores SATA</li>
+<li>Batería CMOS</li>
+<li>Panel de E/S trasero (USB, red, audio...)</li>
+</ol>
+</details>
+<p class="actividad-titulo"><strong>Actividad 1.6 — CISC vs. RISC</strong></p>
+<p>Elabora una tabla comparativa entre arquitecturas CISC y RISC, y busca al menos tres dispositivos reales (PC, smartphone, consola, microcontrolador) indicando qué arquitectura de procesador utiliza cada uno y por qué crees que se eligió.</p>
+<p class="actividad-titulo"><strong>Actividad 1.7 — Memoria RAM: comparación de módulos</strong></p>
+<p>Se dispone de tres módulos de memoria con estas características:</p>
+<table>
+<thead>
+<tr>
+<th>Módulo</th>
+<th>Formato</th>
+<th>Capacidad</th>
+<th>Frecuencia</th>
+<th>CAS Latency (CL)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>DIMM DDR4</td>
+<td>8 GB</td>
+<td>3200 MT/s</td>
+<td>CL16</td>
+</tr>
+<tr>
+<td>B</td>
+<td>DIMM DDR4</td>
+<td>8 GB</td>
+<td>2666 MT/s</td>
+<td>CL19</td>
+</tr>
+<tr>
+<td>C</td>
+<td>SO-DIMM DDR4</td>
+<td>8 GB</td>
+<td>3200 MT/s</td>
+<td>CL22</td>
+</tr>
+</tbody>
+</table>
+<p>a) ¿En qué tipo de equipo instalarías cada módulo? ¿Cuáles son físicamente compatibles entre sí y cuáles no, y por qué?</p>
+<p>b) ¿Formarían A y B una pareja válida en <strong>Dual Channel</strong> en una placa de sobremesa? Razona qué ocurriría realmente si se instalan juntas.</p>
+<p>c) Calcula la latencia real aproximada, en nanosegundos, de los módulos A y C con la fórmula <code>latencia (ns) = (CL / frecuencia) × 2000</code>. A pesar de tener la misma frecuencia nominal, ¿cuál responde antes a una solicitud de datos? ¿Qué te dice esto sobre fiarse solo de la frecuencia a la hora de comparar memorias?</p>
+<p>d) Busca en el <strong><a href="../catalogo-componentes/">catálogo visual de componentes</a></strong> una fotografía de un módulo DIMM y otra de un módulo SO-DIMM, y señala dos diferencias visuales entre ambos.</p>
+<p class="actividad-titulo"><strong>Actividad 1.8 — Interfaces de almacenamiento y tarjetas de expansión</strong></p>
+<p>Consulta el <strong><a href="../catalogo-componentes/">catálogo visual de componentes</a></strong> y responde:</p>
+<p>a) Ordena de menor a mayor ancho de banda teórico estos tres dispositivos, indicando la interfaz más probable de cada uno: un disco duro de 3,5" de un equipo de sobremesa, un SSD M.2 de un portátil ultrafino, y un disco externo conectado por USB 3.0.</p>
+<p>b) Un equipo de sobremesa necesita capturar vídeo de una cámara externa y su placa base no incluye esa función. ¿Qué tipo de tarjeta de expansión instalarías, y en qué tipo de ranura de la placa base?</p>
+<p>c) Un SSD SATA y un SSD M.2 NVMe tienen la misma capacidad. Explica por qué el NVMe puede ofrecer mucha más velocidad, y en qué situación un disco externo por Thunderbolt superaría a uno conectado por USB 3.0.</p>
+<p class="actividad-titulo"><strong>Actividad 1.9 — Checklist de seguridad antes de manipular un equipo</strong></p>
+<p>Redacta un checklist de comprobaciones de seguridad (riesgo eléctrico, ESD, ergonomía) que un técnico debería seguir antes de abrir la carcasa de un PC para ampliar la memoria RAM. Justifica cada punto citando el riesgo que previene.</p>
+<p class="actividad-titulo"><strong>Actividad 1.10 — Búsqueda de documentación técnica</strong></p>
+<p>Busca la hoja de características (<em>datasheet</em>) oficial de cada uno de estos módulos de memoria RAM:</p>
+<ul>
+<li>Corsair Vengeance LPX 8 GB DDR4-3200 (DIMM, sobremesa)</li>
+<li>Kingston FURY Impact 8 GB DDR4-3200 (SO-DIMM, portátil)</li>
+<li>Corsair Vengeance 16 GB DDR5-5600 (DIMM, sobremesa)</li>
+<li>Crucial 8 GB DDR5-4800 (SO-DIMM, portátil)</li>
+</ul>
+<p>Para cada módulo, extrae sus características principales (capacidad, velocidad, CAS Latency, voltaje, interfaz) y cita la URL exacta del datasheet utilizado, valorando su fiabilidad (¿es la web oficial del fabricante? ¿está actualizado?). Presenta los resultados en una tabla comparativa.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Anterior: Inicio">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Inicio
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../plantilla-ficha-tecnica/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Plantilla: ficha técnica de un equipo">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Plantilla: ficha técnica de un equipo
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "toc.follow", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
