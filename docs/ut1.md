@@ -3,12 +3,10 @@
 [:material-arrow-left: Volver al índice de todas las unidades](index.md)
 
 !!! tip "Duración"
-    25 horas
+    20 horas
 
 !!! abstract "Resultado de aprendizaje que se trabaja"
     **RA1.** Evalúa sistemas informáticos, identificando sus componentes y características.
-
-    *Transversal:* **RA7** (parcial) — búsqueda y valoración de la fiabilidad de documentación técnica en Internet.
 
 ## 1.1. Arquitectura de un sistema informático
 
@@ -16,7 +14,7 @@ Un **sistema informático** es el conjunto de elementos hardware y software que 
 
 **El modelo de von Neumann:** organiza conceptualmente un sistema informático en tres bloques funcionales —unidad de procesamiento, memoria y entrada/salida— conectados mediante un sistema de buses.
 
-- **Unidad central de proceso (CPU)**: ejecuta las instrucciones (ver 1.4).
+- **Unidad central de proceso (CPU)**: ejecuta las instrucciones (ver 1.5).
 - **Memoria principal**: almacena, con el mismo formato y en la misma memoria, tanto los datos como las instrucciones de los programas en ejecución (el llamado **concepto de programa almacenado**).
 - **Módulos de entrada/salida**: comunican el sistema con el exterior (periféricos, almacenamiento secundario, redes).
 
@@ -34,31 +32,9 @@ Un **sistema informático** es el conjunto de elementos hardware y software que 
 | Bus de control | Bidireccional | Transporta señales de sincronización: lectura/escritura, interrupciones, señal de reloj, etc. |
 
 !!! note "Idea clave"
-    Este esquema general de bloques y buses es el que se concreta físicamente en la placa base (ver 1.3): el chipset y sus buses de expansión son, en la práctica, una implementación moderna de este mismo modelo.
+    Este esquema general de bloques y buses es el que se concreta físicamente en la placa base (ver 1.4): el chipset y sus buses de expansión son, en la práctica, una implementación moderna de este mismo modelo.
 
-???+ note "Referencia rápida: binario, octal y hexadecimal"
-    Los ordenadores solo manejan dos estados (0/1), por lo que la información se representa internamente en **binario** (base 2). Como escribir números binarios largos es poco práctico, se usan dos notaciones que agrupan bits: el **octal** (base 8, agrupa de 3 en 3 bits) y, mucho más habitual hoy, el **hexadecimal** (base 16, agrupa de 4 en 4 bits, con las cifras 0-9 y A-F).
-
-    | Decimal | Binario | Octal | Hexadecimal |
-    | --- | --- | --- | --- |
-    | 0 | 0000 | 0 | 0 |
-    | 1 | 0001 | 1 | 1 |
-    | 2 | 0010 | 2 | 2 |
-    | 3 | 0011 | 3 | 3 |
-    | 4 | 0100 | 4 | 4 |
-    | 5 | 0101 | 5 | 5 |
-    | 6 | 0110 | 6 | 6 |
-    | 7 | 0111 | 7 | 7 |
-    | 8 | 1000 | 10 | 8 |
-    | 9 | 1001 | 11 | 9 |
-    | 10 | 1010 | 12 | A |
-    | 11 | 1011 | 13 | B |
-    | 12 | 1100 | 14 | C |
-    | 13 | 1101 | 15 | D |
-    | 14 | 1110 | 16 | E |
-    | 15 | 1111 | 17 | F |
-
-    Se usan continuamente en este módulo, aunque no siempre se diga de forma explícita: los **permisos de Linux** se expresan en octal (`chmod 754`, ver UT4 — cada cifra agrupa exactamente los 3 bits rwx de propietario, grupo y otros), y las **direcciones MAC** y las **IPv6** (ver UT2) se escriben en hexadecimal, donde cada pareja de dígitos representa un byte completo. Y la propia anchura del bus de direcciones, mencionada más arriba, se mide en potencias de 2 precisamente porque cada línea que se añade duplica el número de posiciones representables en binario.
+Los ordenadores solo manejan dos estados eléctricos (0/1), por lo que representan internamente toda la información en binario. El apartado 1.2 trata en detalle los sistemas de numeración que se usan para representarla y cómo convertir cantidades entre ellos.
 
 **Clasificación de los sistemas informáticos**
 
@@ -79,7 +55,69 @@ Según su **tamaño y potencia de cálculo**, de menor a mayor:
 | Mainframe | Sistema central de un banco o una administración | Procesar grandes volúmenes de transacciones críticas |
 | Superordenador (HPC) | Clúster de cálculo científico | Cálculo masivo en paralelo |
 
-## 1.2. Chasis, alimentación y refrigeración
+## 1.2. Sistemas de numeración: binario, octal y hexadecimal. Cambios de base
+
+Un **sistema de numeración** define cómo se representan las cantidades mediante un conjunto de símbolos (cifras) y unas reglas de posición. Un sistema es **posicional** cuando el valor de cada cifra depende tanto del símbolo como del lugar que ocupa: en el número 345, el 3 vale 300 porque ocupa la posición de las centenas. En un sistema posicional de **base (o radix) *b***, cada posición representa una potencia de *b*, y se usan *b* símbolos distintos (del 0 al *b*-1).
+
+Como escribir números binarios largos resulta poco práctico para las personas, se usan además dos notaciones intermedias que agrupan bits: el **octal** (base 8, agrupa de 3 en 3 bits) y, mucho más habitual hoy, el **hexadecimal** (base 16, agrupa de 4 en 4 bits, con las cifras 0-9 y A-F).
+
+| Decimal | Binario | Octal | Hexadecimal |
+| --- | --- | --- | --- |
+| 0 | 0000 | 0 | 0 |
+| 1 | 0001 | 1 | 1 |
+| 2 | 0010 | 2 | 2 |
+| 3 | 0011 | 3 | 3 |
+| 4 | 0100 | 4 | 4 |
+| 5 | 0101 | 5 | 5 |
+| 6 | 0110 | 6 | 6 |
+| 7 | 0111 | 7 | 7 |
+| 8 | 1000 | 10 | 8 |
+| 9 | 1001 | 11 | 9 |
+| 10 | 1010 | 12 | A |
+| 11 | 1011 | 13 | B |
+| 12 | 1100 | 14 | C |
+| 13 | 1101 | 15 | D |
+| 14 | 1110 | 16 | E |
+| 15 | 1111 | 17 | F |
+
+**Cambios de base**
+
+**De decimal a otra base — divisiones sucesivas:** se divide el número entre la base de destino de forma sucesiva, anotando el resto de cada división, hasta que el cociente sea 0. El resultado se lee de abajo hacia arriba (el último resto obtenido es la cifra más significativa).
+
+*Ejemplo: 45 (decimal) a binario (base 2)*
+
+| División | Cociente | Resto |
+| --- | --- | --- |
+| 45 ÷ 2 | 22 | 1 |
+| 22 ÷ 2 | 11 | 0 |
+| 11 ÷ 2 | 5 | 1 |
+| 5 ÷ 2 | 2 | 1 |
+| 2 ÷ 2 | 1 | 0 |
+| 1 ÷ 2 | 0 | 1 |
+
+Leyendo los restos de abajo hacia arriba: **45 = 101101₂**
+
+**De binario (o cualquier base) a decimal — suma de potencias:** se multiplica cada cifra por la base elevada a la posición que ocupa (empezando en 0 desde la derecha) y se suman los resultados.
+
+*Ejemplo:* 101101₂ = 1×2⁵ + 0×2⁴ + 1×2³ + 1×2² + 0×2¹ + 1×2⁰ = 32 + 0 + 8 + 4 + 0 + 1 = **45**
+
+**Entre binario y octal/hexadecimal — agrupación de bits:** al ser el octal y el hexadecimal potencias de 2 (2³ y 2⁴), la conversión con el binario no requiere cálculo, solo agrupar cifras:
+
+- **Binario → octal**: se agrupan los bits de 3 en 3 desde la derecha (rellenando con ceros a la izquierda si falta), y cada grupo se traduce directamente con la tabla.
+- **Binario → hexadecimal**: igual, pero agrupando de 4 en 4 bits.
+- **Octal/hexadecimal → binario**: el proceso inverso — cada cifra se expande a su grupo de 3 o 4 bits.
+
+*Ejemplo:* 101101₂ → agrupando de 4 en 4 (con relleno): `0010 1101` = **2D₁₆**; agrupando de 3 en 3: `101 101` = **55₈**
+
+!!! tip "La ruta más corta pasa por el binario"
+    Para convertir directamente entre octal y hexadecimal (o entre cualquier par de bases poco habituales), suele ser más rápido pasar primero por binario como paso intermedio, en lugar de operar directamente entre las dos bases originales.
+
+**Bit, nibble y byte:** el **bit** (*binary digit*) es la unidad mínima de información (0 o 1). Un grupo de 4 bits se llama **nibble** (equivale exactamente a una cifra hexadecimal) y un grupo de 8 bits, **byte** (equivale a dos cifras hexadecimales), la unidad básica con la que se mide la capacidad de memoria y almacenamiento.
+
+!!! note "Dónde aparecen en el resto del módulo"
+    Aunque no siempre se diga de forma explícita, estos sistemas de numeración se usan continuamente: los **permisos de Linux** se expresan en octal (`chmod 754`, ver UT5 — cada cifra agrupa exactamente los 3 bits rwx de propietario, grupo y otros), y las **direcciones MAC** y las **IPv6** (ver UT2) se escriben en hexadecimal, donde cada pareja de dígitos representa un byte completo. La propia anchura del bus de direcciones (ver 1.1) se mide en potencias de 2 precisamente porque cada línea que se añade duplica el número de posiciones representables en binario.
+
+## 1.3. Chasis, alimentación y refrigeración
 
 **Chasis (caja):** recinto metálico o de plástico que alberga los componentes principales del ordenador. A la hora de elegirlo se valoran su estructura y distribución interna, la ventilación, las posibilidades de expansión (número de bahías para discos y unidades) y la estética.
 
@@ -100,7 +138,7 @@ Según su **tamaño y potencia de cálculo**, de menor a mayor:
 Toca o haz clic en cualquier miniatura para verla a tamaño completo. También puedes ver todas las fotografías juntas en el **[catálogo visual — Formatos de caja](catalogo-componentes.md#formatos-de-caja)**.
 
 !!! note "Idea clave"
-    El formato del chasis debe ser compatible con el formato de la placa base (ver 1.3) y con el tamaño de la fuente de alimentación; no son elecciones independientes.
+    El formato del chasis debe ser compatible con el formato de la placa base (ver 1.4) y con el tamaño de la fuente de alimentación; no son elecciones independientes.
 
 **Fuente de alimentación (PSU):** transforma la corriente alterna de la red eléctrica (220V) en las distintas corrientes continuas que necesitan los componentes. Es un elemento clave para la estabilidad del sistema, las posibilidades de expansión (cuánta potencia puede entregar a componentes adicionales) y el consumo energético del equipo; las certificaciones como **Energy Star** indican una mayor eficiencia energética.
 
@@ -132,7 +170,7 @@ Toca o haz clic en cualquier miniatura para verla a tamaño completo. También p
 - **Refrigeración por aire**: ventiladores del chasis, disipadores metálicos y *coolers* (disipador + ventilador) sobre los componentes que más calientan. Es la solución más habitual, sencilla y económica.
 - **Refrigeración líquida**: un líquido refrigerante circula por un circuito cerrado, absorbiendo el calor de los componentes (normalmente la CPU) y disipándolo en un radiador externo. Permite disipar más calor y con menos ruido que el aire, a cambio de mayor coste y complejidad de instalación.
 
-## 1.3. Placas base y formatos
+## 1.4. Placas base y formatos
 
 La **placa base** (motherboard) es el circuito impreso principal de un ordenador: interconecta el procesador, la memoria, el almacenamiento, los periféricos y las tarjetas de expansión a través de un conjunto de buses y controladores.
 
@@ -184,7 +222,7 @@ graph TD
 
 1. Al recibir alimentación, la placa base entrega el control al firmware BIOS/UEFI.
 2. El POST comprueba, por orden, la memoria RAM, la tarjeta gráfica, el teclado/ratón y las unidades de almacenamiento conectadas.
-3. Si todo es correcto, el firmware localiza el dispositivo de arranque según el orden configurado y le cede el control (sector de arranque MBR o partición EFI en GPT — ver 1.6).
+3. Si todo es correcto, el firmware localiza el dispositivo de arranque según el orden configurado y le cede el control (sector de arranque MBR o partición EFI en GPT — ver 1.7).
 4. Si detecta un fallo grave, detiene el arranque y lo notifica: en sistemas con **BIOS heredada (legacy)**, mediante una secuencia de pitidos (*beep codes*) del altavoz interno, ya que todavía no hay salida de vídeo; en el firmware **UEFI** moderno, habitualmente mediante un código o mensaje en pantalla, o un display/LEDs de diagnóstico en la propia placa.
 
 ???+ note "Códigos de pitidos POST (BIOS heredada)"
@@ -203,7 +241,7 @@ graph TD
 ???+ tip "Herramientas de verificación y diagnóstico"
     Más allá del propio POST, con el sistema operativo ya arrancado se usan utilidades específicas para comprobar el estado del hardware: **HWiNFO64** o **AIDA64** (identificación completa del hardware y sensores de temperatura/voltaje), **CPU-Z**/**GPU-Z** (verificación de procesador, memoria y tarjeta gráfica), **MemTest86** (test de estabilidad de la memoria RAM, arrancado desde USB) y **CrystalDiskInfo** (estado de salud S.M.A.R.T. de discos HDD/SSD).
 
-## 1.4. El procesador: arquitectura, registros, unidad aritmético-lógica
+## 1.5. El procesador: arquitectura, registros, unidad aritmético-lógica
 
 El **procesador** (CPU) ejecuta las instrucciones de los programas. Sus bloques funcionales principales son:
 
@@ -250,9 +288,9 @@ flowchart LR
 
 - **Arquitectura de 32 o 64 bits**: tamaño de los datos y direcciones de memoria que el procesador maneja de forma nativa; condiciona, entre otras cosas, la cantidad máxima de memoria RAM direccionable (un sistema de 32 bits está limitado a 4 GB). Prácticamente todos los procesadores y sistemas operativos actuales son de 64 bits.
 - **Proceso de fabricación (litografía)**: tamaño de los transistores del chip, medido en nanómetros (nm). Cuanto menor es esta medida, más transistores caben en la misma superficie, lo que generalmente se traduce en más rendimiento y menor consumo (por ejemplo, 14 nm, 10 nm, 7 nm, 5 nm...).
-- **TDP (Thermal Design Power)**: potencia térmica de diseño, en vatios (W); indica el calor que el sistema de refrigeración debe ser capaz de disipar en condiciones normales de uso. Es un dato clave para elegir un disipador o *cooler* adecuado (ver 1.2) y para calcular el consumo y la fuente de alimentación necesaria.
+- **TDP (Thermal Design Power)**: potencia térmica de diseño, en vatios (W); indica el calor que el sistema de refrigeración debe ser capaz de disipar en condiciones normales de uso. Es un dato clave para elegir un disipador o *cooler* adecuado (ver 1.3) y para calcular el consumo y la fuente de alimentación necesaria.
 
-## 1.5. Tipos y características de la memoria interna
+## 1.6. Tipos y características de la memoria interna
 
 La memoria interna se organiza en una **jerarquía** que equilibra velocidad, capacidad y coste: cuanto más rápida es una memoria, más cara y más pequeña suele ser.
 
@@ -263,7 +301,7 @@ La memoria interna se organiza en una **jerarquía** que equilibra velocidad, ca
 - **DRAM** (Dynamic RAM): necesita refrescarse periódicamente; es la base de la memoria RAM principal. Tecnologías **DDR4** y **DDR5** son las generaciones actuales, caracterizadas por su frecuencia (MHz/MT/s), latencia (CL) y capacidad.
 - **SRAM** (Static RAM): más rápida y cara que la DRAM, no necesita refresco; se usa en las memorias caché del procesador.
 
-**Formato físico del módulo:** los zócalos de memoria de la placa base (ver 1.3) alojan módulos en formato **DIMM**, de tamaño estándar para equipos de sobremesa, o **SO-DIMM** (*Small Outline* DIMM), más compactos y utilizados en portátiles y equipos de formato reducido (Mini-ITX). Ambos existen en las mismas tecnologías (DDR4, DDR5...), pero no son intercambiables entre sí.
+**Formato físico del módulo:** los zócalos de memoria de la placa base (ver 1.4) alojan módulos en formato **DIMM**, de tamaño estándar para equipos de sobremesa, o **SO-DIMM** (*Small Outline* DIMM), más compactos y utilizados en portátiles y equipos de formato reducido (Mini-ITX). Ambos existen en las mismas tecnologías (DDR4, DDR5...), pero no son intercambiables entre sí.
 
 **Latencia (CAS Latency, CL):** número de ciclos de reloj que transcurren entre que el controlador de memoria solicita un dato y este está disponible en la salida; se expresa como una secuencia de valores (por ejemplo, CL16-18-18-36). A igual frecuencia, una latencia CL más baja implica una respuesta más rápida, aunque la latencia real en nanosegundos depende tanto del valor de CL como de la frecuencia del módulo.
 
@@ -287,7 +325,7 @@ La memoria interna se organiza en una **jerarquía** que equilibra velocidad, ca
 - **Volatilidad**: si pierde o no la información al cortar la alimentación.
 - **Ancho de banda**: cantidad de datos que puede transferir por unidad de tiempo.
 
-## 1.6. Interfaces de entrada/salida, discos y unidades ópticas
+## 1.7. Interfaces de entrada/salida, discos y unidades ópticas
 
 Las **interfaces de entrada/salida (E/S)** son los buses y conectores que permiten a la placa base comunicarse con los dispositivos de almacenamiento y otros periféricos.
 
@@ -326,7 +364,7 @@ Cada soporte existe además en varias variantes según su capacidad de grabació
 
 **Tarjetas de memoria flash:** soportes de almacenamiento extraíbles de estado sólido, muy utilizados en cámaras, móviles y otros dispositivos portátiles. Existen varios formatos (SD, microSD, miniSD, CompactFlash, Memory Stick...), con distinta capacidad, velocidad y tamaño físico; los lectores de tarjetas suelen admitir varios formatos mediante adaptadores.
 
-## 1.7. Tarjetas de expansión
+## 1.8. Tarjetas de expansión
 
 Las **tarjetas de expansión** son dispositivos con circuitos integrados que se insertan en las ranuras de expansión de la placa base (habitualmente PCIe) para ampliar las capacidades del equipo. Las más habituales son:
 
@@ -339,7 +377,7 @@ Las **tarjetas de expansión** son dispositivos con circuitos integrados que se 
 !!! note "Tecnologías en desuso"
     Hace unos años era habitual combinar dos tarjetas gráficas idénticas para sumar su potencia (**SLI** en Nvidia, **Crossfire** en AMD). Hoy en día ambos fabricantes la han abandonado casi por completo, en favor de tarjetas individuales cada vez más potentes.
 
-## 1.8. Periféricos: clasificación, instalación y configuración
+## 1.9. Periféricos: clasificación, instalación y configuración
 
 Un **periférico** es cualquier dispositivo que se conecta al ordenador para introducir, extraer o intercambiar información con él.
 
@@ -359,7 +397,7 @@ Un **periférico** es cualquier dispositivo que se conecta al ordenador para int
 !!! warning "Plug & Play no siempre es suficiente"
     Aunque la mayoría de periféricos actuales son *Plug & Play*, algunos dispositivos (impresoras multifunción, tarjetas gráficas, capturadoras...) requieren instalar manualmente el driver o el paquete de software completo del fabricante para funcionar con todas sus prestaciones.
 
-## 1.9. Normativa de seguridad y prevención de riesgos laborales
+## 1.10. Normativa de seguridad y prevención de riesgos laborales
 
 El trabajo con equipos informáticos está sujeto a la **Ley 31/1995 de Prevención de Riesgos Laborales (LPRL)** y, específicamente para puestos con pantallas de visualización de datos, al **Real Decreto 488/1997**.
 
@@ -373,7 +411,7 @@ El trabajo con equipos informáticos está sujeto a la **Ley 31/1995 de Prevenci
 !!! warning "Antes de abrir un equipo"
     Desconectar siempre el cable de alimentación (no basta con apagarlo) y utilizar muñequera antiestática antes de manipular componentes internos.
 
-## 1.10. Búsqueda y gestión de documentación técnica en Internet
+## 1.11. Búsqueda y gestión de documentación técnica en Internet
 
 Una parte importante del trabajo con sistemas informáticos consiste en localizar, evaluar y organizar documentación técnica: manuales de fabricante, hojas de características (*datasheets*), foros especializados, documentación oficial de fabricantes de hardware y software, o estándares técnicos.
 
@@ -487,3 +525,14 @@ Busca la hoja de características (*datasheet*) oficial de cada uno de estos mó
 - Crucial 8 GB DDR5-4800 (SO-DIMM, portátil)
 
 Para cada módulo, extrae sus características principales (capacidad, velocidad, CAS Latency, voltaje, interfaz) y cita la URL exacta del datasheet utilizado, valorando su fiabilidad (¿es la web oficial del fabricante? ¿está actualizado?). Presenta los resultados en una tabla comparativa.
+
+**Actividad 1.9 — Sistemas de numeración: cambios de base**
+{: .actividad-titulo}
+
+a) Convierte el número decimal 172 a binario, octal y hexadecimal, mostrando el proceso de las divisiones sucesivas.
+
+b) Convierte el número binario 11010110 a decimal, octal y hexadecimal.
+
+c) La dirección MAC de una tarjeta de red es `A4:C3:F0:85:AC:2D`. Indica cuántos bits ocupa en total y convierte su primer byte (`A4`) a binario y a decimal.
+
+d) Un archivo en Linux tiene permisos `rwxr-xr--`. Exprésalos como tres cifras en binario (una por categoría: propietario, grupo, otros) y conviértelas después a su cifra octal equivalente.
