@@ -1,6 +1,6 @@
 # Plantilla: ficha técnica de un equipo
 
-Utiliza esta plantilla para completar la **Actividad 1.1**. Rellena cada campo con los datos identificados en el equipo desmontado (o en el catálogo de imágenes proporcionado por el profesorado).
+Utiliza esta plantilla para completar la **Actividad 1.4**. Rellena cada campo con los datos identificados en el equipo desmontado (o en el catálogo de imágenes proporcionado por el profesorado).
 
 | Elemento | Datos a identificar |
 | --- | --- |

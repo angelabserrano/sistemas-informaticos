@@ -14,7 +14,7 @@ Un **sistema informático** es el conjunto de elementos hardware y software que 
 
 **El modelo de von Neumann:** organiza conceptualmente un sistema informático en tres bloques funcionales —unidad de procesamiento, memoria y entrada/salida— conectados mediante un sistema de buses.
 
-- **Unidad central de proceso (CPU)**: ejecuta las instrucciones (ver 1.5).
+- **Unidad central de proceso (CPU)**: ejecuta las instrucciones (ver 1.6).
 - **Memoria principal**: almacena, con el mismo formato y en la misma memoria, tanto los datos como las instrucciones de los programas en ejecución (el llamado **concepto de programa almacenado**).
 - **Módulos de entrada/salida**: comunican el sistema con el exterior (periféricos, almacenamiento secundario, redes).
 
@@ -32,7 +32,7 @@ Un **sistema informático** es el conjunto de elementos hardware y software que 
 | Bus de control | Bidireccional | Transporta señales de sincronización: lectura/escritura, interrupciones, señal de reloj, etc. |
 
 !!! note "Idea clave"
-    Este esquema general de bloques y buses es el que se concreta físicamente en la placa base (ver 1.4): el chipset y sus buses de expansión son, en la práctica, una implementación moderna de este mismo modelo.
+    Este esquema general de bloques y buses es el que se concreta físicamente en la placa base (ver 1.5): el chipset y sus buses de expansión son, en la práctica, una implementación moderna de este mismo modelo.
 
 Los ordenadores solo manejan dos estados eléctricos (0/1), por lo que representan internamente toda la información en binario. El apartado 1.2 trata en detalle los sistemas de numeración que se usan para representarla y cómo convertir cantidades entre ellos.
 
@@ -158,7 +158,83 @@ Leyendo los restos de abajo hacia arriba: **45 = 101101₂**
 !!! note "Dónde aparecen en el resto del módulo"
     Aunque no siempre se diga de forma explícita, estos sistemas de numeración se usan continuamente: los **permisos de Linux** se expresan en octal (`chmod 754`, ver UT5 — cada cifra agrupa exactamente los 3 bits rwx de propietario, grupo y otros), y las **direcciones MAC** y las **IPv6** (ver UT2) se escriben en hexadecimal, donde cada pareja de dígitos representa un byte completo. La propia anchura del bus de direcciones (ver 1.1) se mide en potencias de 2 precisamente porque cada línea que se añade duplica el número de posiciones representables en binario.
 
-## 1.3. Chasis, alimentación y refrigeración
+## 1.3. Unidades de medida de la información
+
+Una vez conocida la unidad básica —el **byte** (8 bits, ver 1.2)—, hace falta un sistema de prefijos para expresar cantidades grandes de información: la capacidad de una memoria, un disco o un archivo se mide en múltiplos del byte.
+
+**Múltiplos decimales (SI):** siguen el mismo criterio que el resto de unidades del sistema métrico, con prefijos que representan potencias de 10.
+
+| Prefijo | Símbolo | Valor |
+| --- | --- | --- |
+| Kilobyte | KB | 10³ = 1 000 bytes |
+| Megabyte | MB | 10⁶ = 1 000 000 bytes |
+| Gigabyte | GB | 10⁹ = 1 000 000 000 bytes |
+| Terabyte | TB | 10¹² bytes |
+| Petabyte | PB | 10¹⁵ bytes |
+
+**Múltiplos binarios (IEC):** como los ordenadores direccionan la memoria en binario, resulta más natural agruparla en potencias de 2 cercanas a esos mismos múltiplos. Para evitar confundirlos con los prefijos decimales, la norma IEC 60027-2 define prefijos binarios específicos:
+
+| Prefijo | Símbolo | Valor |
+| --- | --- | --- |
+| Kibibyte | KiB | 2¹⁰ = 1 024 bytes |
+| Mebibyte | MiB | 2²⁰ = 1 048 576 bytes |
+| Gibibyte | GiB | 2³⁰ = 1 073 741 824 bytes |
+| Tebibyte | TiB | 2⁴⁰ bytes |
+
+!!! note "«KB» de toda la vida: el nombre nuevo es KiB, no el valor"
+    Aunque KiB, MiB o GiB parezcan prefijos novedosos, el valor que representan (1 024, 1 048 576...) es el que casi todo el mundo ya conoce desde siempre bajo el nombre KB, MB o GB: durante décadas la informática usó los prefijos decimales del sistema métrico (K, M, G) para referirse en la práctica a potencias de 2, porque son las cantidades que el ordenador maneja de forma natural (una tarjeta de RAM de «512 MB» son en realidad 512 × 2²⁰ bytes). Windows, por ejemplo, sigue mostrando «GB» en las propiedades de un archivo o una unidad, aunque el cálculo que hace por debajo es en base 1 024, es decir, GiB.
+
+    Los prefijos KiB/MiB/GiB no cambian ningún valor: solo le ponen, desde 1998 (norma IEC 60027-2), un nombre inequívoco a algo que el sector ya usaba habitualmente, para poder distinguirlo del significado estrictamente decimal (base 1 000) que exige el Sistema Internacional. En resumen: lo que siempre has llamado «KB» (1 024 bytes) es, formalmente, un KiB.
+
+!!! note "Por qué un disco de «500 GB» se muestra como 465 GB en el sistema operativo"
+    Los fabricantes de discos y memorias anuncian la capacidad en GB decimales (10⁹ bytes), pero el sistema operativo la muestra habitualmente en GiB, aunque la etiquete como «GB». Un disco de 500 000 000 000 bytes (500 GB reales) equivale a 500 000 000 000 / 2³⁰ ≈ 465,7 GiB, la cifra que aparece en el explorador de archivos. No es una avería ni una estafa: es la misma cantidad de bytes expresada con dos criterios distintos (ver también 1.8, capacidad de discos y soportes ópticos).
+
+**Bit y byte en las velocidades de transmisión:** por convenio, las velocidades de transferencia (redes, buses, interfaces) se expresan en bits por segundo, mientras que los tamaños de archivo y las capacidades de almacenamiento se expresan en bytes. Para distinguirlos se usa una «b» minúscula para bit y una «B» mayúscula para byte:
+
+- **Mbps o Mbit/s**: megabits por segundo (por ejemplo, la velocidad de una conexión de red).
+- **MBps o MB/s**: megabytes por segundo (por ejemplo, la velocidad de lectura de un disco).
+
+Como 1 byte = 8 bits, una interfaz de «8 Gbit/s» transfiere como máximo 1 GB/s reales: confundir ambas unidades es un error habitual al comparar el rendimiento de discos o redes (ver 1.8).
+
+**Ejemplos resueltos**
+
+**Ejemplo 1 — Múltiplos decimales:** un pendrive anuncia una capacidad de 3,5 GB. Exprésala en MB y en KB.
+
+??? success "Solución"
+    Cada múltiplo decimal equivale a 1 000 veces el anterior:
+
+    3,5 GB × 1 000 = **3 500 MB**
+
+    3 500 MB × 1 000 = **3 500 000 KB**
+
+**Ejemplo 2 — Múltiplos binarios:** un módulo de memoria RAM tiene 4 GiB. Exprésalos en MiB y en KiB.
+
+??? success "Solución"
+    Cada múltiplo binario equivale a 1 024 veces el anterior:
+
+    4 GiB × 1 024 = **4 096 MiB**
+
+    4 096 MiB × 1 024 = **4 194 304 KiB**
+
+**Ejemplo 3 — Decimal frente a binario:** un archivo ocupa 2 500 000 bytes. Exprésalo en KB (decimal) y en KiB (binario), redondeando a dos decimales.
+
+??? success "Solución"
+    En KB: 2 500 000 ÷ 1 000 = **2 500 KB**
+
+    En KiB: 2 500 000 ÷ 1 024 ≈ **2 441,41 KiB**
+
+    El mismo archivo da una cifra distinta según el criterio usado: en KiB el número siempre es más pequeño, porque cada KiB representa más bytes (1 024) que un KB (1 000).
+
+**Ejemplo 4 — Bit frente a byte:** una conexión a Internet ofrece 100 Mbit/s. ¿A cuántos MB/s equivale, y cuánto se tarda en descargar un archivo de 250 MB a esa velocidad (suponiendo que se alcanza la velocidad máxima de forma constante)?
+
+??? success "Solución"
+    Como 1 byte = 8 bits, para pasar de bits a bytes se divide entre 8:
+
+    100 Mbit/s ÷ 8 = **12,5 MB/s**
+
+    Tiempo = tamaño del archivo ÷ velocidad = 250 MB ÷ 12,5 MB/s = **20 segundos**
+
+## 1.4. Chasis, alimentación y refrigeración
 
 **Chasis (caja):** recinto metálico o de plástico que alberga los componentes principales del ordenador. A la hora de elegirlo se valoran su estructura y distribución interna, la ventilación, las posibilidades de expansión (número de bahías para discos y unidades) y la estética.
 
@@ -179,7 +255,7 @@ Leyendo los restos de abajo hacia arriba: **45 = 101101₂**
 Toca o haz clic en cualquier miniatura para verla a tamaño completo. También puedes ver todas las fotografías juntas en el **[catálogo visual — Formatos de caja](catalogo-componentes.md#formatos-de-caja)**.
 
 !!! note "Idea clave"
-    El formato del chasis debe ser compatible con el formato de la placa base (ver 1.4) y con el tamaño de la fuente de alimentación; no son elecciones independientes.
+    El formato del chasis debe ser compatible con el formato de la placa base (ver 1.5) y con el tamaño de la fuente de alimentación; no son elecciones independientes.
 
 **Fuente de alimentación (PSU):** transforma la corriente alterna de la red eléctrica (220V) en las distintas corrientes continuas que necesitan los componentes. Es un elemento clave para la estabilidad del sistema, las posibilidades de expansión (cuánta potencia puede entregar a componentes adicionales) y el consumo energético del equipo; las certificaciones como **Energy Star** indican una mayor eficiencia energética.
 
@@ -211,7 +287,7 @@ Toca o haz clic en cualquier miniatura para verla a tamaño completo. También p
 - **Refrigeración por aire**: ventiladores del chasis, disipadores metálicos y *coolers* (disipador + ventilador) sobre los componentes que más calientan. Es la solución más habitual, sencilla y económica.
 - **Refrigeración líquida**: un líquido refrigerante circula por un circuito cerrado, absorbiendo el calor de los componentes (normalmente la CPU) y disipándolo en un radiador externo. Permite disipar más calor y con menos ruido que el aire, a cambio de mayor coste y complejidad de instalación.
 
-## 1.4. Placas base y formatos
+## 1.5. Placas base y formatos
 
 La **placa base** (motherboard) es el circuito impreso principal de un ordenador: interconecta el procesador, la memoria, el almacenamiento, los periféricos y las tarjetas de expansión a través de un conjunto de buses y controladores.
 
@@ -263,7 +339,7 @@ graph TD
 
 1. Al recibir alimentación, la placa base entrega el control al firmware BIOS/UEFI.
 2. El POST comprueba, por orden, la memoria RAM, la tarjeta gráfica, el teclado/ratón y las unidades de almacenamiento conectadas.
-3. Si todo es correcto, el firmware localiza el dispositivo de arranque según el orden configurado y le cede el control (sector de arranque MBR o partición EFI en GPT — ver 1.7).
+3. Si todo es correcto, el firmware localiza el dispositivo de arranque según el orden configurado y le cede el control (sector de arranque MBR o partición EFI en GPT — ver 1.8).
 4. Si detecta un fallo grave, detiene el arranque y lo notifica: en sistemas con **BIOS heredada (legacy)**, mediante una secuencia de pitidos (*beep codes*) del altavoz interno, ya que todavía no hay salida de vídeo; en el firmware **UEFI** moderno, habitualmente mediante un código o mensaje en pantalla, o un display/LEDs de diagnóstico en la propia placa.
 
 ???+ note "Códigos de pitidos POST (BIOS heredada)"
@@ -282,7 +358,7 @@ graph TD
 ???+ tip "Herramientas de verificación y diagnóstico"
     Más allá del propio POST, con el sistema operativo ya arrancado se usan utilidades específicas para comprobar el estado del hardware: **HWiNFO64** o **AIDA64** (identificación completa del hardware y sensores de temperatura/voltaje), **CPU-Z**/**GPU-Z** (verificación de procesador, memoria y tarjeta gráfica), **MemTest86** (test de estabilidad de la memoria RAM, arrancado desde USB) y **CrystalDiskInfo** (estado de salud S.M.A.R.T. de discos HDD/SSD).
 
-## 1.5. El procesador: arquitectura, registros, unidad aritmético-lógica
+## 1.6. El procesador: arquitectura, registros, unidad aritmético-lógica
 
 El **procesador** (CPU) ejecuta las instrucciones de los programas. Sus bloques funcionales principales son:
 
@@ -329,9 +405,9 @@ flowchart LR
 
 - **Arquitectura de 32 o 64 bits**: tamaño de los datos y direcciones de memoria que el procesador maneja de forma nativa; condiciona, entre otras cosas, la cantidad máxima de memoria RAM direccionable (un sistema de 32 bits está limitado a 4 GB). Prácticamente todos los procesadores y sistemas operativos actuales son de 64 bits.
 - **Proceso de fabricación (litografía)**: tamaño de los transistores del chip, medido en nanómetros (nm). Cuanto menor es esta medida, más transistores caben en la misma superficie, lo que generalmente se traduce en más rendimiento y menor consumo (por ejemplo, 14 nm, 10 nm, 7 nm, 5 nm...).
-- **TDP (Thermal Design Power)**: potencia térmica de diseño, en vatios (W); indica el calor que el sistema de refrigeración debe ser capaz de disipar en condiciones normales de uso. Es un dato clave para elegir un disipador o *cooler* adecuado (ver 1.3) y para calcular el consumo y la fuente de alimentación necesaria.
+- **TDP (Thermal Design Power)**: potencia térmica de diseño, en vatios (W); indica el calor que el sistema de refrigeración debe ser capaz de disipar en condiciones normales de uso. Es un dato clave para elegir un disipador o *cooler* adecuado (ver 1.4) y para calcular el consumo y la fuente de alimentación necesaria.
 
-## 1.6. Tipos y características de la memoria interna
+## 1.7. Tipos y características de la memoria interna
 
 La memoria interna se organiza en una **jerarquía** que equilibra velocidad, capacidad y coste: cuanto más rápida es una memoria, más cara y más pequeña suele ser.
 
@@ -342,7 +418,7 @@ La memoria interna se organiza en una **jerarquía** que equilibra velocidad, ca
 - **DRAM** (Dynamic RAM): necesita refrescarse periódicamente; es la base de la memoria RAM principal. Tecnologías **DDR4** y **DDR5** son las generaciones actuales, caracterizadas por su frecuencia (MHz/MT/s), latencia (CL) y capacidad.
 - **SRAM** (Static RAM): más rápida y cara que la DRAM, no necesita refresco; se usa en las memorias caché del procesador.
 
-**Formato físico del módulo:** los zócalos de memoria de la placa base (ver 1.4) alojan módulos en formato **DIMM**, de tamaño estándar para equipos de sobremesa, o **SO-DIMM** (*Small Outline* DIMM), más compactos y utilizados en portátiles y equipos de formato reducido (Mini-ITX). Ambos existen en las mismas tecnologías (DDR4, DDR5...), pero no son intercambiables entre sí.
+**Formato físico del módulo:** los zócalos de memoria de la placa base (ver 1.5) alojan módulos en formato **DIMM**, de tamaño estándar para equipos de sobremesa, o **SO-DIMM** (*Small Outline* DIMM), más compactos y utilizados en portátiles y equipos de formato reducido (Mini-ITX). Ambos existen en las mismas tecnologías (DDR4, DDR5...), pero no son intercambiables entre sí.
 
 **Latencia (CAS Latency, CL):** número de ciclos de reloj que transcurren entre que el controlador de memoria solicita un dato y este está disponible en la salida; se expresa como una secuencia de valores (por ejemplo, CL16-18-18-36). A igual frecuencia, una latencia CL más baja implica una respuesta más rápida, aunque la latencia real en nanosegundos depende tanto del valor de CL como de la frecuencia del módulo.
 
@@ -366,7 +442,7 @@ La memoria interna se organiza en una **jerarquía** que equilibra velocidad, ca
 - **Volatilidad**: si pierde o no la información al cortar la alimentación.
 - **Ancho de banda**: cantidad de datos que puede transferir por unidad de tiempo.
 
-## 1.7. Interfaces de entrada/salida, discos y unidades ópticas
+## 1.8. Interfaces de entrada/salida, discos y unidades ópticas
 
 Las **interfaces de entrada/salida (E/S)** son los buses y conectores que permiten a la placa base comunicarse con los dispositivos de almacenamiento y otros periféricos.
 
@@ -405,7 +481,7 @@ Cada soporte existe además en varias variantes según su capacidad de grabació
 
 **Tarjetas de memoria flash:** soportes de almacenamiento extraíbles de estado sólido, muy utilizados en cámaras, móviles y otros dispositivos portátiles. Existen varios formatos (SD, microSD, miniSD, CompactFlash, Memory Stick...), con distinta capacidad, velocidad y tamaño físico; los lectores de tarjetas suelen admitir varios formatos mediante adaptadores.
 
-## 1.8. Tarjetas de expansión
+## 1.9. Tarjetas de expansión
 
 Las **tarjetas de expansión** son dispositivos con circuitos integrados que se insertan en las ranuras de expansión de la placa base (habitualmente PCIe) para ampliar las capacidades del equipo. Las más habituales son:
 
@@ -418,7 +494,7 @@ Las **tarjetas de expansión** son dispositivos con circuitos integrados que se 
 !!! note "Tecnologías en desuso"
     Hace unos años era habitual combinar dos tarjetas gráficas idénticas para sumar su potencia (**SLI** en Nvidia, **Crossfire** en AMD). Hoy en día ambos fabricantes la han abandonado casi por completo, en favor de tarjetas individuales cada vez más potentes.
 
-## 1.9. Periféricos: clasificación, instalación y configuración
+## 1.10. Periféricos: clasificación, instalación y configuración
 
 Un **periférico** es cualquier dispositivo que se conecta al ordenador para introducir, extraer o intercambiar información con él.
 
@@ -438,7 +514,7 @@ Un **periférico** es cualquier dispositivo que se conecta al ordenador para int
 !!! warning "Plug & Play no siempre es suficiente"
     Aunque la mayoría de periféricos actuales son *Plug & Play*, algunos dispositivos (impresoras multifunción, tarjetas gráficas, capturadoras...) requieren instalar manualmente el driver o el paquete de software completo del fabricante para funcionar con todas sus prestaciones.
 
-## 1.10. Normativa de seguridad y prevención de riesgos laborales
+## 1.11. Normativa de seguridad y prevención de riesgos laborales
 
 El trabajo con equipos informáticos está sujeto a la **Ley 31/1995 de Prevención de Riesgos Laborales (LPRL)** y, específicamente para puestos con pantallas de visualización de datos, al **Real Decreto 488/1997**.
 
@@ -452,7 +528,7 @@ El trabajo con equipos informáticos está sujeto a la **Ley 31/1995 de Prevenci
 !!! warning "Antes de abrir un equipo"
     Desconectar siempre el cable de alimentación (no basta con apagarlo) y utilizar muñequera antiestática antes de manipular componentes internos.
 
-## 1.11. Búsqueda y gestión de documentación técnica en Internet
+## 1.12. Búsqueda y gestión de documentación técnica en Internet
 
 Una parte importante del trabajo con sistemas informáticos consiste en localizar, evaluar y organizar documentación técnica: manuales de fabricante, hojas de características (*datasheets*), foros especializados, documentación oficial de fabricantes de hardware y software, o estándares técnicos.
 
@@ -477,7 +553,7 @@ Una parte importante del trabajo con sistemas informáticos consiste en localiza
 
 ## Catálogo visual de componentes
 
-Antes de hacer la **Actividad 1.3**, consulta el **[catálogo visual de componentes](catalogo-componentes.md)**: fotografías reales de placas base, procesadores, memoria, almacenamiento, tarjetas y dispositivos de red, y periféricos, con los rasgos que ayudan a reconocer cada uno físicamente.
+Antes de hacer la **Actividad 1.4**, consulta el **[catálogo visual de componentes](catalogo-componentes.md)**: fotografías reales de placas base, procesadores, memoria, almacenamiento, tarjetas y dispositivos de red, y periféricos, con los rasgos que ayudan a reconocer cada uno físicamente.
 
 ## Actividades
 
@@ -503,12 +579,23 @@ c) La dirección MAC de una tarjeta de red es `A4:C3:F0:85:AC:2D`. Indica cuánt
 
 d) Un archivo en Linux tiene permisos `rwxr-xr--`. Exprésalos como tres cifras en binario (una por categoría: propietario, grupo, otros) y conviértelas después a su cifra octal equivalente.
 
-**Actividad 1.3 — Diagnóstico de un equipo desmontado**
+**Actividad 1.3 — Unidades de medida de la información**
+{: .actividad-titulo}
+
+a) Convierte 7,2 GB a MB y después a KB (múltiplos decimales).
+
+b) Un pendrive indica una capacidad de 8 GiB. Exprésala en MiB y en KiB (múltiplos binarios).
+
+c) Un disco duro se vende como de «2 TB» (2 × 10¹² bytes). Calcula aproximadamente cuántos GiB reales mostrará el sistema operativo, y explica por qué esa cifra no coincide con los 2000 GB que anuncia la caja.
+
+d) Una conexión de fibra óptica ofrece 600 Mbit/s de bajada. Calcula a cuántos MB/s equivale esa velocidad y cuánto tardaría en descargarse, a velocidad máxima, un archivo de 3 GB.
+
+**Actividad 1.4 — Diagnóstico de un equipo desmontado**
 {: .actividad-titulo}
 
 Con un equipo de sobremesa desmontado (o un catálogo de imágenes proporcionado por el profesorado), identifica y fotografía/etiqueta: chasis (formato) y fuente de alimentación, sistema de refrigeración, placa base (formato), procesador y zócalo, módulos de memoria RAM, unidades de almacenamiento e interfaz que usan, alguna tarjeta de expansión si el equipo dispone de ella, y al menos tres periféricos con su tipo de conector. Elabora una ficha técnica del equipo a partir de esta **[plantilla de ficha técnica](plantilla-ficha-tecnica.md)**.
 
-**Actividad 1.4 — Identifica los elementos de una placa base (modelo antiguo)**
+**Actividad 1.5 — Identifica los elementos de una placa base (modelo antiguo)**
 {: .actividad-titulo}
 
 Esta placa base es una **Foxconn P55MX/H55MX**, con zócalo **LGA1156** y chipset **Intel P55** — una gama pensada para los primeros Core i5/i7 ("Lynnfield"), de en torno a **2009-2010**. Consulta el **[catálogo visual de componentes](catalogo-componentes.md)** si lo necesitas y, antes de mirar la solución, intenta identificar tú mismo/a los 23 elementos señalados.
@@ -518,7 +605,7 @@ Esta placa base es una **Foxconn P55MX/H55MX**, con zócalo **LGA1156** y chipse
 ??? note "Solución"
     ![Leyenda con los 23 elementos identificados: conectores de alimentación, ranuras PCI/PCIe, zócalo LGA1156, chipset, conectores SATA, etc.](img/ut1_placa_base_diagrama_leyenda.png)
 
-**Actividad 1.5 — Identifica los elementos de una placa base (modelo actual)**
+**Actividad 1.6 — Identifica los elementos de una placa base (modelo actual)**
 {: .actividad-titulo}
 
 Repite el ejercicio anterior sobre esta placa base más reciente, una **ASUS Prime X570-P** (zócalo **AM4**, chipset **AMD X570**, de **2019**, con ranuras DDR4 y M.2). Compárala con la de la actividad anterior: ¿qué elementos han cambiado de aspecto o posición y cuáles siguen cumpliendo la misma función?
@@ -537,12 +624,12 @@ Repite el ejercicio anterior sobre esta placa base más reciente, una **ASUS Pri
     9. Batería CMOS
     10. Panel de E/S trasero (USB, red, audio...)
 
-**Actividad 1.6 — CISC vs. RISC**
+**Actividad 1.7 — CISC vs. RISC**
 {: .actividad-titulo}
 
 Elabora una tabla comparativa entre arquitecturas CISC y RISC, y busca al menos tres dispositivos reales (PC, smartphone, consola, microcontrolador) indicando qué arquitectura de procesador utiliza cada uno y por qué crees que se eligió.
 
-**Actividad 1.7 — Memoria RAM: comparación de módulos**
+**Actividad 1.8 — Memoria RAM: comparación de módulos**
 {: .actividad-titulo}
 
 Se dispone de tres módulos de memoria con estas características:
@@ -561,7 +648,7 @@ c) Calcula la latencia real aproximada, en nanosegundos, de los módulos A y C c
 
 d) Busca en el **[catálogo visual de componentes](catalogo-componentes.md)** una fotografía de un módulo DIMM y otra de un módulo SO-DIMM, y señala dos diferencias visuales entre ambos.
 
-**Actividad 1.8 — Interfaces de almacenamiento y tarjetas de expansión**
+**Actividad 1.9 — Interfaces de almacenamiento y tarjetas de expansión**
 {: .actividad-titulo}
 
 Consulta el **[catálogo visual de componentes](catalogo-componentes.md)** y responde:
@@ -572,12 +659,12 @@ b) Un equipo de sobremesa necesita capturar vídeo de una cámara externa y su p
 
 c) Un SSD SATA y un SSD M.2 NVMe tienen la misma capacidad. Explica por qué el NVMe puede ofrecer mucha más velocidad, y en qué situación un disco externo por Thunderbolt superaría a uno conectado por USB 3.0.
 
-**Actividad 1.9 — Checklist de seguridad antes de manipular un equipo**
+**Actividad 1.10 — Checklist de seguridad antes de manipular un equipo**
 {: .actividad-titulo}
 
 Redacta un checklist de comprobaciones de seguridad (riesgo eléctrico, ESD, ergonomía) que un técnico debería seguir antes de abrir la carcasa de un PC para ampliar la memoria RAM. Justifica cada punto citando el riesgo que previene.
 
-**Actividad 1.10 — Búsqueda de documentación técnica**
+**Actividad 1.11 — Búsqueda de documentación técnica**
 {: .actividad-titulo}
 
 Busca la hoja de características (*datasheet*) oficial de cada uno de estos módulos de memoria RAM:
