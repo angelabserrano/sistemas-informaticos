@@ -236,23 +236,22 @@ Como 1 byte = 8 bits, una interfaz de «8 Gbit/s» transfiere como máximo 1 GB/
 
 ## 1.4. Chasis, alimentación y refrigeración
 
-**Chasis (caja):** recinto metálico o de plástico que alberga los componentes principales del ordenador. A la hora de elegirlo se valoran su estructura y distribución interna, la ventilación, las posibilidades de expansión (número de bahías para discos y unidades) y la estética.
+**Chasis (caja):** estructura que protege y alberga los componentes del ordenador. Proporciona los puntos de montaje, espacio, ventilación y posibilidades de expansión necesarios para instalar los componentes. A la hora de elegirlo se valoran también su distribución interna, el número de bahías para discos y unidades y la estética.
 
-**Formatos de chasis habituales**, de menor a mayor tamaño:
+**Tipos de chasis habituales**, de menor a mayor tamaño:
 
-| Foto | Formato | Altura aprox. | Bahías | Placas que admite |
-| --- | --- | --- | --- | --- |
-| [![Mini](img/ut1_chasis_mini.jpg){width=64}](img/ut1_chasis_mini.jpg) | Mini | — | Muy pocas | Formatos pequeños (Mini-ITX); puede llevar placa y fuente integradas (**barebone**) |
-| [![Slim](img/ut1_chasis_slim.jpg){width=64}](img/ut1_chasis_slim.jpg) | Slim | — | 1-2 | Micro-ATX, Flex-ATX |
-| [![Sobremesa](img/ut1_chasis_sobremesa.jpg){width=64}](img/ut1_chasis_sobremesa.jpg) | Sobremesa (desktop) | — | Variable | Cualquier formato; caja apaisada, cómoda para apoyar el monitor encima |
-| [![Microtorre](img/ut1_chasis_microtorre.jpg){width=64}](img/ut1_chasis_microtorre.jpg) | Microtorre | 25-32 cm | 2-4 | Micro-ATX, Flex-ATX y formatos ajustados |
-| [![Minitorre](img/ut1_chasis_minitorre.jpg){width=64}](img/ut1_chasis_minitorre.jpg) | Minitorre | 32-37 cm | 3-4 | Formatos que no requieren espacio ajustado |
-| [![Semitorre](img/ut1_chasis_semitorre.jpg){width=64}](img/ut1_chasis_semitorre.jpg) | Semitorre | 37-45 cm | Hasta 6 | Todos los formatos; es la más habitual |
-| [![Torre](img/ut1_chasis_torre.jpg){width=64}](img/ut1_chasis_torre.jpg) | Torre | 45-55 cm | 6 o más | Todos los formatos; buena ventilación |
-| [![Gran torre](img/ut1_chasis_gran_torre.jpg){width=64}](img/ut1_chasis_gran_torre.jpg) | Gran torre | 55-72 cm | 8 o más | Todos los formatos; servidores de gama baja |
-| [![Armario rack](img/ut1_chasis_rack.jpg){width=64}](img/ut1_chasis_rack.jpg) | Armario rack | — | Según U | Servidores montados en bastidor; excelente flujo de aire y cableado ordenado |
+| Foto | Tipo de chasis | Placas que admite (ver 1.5) | Uso típico |
+| --- | --- | --- | --- |
+| [![Compacto](img/ut1_chasis_mini.jpg){width=64}](img/ut1_chasis_mini.jpg) | Compacto / Mini-ITX | Mini-ITX | Equipos pequeños y de oficina; puede venir con placa y fuente ya integradas (**barebone**) |
+| [![Minitorre](img/ut1_chasis_microtorre.jpg){width=64}](img/ut1_chasis_microtorre.jpg) | Minitorre | Micro-ATX, Mini-ITX | Oficinas y aulas, equipos económicos |
+| [![Semitorre](img/ut1_chasis_semitorre.jpg){width=64}](img/ut1_chasis_semitorre.jpg) | Semitorre (*mid tower*) | ATX, Micro-ATX, Mini-ITX | Uso general; es la más habitual |
+| [![Torre completa](img/ut1_chasis_gran_torre.jpg){width=64}](img/ut1_chasis_gran_torre.jpg) | Torre completa (*full tower*) | E-ATX, ATX y menores | Estaciones de trabajo y gaming; mucho espacio para refrigeración y expansión |
+| [![Armario rack](img/ut1_chasis_rack.jpg){width=64}](img/ut1_chasis_rack.jpg) | Servidor de rack | Placas de servidor | Centros de datos; los servidores se atornillan en armarios rack de 19" |
 
-Toca o haz clic en cualquier miniatura para verla a tamaño completo. También puedes ver todas las fotografías juntas en el **[catálogo visual — Formatos de caja](catalogo-componentes.md#formatos-de-caja)**.
+Toca o haz clic en cualquier miniatura para verla a tamaño completo.
+
+!!! info "Servidores de rack y la unidad U"
+    Los servidores de un centro de datos no usan cajas de torre, sino chasis planos que se montan uno encima de otro en un **armario rack** (como el de la foto) de 19" de ancho. Su altura se mide en **unidades de rack (U)**: 1U equivale a 44,45 mm. Un servidor puede ocupar 1U, 2U, 4U…, y un armario típico tiene 42U. Es el tipo de equipo donde se despliegan las aplicaciones web.
 
 !!! note "Idea clave"
     El formato del chasis debe ser compatible con el formato de la placa base (ver 1.5) y con el tamaño de la fuente de alimentación; no son elecciones independientes.
