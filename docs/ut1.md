@@ -307,9 +307,6 @@ Existen varios niveles de certificación, que indican una eficiencia creciente a
 | Verde | PS_ON | Señal de encendido, activada por la placa base |
 | Gris | Power Good | Confirma que los voltajes son estables antes de permitir el arranque |
 
-!!! tip "Comprobación con multímetro"
-    Antes de dar por averiada una fuente de alimentación, puede comprobarse con un multímetro que entrega los voltajes esperados en los pines del conector principal (fuente encendida y, si es necesario, con el cable verde puenteado a uno negro para forzar el encendido sin la placa base conectada).
-
 **Sistemas de refrigeración:** mantener el equipo a una temperatura adecuada es fundamental para su rendimiento y su vida útil. Los componentes que más calor generan son el microprocesador, la tarjeta gráfica, el chipset de la placa base, la memoria RAM y el disco duro.
 
 - **Refrigeración por aire**: ventiladores del chasis, disipadores metálicos y *coolers* (disipador + ventilador) sobre los componentes que más calientan. Es la solución más habitual, sencilla y económica.
