@@ -257,7 +257,30 @@ Toca o haz clic en cualquier miniatura para verla a tamaño completo. También p
 !!! note "Idea clave"
     El formato del chasis debe ser compatible con el formato de la placa base (ver 1.5) y con el tamaño de la fuente de alimentación; no son elecciones independientes.
 
-**Fuente de alimentación (PSU):** transforma la corriente alterna de la red eléctrica (220V) en las distintas corrientes continuas que necesitan los componentes. Es un elemento clave para la estabilidad del sistema, las posibilidades de expansión (cuánta potencia puede entregar a componentes adicionales) y el consumo energético del equipo; las certificaciones como **Energy Star** indican una mayor eficiencia energética.
+**Fuente de alimentación (PSU):** convierte la tensión alterna de la red eléctrica (230 V de CA) en las diferentes tensiones de corriente continua que necesitan los componentes. Es un elemento clave para la estabilidad del sistema, las posibilidades de expansión (cuánta potencia puede entregar a componentes adicionales) y el consumo energético del equipo.
+
+**Eficiencia energética y certificaciones (80 PLUS):** la eficiencia de una fuente de alimentación indica qué parte de la energía eléctrica que consume de la red se convierte en energía útil para los componentes y qué parte se pierde en forma de calor. Cuanto mayor es la eficiencia, menor es la energía desperdiciada, lo que supone un menor consumo eléctrico, menos generación de calor y, en general, un funcionamiento más silencioso y duradero. El estándar más utilizado para indicarla es **80 PLUS**.
+
+!!! note "¿Qué es 80 PLUS?"
+    80 PLUS es un programa de certificación que establece unos requisitos mínimos de eficiencia para fuentes de alimentación de equipos de escritorio, estaciones de trabajo y algunos servidores. Una fuente con certificación 80 PLUS garantiza, como mínimo, un 80 % de eficiencia en determinadas condiciones de carga.
+
+Existen varios niveles de certificación, que indican una eficiencia creciente a medida que se avanza en la gama:
+
+<span class="badge-80plus badge-80plus-standard">80 PLUS (Estándar)</span><span class="badge-80plus badge-80plus-bronze">80 PLUS Bronze</span><span class="badge-80plus badge-80plus-silver">80 PLUS Silver</span><span class="badge-80plus badge-80plus-gold">80 PLUS Gold</span><span class="badge-80plus badge-80plus-platinum">80 PLUS Platinum</span><span class="badge-80plus badge-80plus-titanium">80 PLUS Titanium</span>
+
+**Eficiencia mínima exigida según el nivel y la carga de la fuente** (equipos de sobremesa, 230 V):
+
+| Carga de la fuente | Estándar | Bronze | Silver | Gold | Platinum | Titanium |
+| --- | --- | --- | --- | --- | --- | --- |
+| 20 % | 80 % | 82 % | 85 % | 87 % | 90 % | 90 % |
+| 50 % | 80 % | 85 % | 88 % | 90 % | 92 % | 94 % |
+| 100 % | 80 % | 82 % | 85 % | 87 % | 89 % | 90 % |
+
+!!! note "Idea clave"
+    Una certificación superior no siempre significa que sea la mejor opción en todos los casos, pero sí indica una mayor eficiencia, lo que suele traducirse en menor consumo, menos calor y mayor calidad de componentes.
+
+!!! tip "Más allá de 80 PLUS"
+    Además de 80 PLUS existen otras certificaciones, como **Cybenetics** o **ETA-A** (utilizadas en algunos entornos profesionales y de servidores), que también evalúan la eficiencia y otros aspectos, como el nivel de ruido. No obstante, 80 PLUS es el estándar más conocido y extendido en equipos de sobremesa.
 
 **Evolución de los modelos de fuente de alimentación:**
 
