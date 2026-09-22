@@ -264,9 +264,13 @@ Toca o haz clic en cualquier miniatura para verla a tamaño completo. También p
 !!! note "¿Qué es 80 PLUS?"
     80 PLUS es un programa de certificación que establece unos requisitos mínimos de eficiencia para fuentes de alimentación de equipos de escritorio, estaciones de trabajo y algunos servidores. Una fuente con certificación 80 PLUS garantiza, como mínimo, un 80 % de eficiencia en determinadas condiciones de carga.
 
-Existen varios niveles de certificación, que indican una eficiencia creciente a medida que se avanza en la gama:
+Existen varios niveles de certificación, que indican una eficiencia creciente a medida que se avanza en la gama. Son las pegatinas que se encuentran habitualmente en la carcasa de la propia fuente de alimentación:
 
-<span class="badge-80plus badge-80plus-standard">80 PLUS (Estándar)</span><span class="badge-80plus badge-80plus-bronze">80 PLUS Bronze</span><span class="badge-80plus badge-80plus-silver">80 PLUS Silver</span><span class="badge-80plus badge-80plus-gold">80 PLUS Gold</span><span class="badge-80plus badge-80plus-platinum">80 PLUS Platinum</span><span class="badge-80plus badge-80plus-titanium">80 PLUS Titanium</span>
+| Estándar | Bronze | Silver | Gold | Platinum | Titanium |
+| --- | --- | --- | --- | --- | --- |
+| ![80 PLUS Estándar](img/ut1_80plus_standard.png){width=90} | ![80 PLUS Bronze](img/ut1_80plus_bronze.png){width=90} | ![80 PLUS Silver](img/ut1_80plus_silver.png){width=90} | ![80 PLUS Gold](img/ut1_80plus_gold.png){width=90} | ![80 PLUS Platinum](img/ut1_80plus_platinum.png){width=90} | ![80 PLUS Titanium](img/ut1_80plus_titanium.png){width=90} |
+
+*Logotipos oficiales del programa 80 PLUS (dominio público por su sencillez gráfica, según [Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:80_Plus); marca registrada de su titular).*
 
 **Eficiencia mínima exigida según el nivel y la carga de la fuente** (equipos de sobremesa, 230 V):
 

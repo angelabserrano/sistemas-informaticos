@@ -76,28 +76,6 @@
   vertical-align: middle;
 }
 
-/* Insignias de los niveles de certificación 80 PLUS (sin usar los logotipos
-   oficiales, de licencia no clara para uso público) */
-.md-typeset .badge-80plus {
-  display: inline-block;
-  padding: 0.3rem 0.7rem;
-  margin: 0.15rem 0.4rem 0.15rem 0;
-  border-radius: 0.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #fff;
-  font-weight: bold;
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-.md-typeset .badge-80plus-standard { background-color: #6b7280; }
-.md-typeset .badge-80plus-bronze { background-color: #a9622c; }
-.md-typeset .badge-80plus-silver { background-color: #8c8c8c; }
-.md-typeset .badge-80plus-gold { background-color: #c9971f; color: #1a1a1a; }
-.md-typeset .badge-80plus-platinum { background-color: #5b6b7c; }
-.md-typeset .badge-80plus-titanium { background-color: #3f3f46; }
-
 /* Barra de título para actividades */
 .md-typeset .actividad-titulo {
   background-color: var(--md-primary-fg-color);
