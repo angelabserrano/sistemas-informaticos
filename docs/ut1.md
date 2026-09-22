@@ -259,7 +259,7 @@ Toca o haz clic en cualquier miniatura para verla a tamaño completo. También p
 
 **Fuente de alimentación (PSU):** convierte la tensión alterna de la red eléctrica (230 V de CA) en las diferentes tensiones de corriente continua que necesitan los componentes. Es un elemento clave para la estabilidad del sistema, las posibilidades de expansión (cuánta potencia puede entregar a componentes adicionales) y el consumo energético del equipo.
 
-**Eficiencia energética y certificaciones (80 PLUS):** la eficiencia de una fuente de alimentación indica qué parte de la energía eléctrica que consume de la red se convierte en energía útil para los componentes y qué parte se pierde en forma de calor. Cuanto mayor es la eficiencia, menor es la energía desperdiciada, lo que supone un menor consumo eléctrico, menos generación de calor y, en general, un funcionamiento más silencioso y duradero. El estándar más utilizado para indicarla es **80 PLUS**.
+**Eficiencia energética y certificaciones (80 PLUS):** la eficiencia de una fuente de alimentación indica qué parte de la energía eléctrica que consume de la red se convierte en energía útil para los componentes y qué parte se pierde en forma de calor. Cuanto mayor es la eficiencia, menor desperdicio de energía y menor generación de calor. Esto puede contribuir a reducir el consumo eléctrico del equipo y facilitar una refrigeración más silenciosa. El estándar más utilizado para indicarla es **80 PLUS**.
 
 !!! note "¿Qué es 80 PLUS?"
     80 PLUS es un programa de certificación que establece unos requisitos mínimos de eficiencia para fuentes de alimentación de equipos de escritorio, estaciones de trabajo y algunos servidores. Una fuente con certificación 80 PLUS garantiza, como mínimo, un 80 % de eficiencia en determinadas condiciones de carga.
@@ -272,9 +272,11 @@ Existen varios niveles de certificación, que indican una eficiencia creciente a
 
 | Carga de la fuente | Estándar | Bronze | Silver | Gold | Platinum | Titanium |
 | --- | --- | --- | --- | --- | --- | --- |
-| 20 % | 80 % | 82 % | 85 % | 87 % | 90 % | 90 % |
-| 50 % | 80 % | 85 % | 88 % | 90 % | 92 % | 94 % |
-| 100 % | 80 % | 82 % | 85 % | 87 % | 89 % | 90 % |
+| 20 % | 82 % | 85 % | 87 % | 90 % | 92 % | 93 % |
+| 50 % | 85 % | 88 % | 90 % | 92 % | 94 % | 95 % |
+| 100 % | 82 % | 85 % | 87 % | 89 % | 90 % | 91 % |
+
+*Valores para la certificación 230 V EU (Europa); el nivel Titanium exige además un 90 % de eficiencia al 10 % de carga, un requisito que no tienen los demás niveles.*
 
 !!! note "Idea clave"
     Una certificación superior no siempre significa que sea la mejor opción en todos los casos, pero sí indica una mayor eficiencia, lo que suele traducirse en menor consumo, menos calor y mayor calidad de componentes.
