@@ -576,10 +576,6 @@ Una parte importante del trabajo con sistemas informáticos consiste en localiza
     - Usar operadores de búsqueda avanzada (comillas para frases exactas, `site:` para limitar a un dominio, `filetype:` para tipos de archivo concretos).
     - Guardar y organizar la documentación relevante (marcadores, gestores de notas) para no tener que volver a buscarla.
 
-## Catálogo visual de componentes
-
-Antes de hacer la **Actividad 1.4**, consulta el **[catálogo visual de componentes](catalogo-componentes.md)**: fotografías reales de placas base, procesadores, memoria, almacenamiento, tarjetas y dispositivos de red, y periféricos, con los rasgos que ayudan a reconocer cada uno físicamente.
-
 ## Actividades
 
 **Actividad 1.1 — El modelo de von Neumann en acción**
@@ -615,10 +611,38 @@ c) Un disco duro se vende como de «2 TB» (2 × 10¹² bytes). Calcula aproxima
 
 d) Una conexión de fibra óptica ofrece 600 Mbit/s de bajada. Calcula a cuántos MB/s equivale esa velocidad y cuánto tardaría en descargarse, a velocidad máxima, un archivo de 3 GB.
 
-**Actividad 1.4 — Diagnóstico de un equipo desmontado**
+**Actividad 1.4 — Chasis, fuente de alimentación y refrigeración**
 {: .actividad-titulo}
 
-Con un equipo de sobremesa desmontado (o un catálogo de imágenes proporcionado por el profesorado), identifica y fotografía/etiqueta: chasis (formato) y fuente de alimentación, sistema de refrigeración, placa base (formato), procesador y zócalo, módulos de memoria RAM, unidades de almacenamiento e interfaz que usan, alguna tarjeta de expansión si el equipo dispone de ella, y al menos tres periféricos con su tipo de conector. Elabora una ficha técnica del equipo a partir de esta **[plantilla de ficha técnica](plantilla-ficha-tecnica.md)**.
+a) Indica qué tipo de chasis elegirías en cada caso y justifica tu respuesta:
+
+- un aula de informática con 30 equipos de oficina con placa Micro-ATX;
+- una estación de trabajo para edición de vídeo con placa E-ATX, dos tarjetas gráficas y varios discos;
+- un servidor web de una empresa que se instalará en un armario rack de su centro de datos.
+
+b) Un armario rack de 42U ya tiene instalados un switch (1U), un panel de parcheo (1U) y un SAI (2U).
+
+- ¿Cuántos servidores de 2U caben todavía?
+- ¿Qué altura en centímetros ocupa un servidor de 2U?
+
+c) Un equipo necesita 300 W para sus componentes y utiliza una fuente de 600 W, por lo que trabaja al 50 % de carga. Utilizando la tabla de eficiencias para 230 V:
+
+- calcula cuánta potencia toma de la red con una fuente 80 PLUS Bronze y con una 80 PLUS Gold;
+- calcula el ahorro anual que supone utilizar la fuente Gold frente a la Bronze si el equipo funciona 8 horas al día durante 220 días al año y el kWh cuesta 0,15 €;
+- calcula el ahorro para un aula de 30 equipos.
+
+d) Un ordenador aparentemente apagado puede seguir recibiendo alimentación eléctrica:
+
+- ¿qué línea de la fuente proporciona alimentación cuando el equipo está apagado?
+- ¿cómo permite esto funciones como *Wake on LAN*?
+- ¿qué función cumple la señal *Power Good* durante el arranque?
+
+e) Compara la refrigeración por aire y la líquida en cuanto a coste, ruido, capacidad de disipación y mantenimiento. ¿Qué sistema de refrigeración elegirías para:
+
+- la estación de edición de vídeo del apartado a)?
+- un equipo de oficina?
+
+Justifica tus decisiones.
 
 **Actividad 1.5 — Identifica los elementos de una placa base (modelo antiguo)**
 {: .actividad-titulo}
@@ -700,3 +724,8 @@ Busca la hoja de características (*datasheet*) oficial de cada uno de estos mó
 - Crucial 8 GB DDR5-4800 (SO-DIMM, portátil)
 
 Para cada módulo, extrae sus características principales (capacidad, velocidad, CAS Latency, voltaje, interfaz) y cita la URL exacta del datasheet utilizado, valorando su fiabilidad (¿es la web oficial del fabricante? ¿está actualizado?). Presenta los resultados en una tabla comparativa.
+
+**Actividad 1.12 — Identificación de los componentes de un equipo y ficha técnica**
+{: .actividad-titulo}
+
+Con un equipo de sobremesa desmontado (o un catálogo de imágenes proporcionado por el profesorado), identifica y fotografía/etiqueta: tipo de chasis y fuente de alimentación, sistema de refrigeración, placa base (formato), procesador y zócalo, módulos de memoria RAM, unidades de almacenamiento e interfaz que usan, alguna tarjeta de expansión si el equipo dispone de ella, y al menos tres periféricos con su tipo de conector. Elabora una ficha técnica del equipo a partir de esta **[plantilla de ficha técnica](plantilla-ficha-tecnica.md)**.

@@ -1,10 +1,10 @@
 # Plantilla: ficha técnica de un equipo
 
-Utiliza esta plantilla para completar la **Actividad 1.4**. Rellena cada campo con los datos identificados en el equipo desmontado (o en el catálogo de imágenes proporcionado por el profesorado).
+Utiliza esta plantilla para completar la **Actividad 1.12**. Rellena cada campo con los datos identificados en el equipo desmontado (o en el catálogo de imágenes proporcionado por el profesorado).
 
 | Elemento | Datos a identificar |
 | --- | --- |
-| Chasis | Formato (torre, minitorre, slim, sobremesa...) |
+| Chasis | Tipo (compacto, minitorre, semitorre, torre completa...) |
 | Fuente de alimentación | Formato y potencia (si es visible) |
 | Sistema de refrigeración | Tipo (aire, líquida) y elementos (disipador, ventiladores...) |
 | Placa base | Formato (ATX, Micro-ATX, Mini-ITX...) |
