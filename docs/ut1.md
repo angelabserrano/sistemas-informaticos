@@ -284,6 +284,55 @@ Existen varios niveles de certificación, que indican una eficiencia creciente a
 !!! note "Idea clave"
     Una certificación superior no siempre significa que sea la mejor opción en todos los casos, pero sí indica una mayor eficiencia, lo que suele traducirse en menor consumo, menos calor y mayor calidad de componentes.
 
+**Cómo calcular el consumo y el ahorro de una fuente**
+
+La eficiencia relaciona la potencia que la fuente entrega a los componentes (potencia útil) con la que toma de la red eléctrica:
+
+- **Porcentaje de carga** = potencia que necesitan los componentes ÷ potencia nominal de la fuente × 100
+- **Potencia tomada de la red** = potencia que necesitan los componentes ÷ eficiencia (expresada en tanto por uno: 90 % → 0,90)
+- **Potencia perdida en forma de calor** = potencia tomada de la red − potencia que necesitan los componentes
+- **Energía (kWh)** = potencia (W) × horas de funcionamiento ÷ 1 000
+- **Coste (€)** = energía (kWh) × precio del kWh
+
+**Ejemplo resuelto — Fuente 80 PLUS Silver frente a Platinum:** un equipo necesita 250 W para sus componentes y utiliza una fuente de 500 W. Utilizando la tabla de eficiencias para 230 V, calcula la potencia que toma de la red con una fuente 80 PLUS Silver y con una 80 PLUS Platinum, y el ahorro anual que supone la Platinum si el equipo funciona 10 horas al día durante 250 días al año y el kWh cuesta 0,20 €. Calcula también el ahorro para un aula de 20 equipos.
+
+??? success "Solución"
+    **1. Porcentaje de carga de la fuente:**
+
+    250 W ÷ 500 W × 100 = **50 %** → en la tabla se usa la fila del 50 %: Silver = 90 % y Platinum = 94 %.
+
+    **2. Potencia que toma de la red cada fuente:**
+
+    | Fuente | Cálculo | Potencia de la red | Pérdida en calor |
+    | --- | --- | --- | --- |
+    | Silver (90 %) | 250 W ÷ 0,90 | **277,78 W** | 277,78 − 250 = 27,78 W |
+    | Platinum (94 %) | 250 W ÷ 0,94 | **265,96 W** | 265,96 − 250 = 15,96 W |
+
+    Diferencia de potencia: 277,78 W − 265,96 W = **11,82 W**
+
+    **3. Horas de funcionamiento al año:**
+
+    10 h/día × 250 días = **2 500 h**
+
+    **4. Energía ahorrada al año (un equipo):**
+
+    11,82 W × 2 500 h = 29 550 Wh ÷ 1 000 = **29,55 kWh**
+
+    **5. Ahorro económico anual (un equipo):**
+
+    29,55 kWh × 0,20 €/kWh = **5,91 €**
+
+    **6. Ahorro para un aula de 20 equipos:**
+
+    5,91 € × 20 = **118,20 €** al año
+
+    Aunque el ahorro por equipo parece pequeño, se multiplica al considerar muchos equipos y varios años de uso. Además, la fuente más eficiente genera casi la mitad de calor (15,96 W frente a 27,78 W), lo que facilita la refrigeración.
+
+!!! tip "Consejos para resolver este tipo de ejercicios"
+    - Comprueba primero el porcentaje de carga para elegir la fila correcta de la tabla.
+    - Divide (no multipliques) entre la eficiencia: la fuente siempre toma de la red **más** potencia de la que entrega.
+    - Cuidado con las unidades: pasa de Wh a kWh dividiendo entre 1 000 antes de multiplicar por el precio.
+
 !!! tip "Más allá de 80 PLUS"
     Además de 80 PLUS existen otras certificaciones, como **Cybenetics** o **ETA-A** (utilizadas en algunos entornos profesionales y de servidores), que también evalúan la eficiencia y otros aspectos, como el nivel de ruido. No obstante, 80 PLUS es el estándar más conocido y extendido en equipos de sobremesa.
 
