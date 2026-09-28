@@ -363,24 +363,147 @@ La eficiencia relaciona la potencia que la fuente entrega a los componentes (pot
 
 ## 1.5. Placas base y formatos
 
-La **placa base** (motherboard) es el circuito impreso principal de un ordenador: interconecta el procesador, la memoria, el almacenamiento, los periféricos y las tarjetas de expansión a través de un conjunto de buses y controladores.
+La **placa base** (motherboard) es el circuito impreso principal del ordenador: interconecta el procesador, la memoria, el almacenamiento, los periféricos y las tarjetas de expansión mediante buses y controladores.
 
 **Elementos principales de una placa base:**
 
-- **Chipset**: conjunto de circuitos integrados que gestiona la comunicación entre CPU, memoria y periféricos. En placas modernas suele reducirse a un único chip, el **PCH** (Platform Controller Hub), que sustituye a los antiguos *northbridge* (gestión de memoria y gráfica) y *southbridge* (gestión de E/S).
-- **Zócalo (socket)** del procesador: define qué modelos de CPU son compatibles físicamente. Según dónde se ubiquen los pines de contacto, existen tres tipos: **PGA** (*Pin Grid Array*, pines en el propio procesador), **LGA** (*Land Grid Array*, pines en la placa base; habitual en Intel) y **BGA** (*Ball Grid Array*, procesador soldado directamente a la placa, sin zócalo desmontable; típico de portátiles y equipos embebidos). La mayoría de zócalos PGA/LGA actuales son de tipo **ZIF** (*Zero Insertion Force*): una palanca lateral libera y sujeta el procesador sin necesidad de ejercer presión sobre los pines al instalarlo o retirarlo, evitando dañarlos.
-- **Ranuras de memoria** (DIMM/SO-DIMM).
-- **Buses de expansión**: ranuras PCIe para tarjetas gráficas, capturadoras, controladoras adicionales, etc. El ancho de banda depende del número de líneas (*lanes*, x1/x4/x8/x16) y de la generación del estándar:
+![Placa base Gigabyte con nueve elementos numerados: zócalo, ranuras de memoria, chipset, ranuras PCIe, conectores SATA, conector ATX de 24 pines, conector EPS, batería CMOS y panel trasero de E/S](img/ut1_placa_base_gigabyte_numerada.jpg){width=460}
 
-    | Generación | x1 | x4 | x8 | x16 |
-    | --- | --- | --- | --- | --- |
-    | PCIe 3.0 | 1 GB/s | 4 GB/s | 8 GB/s | 16 GB/s |
-    | PCIe 4.0 | 2 GB/s | 8 GB/s | 16 GB/s | 32 GB/s |
-    | PCIe 5.0 | 4 GB/s | 16 GB/s | 32 GB/s | 64 GB/s |
+*Placa base Gigabyte (LGA1366, DDR3 de triple canal).*
 
-- **Conectores de almacenamiento**: SATA, M.2 (NVMe/SATA).
-- **BIOS/UEFI**: firmware almacenado en una memoria no volátil que inicializa el hardware al arrancar.
-- **Conectores de alimentación** (ATX de 24 pines, EPS de 4/8 pines para la CPU) y **panel de conectores traseros** (USB, red, audio, vídeo).
+1. **Zócalo (socket)**: aloja el procesador y define qué CPU son compatibles.
+2. **Ranuras de memoria**: DIMM para los módulos de RAM.
+3. **Chipset**: proporciona y gestiona parte de la conectividad de la placa (USB, SATA, PCIe adicionales, etc.).
+4. **Ranuras PCIe**: tarjeta gráfica y otras tarjetas de expansión.
+5. **Conectores SATA**: discos y unidades de almacenamiento (además de M.2).
+6. **Conector ATX de 24 pines**: alimentación principal desde la fuente.
+7. **Conector EPS**: alimentación adicional del procesador (4/8 pines).
+8. **Batería CMOS**: mantiene la hora y la configuración de la BIOS/UEFI.
+9. **Panel trasero de E/S**: USB, red, audio y vídeo.
+
+**El chipset y la interconexión:** el **chipset** es el conjunto de circuitos que proporciona parte de la conectividad y las funciones de entrada/salida de la placa base. En una placa moderna el trabajo se reparte así:
+
+- **En la CPU**: en los ordenadores actuales, muchas funciones que antiguamente realizaba el *northbridge* están integradas directamente en el procesador, como el **controlador de memoria** y parte de las **líneas PCIe** (las de la tarjeta gráfica, principalmente).
+- **En el chipset**: proporciona principalmente conexiones adicionales para dispositivos como USB, SATA/M.2 y PCIe, entre otras. En Intel se denomina **PCH** (*Platform Controller Hub*).
+
+**Esquema de interconexión de una placa moderna:**
+
+```mermaid
+graph TD
+    CPU["Procesador (CPU)"] --- RAM["Memoria RAM<br/>(controlador integrado en la CPU)"]
+    CPU --- PCIe1["PCIe principal<br/>(p. ej., la tarjeta gráfica)"]
+    CPU --- Chipset[Chipset]
+    Chipset --- USB[USB]
+    Chipset --- Storage[SATA / M.2]
+    Chipset --- PCIe2[PCIe adicionales]
+    Chipset --- Otras["… y otras conexiones"]
+```
+
+**Antes y ahora: la evolución del chipset.** Antiguamente la conectividad de la placa se repartía entre dos chips: el **northbridge** (memoria y gráfica) y el **southbridge** (USB, IDE/SATA, PCI, audio). Hoy gran parte de las funciones del northbridge están dentro del procesador y el chipset se reduce a un único chip.
+
+=== "Antes: northbridge + southbridge"
+
+    ```mermaid
+    graph TD
+        CPU[Procesador] --- NB[Northbridge]
+        NB --- RAM[Memoria RAM]
+        NB --- GPU[Gráfica]
+        NB --- SB[Southbridge]
+        SB --- USB[USB]
+        SB --- IDE[IDE / SATA]
+        SB --- PCI[PCI / audio]
+    ```
+
+=== "Ahora: CPU + chipset"
+
+    ```mermaid
+    graph TD
+        CPU["Procesador (CPU)<br/>incluye el controlador de memoria<br/>y la PCIe principal"] --- RAM[Memoria RAM]
+        CPU --- PCIe[PCIe principal]
+        CPU --- Chipset[Chipset]
+        Chipset --- USB[USB]
+        Chipset --- SATA[SATA / M.2]
+        Chipset --- PCIe2[PCIe adicionales]
+    ```
+
+    La memoria RAM y la PCIe principal, que antes gestionaba el northbridge, ahora las gestiona directamente la CPU.
+
+![Placa Gigabyte con zócalo LGA775 en la que se señalan el northbridge (N), bajo un disipador, y el southbridge (S)](img/ut1_placa_lga775_northbridge_southbridge.jpg){width=460}
+
+*Placa Gigabyte con zócalo LGA775 (c. 2005-2008): dos chips separados. **N** = northbridge (memoria y gráfica); **S** = southbridge (USB, IDE/SATA, PCI, audio).*
+
+???+ info "¿Cuándo cambió? (aprox.)"
+    - **2003**: AMD (Athlon 64) integra el controlador de memoria en la CPU.
+    - **2008-2009**: Intel integra la memoria y la PCIe de la gráfica en la CPU; el chipset pasa a ser un solo chip.
+    - **Hacia 2011**: la GPU integrada también pasa al procesador (Intel Sandy Bridge, APU de AMD).
+
+**El zócalo del procesador:** el **zócalo (socket)** define qué procesadores son compatibles físicamente con la placa. Según dónde estén los pines de contacto existen tres tipos:
+
+<div class="grid cards" markdown>
+
+-   ![Cara inferior de un procesador AMD Ryzen AM4 con sus pines](img/ut1_cpu_amd_pines.jpg)
+
+    **PGA** (*Pin Grid Array*)
+
+    Los pines están en el propio procesador y encajan en los orificios del zócalo. *Imagen: cara inferior de un AMD Ryzen (AM4).*
+
+-   ![Procesador Intel Core i7-12700K visto por su cara superior](img/ut1_cpu_intel_top.jpg)
+
+    **LGA** (*Land Grid Array*)
+
+    Los pines están en la placa base; el procesador solo tiene contactos planos. Habitual en Intel. *Imagen: Intel Core i7-12700K (cara superior; los contactos están debajo).*
+
+-   ![Esquema de un encapsulado BGA: el chip se suelda a la placa mediante bolas de soldadura](img/ut1_bga_esquema.svg)
+
+    **BGA** (*Ball Grid Array*)
+
+    El procesador va soldado directamente a la placa, sin zócalo desmontable. Típico de portátiles y equipos embebidos. *Esquema: bolas de soldadura bajo el chip.*
+
+</div>
+
+!!! note "ZIF (*Zero Insertion Force*)"
+    En la mayoría de zócalos PGA/LGA actuales, una palanca lateral libera y sujeta el procesador sin ejercer presión sobre los pines, evitando dañarlos al instalarlo o retirarlo.
+
+**Buses de expansión: PCIe.** **PCI Express (PCIe)** es el bus de expansión de las placas actuales: conecta la tarjeta gráfica, capturadoras, controladoras adicionales, etc. Su ancho de banda depende del número de líneas (*lanes*: x1, x4, x8, x16) y de la generación del estándar:
+
+| Generación | x1 | x4 | x8 | x16 |
+| --- | --- | --- | --- | --- |
+| PCIe 3.0 | 1 GB/s | 4 GB/s | 8 GB/s | 16 GB/s |
+| PCIe 4.0 | 2 GB/s | 8 GB/s | 16 GB/s | 32 GB/s |
+| PCIe 5.0 | 4 GB/s | 16 GB/s | 32 GB/s | 64 GB/s |
+
+!!! tip "×2 por generación"
+    Cada generación **duplica** el ancho de banda de la anterior: una ranura x16 pasa de 16 GB/s (PCIe 3.0) a 32 GB/s (PCIe 4.0) y a 64 GB/s (PCIe 5.0).
+
+**Memoria, almacenamiento y conectores.** Además del zócalo y las ranuras PCIe, la placa incluye las ranuras de memoria, los conectores de almacenamiento y alimentación, y el panel trasero:
+
+<div class="grid cards" markdown>
+
+-   ![Módulo de memoria RAM DIMM](img/ut1_ram_dimm.jpg)
+
+    **Ranuras de memoria**
+
+    DIMM en sobremesa y SO-DIMM en portátiles. Alojan los módulos de RAM (ver 1.7).
+
+-   ![SSD en formato M.2 NVMe](img/ut1_ssd_nvme.jpg)
+
+    **Conectores de almacenamiento**
+
+    SATA para discos y unidades, y M.2 para SSD NVMe o SATA montados directamente en la placa.
+
+-   ![Esquema de los conectores de alimentación ATX de 24 pines y EPS de 4/8 pines](img/ut1_conectores_alimentacion.svg)
+
+    **Conectores de alimentación**
+
+    **ATX de 24 pines** para la alimentación principal y **EPS de 4/8 pines** para la alimentación adicional del procesador.
+
+-   ![Panel de conectores traseros de una placa base antigua](img/ut1_panel_io.jpg)
+
+    **Panel de conectores traseros**
+
+    USB, red, audio y vídeo: la conexión de la placa con el exterior. (En el modelo antiguo de la imagen: PS/2, VGA, serie y paralelo.)
+
+</div>
 
 **Formatos (form factor):** determinan el tamaño físico de la placa, la disposición de los taladros de anclaje y, por tanto, la compatibilidad con las cajas.
 
@@ -391,23 +514,21 @@ La **placa base** (motherboard) es el circuito impreso principal de un ordenador
 | Micro-ATX | 244 × 244 mm | Equipos compactos, buena relación precio/expansión |
 | Mini-ITX | 170 × 170 mm | Equipos muy compactos, un único slot PCIe |
 
-![Comparativa a escala de los formatos de placa base: WTX, ATX, MicroATX, FlexATX, Mini-ITX, NanoITX y otros, de mayor a menor tamaño](img/ut1_placa_formatos_diagrama.png)
-
 !!! note "Idea clave"
-    El formato de la placa base condiciona la caja, la fuente de alimentación y la capacidad de expansión del equipo, pero no determina por sí solo el rendimiento.
+    El *form factor* condiciona fundamentalmente la compatibilidad con la caja y las posibilidades de expansión, pero no determina necesariamente el tipo de fuente de alimentación.
 
-**Esquema de interconexión de una placa base:**
+**Comparativa de formatos a escala.** Mismo esquema, distinto tamaño: cuanto menor es el formato, menos ranuras de expansión y de memoria ofrece la placa.
 
-```mermaid
-graph TD
-    CPU[Procesador] --- Chipset[Chipset / PCH]
-    Chipset --- RAM[Memoria RAM]
-    Chipset --- Storage[Almacenamiento SATA / M.2]
-    Chipset --- PCIe[Ranuras PCIe]
-    Chipset --- USB[Puertos USB]
-    Chipset --- BIOS[BIOS/UEFI]
-    Chipset --- Red[Tarjeta de red]
-```
+![Placas Standard-ATX, Micro-ATX, Mini-ITX, Nano-ITX y Pico-ITX colocadas una junto a otra, con una pluma como referencia de escala](img/ut1_placa_formatos_comparativa.jpg)
+
+*Standard-ATX, Micro-ATX, Mini-ITX, Nano-ITX y Pico-ITX (la pluma da la escala).*
+
+![Comparativa a escala de las dimensiones de los formatos de placa base, en milímetros](img/ut1_placa_formatos_diagrama.png){width=420}
+
+*Dimensiones a escala (mm).*
+
+!!! tip "Fíjate"
+    Del ATX al Pico-ITX el tamaño se reduce a una fracción, y con él las ranuras de expansión, de memoria y los conectores disponibles.
 
 **El proceso de arranque (POST):** al encender el equipo, el firmware BIOS/UEFI de la placa base ejecuta el **POST** (*Power-On Self-Test*), una secuencia de comprobaciones automáticas del hardware básico antes de ceder el control al sistema operativo:
 
