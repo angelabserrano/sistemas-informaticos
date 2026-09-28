@@ -407,15 +407,7 @@ graph TD
 
 === "Ahora: CPU + chipset"
 
-    ```mermaid
-    graph TD
-        CPU["Procesador (CPU)<br/>incluye el controlador de memoria<br/>y la PCIe principal"] --- RAM[Memoria RAM]
-        CPU --- PCIe[PCIe principal]
-        CPU --- Chipset[Chipset]
-        Chipset --- USB[USB]
-        Chipset --- SATA[SATA / M.2]
-        Chipset --- PCIe2[PCIe adicionales]
-    ```
+    ![Esquema actual: la CPU incluye el controlador de memoria y se conecta directamente a la memoria RAM por los canales de memoria y a la PCIe principal (p. ej., la tarjeta gráfica) por sus líneas PCIe; se enlaza con el chipset (DMI/UPI, etc.), que proporciona USB, SATA/M.2 y PCIe adicionales](img/ut1_cpu_chipset_esquema.jpg)
 
     La memoria RAM y la PCIe principal, que antes gestionaba el northbridge, ahora las gestiona directamente la CPU.
 
