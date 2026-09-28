@@ -403,16 +403,7 @@ graph TD
 
 === "Antes: northbridge + southbridge"
 
-    ```mermaid
-    graph TD
-        CPU[Procesador] --- NB[Northbridge]
-        NB --- RAM[Memoria RAM]
-        NB --- GPU[Gráfica]
-        NB --- SB[Southbridge]
-        SB --- USB[USB]
-        SB --- IDE[IDE / SATA]
-        SB --- PCI[PCI / audio]
-    ```
+    ![Esquema clásico de chipset: la CPU se conecta al northbridge por el bus frontal (FSB); el northbridge se comunica con la memoria RAM por el bus de memoria, con la tarjeta gráfica por el bus de gráficos (AGP o PCIe) y con el southbridge por el bus interno del chipset; el southbridge gestiona USB, IDE/SATA y PCI/audio](img/ut1_northbridge_southbridge_esquema.jpg)
 
 === "Ahora: CPU + chipset"
 
