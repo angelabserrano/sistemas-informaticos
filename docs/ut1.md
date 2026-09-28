@@ -388,16 +388,7 @@ La **placa base** (motherboard) es el circuito impreso principal del ordenador: 
 
 **Esquema de interconexión de una placa moderna:**
 
-```mermaid
-graph TD
-    CPU["Procesador (CPU)"] --- RAM["Memoria RAM<br/>(controlador integrado en la CPU)"]
-    CPU --- PCIe1["PCIe principal<br/>(p. ej., la tarjeta gráfica)"]
-    CPU --- Chipset[Chipset]
-    Chipset --- USB[USB]
-    Chipset --- Storage[SATA / M.2]
-    Chipset --- PCIe2[PCIe adicionales]
-    Chipset --- Otras["… y otras conexiones"]
-```
+![Esquema de interconexión de una placa moderna: el procesador, que incluye el controlador de memoria y la PCIe principal, se conecta a la memoria RAM, a la PCIe principal (p. ej., la tarjeta gráfica) y al chipset; el chipset proporciona USB, SATA/M.2, PCIe adicionales y otras conexiones](img/ut1_placa_moderna_interconexion.jpg)
 
 **Antes y ahora: la evolución del chipset.** Antiguamente la conectividad de la placa se repartía entre dos chips: el **northbridge** (memoria y gráfica) y el **southbridge** (USB, IDE/SATA, PCI, audio). Hoy gran parte de las funciones del northbridge están dentro del procesador y el chipset se reduce a un único chip.
 
