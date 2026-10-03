@@ -817,12 +817,7 @@ Repite el ejercicio anterior sobre esta placa base más reciente, una **ASUS Pri
     9. Batería CMOS
     10. Panel de E/S trasero (USB, red, audio...)
 
-**Actividad 1.7 — CISC vs. RISC**
-{: .actividad-titulo}
-
-Elabora una tabla comparativa entre arquitecturas CISC y RISC, y busca al menos tres dispositivos reales (PC, smartphone, consola, microcontrolador) indicando qué arquitectura de procesador utiliza cada uno y por qué crees que se eligió.
-
-**Actividad 1.8 — Memoria RAM: comparación de módulos**
+**Actividad 1.7 — Memoria RAM: comparación de módulos**
 {: .actividad-titulo}
 
 Se dispone de tres módulos de memoria con estas características:
@@ -841,7 +836,7 @@ c) Calcula la latencia real aproximada, en nanosegundos, de los módulos A y C c
 
 d) Busca en el **[catálogo visual de componentes](catalogo-componentes.md)** una fotografía de un módulo DIMM y otra de un módulo SO-DIMM, y señala dos diferencias visuales entre ambos.
 
-**Actividad 1.9 — Interfaces de almacenamiento y tarjetas de expansión**
+**Actividad 1.8 — Interfaces de almacenamiento y tarjetas de expansión**
 {: .actividad-titulo}
 
 Consulta el **[catálogo visual de componentes](catalogo-componentes.md)** y responde:
@@ -852,12 +847,12 @@ b) Un equipo de sobremesa necesita capturar vídeo de una cámara externa y su p
 
 c) Un SSD SATA y un SSD M.2 NVMe tienen la misma capacidad. Explica por qué el NVMe puede ofrecer mucha más velocidad, y en qué situación un disco externo por Thunderbolt superaría a uno conectado por USB 3.0.
 
-**Actividad 1.10 — Checklist de seguridad antes de manipular un equipo**
+**Actividad 1.9 — Checklist de seguridad antes de manipular un equipo**
 {: .actividad-titulo}
 
 Redacta un checklist de comprobaciones de seguridad (riesgo eléctrico, ESD, ergonomía) que un técnico debería seguir antes de abrir la carcasa de un PC para ampliar la memoria RAM. Justifica cada punto citando el riesgo que previene.
 
-**Actividad 1.11 — Búsqueda de documentación técnica**
+**Actividad 1.10 — Búsqueda de documentación técnica**
 {: .actividad-titulo}
 
 Busca la hoja de características (*datasheet*) oficial de cada uno de estos módulos de memoria RAM:
@@ -869,7 +864,7 @@ Busca la hoja de características (*datasheet*) oficial de cada uno de estos mó
 
 Para cada módulo, extrae sus características principales (capacidad, velocidad, CAS Latency, voltaje, interfaz) y cita la URL exacta del datasheet utilizado, valorando su fiabilidad (¿es la web oficial del fabricante? ¿está actualizado?). Presenta los resultados en una tabla comparativa.
 
-**Actividad 1.12 — Identificación de los componentes de un equipo y ficha técnica**
+**Actividad 1.11 — Identificación de los componentes de un equipo y ficha técnica**
 {: .actividad-titulo}
 
 Con un equipo de sobremesa desmontado (o un catálogo de imágenes proporcionado por el profesorado), identifica y fotografía/etiqueta: tipo de chasis y fuente de alimentación, sistema de refrigeración, placa base (formato), procesador y zócalo, módulos de memoria RAM, unidades de almacenamiento e interfaz que usan, alguna tarjeta de expansión si el equipo dispone de ella, y al menos tres periféricos con su tipo de conector. Elabora una ficha técnica del equipo a partir de esta **[plantilla de ficha técnica](plantilla-ficha-tecnica.md)**.
