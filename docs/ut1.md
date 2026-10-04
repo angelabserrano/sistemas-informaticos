@@ -584,14 +584,29 @@ La memoria interna se organiza en una **jerarquía** que equilibra velocidad, ca
 
 **RAM (Random Access Memory):** memoria volátil (pierde su contenido al apagar el equipo) donde se cargan el sistema operativo y los programas en ejecución.
 
-- **DRAM** (Dynamic RAM): necesita refrescarse periódicamente; es la base de la memoria RAM principal. Tecnologías **DDR4** y **DDR5** son las generaciones actuales, caracterizadas por su frecuencia (MHz/MT/s), latencia (CL) y capacidad.
+- **DRAM** (Dynamic RAM): necesita refrescarse periódicamente; es la base de la memoria RAM principal. Tecnologías **DDR4** y **DDR5** son las generaciones actuales, caracterizadas por su frecuencia (MT/s), latencia (CL) y capacidad.
 - **SRAM** (Static RAM): más rápida y cara que la DRAM, no necesita refresco; se usa en las memorias caché del procesador.
 
 **Formato físico del módulo:** los zócalos de memoria de la placa base (ver 1.5) alojan módulos en formato **DIMM**, de tamaño estándar para equipos de sobremesa, o **SO-DIMM** (*Small Outline* DIMM), más compactos y utilizados en portátiles y equipos de formato reducido (Mini-ITX). Ambos existen en las mismas tecnologías (DDR4, DDR5...), pero no son intercambiables entre sí.
 
 **Latencia (CAS Latency, CL):** número de ciclos de reloj que transcurren entre que el controlador de memoria solicita un dato y este está disponible en la salida; se expresa como una secuencia de valores (por ejemplo, CL16-18-18-36). A igual frecuencia, una latencia CL más baja implica una respuesta más rápida, aunque la latencia real en nanosegundos depende tanto del valor de CL como de la frecuencia del módulo.
 
-**Canal dual/triple/cuádruple (Dual/Triple/Quad Channel):** las placas base modernas pueden acceder simultáneamente a dos, tres o cuatro módulos de memoria idénticos instalados en los zócalos correspondientes (identificables normalmente por su color en la placa), multiplicando el ancho de banda disponible respecto a un único módulo. Para aprovechar esta característica, los módulos deben instalarse por parejas o grupos de igual capacidad y velocidad, en los zócalos que indique el manual de la placa.
+**Frecuencia (MT/s) y latencia real (ns):** la memoria **DDR** (*Double Data Rate*) realiza **dos transferencias por cada ciclo de reloj**. Por eso su velocidad se indica en **MT/s** (millones de transferencias por segundo) y la frecuencia real del reloj es la mitad: un módulo DDR4-3200 hace 3200 MT/s, pero su reloj funciona a 1600 MHz. Muchas tiendas y fabricantes escriben «3200 MHz», aunque lo correcto es «3200 MT/s».
+
+Como el CL se cuenta en ciclos de ese reloj real, para pasarlo a tiempo se usa:
+
+`latencia (ns) = CL / (frecuencia en MT/s ÷ 2) × 1000 = (CL / frecuencia en MT/s) × 2000`
+
+Por ejemplo, un módulo DDR4-2400 CL15 tiene una latencia real de (15 / 2400) × 2000 = **12,5 ns**. Un módulo con más MT/s no siempre responde antes: si su CL es proporcionalmente más alto, su latencia real puede ser igual o incluso mayor.
+
+**Canal dual/triple/cuádruple (Dual/Triple/Quad Channel):** las placas base modernas pueden acceder simultáneamente a dos, tres o cuatro módulos de memoria instalados en los zócalos correspondientes (identificables normalmente por su color en la placa), multiplicando el ancho de banda disponible respecto a un único módulo. Para aprovechar esta característica, los módulos deben instalarse por parejas o grupos **de la misma capacidad**, en los zócalos que indique el manual de la placa. Lo ideal es que sean además idénticos (mismo modelo, frecuencia y latencia), por eso se venden en *kits* de 2 o 4 módulos.
+
+**Mezcla de módulos distintos:** cada módulo guarda en un pequeño chip (**SPD**, *Serial Presence Detect*) su frecuencia y sus latencias, y al arrancar la placa los lee para configurar la memoria. Como el controlador de memoria hace trabajar a **todos los módulos con la misma configuración**, si se instalan módulos de distinta frecuencia o latencia:
+
+- Todos funcionan a la **frecuencia del módulo más lento** y con la **latencia más alta** (la más «lenta») de entre ellos.
+- Si tienen la misma capacidad, el **Dual Channel sigue activándose**, pero el módulo más rápido pierde su ventaja: se ha pagado por unas prestaciones que no se aprovechan.
+- Si tienen distinta capacidad, el Dual Channel no funciona o solo funciona en parte de la memoria, según la placa.
+- En algunos casos, sobre todo mezclando marcas o modelos, el equipo puede volverse inestable o no arrancar.
 
 **Memoria de solo lectura (ROM) y variantes:** memorias no volátiles usadas tradicionalmente para almacenar firmware.
 
@@ -820,21 +835,20 @@ Repite el ejercicio anterior sobre esta placa base más reciente, una **ASUS Pri
 **Actividad 1.7 — Memoria RAM: comparación de módulos**
 {: .actividad-titulo}
 
-Se dispone de tres módulos de memoria con estas características:
+Se dispone de cuatro módulos de memoria con estas características:
 
 | Módulo | Formato | Capacidad | Frecuencia | CAS Latency (CL) |
 | --- | --- | --- | --- | --- |
 | A | DIMM DDR4 | 8 GB | 3200 MT/s | CL16 |
 | B | DIMM DDR4 | 8 GB | 2666 MT/s | CL19 |
 | C | SO-DIMM DDR4 | 8 GB | 3200 MT/s | CL22 |
+| D | DIMM DDR4 | 8 GB | 3600 MT/s | CL22 |
 
 a) ¿En qué tipo de equipo instalarías cada módulo? ¿Cuáles son físicamente compatibles entre sí y cuáles no, y por qué?
 
 b) ¿Formarían A y B una pareja válida en **Dual Channel** en una placa de sobremesa? Razona qué ocurriría realmente si se instalan juntas.
 
-c) Calcula la latencia real aproximada, en nanosegundos, de los módulos A y C con la fórmula `latencia (ns) = (CL / frecuencia) × 2000`. A pesar de tener la misma frecuencia nominal, ¿cuál responde antes a una solicitud de datos? ¿Qué te dice esto sobre fiarse solo de la frecuencia a la hora de comparar memorias?
-
-d) Busca en el **[catálogo visual de componentes](catalogo-componentes.md)** una fotografía de un módulo DIMM y otra de un módulo SO-DIMM, y señala dos diferencias visuales entre ambos.
+c) Calcula la latencia real aproximada, en nanosegundos, de los módulos de sobremesa A, B y D, y ordénalos de menor a mayor latencia real. El módulo D es el de mayor frecuencia: ¿es también el que antes responde a una solicitud de datos? ¿Qué te dice esto sobre fiarse solo de la frecuencia a la hora de comparar memorias?
 
 **Actividad 1.8 — Interfaces de almacenamiento y tarjetas de expansión**
 {: .actividad-titulo}
