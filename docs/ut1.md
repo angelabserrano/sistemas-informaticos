@@ -853,8 +853,6 @@ c) Calcula la latencia real aproximada, en nanosegundos, de los módulos de sobr
 **Actividad 1.8 — Interfaces de almacenamiento y tarjetas de expansión**
 {: .actividad-titulo}
 
-Consulta el **[catálogo visual de componentes](catalogo-componentes.md)** y responde:
-
 a) Ordena de menor a mayor ancho de banda teórico estos tres dispositivos, indicando la interfaz más probable de cada uno: un disco duro de 3,5" de un equipo de sobremesa, un SSD M.2 de un portátil ultrafino, y un disco externo conectado por USB 3.0.
 
 b) Un equipo de sobremesa necesita capturar vídeo de una cámara externa y su placa base no incluye esa función. ¿Qué tipo de tarjeta de expansión instalarías, y en qué tipo de ranura de la placa base?
