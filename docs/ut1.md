@@ -704,7 +704,10 @@ El trabajo con equipos informáticos está sujeto a la **Ley 31/1995 de Prevenci
 - **Manipulación manual de cargas**: al mover equipos pesados (torres, servidores, SAI). Medidas: técnicas correctas de levantamiento, uso de ayudas mecánicas.
 
 !!! warning "Antes de abrir un equipo"
-    Desconectar siempre el cable de alimentación (no basta con apagarlo) y utilizar muñequera antiestática antes de manipular componentes internos.
+    - **Desconectar siempre el cable de alimentación**: no basta con apagarlo, porque con el cable enchufado la fuente sigue suministrando tensión de reposo a la placa base.
+    - **Pulsar el botón de encendido durante unos segundos** con el equipo ya desenchufado, para descargar la energía residual que queda almacenada en los condensadores de la fuente y de la placa.
+    - **Utilizar muñequera antiestática** antes de manipular componentes internos. Si no se dispone de ella, **tocar una parte metálica sin pintar del chasis** antes de coger cualquier componente (y repetirlo de vez en cuando) para igualar el potencial del cuerpo con el del equipo y descargar la electricidad estática.
+    - **No abrir nunca la fuente de alimentación**: sus condensadores pueden conservar una carga peligrosa durante mucho tiempo después de desenchufarla. Si falla, se sustituye completa.
 
 ## 1.12. Búsqueda y gestión de documentación técnica en Internet
 
@@ -856,7 +859,7 @@ c) Un SSD SATA y un SSD M.2 NVMe tienen la misma capacidad. Explica por qué el 
 **Actividad 1.9 — Checklist de seguridad antes de manipular un equipo**
 {: .actividad-titulo}
 
-Redacta un checklist de comprobaciones de seguridad (riesgo eléctrico, ESD, ergonomía) que un técnico debería seguir antes de abrir la carcasa de un PC para ampliar la memoria RAM. Justifica cada punto citando el riesgo que previene.
+Redacta un checklist de comprobaciones de seguridad (riesgo eléctrico, ESD, condiciones del puesto de trabajo) que un técnico debería seguir antes de abrir la carcasa de un PC para ampliar la memoria RAM. Justifica cada punto citando el riesgo que previene.
 
 **Actividad 1.10 — Búsqueda de documentación técnica**
 {: .actividad-titulo}
