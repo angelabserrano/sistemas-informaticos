@@ -546,13 +546,7 @@ El **procesador** (CPU) ejecuta las instrucciones de los programas. Sus bloques 
 3. **Execute (ejecución)**: la ALU (u otra unidad) realiza la operación.
 4. **Almacenamiento del resultado** y actualización del contador de programa.
 
-```mermaid
-flowchart LR
-    A[Fetch\nBúsqueda de la instrucción] --> B[Decode\nDecodificación]
-    B --> C[Execute\nEjecución en la ALU]
-    C --> D[Store\nAlmacenamiento del resultado]
-    D --> A
-```
+![Ciclo de instrucción: 1) Fetch, la CPU obtiene de la memoria la instrucción indicada por el contador de programa; 2) Decode, la unidad de control interpreta la instrucción y genera las señales de control; 3) Execute, la ALU opera con los operandos; 4) Store, el resultado se guarda en un registro o en memoria; y se pasa a la siguiente instrucción](img/ut1_ciclo_instruccion.png)
 
 **Conjunto de instrucciones (ISA):** define el repertorio de instrucciones que el procesador es capaz de ejecutar. Las dos grandes filosofías de diseño son:
 
