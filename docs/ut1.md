@@ -847,6 +847,8 @@ b) ¿Formarían A y B una pareja válida en **Dual Channel** en una placa de sob
 
 c) Calcula la latencia real aproximada, en nanosegundos, de los módulos de sobremesa A, B y D, y ordénalos de menor a mayor latencia real. El módulo D es el de mayor frecuencia: ¿es también el que antes responde a una solicitud de datos? ¿Qué te dice esto sobre fiarse solo de la frecuencia a la hora de comparar memorias?
 
+d) Identifica los módulos de memoria RAM que te ha proporcionado el profesor e indica las características principales de cada uno.
+
 **Actividad 1.8 — Interfaces de almacenamiento y tarjetas de expansión**
 {: .actividad-titulo}
 
