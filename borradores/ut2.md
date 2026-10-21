@@ -10,25 +10,46 @@
 
 ## 2.1. Fundamentos de redes: tipos, topologías y componentes
 
-Una **red informática** es un conjunto de dispositivos interconectados que comparten recursos (datos, impresoras, conexión a Internet) y se comunican mediante un conjunto de reglas (protocolos).
+**¿Qué es una red informática?**
 
-**Tipos de redes según su extensión geográfica:**
+Una **red informática** es un conjunto de dispositivos conectados que pueden intercambiar datos y compartir recursos mediante protocolos de comunicación.
 
-| Tipo | Nombre | Alcance típico |
+Las redes permiten compartir archivos, utilizar servicios comunes y acceder a aplicaciones que se ejecutan en otros equipos. Por ejemplo, cuando visitas una página web, tu ordenador se comunica a través de una red con un servidor que proporciona los recursos necesarios para mostrarla.
+
+En el desarrollo de aplicaciones web, las redes son fundamentales para comprender cómo se comunican el navegador del usuario, el servidor web y otros servicios, como una API o una base de datos.
+
+**Tipos de redes según su alcance**
+
+Las redes se pueden clasificar según el área que cubren y la tecnología utilizada.
+
+| Tipo | Nombre | Características y ejemplos |
 | --- | --- | --- |
-| PAN | Personal Area Network | Unos pocos metros (Bluetooth, USB) |
-| LAN | Local Area Network | Un edificio o campus |
-| WLAN | Wireless LAN | LAN inalámbrica (Wi-Fi) |
-| MAN | Metropolitan Area Network | Una ciudad |
-| WAN | Wide Area Network | Países o continentes (ej. Internet) |
+| PAN | Personal Area Network | Red de alcance personal, como la conexión Bluetooth entre un móvil y unos auriculares. |
+| LAN | Local Area Network | Red de área local que conecta dispositivos en una vivienda, aula, oficina o edificio. |
+| WLAN | Wireless Local Area Network | Red local inalámbrica, normalmente basada en Wi-Fi. Es un tipo de LAN. |
+| MAN | Metropolitan Area Network | Red que conecta equipos o redes en un área metropolitana. |
+| WAN | Wide Area Network | Red de área extensa que conecta redes situadas en lugares geográficos distantes. Internet es el ejemplo más conocido. |
 
-**Topologías de red** (disposición física o lógica de los dispositivos):
+**Ejemplo:** los ordenadores de un aula conectados a un switch forman parte de una LAN. Si se conectan mediante Wi-Fi a través de un punto de acceso, utilizan una WLAN.
 
-- **Bus**: todos los equipos comparten un mismo cable troncal. Sencilla pero un fallo en el cable afecta a toda la red.
-- **Estrella**: todos los equipos se conectan a un dispositivo central (switch). Es la topología física más usada actualmente; un fallo en un equipo no afecta al resto.
-- **Anillo**: cada equipo se conecta a otros dos formando un círculo cerrado.
-- **Árbol**: combinación jerárquica de varias topologías en estrella.
-- **Malla**: cada equipo se conecta con varios (o todos) los demás, aportando redundancia y tolerancia a fallos, a costa de más cableado.
+**Topologías de red**
+
+La topología de red describe cómo se organizan y conectan los dispositivos. Podemos distinguir entre:
+
+- **Topología física**: describe las conexiones reales entre los dispositivos, el cableado y los equipos de interconexión.
+- **Topología lógica**: describe cómo se comunican los dispositivos y cómo circulan los datos, independientemente de la disposición física del cableado.
+
+Las principales topologías son:
+
+| Topología | Descripción | Características |
+| --- | --- | --- |
+| Bus | Los dispositivos comparten un medio de transmisión común. | Es sencilla, pero un fallo en el cable principal puede afectar a toda la red. Se asocia principalmente a redes antiguas. |
+| Estrella | Todos los dispositivos se conectan a un nodo central, habitualmente un switch. | Es habitual en las redes Ethernet actuales. Un fallo en un cable suele afectar solo al dispositivo conectado, pero un fallo del switch puede interrumpir varias conexiones. |
+| Anillo | Los dispositivos se conectan formando un circuito cerrado. | Los datos siguen un recorrido determinado. Se encuentra en algunas tecnologías y arquitecturas específicas. |
+| Árbol | Combina varias estrellas en una estructura jerárquica. | Facilita organizar redes grandes en diferentes niveles. |
+| Malla | Los nodos disponen de varias conexiones entre sí. | Puede proporcionar redundancia y tolerancia a fallos, aunque aumenta la complejidad y el coste. |
+
+En las redes locales Ethernet actuales es frecuente encontrar una topología física en estrella o una estructura jerárquica de estrellas. Esto no significa que todas las redes utilicen la misma topología lógica.
 
 === "Bus"
 
