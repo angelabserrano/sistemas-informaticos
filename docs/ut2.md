@@ -51,47 +51,7 @@ Las principales topologías son:
 
 En las redes locales Ethernet actuales es frecuente encontrar una topología física en estrella o una estructura jerárquica de estrellas. Esto no significa que todas las redes utilicen la misma topología lógica.
 
-=== "Bus"
-
-    ```mermaid
-    graph LR
-        PC1[Equipo 1] --- Bus[Cable troncal]
-        PC2[Equipo 2] --- Bus
-        PC3[Equipo 3] --- Bus
-        PC4[Equipo 4] --- Bus
-    ```
-
-=== "Estrella"
-
-    ```mermaid
-    graph TD
-        S((Switch)) --- PC1[Equipo 1]
-        S --- PC2[Equipo 2]
-        S --- PC3[Equipo 3]
-        S --- PC4[Equipo 4]
-    ```
-
-=== "Anillo"
-
-    ```mermaid
-    graph LR
-        PC1[Equipo 1] --> PC2[Equipo 2]
-        PC2 --> PC3[Equipo 3]
-        PC3 --> PC4[Equipo 4]
-        PC4 --> PC1
-    ```
-
-=== "Malla"
-
-    ```mermaid
-    graph TD
-        PC1[Equipo 1] --- PC2[Equipo 2]
-        PC1 --- PC3[Equipo 3]
-        PC1 --- PC4[Equipo 4]
-        PC2 --- PC3
-        PC2 --- PC4
-        PC3 --- PC4
-    ```
+![Topologías de red: bus, estrella, anillo, árbol y malla](img/ut2_topologias_red.png)
 
 **Componentes principales de una red informática:**
 
