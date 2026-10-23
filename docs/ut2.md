@@ -63,9 +63,58 @@ En las redes locales Ethernet actuales es frecuente encontrar una topología fí
 - **Medio de transmisión**: cable de cobre, fibra óptica u ondas de radio, según el caso.
 
 !!! note "Idea clave"
-    Este apartado da una visión general de los componentes de red; el punto 2.5 profundiza en el funcionamiento de switch y router (tablas de conmutación y de encaminamiento, NAT).
+    Este apartado da una visión general de los componentes de red; el punto 2.6 profundiza en el funcionamiento de switch y router (tablas de conmutación y de encaminamiento, NAT).
 
-## 2.2. Cableado, conectores y mapa físico/lógico de una red local
+## 2.2. Modelos de referencia: OSI y TCP/IP
+
+Un **modelo de referencia** es una representación teórica, organizada en **capas**, de cómo se comunican los dispositivos en una red. Cada capa cumple una función concreta y se apoya en los servicios que le ofrece la capa inferior, sin necesidad de conocer los detalles de su funcionamiento interno (**encapsulado**). Esta organización en capas permite que fabricantes distintos desarrollen hardware y software compatibles entre sí, y facilita además localizar en qué punto se produce un fallo cuando algo no funciona.
+
+Los dos modelos de referencia más utilizados son el **modelo OSI** (de carácter teórico y académico) y el **modelo TCP/IP** (el que realmente implementan los sistemas y se usa en Internet).
+
+**Modelo OSI (Open Systems Interconnection)**
+
+Definido por la ISO, organiza la comunicación en **7 capas**, de la más cercana al usuario a la más cercana al medio físico:
+
+| Capa | Nombre | Función | Ejemplos |
+| --- | --- | --- | --- |
+| 7 | Aplicación | Proporciona los servicios de red directamente a los programas del usuario | HTTP, DNS, SMTP, FTP |
+| 6 | Presentación | Traduce, cifra/descifra y comprime los datos a un formato común entre sistemas | TLS/SSL, JPEG, ASCII |
+| 5 | Sesión | Establece, mantiene y finaliza la comunicación entre aplicaciones | NetBIOS, RPC |
+| 4 | Transporte | Comunicación extremo a extremo entre procesos, fiable o no | TCP, UDP |
+| 3 | Red | Direccionamiento lógico y encaminamiento de paquetes entre redes distintas | IP, ICMP |
+| 2 | Enlace de datos | Direccionamiento físico (MAC) y acceso al medio dentro de una misma red | Ethernet, Wi-Fi (802.11) |
+| 1 | Física | Transmisión de los bits como señales eléctricas, ópticas o de radio | Cables, conectores, radiofrecuencia |
+
+!!! tip "Regla mnemotécnica"
+    De la capa 7 a la 1: *"**T**odas **P**ersonas **S**uelen **T**omar **R**efrescos **E**n **F**iestas"* (Aplicación, Presentación, Sesión, Transporte, Red, Enlace, Física).
+
+**Modelo TCP/IP**
+
+Es el modelo que realmente implementan los sistemas operativos y los dispositivos de red, y en el que se basa Internet. Es más simple que el OSI: agrupa sus funciones en solo **4 capas**:
+
+| Capa | Función | Ejemplos de protocolo |
+| --- | --- | --- |
+| Aplicación | Servicios usados directamente por los programas | HTTP, DNS, SMTP, FTP |
+| Transporte | Comunicación extremo a extremo | TCP (fiable), UDP (sin conexión) |
+| Internet | Direccionamiento y encaminamiento entre redes | IP, ICMP |
+| Acceso a la red | Transmisión física de los datos | Ethernet, Wi-Fi |
+
+**Comparación entre el modelo OSI y el modelo TCP/IP**
+
+| Modelo OSI (7 capas) | Modelo TCP/IP (4 capas) |
+| --- | --- |
+| 7. Aplicación | Aplicación |
+| 6. Presentación | Aplicación |
+| 5. Sesión | Aplicación |
+| 4. Transporte | Transporte |
+| 3. Red | Internet |
+| 2. Enlace de datos | Acceso a la red |
+| 1. Física | Acceso a la red |
+
+!!! note "Idea clave"
+    El modelo TCP/IP agrupa en una única capa de **Aplicación** lo que el modelo OSI reparte entre Aplicación, Presentación y Sesión; y agrupa en **Acceso a la red** las capas de Enlace de datos y Física. El modelo OSI, más detallado, se usa sobre todo como referencia didáctica y para diagnosticar problemas de red capa por capa ("¿falla el cable? ¿falla el direccionamiento IP? ¿falla la aplicación?"); el modelo TCP/IP es el que realmente funciona en la práctica.
+
+## 2.3. Cableado, conectores y mapa físico/lógico de una red local
 
 **Tipos de cableado más habituales en redes LAN:**
 
@@ -124,16 +173,9 @@ graph TD
 !!! note "Idea clave"
     Dos equipos pueden estar físicamente muy cerca (mismo armario de comunicaciones) y pertenecer a segmentos lógicos completamente distintos (VLAN distintas), y viceversa.
 
-## 2.3. Protocolo TCP/IP: direccionamiento IPv4/IPv6, DNS
+## 2.4. Protocolo TCP/IP: direccionamiento IPv4/IPv6, DNS
 
-**TCP/IP** es el conjunto de protocolos que hace posible la comunicación en la mayoría de redes actuales, incluida Internet. Se organiza en capas, donde cada una se apoya en los servicios de la inferior:
-
-| Capa (modelo TCP/IP) | Función | Ejemplos de protocolo |
-| --- | --- | --- |
-| Aplicación | Servicios usados directamente por los programas | HTTP, DNS, SMTP, FTP |
-| Transporte | Comunicación extremo a extremo | TCP (fiable), UDP (sin conexión) |
-| Internet | Direccionamiento y encaminamiento entre redes | IP, ICMP |
-| Acceso a la red | Transmisión física de los datos | Ethernet, Wi-Fi |
+Este apartado se centra en la capa **Internet** del modelo TCP/IP (ver 2.2), responsable del direccionamiento y el encaminamiento de los paquetes entre redes.
 
 **Direccionamiento IPv4:** dirección de 32 bits, representada en 4 grupos decimales (0-255) separados por puntos (p. ej. `192.168.1.10`).
 
@@ -145,7 +187,7 @@ graph TD
 
 **DNS (Domain Name System):** servicio distribuido y jerárquico que traduce nombres de dominio legibles (`www.ejemplo.com`) a direcciones IP. En el proceso de **resolución**, el equipo consulta a un servidor DNS (a menudo el del proveedor de Internet o uno público como `8.8.8.8`), que responde directamente si conoce la respuesta o la reenvía a otros servidores DNS hasta obtenerla.
 
-## 2.4. Configuración de redes cableadas e inalámbricas
+## 2.5. Configuración de redes cableadas e inalámbricas
 
 **Configuración de la dirección IP de un equipo:**
 
@@ -164,7 +206,7 @@ graph TD
 - **Seguridad**: protocolos de cifrado del tráfico inalámbrico, de menor a mayor seguridad: WEP (obsoleto e inseguro) → WPA → **WPA2** (estándar durante años) → **WPA3** (actual).
 - **Ampliación de cobertura**: un único punto de acceso no siempre cubre todo el espacio necesario. Un **repetidor** (o un AP en modo repetidor, mediante el estándar **WDS**, *Wireless Distribution System*) retransmite la señal para ampliar el alcance, a costa de reducir el ancho de banda disponible en cada salto adicional. Las **redes mesh** modernas (varios puntos que se coordinan entre sí, con el mismo SSID e itinerancia automática entre ellos) resuelven el mismo problema de forma más eficiente y con gestión centralizada.
 
-## 2.5. Dispositivos de interconexión y encaminamiento
+## 2.6. Dispositivos de interconexión y encaminamiento
 
 - **Switch (conmutador)**: opera a nivel de enlace, interconectando equipos de una misma LAN. Aprende qué dirección **MAC** está conectada a cada puerto (tabla de conmutación) y reenvía el tráfico solo al puerto correspondiente, en lugar de a todos (a diferencia del antiguo hub).
 - **Router (encaminador)**: opera a nivel de red, interconectando redes distintas (por ejemplo, la LAN doméstica con Internet). Mantiene una **tabla de encaminamiento (routing table)** que indica por qué interfaz/siguiente salto se debe enviar el tráfico según la red de destino.
@@ -184,7 +226,7 @@ graph TD
 !!! note "Idea clave"
     Dos equipos conectados al mismo switch físico, pero en VLAN distintas, no pueden comunicarse entre sí sin pasar por un router (o una función de encaminamiento entre VLAN) — exactamente igual que si estuvieran en dos redes físicamente separadas.
 
-## 2.6. Acceso a redes de área extensa y seguridad en comunicaciones
+## 2.7. Acceso a redes de área extensa y seguridad en comunicaciones
 
 **Tecnologías de acceso a redes WAN / Internet:**
 
