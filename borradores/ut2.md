@@ -111,9 +111,24 @@ Es el modelo que realmente implementan los sistemas operativos y los dispositivo
 !!! note "Idea clave"
     El modelo TCP/IP agrupa en una única capa de **Aplicación** lo que el modelo OSI reparte entre Aplicación, Presentación y Sesión; y agrupa en **Acceso a la red** las capas de Enlace de datos y Física. El modelo OSI, más detallado, se usa sobre todo como referencia didáctica y para diagnosticar problemas de red capa por capa ("¿falla el cable? ¿falla el direccionamiento IP? ¿falla la aplicación?"); el modelo TCP/IP es el que realmente funciona en la práctica.
 
-## 2.3. Cableado, conectores y mapa físico/lógico de una red local
+## 2.3. Medios de transmisión, cableado y mapa físico/lógico de una red local
 
-**Tipos de cableado más habituales en redes LAN:**
+**Medios de transmisión**
+
+El **medio de transmisión** es el canal físico por el que viaja la señal (eléctrica, óptica o electromagnética) entre los dispositivos de una red. Se clasifican en dos grandes grupos:
+
+- **Medios guiados (o cableados)**: la señal viaja confinada dentro de un soporte físico. Incluyen el par trenzado, el cable coaxial y la fibra óptica.
+- **Medios no guiados (o inalámbricos)**: la señal se propaga libremente por el espacio, sin un soporte físico que la contenga. Incluyen las ondas de radio (Wi-Fi, Bluetooth), las microondas y los infrarrojos.
+
+| Característica | Medios guiados | Medios no guiados |
+| --- | --- | --- |
+| Movilidad | Nula; el dispositivo debe permanecer conectado al cable | Alta; permite desplazarse dentro del área de cobertura |
+| Velocidad y fiabilidad | Generalmente mayores y más estables | Más variables; dependen de interferencias y distancia |
+| Interferencias | Poco afectados (según el blindaje) | Más sensibles (otros dispositivos, obstáculos, otras redes cercanas) |
+| Seguridad | Mayor; requiere acceso físico al cable | Menor; la señal puede interceptarse en el aire sin acceso físico |
+| Coste de despliegue | Requiere tender cableado e infraestructura física | Menor coste de instalación; no requiere tender cable |
+
+**Medios guiados: tipos de cableado más habituales en redes LAN:**
 
 | Cableado | Descripción | Uso |
 | --- | --- | --- |
@@ -133,6 +148,15 @@ Es el modelo que realmente implementan los sistemas operativos y los dispositivo
 
 - **Cable directo (straight-through)**: los pines siguen el mismo orden en ambos extremos. Se usa para conectar dispositivos de distinto nivel (equipo-switch, switch-router).
 - **Cable cruzado (crossover)**: los pares de transmisión y recepción están cruzados. Se usa tradicionalmente para conectar dispositivos del mismo nivel (switch-switch, PC-PC), aunque la mayoría de equipos actuales incorporan detección automática (*Auto-MDI-X*) y ya no lo requieren.
+
+**Medios no guiados:**
+
+- **Ondas de radio**: utilizadas por Wi-Fi y Bluetooth; atraviesan obstáculos (paredes, tabiques) con cierta atenuación y no requieren visión directa entre emisor y receptor.
+- **Microondas**: requieren visión directa entre antenas (enlaces punto a punto); se usan en enlaces de larga distancia entre edificios o en repetidores de telecomunicaciones.
+- **Infrarrojos**: requieren visión directa y tienen un alcance muy corto; prácticamente en desuso en redes de datos, aunque siguen presentes en mandos a distancia.
+
+!!! note "Idea clave"
+    La configuración práctica de una red Wi-Fi (SSID, cifrado WPA2/WPA3, puntos de acceso) se desarrolla en el apartado 2.5.
 
 **Mapa físico vs. mapa lógico de una red:**
 
