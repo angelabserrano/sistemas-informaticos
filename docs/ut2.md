@@ -65,53 +65,7 @@ En las redes locales Ethernet actuales es frecuente encontrar una topología fí
 !!! note "Idea clave"
     Este apartado da una visión general de los componentes de red; el punto 2.6 profundiza en el funcionamiento de switch y router (tablas de conmutación y de encaminamiento, NAT).
 
-## 2.2. Modelos de referencia: OSI y TCP/IP
-
-Un **modelo de referencia** es una representación teórica, organizada en **capas**, de cómo se comunican los dispositivos en una red. Cada capa cumple una función concreta y se apoya en los servicios que le ofrece la capa inferior, sin necesidad de conocer los detalles de su funcionamiento interno (**encapsulado**). Esta organización en capas permite que fabricantes distintos desarrollen hardware y software compatibles entre sí, y facilita además localizar en qué punto se produce un fallo cuando algo no funciona.
-
-Los dos modelos de referencia más utilizados son el **modelo OSI** (de carácter teórico y académico) y el **modelo TCP/IP** (el que realmente implementan los sistemas y se usa en Internet).
-
-**Modelo OSI (Open Systems Interconnection)**
-
-Definido por la ISO, organiza la comunicación en **7 capas**, de la más cercana al usuario a la más cercana al medio físico:
-
-| Capa | Nombre | Función | Ejemplos |
-| --- | --- | --- | --- |
-| 7 | Aplicación | Proporciona los servicios de red directamente a los programas del usuario | HTTP, DNS, SMTP, FTP |
-| 6 | Presentación | Traduce, cifra/descifra y comprime los datos a un formato común entre sistemas | TLS/SSL, JPEG, ASCII |
-| 5 | Sesión | Establece, mantiene y finaliza la comunicación entre aplicaciones | NetBIOS, RPC |
-| 4 | Transporte | Comunicación extremo a extremo entre procesos, fiable o no | TCP, UDP |
-| 3 | Red | Direccionamiento lógico y encaminamiento de paquetes entre redes distintas | IP, ICMP |
-| 2 | Enlace de datos | Direccionamiento físico (MAC) y acceso al medio dentro de una misma red | Ethernet, Wi-Fi (802.11) |
-| 1 | Física | Transmisión de los bits como señales eléctricas, ópticas o de radio | Cables, conectores, radiofrecuencia |
-
-**Modelo TCP/IP**
-
-Es el modelo que realmente implementan los sistemas operativos y los dispositivos de red, y en el que se basa Internet. Es más simple que el OSI: agrupa sus funciones en solo **4 capas**:
-
-| Capa | Función | Ejemplos de protocolo |
-| --- | --- | --- |
-| Aplicación | Servicios usados directamente por los programas | HTTP, DNS, SMTP, FTP |
-| Transporte | Comunicación extremo a extremo | TCP (fiable), UDP (sin conexión) |
-| Internet | Direccionamiento y encaminamiento entre redes | IP, ICMP |
-| Acceso a la red | Transmisión física de los datos | Ethernet, Wi-Fi |
-
-**Comparación entre el modelo OSI y el modelo TCP/IP**
-
-| Modelo OSI (7 capas) | Modelo TCP/IP (4 capas) |
-| --- | --- |
-| 7. Aplicación | Aplicación |
-| 6. Presentación | Aplicación |
-| 5. Sesión | Aplicación |
-| 4. Transporte | Transporte |
-| 3. Red | Internet |
-| 2. Enlace de datos | Acceso a la red |
-| 1. Física | Acceso a la red |
-
-!!! note "Idea clave"
-    El modelo TCP/IP agrupa en una única capa de **Aplicación** lo que el modelo OSI reparte entre Aplicación, Presentación y Sesión; y agrupa en **Acceso a la red** las capas de Enlace de datos y Física. El modelo OSI, más detallado, se usa sobre todo como referencia didáctica y para diagnosticar problemas de red capa por capa ("¿falla el cable? ¿falla el direccionamiento IP? ¿falla la aplicación?"); el modelo TCP/IP es el que realmente funciona en la práctica.
-
-## 2.3. Medios de transmisión, cableado y mapa físico/lógico de una red local
+## 2.2. Medios de transmisión, cableado y mapa físico/lógico de una red local
 
 **Medios de transmisión**
 
@@ -194,9 +148,55 @@ graph TD
 !!! note "Idea clave"
     Dos equipos pueden estar físicamente muy cerca (mismo armario de comunicaciones) y pertenecer a segmentos lógicos completamente distintos (VLAN distintas), y viceversa.
 
+## 2.3. Modelos de referencia: OSI y TCP/IP
+
+Un **modelo de referencia** es una representación teórica, organizada en **capas**, de cómo se comunican los dispositivos en una red. Cada capa cumple una función concreta y se apoya en los servicios que le ofrece la capa inferior, sin necesidad de conocer los detalles de su funcionamiento interno (**encapsulado**). Esta organización en capas permite que fabricantes distintos desarrollen hardware y software compatibles entre sí, y facilita además localizar en qué punto se produce un fallo cuando algo no funciona.
+
+Los dos modelos de referencia más utilizados son el **modelo OSI** (de carácter teórico y académico) y el **modelo TCP/IP** (el que realmente implementan los sistemas y se usa en Internet).
+
+**Modelo OSI (Open Systems Interconnection)**
+
+Definido por la ISO, organiza la comunicación en **7 capas**, de la más cercana al usuario a la más cercana al medio físico:
+
+| Capa | Nombre | Función | Ejemplos |
+| --- | --- | --- | --- |
+| 7 | Aplicación | Proporciona los servicios de red directamente a los programas del usuario | HTTP, DNS, SMTP, FTP |
+| 6 | Presentación | Traduce, cifra/descifra y comprime los datos a un formato común entre sistemas | TLS/SSL, JPEG, ASCII |
+| 5 | Sesión | Establece, mantiene y finaliza la comunicación entre aplicaciones | NetBIOS, RPC |
+| 4 | Transporte | Comunicación extremo a extremo entre procesos, fiable o no | TCP, UDP |
+| 3 | Red | Direccionamiento lógico y encaminamiento de paquetes entre redes distintas | IP, ICMP |
+| 2 | Enlace de datos | Direccionamiento físico (MAC) y acceso al medio dentro de una misma red | Ethernet, Wi-Fi (802.11) |
+| 1 | Física | Transmisión de los bits como señales eléctricas, ópticas o de radio | Cables, conectores, radiofrecuencia |
+
+**Modelo TCP/IP**
+
+Es el modelo que realmente implementan los sistemas operativos y los dispositivos de red, y en el que se basa Internet. Es más simple que el OSI: agrupa sus funciones en solo **4 capas**:
+
+| Capa | Función | Ejemplos de protocolo |
+| --- | --- | --- |
+| Aplicación | Servicios usados directamente por los programas | HTTP, DNS, SMTP, FTP |
+| Transporte | Comunicación extremo a extremo | TCP (fiable), UDP (sin conexión) |
+| Internet | Direccionamiento y encaminamiento entre redes | IP, ICMP |
+| Acceso a la red | Transmisión física de los datos | Ethernet, Wi-Fi |
+
+**Comparación entre el modelo OSI y el modelo TCP/IP**
+
+| Modelo OSI (7 capas) | Modelo TCP/IP (4 capas) |
+| --- | --- |
+| 7. Aplicación | Aplicación |
+| 6. Presentación | Aplicación |
+| 5. Sesión | Aplicación |
+| 4. Transporte | Transporte |
+| 3. Red | Internet |
+| 2. Enlace de datos | Acceso a la red |
+| 1. Física | Acceso a la red |
+
+!!! note "Idea clave"
+    El modelo TCP/IP agrupa en una única capa de **Aplicación** lo que el modelo OSI reparte entre Aplicación, Presentación y Sesión; y agrupa en **Acceso a la red** las capas de Enlace de datos y Física. El modelo OSI, más detallado, se usa sobre todo como referencia didáctica y para diagnosticar problemas de red capa por capa ("¿falla el cable? ¿falla el direccionamiento IP? ¿falla la aplicación?"); el modelo TCP/IP es el que realmente funciona en la práctica.
+
 ## 2.4. Protocolo TCP/IP: direccionamiento IPv4/IPv6, DNS
 
-Este apartado se centra en la capa **Internet** del modelo TCP/IP (ver 2.2), responsable del direccionamiento y el encaminamiento de los paquetes entre redes.
+Este apartado se centra en la capa **Internet** del modelo TCP/IP (ver 2.3), responsable del direccionamiento y el encaminamiento de los paquetes entre redes.
 
 **Direccionamiento IPv4:** dirección de 32 bits, representada en 4 grupos decimales (0-255) separados por puntos (p. ej. `192.168.1.10`).
 
