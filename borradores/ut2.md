@@ -84,12 +84,12 @@ El **medio de transmisión** es el canal físico por el que viaja la señal (el�
 
 **Medios guiados: tipos de cableado más habituales en redes LAN:**
 
-| Cableado | Descripción | Uso |
-| --- | --- | --- |
-| UTP (par trenzado no apantallado) | 4 pares trenzados, sin blindaje | Redes de oficina y hogar |
-| STP/FTP (par trenzado apantallado) | Igual que UTP pero con blindaje | Entornos con interferencias electromagnéticas |
-| Coaxial | Conductor central + malla | Prácticamente en desuso en LAN |
-| Fibra óptica | Transmisión por pulsos de luz | Backbones, largas distancias, alta velocidad |
+| Foto | Cableado | Descripción | Uso |
+| --- | --- | --- | --- |
+| [![Par trenzado UTP](img/ut1_utp_rj45.jpg){width=64}](img/ut1_utp_rj45.jpg) | UTP (par trenzado no apantallado) | 4 pares trenzados, sin blindaje | Redes de oficina y hogar |
+| — | STP/FTP (par trenzado apantallado) | Igual que UTP pero con blindaje | Entornos con interferencias electromagnéticas |
+| [![Cable coaxial](img/ut2_cable_coaxial.jpg){width=64}](img/ut2_cable_coaxial.jpg) | Coaxial | Conductor central + malla | Prácticamente en desuso en LAN |
+| [![Fibra óptica](img/ut1_fibra_sc_lc.jpg){width=64}](img/ut1_fibra_sc_lc.jpg) | Fibra óptica | Transmisión por pulsos de luz | Backbones, largas distancias, alta velocidad |
 
 **Categorías de cable UTP/FTP** (a mayor categoría, mayor ancho de banda soportado): Cat 5e (hasta 1 Gbit/s), Cat 6 (hasta 10 Gbit/s a distancias cortas), Cat 6A y Cat 7/8 (10 Gbit/s y más, mayor apantallamiento).
 
