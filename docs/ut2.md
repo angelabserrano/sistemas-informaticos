@@ -291,18 +291,21 @@ Según su modo de funcionamiento:
 - **Modo infraestructura**: los dispositivos se conectan a través de un **punto de acceso (AP)** central, que gestiona la red y suele dar salida a otra red (como Internet). Es el modo habitual en redes domésticas, de oficina y de centros educativos.
 - **Modo ad-hoc**: los dispositivos se conectan directamente entre sí, sin un punto de acceso central (red *peer-to-peer*). Apenas se usa hoy en día, salvo en casos puntuales de conexión directa entre dos equipos.
 
-Según la banda de frecuencia:
+Según el estándar 802.11 (sucesivas generaciones, con mejoras de velocidad, alcance y banda de frecuencia):
 
-| Banda | Alcance | Interferencias | Velocidad |
+| Estándar | Nombre comercial | Banda | Velocidad máxima (teórica) |
 | --- | --- | --- | --- |
-| 2,4 GHz | Mayor alcance; mejor penetración en paredes | Más congestionada (Bluetooth, microondas, otras redes vecinas) | Menor |
-| 5 GHz | Menor alcance | Menos congestionada | Mayor |
-| 6 GHz (Wi-Fi 6E) | Alcance todavía menor | Prácticamente libre de interferencias (banda de reciente apertura) | Mayor |
+| 802.11a | — | 5 GHz | 54 Mbit/s |
+| 802.11b | — | 2,4 GHz | 11 Mbit/s |
+| 802.11g | — | 2,4 GHz | 54 Mbit/s |
+| 802.11n | Wi-Fi 4 | 2,4 GHz y/o 5 GHz | 600 Mbit/s |
+| 802.11ac | Wi-Fi 5 | 5 GHz | ~6,9 Gbit/s |
+| 802.11ax | Wi-Fi 6 / Wi-Fi 6E | 2,4, 5 y 6 GHz (6E) | ~9,6 Gbit/s |
+| 802.11be | Wi-Fi 7 | 2,4, 5 y 6 GHz | ~46 Gbit/s |
 
 !!! note "Idea clave"
-    Los routers domésticos actuales suelen ser de **doble banda** (2,4 GHz y 5 GHz simultáneamente) o **triple banda** (añadiendo 6 GHz), ofreciendo a cada dispositivo la banda más adecuada según su distancia al punto de acceso y sus necesidades de velocidad.
+    Las velocidades de la tabla son **máximos teóricos** del estándar, no velocidades reales: el rendimiento efectivo depende del número de dispositivos conectados, los obstáculos, las interferencias y el hardware concreto del punto de acceso y del cliente. Los routers domésticos actuales suelen ser de **doble banda** (2,4 GHz y 5 GHz simultáneamente) o **triple banda** (añadiendo 6 GHz), ofreciendo a cada dispositivo la banda más adecuada según su distancia al punto de acceso y sus necesidades de velocidad.
 
-- **Estándares 802.11**: sucesivas generaciones (a/b/g/n/ac/ax...) con mejoras de velocidad y alcance; los nombres comerciales actuales son Wi-Fi 4 (802.11n), Wi-Fi 5 (802.11ac) y Wi-Fi 6 (802.11ax).
 - **Ampliación de cobertura**: un único punto de acceso no siempre cubre todo el espacio necesario. Un **repetidor** (o un AP en modo repetidor, mediante el estándar **WDS**, *Wireless Distribution System*) retransmite la señal para ampliar el alcance, a costa de reducir el ancho de banda disponible en cada salto adicional. Las **redes mesh** modernas (varios puntos que se coordinan entre sí, con el mismo SSID e itinerancia automática entre ellos) resuelven el mismo problema de forma más eficiente y con gestión centralizada.
 
 **Seguridad en las redes inalámbricas**
