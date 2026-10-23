@@ -245,6 +245,22 @@ Tomando 2 bits prestados, pasamos a una máscara **/26** (255.255.255.192):
 !!! note "Idea clave"
     El "salto" entre direcciones de red consecutivas coincide con el valor del último octeto significativo de la máscara (p. ej. 256 − 192 = 64 en el ejemplo con /26). Es un atajo práctico para calcular subredes sin tener que convertir a binario cada vez.
 
+**Ejercicio propuesto:** divide la red `192.168.20.0/24` en 8 subredes iguales. Indica la máscara resultante y, para cada subred, su dirección de red, el rango de direcciones de host válidas y la dirección de broadcast.
+
+??? success "Solución"
+    Para 8 subredes se necesitan 3 bits prestados (2³ = 8), por lo que la máscara pasa de /24 a **/27** (255.255.255.224). El salto entre subredes es 256 − 224 = 32.
+
+    | Subred | Dirección de red | Rango de hosts | Broadcast |
+    | --- | --- | --- | --- |
+    | 1 | 192.168.20.0/27 | 192.168.20.1 – 192.168.20.30 | 192.168.20.31 |
+    | 2 | 192.168.20.32/27 | 192.168.20.33 – 192.168.20.62 | 192.168.20.63 |
+    | 3 | 192.168.20.64/27 | 192.168.20.65 – 192.168.20.94 | 192.168.20.95 |
+    | 4 | 192.168.20.96/27 | 192.168.20.97 – 192.168.20.126 | 192.168.20.127 |
+    | 5 | 192.168.20.128/27 | 192.168.20.129 – 192.168.20.158 | 192.168.20.159 |
+    | 6 | 192.168.20.160/27 | 192.168.20.161 – 192.168.20.190 | 192.168.20.191 |
+    | 7 | 192.168.20.192/27 | 192.168.20.193 – 192.168.20.222 | 192.168.20.223 |
+    | 8 | 192.168.20.224/27 | 192.168.20.225 – 192.168.20.254 | 192.168.20.255 |
+
 **IPv6:** dirección de 128 bits, representada en 8 grupos hexadecimales (p. ej. `2001:0db8:0000:0000:0000:ff00:0042:8329`, simplificable a `2001:db8::ff00:42:8329`), diseñada para resolver el agotamiento de direcciones de IPv4 y simplificar el direccionamiento.
 
 **DNS (Domain Name System):** servicio distribuido y jerárquico que traduce nombres de dominio legibles (`www.ejemplo.com`) a direcciones IP. En el proceso de **resolución**, el equipo consulta a un servidor DNS (a menudo el del proveedor de Internet o uno público como `8.8.8.8`), que responde directamente si conoce la respuesta o la reenvía a otros servidores DNS hasta obtenerla.
@@ -337,3 +353,8 @@ Dada la red `192.168.10.0/24`, calcula la dirección de red, la de broadcast y e
 {: .actividad-titulo}
 
 En un entorno con dos máquinas virtuales y un servicio DHCP, observa qué configuración de red recibe automáticamente un cliente. Cambia después esa misma máquina a configuración estática y razona en qué casos (servidor, impresora, PC de usuario) conviene cada modalidad.
+
+**Actividad 2.4 — Subnetting**
+{: .actividad-titulo}
+
+El departamento de informática de un centro necesita dividir la red `192.168.5.0/24` en 4 subredes iguales, una por cada aula. Calcula la máscara resultante y, para cada subred, su dirección de red, el rango de direcciones de host válidas y la dirección de broadcast. Configura después una de esas subredes en una máquina virtual y comprueba con `ping` que no se alcanza directamente a un equipo de otra subred.
