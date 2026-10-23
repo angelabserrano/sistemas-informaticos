@@ -91,6 +91,8 @@ El **medio de transmisión** es el canal físico por el que viaja la señal (el�
 | [![Cable coaxial](img/ut2_cable_coaxial.jpg){width=64}](img/ut2_cable_coaxial.jpg) | Coaxial | Conductor central + malla | Prácticamente en desuso en LAN |
 | [![Fibra óptica](img/ut1_fibra_sc_lc.jpg){width=64}](img/ut1_fibra_sc_lc.jpg) | Fibra óptica | Transmisión por pulsos de luz | Backbones, largas distancias, alta velocidad |
 
+![Comparativa de fibra óptica, par trenzado y cable coaxial: estructura interna, velocidad, distancia, inmunidad a interferencias, ancho de banda, seguridad, coste y usos habituales](img/ut2_comparativa_medios_guiados.png)
+
 **Categorías de cable UTP/FTP** (a mayor categoría, mayor ancho de banda soportado): Cat 5e (hasta 1 Gbit/s), Cat 6 (hasta 10 Gbit/s a distancias cortas), Cat 6A y Cat 7/8 (10 Gbit/s y más, mayor apantallamiento).
 
 **Conectores más comunes:**
