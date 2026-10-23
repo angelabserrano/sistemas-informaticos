@@ -167,12 +167,15 @@ Definido por la ISO, organiza la comunicación en **7 capas**, de la más cercan
 
 Es el modelo que realmente implementan los sistemas operativos y los dispositivos de red, y en el que se basa Internet. Es más simple que el OSI: agrupa sus funciones en solo **4 capas**:
 
-| Capa | Función | Ejemplos de protocolo |
+| Capa | Función | Protocolos |
 | --- | --- | --- |
-| Aplicación | Servicios usados directamente por los programas | HTTP, DNS, SMTP, FTP |
-| Transporte | Comunicación extremo a extremo | TCP (fiable), UDP (sin conexión) |
-| Internet | Direccionamiento y encaminamiento entre redes | IP, ICMP |
-| Acceso a la red | Transmisión física de los datos | Ethernet, Wi-Fi |
+| Aplicación | Servicios usados directamente por los programas | HTTP/HTTPS, DNS, DHCP, FTP/FTPS/SFTP, SSH, Telnet |
+| Transporte | Comunicación extremo a extremo | TCP (fiable, orientado a conexión), UDP (sin conexión, más rápido) |
+| Internet | Direccionamiento y encaminamiento entre redes | IP (IPv4/IPv6), ICMP (diagnóstico, usado por `ping`), ARP (resuelve direcciones IP a MAC dentro de la misma red) |
+| Acceso a la red | Transmisión física de los datos | Ethernet, Wi-Fi (802.11) |
+
+!!! note "Idea clave"
+    Varios de estos protocolos se desarrollan con más detalle a lo largo de la unidad: DNS en 2.4, DHCP y Wi-Fi en 2.5, y Telnet/SSH y FTP/SFTP (como alternativas inseguras/seguras) en 2.7.
 
 **Comparación entre el modelo OSI y el modelo TCP/IP**
 
