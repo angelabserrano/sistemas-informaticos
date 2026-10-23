@@ -202,6 +202,19 @@ Históricamente, las direcciones IPv4 se agrupaban en **clases** según el valor
 - **Direcciones privadas** (uso interno, no enrutables en Internet): `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`.
 - **Puerta de enlace (gateway)**: dirección del dispositivo (router) por el que un equipo envía el tráfico destinado a otras redes.
 
+**Ejemplo resuelto: dirección de red, broadcast y rango de hosts**
+
+Dada la dirección `192.168.4.77/26`, calcula la dirección de red, la dirección de broadcast y el rango de direcciones de host válidas.
+
+??? success "Solución"
+    La máscara /26 equivale a `255.255.255.192`. El salto entre redes consecutivas en el último octeto es 256 − 192 = **64**, por lo que las redes posibles son: `.0`, `.64`, `.128` y `.192`.
+
+    El último octeto de la IP dada es **77**, que cae en el intervalo `64–127`, así que:
+
+    - **Dirección de red:** `192.168.4.64`
+    - **Rango de hosts válidos:** `192.168.4.65` – `192.168.4.126`
+    - **Dirección de broadcast:** `192.168.4.127`
+
 **Subnetting: dividir una red en subredes**
 
 El **subnetting** consiste en dividir una red en varias subredes más pequeñas, "tomando prestados" bits de la parte de host de la dirección para ampliar la parte de red. Permite, por ejemplo, separar los equipos de distintos departamentos o aulas en segmentos independientes, reduciendo el tamaño de cada dominio de difusión (*broadcast*) y mejorando la organización y la seguridad de la red.
