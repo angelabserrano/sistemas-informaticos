@@ -84,7 +84,7 @@ El **medio de transmisión** es el canal físico por el que viaja la señal (el�
 
 **Medios guiados: tipos de cableado más habituales en redes LAN:**
 
-![Comparativa de fibra óptica, par trenzado no apantallado (UTP), par trenzado apantallado (STP) y cable coaxial: estructura interna, velocidad, distancia, inmunidad a interferencias, ancho de banda, seguridad, coste y usos habituales](img/ut2_comparativa_medios_guiados.png){width=700}
+![Comparativa de fibra óptica, par trenzado no apantallado (UTP), par trenzado apantallado (STP) y cable coaxial: estructura interna, velocidad, distancia, inmunidad a interferencias, ancho de banda, seguridad, coste y usos habituales](img/ut2_comparativa_medios_guiados.png)
 
 **Categorías de cable UTP/FTP** (a mayor categoría, mayor ancho de banda soportado): Cat 5e (hasta 1 Gbit/s), Cat 6 (hasta 10 Gbit/s a distancias cortas), Cat 6A y Cat 7/8 (10 Gbit/s y más, mayor apantallamiento).
 
