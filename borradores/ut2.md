@@ -199,13 +199,13 @@ Este apartado se centra en la capa **Internet** del modelo TCP/IP (ver 2.3), res
 
 Históricamente, las direcciones IPv4 se agrupaban en **clases** según el valor de su primer octeto, lo que determinaba de forma implícita cuántos bits correspondían a la red y cuántos al host:
 
-| Clase | Intervalo | Primer octeto | Máscara por defecto | Hosts por red | Uso |
-| --- | --- | --- | --- | --- | --- |
-| A | 0.0.0.0 – 127.255.255.255 | 0 – 127 | 255.0.0.0 (/8) | ~16,7 millones | Redes muy grandes (grandes organizaciones, ISP) |
-| B | 128.0.0.0 – 191.255.255.255 | 128 – 191 | 255.255.0.0 (/16) | 65 534 | Redes medianas (universidades, empresas grandes) |
-| C | 192.0.0.0 – 223.255.255.255 | 192 – 223 | 255.255.255.0 (/24) | 254 | Redes pequeñas; la más habitual en redes domésticas y de oficina |
-| D | 224.0.0.0 – 239.255.255.255 | 224 – 239 | — | — | Multidifusión (multicast) |
-| E | 240.0.0.0 – 255.255.255.255 | 240 – 255 | — | — | Uso experimental/reservado |
+| Clase | Intervalo | Máscara por defecto | Hosts por red | Uso |
+| --- | --- | --- | --- | --- |
+| A | 0.0.0.0 – 127.255.255.255 | 255.0.0.0 (/8) | ~16,7 millones | Redes muy grandes (grandes organizaciones, ISP) |
+| B | 128.0.0.0 – 191.255.255.255 | 255.255.0.0 (/16) | 65 534 | Redes medianas (universidades, empresas grandes) |
+| C | 192.0.0.0 – 223.255.255.255 | 255.255.255.0 (/24) | 254 | Redes pequeñas; la más habitual en redes domésticas y de oficina |
+| D | 224.0.0.0 – 239.255.255.255 | — | — | Multidifusión (multicast) |
+| E | 240.0.0.0 – 255.255.255.255 | — | — | Uso experimental/reservado |
 
 !!! note "Idea clave"
     El rango `127.0.0.0/8` (dentro de la clase A) está reservado para **loopback** (`127.0.0.1` = *localhost*, la propia máquina) y nunca se asigna a un equipo de la red.
