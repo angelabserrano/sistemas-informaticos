@@ -121,22 +121,7 @@ El **medio de transmisión** es el canal físico por el que viaja la señal (el�
 ??? success "Respuesta"
     **Estrella**: todos los equipos (PC1, PC2, PC3) se conectan a un dispositivo central —el switch de aula—, en lugar de conectarse directamente entre sí o compartir un único cable troncal. Es la topología física más habitual en las redes Ethernet actuales, y lo más probable es que sea también la de tu propia aula.
 
-**Mapa lógico** (segmentación en subredes/VLAN, con independencia de la ubicación física):
-
-```mermaid
-graph TD
-    R[Router]
-    subgraph VLAN10["VLAN 10 · 192.168.10.0/24"]
-        PC1["PC1 · 192.168.10.11"]
-        PC2["PC2 · 192.168.10.12"]
-    end
-    subgraph VLAN20["VLAN 20 · 192.168.20.0/24"]
-        PC3["PC3 · 192.168.20.11"]
-    end
-    R --- PC1
-    R --- PC2
-    R --- PC3
-```
+![Mapa lógico: segmentación en subredes/VLAN, con independencia de la ubicación física. Router conectado a VLAN 10 (192.168.10.0/24, con PC1 y PC2) y a VLAN 20 (192.168.20.0/24, con PC3)](img/ut2_mapa_logico_vlan.png){width=700}
 
 !!! note "Idea clave"
     Dos equipos pueden estar físicamente muy cerca (mismo armario de comunicaciones) y pertenecer a segmentos lógicos completamente distintos (VLAN distintas), y viceversa.
