@@ -379,34 +379,7 @@ A diferencia de una red cableada, una red Wi-Fi puede ser "escuchada" por cualqu
 
 Observa los tres diagramas siguientes. Para cada uno, indica qué topología de red representa (de las vistas en el apartado 2.1) y **justifica tu respuesta** explicando cómo se conectan los equipos entre sí.
 
-**Diagrama 1**
-
-```mermaid
-graph LR
-    A[Equipo A] --- B[Equipo B] --- C[Equipo C] --- D[Equipo D]
-```
-
-**Diagrama 2**
-
-```mermaid
-graph LR
-    A[Equipo A] --> B[Equipo B]
-    B --> C[Equipo C]
-    C --> D[Equipo D]
-    D --> A
-```
-
-**Diagrama 3**
-
-```mermaid
-graph TD
-    A[Equipo A] --- B[Equipo B]
-    A --- C[Equipo C]
-    A --- D[Equipo D]
-    B --- C
-    B --- D
-    C --- D
-```
+![Tres diagramas de red sin identificar: Diagrama 1 con los equipos A-B-C-D conectados en línea, Diagrama 2 con los equipos conectados en bucle cerrado, y Diagrama 3 con todos los equipos interconectados entre sí](img/ut2_actividad_topologias.png){width=700}
 
 **Actividad 2.2 — Mapa físico y lógico de una red**
 {: .actividad-titulo}
