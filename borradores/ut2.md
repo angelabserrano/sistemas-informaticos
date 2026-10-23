@@ -384,11 +384,11 @@ Observa los tres diagramas siguientes. Para cada uno, indica qué topología de 
 **Actividad 2.2 — Mapa físico y lógico de una red**
 {: .actividad-titulo}
 
-Un aula tiene 3 equipos (PC1, PC2 y PC3) conectados a un switch, y el switch conectado a un router con salida a Internet, como en los diagramas de este apartado.
+Un aula tiene 15 equipos (PC1 a PC15) conectados a un switch, y el switch conectado a un router con salida a Internet, como en los diagramas de este apartado.
 
-a) Dibuja el **mapa físico**: representa cómo se conectan físicamente el router, el switch y los 3 PCs.
+a) Dibuja el **mapa físico**: representa cómo se conectan físicamente el router, el switch y los 15 PCs.
 
-b) Dibuja el **mapa lógico**: asigna a cada PC una dirección IP dentro de la red `192.168.1.0/24` (por ejemplo, `192.168.1.10`, `192.168.1.11` y `192.168.1.12`) y representa el camino que sigue el tráfico de cada PC hacia Internet a través del router.
+b) Dibuja el **mapa lógico**: asigna a cada PC una dirección IP dentro de la red `192.168.1.0/24` (por ejemplo, de `192.168.1.10` a PC1 hasta `192.168.1.24` a PC15) y representa el camino que sigue el tráfico de cada PC hacia Internet a través del router.
 
 **Actividad 2.3 — Direccionamiento IP**
 {: .actividad-titulo}
