@@ -85,9 +85,6 @@ Definido por la ISO, organiza la comunicación en **7 capas**, de la más cercan
 | 2 | Enlace de datos | Direccionamiento físico (MAC) y acceso al medio dentro de una misma red | Ethernet, Wi-Fi (802.11) |
 | 1 | Física | Transmisión de los bits como señales eléctricas, ópticas o de radio | Cables, conectores, radiofrecuencia |
 
-!!! tip "Regla mnemotécnica"
-    De la capa 7 a la 1: *"**T**odas **P**ersonas **S**uelen **T**omar **R**efrescos **E**n **F**iestas"* (Aplicación, Presentación, Sesión, Transporte, Red, Enlace, Física).
-
 **Modelo TCP/IP**
 
 Es el modelo que realmente implementan los sistemas operativos y los dispositivos de red, y en el que se basa Internet. Es más simple que el OSI: agrupa sus funciones en solo **4 capas**:
