@@ -216,6 +216,35 @@ Históricamente, las direcciones IPv4 se agrupaban en **clases** según el valor
 - **Direcciones privadas** (uso interno, no enrutables en Internet): `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`.
 - **Puerta de enlace (gateway)**: dirección del dispositivo (router) por el que un equipo envía el tráfico destinado a otras redes.
 
+**Subnetting: dividir una red en subredes**
+
+El **subnetting** consiste en dividir una red en varias subredes más pequeñas, "tomando prestados" bits de la parte de host de la dirección para ampliar la parte de red. Permite, por ejemplo, separar los equipos de distintos departamentos o aulas en segmentos independientes, reduciendo el tamaño de cada dominio de difusión (*broadcast*) y mejorando la organización y la seguridad de la red.
+
+Por cada bit que se "presta" a la parte de red, el número de subredes se **multiplica por 2** y el número de hosts disponibles por subred se **divide entre 2**.
+
+**Ejemplo: dividir `192.168.1.0/24` en 2 subredes iguales**
+
+Partimos de una red /24 (254 hosts utilizables) y tomamos 1 bit prestado, pasando a una máscara **/25** (255.255.255.128):
+
+| Subred | Dirección de red | Rango de hosts | Broadcast |
+| --- | --- | --- | --- |
+| 1 | 192.168.1.0/25 | 192.168.1.1 – 192.168.1.126 | 192.168.1.127 |
+| 2 | 192.168.1.128/25 | 192.168.1.129 – 192.168.1.254 | 192.168.1.255 |
+
+**Ejemplo: dividir la misma red en 4 subredes iguales**
+
+Tomando 2 bits prestados, pasamos a una máscara **/26** (255.255.255.192):
+
+| Subred | Dirección de red | Rango de hosts | Broadcast |
+| --- | --- | --- | --- |
+| 1 | 192.168.1.0/26 | 192.168.1.1 – 192.168.1.62 | 192.168.1.63 |
+| 2 | 192.168.1.64/26 | 192.168.1.65 – 192.168.1.126 | 192.168.1.127 |
+| 3 | 192.168.1.128/26 | 192.168.1.129 – 192.168.1.190 | 192.168.1.191 |
+| 4 | 192.168.1.192/26 | 192.168.1.193 – 192.168.1.254 | 192.168.1.255 |
+
+!!! note "Idea clave"
+    El "salto" entre direcciones de red consecutivas coincide con el valor del último octeto significativo de la máscara (p. ej. 256 − 192 = 64 en el ejemplo con /26). Es un atajo práctico para calcular subredes sin tener que convertir a binario cada vez.
+
 **IPv6:** dirección de 128 bits, representada en 8 grupos hexadecimales (p. ej. `2001:0db8:0000:0000:0000:ff00:0042:8329`, simplificable a `2001:db8::ff00:42:8329`), diseñada para resolver el agotamiento de direcciones de IPv4 y simplificar el direccionamiento.
 
 **DNS (Domain Name System):** servicio distribuido y jerárquico que traduce nombres de dominio legibles (`www.ejemplo.com`) a direcciones IP. En el proceso de **resolución**, el equipo consulta a un servidor DNS (a menudo el del proveedor de Internet o uno público como `8.8.8.8`), que responde directamente si conoce la respuesta o la reenvía a otros servidores DNS hasta obtenerla.
