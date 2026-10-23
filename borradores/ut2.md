@@ -114,7 +114,7 @@ El **medio de transmisión** es el canal físico por el que viaja la señal (el�
 
 **Mapa físico** (disposición real de los equipos y el cableado):
 
-![Mapa físico de un aula: Internet conectado al router, el router al switch de aula, y el switch a PC1, PC2 y PC3](img/ut2_mapa_fisico_aula.png)
+![Mapa físico de un aula: Internet conectado al router, el router al switch de aula, y el switch a PC1, PC2 y PC3](img/ut2_mapa_fisico_aula.png){width=600}
 
 **Pregunta rápida:** observando el diagrama anterior, con el switch de aula conectado directamente a cada PC, ¿qué topología física (de las vistas en 2.1) tiene esta red? ¿Y la de tu propia aula?
 
