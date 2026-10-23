@@ -374,27 +374,7 @@ A diferencia de una red cableada, una red Wi-Fi puede ser "escuchada" por cualqu
 
 ## Actividades
 
-**Actividad 2.1 — Mapa físico y lógico de una red**
-{: .actividad-titulo}
-
-A partir del plano de un aula con 15 puestos, un switch y un router con salida a Internet, dibuja el **mapa físico** (ubicación de equipos y cableado) y el **mapa lógico** (direccionamiento IP, segmento de red) de esa red.
-
-**Actividad 2.2 — Direccionamiento IP**
-{: .actividad-titulo}
-
-Dada la red `192.168.10.0/24`, calcula la dirección de red, la de broadcast y el rango de direcciones válidas para host. Configura después esa dirección de forma estática en una máquina virtual y verifica la conectividad con `ping` hacia otro equipo de la misma red.
-
-**Actividad 2.3 — DHCP vs. IP estática**
-{: .actividad-titulo}
-
-En un entorno con dos máquinas virtuales y un servicio DHCP, observa qué configuración de red recibe automáticamente un cliente. Cambia después esa misma máquina a configuración estática y razona en qué casos (servidor, impresora, PC de usuario) conviene cada modalidad.
-
-**Actividad 2.4 — Subnetting**
-{: .actividad-titulo}
-
-El departamento de informática de un centro necesita dividir la red `192.168.5.0/24` en 4 subredes iguales, una por cada aula. Calcula la máscara resultante y, para cada subred, su dirección de red, el rango de direcciones de host válidas y la dirección de broadcast. Configura después una de esas subredes en una máquina virtual y comprueba con `ping` que no se alcanza directamente a un equipo de otra subred.
-
-**Actividad 2.5 — Identifica la topología**
+**Actividad 2.1 — Identifica la topología**
 {: .actividad-titulo}
 
 Observa los tres diagramas siguientes. Para cada uno, indica qué topología de red representa (de las vistas en el apartado 2.1) y **justifica tu respuesta** explicando cómo se conectan los equipos entre sí.
@@ -427,3 +407,23 @@ graph TD
     B --- D
     C --- D
 ```
+
+**Actividad 2.2 — Mapa físico y lógico de una red**
+{: .actividad-titulo}
+
+A partir del plano de un aula con 15 puestos, un switch y un router con salida a Internet, dibuja el **mapa físico** (ubicación de equipos y cableado) y el **mapa lógico** (direccionamiento IP, segmento de red) de esa red.
+
+**Actividad 2.3 — Direccionamiento IP**
+{: .actividad-titulo}
+
+Dada la red `192.168.10.0/24`, calcula la dirección de red, la de broadcast y el rango de direcciones válidas para host. Configura después esa dirección de forma estática en una máquina virtual y verifica la conectividad con `ping` hacia otro equipo de la misma red.
+
+**Actividad 2.4 — Subnetting**
+{: .actividad-titulo}
+
+El departamento de informática de un centro necesita dividir la red `192.168.5.0/24` en 4 subredes iguales, una por cada aula. Calcula la máscara resultante y, para cada subred, su dirección de red, el rango de direcciones de host válidas y la dirección de broadcast. Configura después una de esas subredes en una máquina virtual y comprueba con `ping` que no se alcanza directamente a un equipo de otra subred.
+
+**Actividad 2.5 — DHCP vs. IP estática**
+{: .actividad-titulo}
+
+En un entorno con dos máquinas virtuales y un servicio DHCP, observa qué configuración de red recibe automáticamente un cliente. Cambia después esa misma máquina a configuración estática y razona en qué casos (servidor, impresora, PC de usuario) conviene cada modalidad.
