@@ -393,3 +393,37 @@ En un entorno con dos máquinas virtuales y un servicio DHCP, observa qué confi
 {: .actividad-titulo}
 
 El departamento de informática de un centro necesita dividir la red `192.168.5.0/24` en 4 subredes iguales, una por cada aula. Calcula la máscara resultante y, para cada subred, su dirección de red, el rango de direcciones de host válidas y la dirección de broadcast. Configura después una de esas subredes en una máquina virtual y comprueba con `ping` que no se alcanza directamente a un equipo de otra subred.
+
+**Actividad 2.5 — Identifica la topología**
+{: .actividad-titulo}
+
+Observa los tres diagramas siguientes. Para cada uno, indica qué topología de red representa (de las vistas en el apartado 2.1) y **justifica tu respuesta** explicando cómo se conectan los equipos entre sí.
+
+**Diagrama 1**
+
+```mermaid
+graph LR
+    A[Equipo A] --- B[Equipo B] --- C[Equipo C] --- D[Equipo D]
+```
+
+**Diagrama 2**
+
+```mermaid
+graph LR
+    A[Equipo A] --> B[Equipo B]
+    B --> C[Equipo C]
+    C --> D[Equipo D]
+    D --> A
+```
+
+**Diagrama 3**
+
+```mermaid
+graph TD
+    A[Equipo A] --- B[Equipo B]
+    A --- C[Equipo C]
+    A --- D[Equipo D]
+    B --- C
+    B --- D
+    C --- D
+```
