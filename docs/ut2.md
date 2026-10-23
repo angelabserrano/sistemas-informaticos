@@ -195,6 +195,23 @@ Este apartado se centra en la capa **Internet** del modelo TCP/IP (ver 2.3), res
 
 **Direccionamiento IPv4:** dirección de 32 bits, representada en 4 grupos decimales (0-255) separados por puntos (p. ej. `192.168.1.10`).
 
+**Clases de redes IPv4**
+
+Históricamente, las direcciones IPv4 se agrupaban en **clases** según el valor de su primer octeto, lo que determinaba de forma implícita cuántos bits correspondían a la red y cuántos al host:
+
+| Clase | Primer octeto | Máscara por defecto | Hosts por red | Uso |
+| --- | --- | --- | --- | --- |
+| A | 1 – 126 | 255.0.0.0 (/8) | ~16,7 millones | Redes muy grandes (grandes organizaciones, ISP) |
+| B | 128 – 191 | 255.255.0.0 (/16) | 65 534 | Redes medianas (universidades, empresas grandes) |
+| C | 192 – 223 | 255.255.255.0 (/24) | 254 | Redes pequeñas; la más habitual en redes domésticas y de oficina |
+| D | 224 – 239 | — | — | Multidifusión (multicast) |
+| E | 240 – 255 | — | — | Uso experimental/reservado |
+
+!!! note "Idea clave"
+    El rango `127.0.0.0/8` (dentro de la clase A) está reservado para **loopback** (`127.0.0.1` = *localhost*, la propia máquina) y nunca se asigna a un equipo de la red.
+
+    Hoy en día casi ninguna red se ciñe a estas clases de forma estricta: lo habitual es el direccionamiento **sin clases (classless)**, mediante notación **CIDR**, que permite máscaras de cualquier longitud según las necesidades reales de cada red, en lugar de limitarse a /8, /16 o /24.
+
 - **Máscara de subred**: determina qué parte de la dirección identifica la red y cuál el equipo (host). Se puede expresar en notación decimal (`255.255.255.0`) o **CIDR** (`/24`).
 - **Direcciones privadas** (uso interno, no enrutables en Internet): `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`.
 - **Puerta de enlace (gateway)**: dirección del dispositivo (router) por el que un equipo envía el tráfico destinado a otras redes.
