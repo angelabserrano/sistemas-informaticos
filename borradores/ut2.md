@@ -281,8 +281,35 @@ Tomando 2 bits prestados, pasamos a una máscara **/26** (255.255.255.192):
 
 - **SSID**: nombre que identifica la red inalámbrica.
 - **Estándares 802.11**: sucesivas generaciones (a/b/g/n/ac/ax...) con mejoras de velocidad y alcance; los nombres comerciales actuales son Wi-Fi 4 (802.11n), Wi-Fi 5 (802.11ac) y Wi-Fi 6 (802.11ax).
-- **Seguridad**: protocolos de cifrado del tráfico inalámbrico, de menor a mayor seguridad: WEP (obsoleto e inseguro) → WPA → **WPA2** (estándar durante años) → **WPA3** (actual).
 - **Ampliación de cobertura**: un único punto de acceso no siempre cubre todo el espacio necesario. Un **repetidor** (o un AP en modo repetidor, mediante el estándar **WDS**, *Wireless Distribution System*) retransmite la señal para ampliar el alcance, a costa de reducir el ancho de banda disponible en cada salto adicional. Las **redes mesh** modernas (varios puntos que se coordinan entre sí, con el mismo SSID e itinerancia automática entre ellos) resuelven el mismo problema de forma más eficiente y con gestión centralizada.
+
+**Seguridad en las redes inalámbricas**
+
+A diferencia de una red cableada, una red Wi-Fi puede ser "escuchada" por cualquier dispositivo dentro de su alcance sin necesidad de acceso físico, lo que hace imprescindible protegerla adecuadamente.
+
+**Protocolos de cifrado** (de menor a mayor seguridad):
+
+| Protocolo | Cifrado | Seguridad |
+| --- | --- | --- |
+| WEP | RC4, clave estática | Obsoleto e inseguro; se puede romper en minutos |
+| WPA | TKIP (mejora de WEP) | Solución de transición; también vulnerable |
+| WPA2 | AES-CCMP | Estándar durante años; seguro si se usa una contraseña robusta |
+| WPA3 | AES-GCMP + SAE | Actual; protege incluso con contraseñas débiles frente a ataques de diccionario fuera de línea |
+
+**Modos de autenticación:**
+
+- **WPA-Personal (PSK,** *Pre-Shared Key***)**: todos los usuarios comparten la misma contraseña. Habitual en redes domésticas y pequeñas oficinas.
+- **WPA-Enterprise (802.1X)**: cada usuario se autentica con sus propias credenciales contra un servidor **RADIUS**. Permite revocar el acceso a un único usuario sin cambiar la contraseña de toda la red; habitual en empresas y centros educativos.
+
+**Buenas prácticas adicionales:**
+
+- Cambiar el usuario y la contraseña por defecto del panel de administración del router/AP.
+- Usar contraseñas Wi-Fi largas y robustas: incluso con WPA2/WPA3, una contraseña débil sigue siendo el punto más vulnerable.
+- Desactivar **WPS** (*Wi-Fi Protected Setup*): su PIN de 8 dígitos es vulnerable a ataques de fuerza bruta.
+- Mantener actualizado el firmware del punto de acceso/router.
+
+!!! warning "Ocultar el SSID y el filtrado MAC no son medidas de seguridad reales"
+    Ocultar el SSID solo evita que la red aparezca en el listado habitual de redes disponibles, pero sigue siendo detectable con herramientas específicas. El filtrado por dirección MAC se puede eludir fácilmente suplantando (*spoofing*) una MAC autorizada. Ambas pueden usarse como medida adicional, pero nunca deben sustituir a un buen cifrado (WPA2/WPA3).
 
 ## 2.6. Dispositivos de interconexión y encaminamiento
 
