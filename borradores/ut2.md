@@ -123,6 +123,11 @@ graph LR
     SW --- PC3[PC3]
 ```
 
+**Pregunta rápida:** observando el diagrama anterior, con el switch de aula conectado directamente a cada PC, ¿qué topología física (de las vistas en 2.1) tiene esta red? ¿Y la de tu propia aula?
+
+??? success "Respuesta"
+    **Estrella**: todos los equipos (PC1, PC2, PC3) se conectan a un dispositivo central —el switch de aula—, en lugar de conectarse directamente entre sí o compartir un único cable troncal. Es la topología física más habitual en las redes Ethernet actuales, y lo más probable es que sea también la de tu propia aula.
+
 **Mapa lógico** (segmentación en subredes/VLAN, con independencia de la ubicación física):
 
 ```mermaid
