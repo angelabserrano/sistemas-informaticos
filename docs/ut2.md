@@ -22,13 +22,13 @@ En el desarrollo de aplicaciones web, las redes son fundamentales para comprende
 
 Las redes se pueden clasificar según el área que cubren y la tecnología utilizada.
 
-| Tipo | Nombre | Características y ejemplos |
-| --- | --- | --- |
-| PAN | Personal Area Network | Red de alcance personal, como la conexión Bluetooth entre un móvil y unos auriculares. |
-| LAN | Local Area Network | Red de área local que conecta dispositivos en una vivienda, aula, oficina o edificio. |
-| WLAN | Wireless Local Area Network | Red local inalámbrica, normalmente basada en Wi-Fi. Es un tipo de LAN. |
-| MAN | Metropolitan Area Network | Red que conecta equipos o redes en un área metropolitana. |
-| WAN | Wide Area Network | Red de área extensa que conecta redes situadas en lugares geográficos distantes. Internet es el ejemplo más conocido. |
+| Tipo | Nombre | Alcance | Ejemplo |
+| --- | --- | --- | --- |
+| PAN | Personal Area Network | Unos pocos metros | Conexión Bluetooth entre un móvil y unos auriculares |
+| LAN | Local Area Network | Un edificio o campus | Red de una vivienda, aula u oficina |
+| WLAN | Wireless Local Area Network | Igual que una LAN, pero inalámbrica | Red Wi-Fi doméstica o de oficina |
+| MAN | Metropolitan Area Network | Una ciudad | Red municipal que conecta varios edificios públicos |
+| WAN | Wide Area Network | Países o continentes | Internet |
 
 **Ejemplo:** los ordenadores de un aula conectados a un switch forman parte de una LAN. Si se conectan mediante Wi-Fi a través de un punto de acceso, utilizan una WLAN.
 
