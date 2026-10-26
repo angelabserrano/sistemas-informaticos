@@ -41,13 +41,13 @@ La topología de red describe cómo se organizan y conectan los dispositivos. Po
 
 Las principales topologías son:
 
-| Topología | Descripción | Características |
-| --- | --- | --- |
-| Bus | Los dispositivos comparten un medio de transmisión común. | Es sencilla, pero un fallo en el cable principal puede afectar a toda la red. Se asocia principalmente a redes antiguas. |
-| Estrella | Todos los dispositivos se conectan a un nodo central, habitualmente un switch. | Es habitual en las redes Ethernet actuales. Un fallo en un cable suele afectar solo al dispositivo conectado, pero un fallo del switch puede interrumpir varias conexiones. |
-| Anillo | Los dispositivos se conectan formando un circuito cerrado. | Los datos siguen un recorrido determinado. Se encuentra en algunas tecnologías y arquitecturas específicas. |
-| Árbol | Combina varias estrellas en una estructura jerárquica. | Facilita organizar redes grandes en diferentes niveles. |
-| Malla | Los nodos disponen de varias conexiones entre sí. | Puede proporcionar redundancia y tolerancia a fallos, aunque aumenta la complejidad y el coste. |
+| Topología | Descripción | Ventajas | Desventajas |
+| --- | --- | --- | --- |
+| Bus | Los dispositivos comparten un medio de transmisión común. | Cableado mínimo; económica y sencilla de instalar. | Un fallo en el cable principal afecta a toda la red; difícil de ampliar; se asocia a redes antiguas. |
+| Estrella | Todos los dispositivos se conectan a un nodo central, habitualmente un switch. | Un fallo en un cable solo afecta a ese equipo; fácil de ampliar y de localizar averías. | Si falla el nodo central (switch), toda la red queda sin servicio; requiere más cableado que el bus. |
+| Anillo | Los dispositivos se conectan formando un circuito cerrado. | Reparto ordenado del acceso al medio en las variantes con paso de testigo. | Un fallo en un equipo o tramo de cable puede interrumpir toda la red; difícil de ampliar sin cortar el servicio. |
+| Árbol | Combina varias estrellas en una estructura jerárquica. | Facilita organizar redes grandes por niveles; fácil de ampliar añadiendo nuevas ramas. | Depende de los nodos superiores: un fallo en un nivel alto afecta a todas las ramas inferiores. |
+| Malla | Los nodos disponen de varias conexiones entre sí. | Máxima redundancia y tolerancia a fallos, con rutas alternativas. | Mucho cableado y coste elevado; instalación y mantenimiento complejos; poco escalable. |
 
 En las redes locales Ethernet actuales es frecuente encontrar una topología física en estrella o una estructura jerárquica de estrellas. Esto no significa que todas las redes utilicen la misma topología lógica.
 
