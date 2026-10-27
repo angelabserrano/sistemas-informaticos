@@ -1,0 +1,87 @@
+/* Admonición personalizada "reto" */
+:root {
+  --md-admonition-icon--reto: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z"/></svg>');
+}
+
+.md-typeset .admonition.reto,
+.md-typeset details.reto {
+  border-color: rgb(230, 81, 0);
+}
+
+.md-typeset .reto > .admonition-title,
+.md-typeset .reto > summary {
+  background-color: rgba(230, 81, 0, 0.1);
+}
+
+.md-typeset .reto > .admonition-title::before,
+.md-typeset .reto > summary::before {
+  background-color: rgb(230, 81, 0);
+  -webkit-mask-image: var(--md-admonition-icon--reto);
+  mask-image: var(--md-admonition-icon--reto);
+}
+
+/* Admonición "tip" ligada al color de acento del tema (se adapta si cambia la paleta) */
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: var(--md-accent-fg-color);
+}
+
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary {
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+.md-typeset .tip > .admonition-title::before,
+.md-typeset .tip > summary::before {
+  background-color: var(--md-accent-fg-color);
+}
+
+/* Catálogo visual de componentes: miniaturas de altura uniforme dentro de un
+   marco neutro, para que el texto de cada tarjeta arranque siempre a la misma
+   altura sin importar el tamaño/proporción real de la fotografía. */
+.md-typeset .grid.cards > ul > li > p:first-child,
+.md-typeset .grid.cards > ol > li > p:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 11rem;
+  margin: 0 0 0.75rem 0;
+  background-color: var(--md-code-bg-color);
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child img,
+.md-typeset .grid.cards > ol > li > p:first-child img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Insignia "Próximamente" para unidades aún no publicadas */
+.md-typeset .badge-proximamente {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.2rem;
+  background-color: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  vertical-align: middle;
+}
+
+/* Barra de título para actividades */
+.md-typeset .actividad-titulo {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.2rem;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: bold;
+}
