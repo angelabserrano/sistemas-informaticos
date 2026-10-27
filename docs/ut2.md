@@ -417,3 +417,46 @@ El departamento de informática de un centro necesita dividir la red `192.168.5.
 {: .actividad-titulo}
 
 En un entorno con dos máquinas virtuales y un servicio DHCP, observa qué configuración de red recibe automáticamente un cliente. Cambia después esa misma máquina a configuración estática y razona en qué casos (servidor, impresora, PC de usuario) conviene cada modalidad.
+
+**Actividad 2.6 — Clasifica por capas**
+{: .actividad-titulo}
+
+Indica en qué capa del **modelo OSI** y en qué capa del **modelo TCP/IP** trabaja cada uno de los siguientes elementos, y **justifica tu respuesta** en una frase:
+
+- Cable de par trenzado UTP
+- Conector RJ-45
+- Dirección MAC
+- Switch
+- Dirección IP
+- Router
+- TCP
+- UDP
+- HTTP
+- Wi-Fi (802.11)
+- `ping` (ICMP)
+
+Organiza tu respuesta en una tabla con las columnas: *Elemento*, *Capa OSI*, *Capa TCP/IP* y *Justificación*.
+
+**Actividad 2.7 — Sigue el camino de tus paquetes**
+{: .actividad-titulo}
+
+Desde el equipo del aula, realiza los siguientes pasos y documenta cada uno con una captura de pantalla:
+
+a) Consulta la tabla de encaminamiento del equipo (`ip route` en Linux o `route print` en Windows) e identifica cuál es la **puerta de enlace** por defecto.
+
+b) Ejecuta `traceroute` (Linux) o `tracert` (Windows) hacia un dominio de tu elección (por ejemplo, `www.gva.es`). ¿Cuántos saltos hay hasta el destino? ¿Cuál es la dirección del primer salto y con qué dispositivo de tu red coincide?
+
+c) Anota la **dirección IP privada** de tu equipo (`ip a` o `ipconfig`) y compárala con la **dirección IP pública** que muestra un servicio web de consulta de IP (por ejemplo, `ifconfig.me`).
+
+d) Explica, utilizando el concepto de **NAT**, por qué las dos direcciones del apartado anterior son distintas y qué dispositivo realiza esa traducción.
+
+**Actividad 2.8 — Despliegue seguro de una aplicación web**
+{: .actividad-titulo}
+
+a) Accede con el navegador a un sitio que utilice HTTPS e inspecciona su **certificado digital** (pulsando el icono situado junto a la dirección). Anota el dominio para el que se emitió, la entidad emisora y sus fechas de validez. Explica qué garantías de TLS (confidencialidad, integridad y autenticidad) te aporta ese certificado.
+
+b) Como desarrollador/a web te encuentras en las siguientes situaciones. Para cada una, indica qué **protocolo inseguro** se habría utilizado tradicionalmente, cuál es su **alternativa segura** y qué riesgo concreto evitas al usarla:
+
+1. Subir los archivos de tu aplicación web al servidor de hosting.
+2. Conectarte a la terminal del servidor remoto para administrarlo.
+3. Servir la aplicación a los usuarios que la visitan desde el navegador.
