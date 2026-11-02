@@ -18,8 +18,8 @@ Varias actividades del módulo (especialmente en la UT2) piden configurar y cone
 
     ![Asistente "New Virtual Machine" de VirtualBox 7.2, con los campos VM Name, VM Folder, ISO Image, OS y OS Version](img/virtualbox_nueva_vm.png){width=500}
 
-    !!! note "Instalación desatendida"
-        Si marcas **Proceed with Unattended Installation**, VirtualBox puede instalar el sistema operativo automáticamente (usuario, contraseña, etc.) sin que tengas que ir pulsando "Siguiente" durante la instalación. Para las prácticas del módulo es recomendable **dejarla desmarcada** la primera vez, para ver y entender cada paso de la instalación.
+    !!! warning "No marques \"Proceed with Unattended Installation\""
+        Esa opción instala el sistema operativo automáticamente, sin que veas ni controles los pasos de la instalación. Para las prácticas del módulo **debe quedar desmarcada**: la instalación se hace manualmente, paso a paso.
 
 3. En las pantallas siguientes del asistente, asigna la **memoria RAM**: para una distribución Linux ligera (sin entorno gráfico pesado) con 1-2 GB suele bastar; consulta los requisitos de la ISO concreta que vayas a instalar y no superes la mitad de la RAM física del equipo del taller, para no afectar al resto de máquinas virtuales que tengas abiertas a la vez.
 4. Crea un **disco duro virtual** nuevo: tipo **VDI**, reservado **dinámicamente** (ocupa solo el espacio que realmente usas, hasta el máximo que indiques) y con un tamaño razonable (20-25 GB suele ser suficiente para las prácticas del módulo).
