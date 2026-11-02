@@ -406,12 +406,28 @@ b) Dibuja el **mapa lógico**: asigna a cada PC una dirección IP dentro de la r
 **Actividad 2.3 — Direccionamiento IP**
 {: .actividad-titulo}
 
-Dada la red `192.168.10.0/24`, calcula la dirección de red, la de broadcast y el rango de direcciones válidas para host. Configura después esa dirección de forma estática en una máquina virtual y verifica la conectividad con `ping` hacia otro equipo de la misma red.
+Para cada una de las siguientes direcciones, calcula la dirección de red, la dirección de broadcast y el rango de direcciones válidas para host:
+
+a) `192.168.10.0/24`
+
+b) `10.20.30.100/26`
+
+c) `172.16.9.130/22`
+
+Configura después la dirección del apartado a) de forma estática en una máquina virtual y verifica la conectividad con `ping` hacia otro equipo de la misma red.
 
 **Actividad 2.4 — Subnetting**
 {: .actividad-titulo}
 
-El departamento de informática de un centro necesita dividir la red `192.168.5.0/24` en 4 subredes iguales, una por cada aula. Calcula la máscara resultante y, para cada subred, su dirección de red, el rango de direcciones de host válidas y la dirección de broadcast. Configura después una de esas subredes en una máquina virtual y comprueba con `ping` que no se alcanza directamente a un equipo de otra subred.
+Divide cada una de las siguientes redes en el número de subredes indicado. Para cada subred resultante, indica la máscara, la dirección de red, el rango de direcciones de host válidas y la dirección de broadcast.
+
+a) `192.168.5.0/24` en 4 subredes iguales (una por aula).
+
+b) `192.168.8.0/24` en 2 subredes iguales.
+
+c) `10.0.1.0/24` en 8 subredes iguales.
+
+Configura después una de las subredes del apartado a) en una máquina virtual y comprueba con `ping` que no se alcanza directamente a un equipo de otra subred.
 
 **Actividad 2.5 — DHCP vs. IP estática**
 {: .actividad-titulo}
