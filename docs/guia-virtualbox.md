@@ -2,37 +2,33 @@
 
 [:material-arrow-left: Volver al índice de todas las unidades](index.md)
 
-Varias actividades del módulo (especialmente en la UT2) piden configurar y conectar varias **máquinas virtuales (VM)** entre sí: para calcular y comprobar direccionamiento IP, para probar un servicio DHCP, para verificar que dos subredes no se ven entre sí... Esta guía explica cómo crear una VM en **VirtualBox** (versión 7.2, la instalada en los talleres) y, sobre todo, cómo configurar correctamente su **red**, que es la parte que más confusión suele generar la primera vez.
+Varias actividades del módulo (especialmente en la UT2) piden configurar y conectar varias **máquinas virtuales (VM)** entre sí: para calcular y comprobar direccionamiento IP, para probar un servicio DHCP, para verificar que dos subredes no se ven entre sí... Para estas primeras prácticas partimos de una máquina virtual **ya preparada**, que el profesorado proporciona como archivo **OVA**, en lugar de instalar un sistema operativo desde cero (eso lo veremos más adelante en el curso).
+
+Esta guía explica cómo importar esa OVA en **VirtualBox** (versión 7.2, la instalada en los talleres), ajustar sus parámetros y, sobre todo, cómo configurar correctamente su **red**, que es la parte que más confusión suele generar la primera vez.
 
 !!! tip "¿Nunca has usado VirtualBox?"
-    No hace falta memorizar nada de esta página: tenla abierta al lado mientras configuras tu primera máquina virtual y sigue los pasos en orden.
+    No hace falta memorizar nada de esta página: tenla abierta al lado mientras importas tu primera máquina virtual y sigue los pasos en orden.
 
-## 1. Crear una máquina virtual nueva
+## 1. Importar la máquina virtual (archivo OVA)
 
-1. Abre VirtualBox y pulsa **Nueva**.
-2. En la primera pantalla del asistente, rellena:
-    - **VM Name**: un nombre descriptivo (por ejemplo, `UT2-PC1`).
-    - **VM Folder**: la carpeta donde se guardará (el valor por defecto suele servir).
-    - **ISO Image**: selecciona la imagen ISO del sistema operativo que vas a instalar, si ya la tienes descargada. Si la dejas en "no seleccionado", podrás instalar el sistema manualmente más adelante.
-    - **OS** y **OS Version**: el sistema operativo y la versión concreta (VirtualBox suele detectarlos solo a partir del nombre de la ISO).
+1. Pide al profesorado el archivo **.ova** correspondiente a la actividad y guárdalo en tu equipo.
+2. Abre VirtualBox y ve a **Archivo > Importar servicio virtualizado** (*File > Import Appliance*).
+3. Selecciona el archivo `.ova` que te han proporcionado y pulsa **Siguiente**.
+4. VirtualBox mostrará un resumen de la configuración de la máquina (nombre, RAM, CPU, disco...). Puedes cambiar aquí mismo el **nombre** de la VM (por ejemplo, `UT2-PC1`) para identificarla fácilmente si vas a importar varias.
+5. Pulsa **Importar** y espera a que termine el proceso.
 
-    ![Asistente "New Virtual Machine" de VirtualBox 7.2, con los campos VM Name, VM Folder, ISO Image, OS y OS Version](img/virtualbox_nueva_vm.png){width=500}
+## 2. Ajustar los parámetros de la máquina importada
 
-    !!! warning "No marques \"Proceed with Unattended Installation\""
-        Esa opción instala el sistema operativo automáticamente, sin que veas ni controles los pasos de la instalación. Para las prácticas del módulo **debe quedar desmarcada**: la instalación se hace manualmente, paso a paso.
-
-3. En las pantallas siguientes del asistente, asigna la **memoria RAM**: para una distribución Linux ligera (sin entorno gráfico pesado) con 1-2 GB suele bastar; consulta los requisitos de la ISO concreta que vayas a instalar y no superes la mitad de la RAM física del equipo del taller, para no afectar al resto de máquinas virtuales que tengas abiertas a la vez.
-4. Crea un **disco duro virtual** nuevo: tipo **VDI**, reservado **dinámicamente** (ocupa solo el espacio que realmente usas, hasta el máximo que indiques) y con un tamaño razonable (20-25 GB suele ser suficiente para las prácticas del módulo).
-
-## 2. Configuración básica de hardware
-
-Antes de arrancar la VM, repasa estos ajustes en **Configuración**:
+Con la VM ya importada (todavía apagada), selecciónala en la lista y entra en **Configuración**:
 
 | Sección | Qué ajustar |
 | --- | --- |
 | Sistema > Procesador | Número de núcleos virtuales asignados (1-2 suele bastar para las prácticas) |
-| Pantalla > Memoria de vídeo | El valor por defecto suele ser suficiente si no vas a usar entorno gráfico pesado |
-| Almacenamiento | Monta la imagen **ISO** de instalación en la unidad óptica virtual (icono de disco junto a "Controlador: IDE") |
+| Sistema > Placa base | Memoria RAM asignada; no superes la mitad de la RAM física del equipo del taller, para no afectar a otras VMs que tengas abiertas a la vez |
+| Pantalla > Memoria de vídeo | El valor por defecto suele ser suficiente |
+
+!!! note "¿Y si necesito más adelante instalar un sistema operativo desde cero?"
+    Esa parte se verá más adelante en el curso, con el asistente **Nueva** de VirtualBox. Por ahora, basta con importar la OVA que indique el profesorado.
 
 ## 3. Configuración de red
 
@@ -63,12 +59,31 @@ Si en algún momento necesitas que la VM también tenga salida a Internet (por e
 
 ## 4. Instantáneas (snapshots)
 
-Antes de hacer un cambio que pueda romper la configuración de red o del sistema (por ejemplo, antes de instalar y configurar el servidor DHCP), toma una **instantánea**: botón derecho sobre la VM > **Instantánea** > **Tomar**. Si algo falla, puedes **restaurar** esa instantánea y volver al estado anterior sin tener que reinstalar el sistema desde cero.
+Antes de hacer un cambio que pueda romper la configuración de red o del sistema (por ejemplo, antes de instalar y configurar el servidor DHCP), toma una **instantánea**: botón derecho sobre la VM > **Instantánea** > **Tomar**. Si algo falla, puedes **restaurar** esa instantánea y volver al estado anterior sin tener que importar la OVA de nuevo.
 
 ## 5. Resumen rápido
 
-1. Nueva VM → nombre, tipo/versión de SO, RAM, disco VDI dinámico.
-2. Monta la ISO de instalación en Almacenamiento.
+1. Archivo > Importar servicio virtualizado → selecciona la OVA → ajusta el nombre si vas a importar varias → Importar.
+2. Revisa en Configuración la RAM y CPU asignadas.
 3. Configuración > Red > Adaptador 1 > **Red interna** (mismo nombre en todas las VMs del ejercicio).
 4. Toma una instantánea antes de cambios importantes.
-5. Arranca la VM e instala el sistema operativo.
+5. Arranca la VM: el sistema operativo ya está instalado, listo para trabajar.
+
+## Apéndice: crear una máquina virtual desde cero
+
+*Esto no hace falta para las primeras actividades, en las que se parte de una OVA. Lo veremos más adelante en el curso, cuando toque instalar un sistema operativo desde cero.*
+
+1. Abre VirtualBox y pulsa **Nueva**.
+2. En la primera pantalla del asistente, rellena:
+    - **VM Name**: un nombre descriptivo (por ejemplo, `UT2-PC1`).
+    - **VM Folder**: la carpeta donde se guardará (el valor por defecto suele servir).
+    - **ISO Image**: selecciona la imagen ISO del sistema operativo que vas a instalar, si ya la tienes descargada. Si la dejas en "no seleccionado", podrás instalar el sistema manualmente más adelante.
+    - **OS** y **OS Version**: el sistema operativo y la versión concreta (VirtualBox suele detectarlos solo a partir del nombre de la ISO).
+
+    ![Asistente "New Virtual Machine" de VirtualBox 7.2, con los campos VM Name, VM Folder, ISO Image, OS y OS Version](img/virtualbox_nueva_vm.png){width=500}
+
+    !!! warning "No marques \"Proceed with Unattended Installation\""
+        Esa opción instala el sistema operativo automáticamente, sin que veas ni controles los pasos de la instalación. Para las prácticas del módulo **debe quedar desmarcada**: la instalación se hace manualmente, paso a paso.
+
+3. En las pantallas siguientes del asistente, asigna la **memoria RAM** y crea un **disco duro virtual** nuevo (tipo **VDI**, reservado **dinámicamente**, 20-25 GB suele ser suficiente).
+4. Monta la imagen **ISO** de instalación en Configuración > Almacenamiento, y arranca la VM para instalar el sistema operativo paso a paso.
