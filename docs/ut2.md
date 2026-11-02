@@ -434,6 +434,9 @@ Configura después una de las subredes del apartado a) en una máquina virtual y
 
 En un entorno con dos máquinas virtuales y un servicio DHCP, observa qué configuración de red recibe automáticamente un cliente. Cambia después esa misma máquina a configuración estática y razona en qué casos (servidor, impresora, PC de usuario) conviene cada modalidad.
 
+!!! tip "¿Primera vez configurando máquinas virtuales?"
+    Consulta la [guía de configuración de máquinas virtuales en VirtualBox](guia-virtualbox.md) antes de empezar, especialmente el apartado de configuración de red.
+
 **Actividad 2.6 — Clasifica por capas**
 {: .actividad-titulo}
 

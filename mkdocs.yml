@@ -61,6 +61,7 @@ nav:
   - Inicio: index.md
   - "UT1. Arquitectura y componentes del sistema informático": ut1.md
   - "Plantilla: ficha técnica de un equipo": plantilla-ficha-tecnica.md
+  - "Guía: configuración de máquinas virtuales en VirtualBox": guia-virtualbox.md
   - "UT2. Redes": ut2.md
   - "UT3. Instalación de sistemas operativos": ut3.md
   - "Plantilla: informe técnico de instalación": plantilla-informe-instalacion.md
