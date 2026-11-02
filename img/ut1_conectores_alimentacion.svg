@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 160" font-family="Arial, sans-serif">
+  <title>Conector ATX de 24 pines (2 filas de 12) y conector EPS de 8 pines (2 filas de 4)</title>
+  <rect x="20" y="30" width="248" height="48" rx="6" fill="#1b2a41"/>
+    <rect x="26" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="46" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="66" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="86" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="106" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="126" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="146" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="166" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="186" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="206" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="226" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="246" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="26" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="46" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="66" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="86" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="106" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="126" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="146" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="166" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="186" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="206" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="226" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="246" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+  <text x="144.0" y="108" fill="#1b2a41" font-size="16" font-weight="bold" text-anchor="middle">ATX · 24 pines</text>
+  <text x="144.0" y="130" fill="#6b7280" font-size="13" text-anchor="middle">Alimentación principal</text>
+  <rect x="320" y="30" width="88" height="48" rx="6" fill="#e8a33d"/>
+    <rect x="326" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="346" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="366" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="386" y="36" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="326" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="346" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="366" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+    <rect x="386" y="56" width="16" height="16" rx="3" fill="#ffffff" stroke="#9ca3af"/>
+  <text x="364.0" y="108" fill="#1b2a41" font-size="16" font-weight="bold" text-anchor="middle">EPS · 4/8 pines</text>
+  <text x="364.0" y="130" fill="#6b7280" font-size="13" text-anchor="middle">Procesador</text>
+</svg>
