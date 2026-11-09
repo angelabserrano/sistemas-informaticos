@@ -416,6 +416,9 @@ c) `172.16.9.130/22`
 
 Configura después la dirección del apartado a) de forma estática en una máquina virtual y verifica la conectividad con `ping` hacia otro equipo de la misma red.
 
+!!! tip "¿Primera vez configurando máquinas virtuales?"
+    Consulta la [guía de configuración de máquinas virtuales en VirtualBox](guia-virtualbox.md) antes de empezar, especialmente el apartado de configuración de red.
+
 **Actividad 2.4 — Subnetting**
 {: .actividad-titulo}
 
@@ -429,15 +432,7 @@ c) `10.0.1.0/24` en 8 subredes iguales.
 
 Configura después una de las subredes del apartado a) en una máquina virtual y comprueba con `ping` que no se alcanza directamente a un equipo de otra subred.
 
-**Actividad 2.5 — DHCP vs. IP estática**
-{: .actividad-titulo}
-
-En un entorno con dos máquinas virtuales y un servicio DHCP, observa qué configuración de red recibe automáticamente un cliente. Cambia después esa misma máquina a configuración estática y razona en qué casos (servidor, impresora, PC de usuario) conviene cada modalidad.
-
-!!! tip "¿Primera vez configurando máquinas virtuales?"
-    Consulta la [guía de configuración de máquinas virtuales en VirtualBox](guia-virtualbox.md) antes de empezar, especialmente el apartado de configuración de red.
-
-**Actividad 2.6 — Clasifica por capas**
+**Actividad 2.5 — Clasifica por capas**
 {: .actividad-titulo}
 
 Indica en qué capa del **modelo OSI** y en qué capa del **modelo TCP/IP** trabaja cada uno de los siguientes elementos, y **justifica tu respuesta** en una frase:
@@ -456,20 +451,7 @@ Indica en qué capa del **modelo OSI** y en qué capa del **modelo TCP/IP** trab
 
 Organiza tu respuesta en una tabla con las columnas: *Elemento*, *Capa OSI*, *Capa TCP/IP* y *Justificación*.
 
-**Actividad 2.7 — Sigue el camino de tus paquetes**
-{: .actividad-titulo}
-
-Desde el equipo del aula, realiza los siguientes pasos y documenta cada uno con una captura de pantalla:
-
-a) Consulta la tabla de encaminamiento del equipo (`ip route` en Linux o `route print` en Windows) e identifica cuál es la **puerta de enlace** por defecto.
-
-b) Ejecuta `traceroute` (Linux) o `tracert` (Windows) hacia un dominio de tu elección (por ejemplo, `www.gva.es`). ¿Cuántos saltos hay hasta el destino? ¿Cuál es la dirección del primer salto y con qué dispositivo de tu red coincide?
-
-c) Anota la **dirección IP privada** de tu equipo (`ip a` o `ipconfig`) y compárala con la **dirección IP pública** que muestra un servicio web de consulta de IP (por ejemplo, `ifconfig.me`).
-
-d) Explica, utilizando el concepto de **NAT**, por qué las dos direcciones del apartado anterior son distintas y qué dispositivo realiza esa traducción.
-
-**Actividad 2.8 — Despliegue seguro de una aplicación web**
+**Actividad 2.6 — Despliegue seguro de una aplicación web**
 {: .actividad-titulo}
 
 a) Accede con el navegador a un sitio que utilice HTTPS e inspecciona su **certificado digital** (pulsando el icono situado junto a la dirección). Anota el dominio para el que se emitió, la entidad emisora y sus fechas de validez. Explica qué garantías de TLS (confidencialidad, integridad y autenticidad) te aporta ese certificado.

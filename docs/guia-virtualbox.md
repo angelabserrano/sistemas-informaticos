@@ -2,7 +2,7 @@
 
 [:material-arrow-left: Volver al índice de todas las unidades](index.md)
 
-Varias actividades del módulo (especialmente en la UT2) piden configurar y conectar varias **máquinas virtuales (VM)** entre sí: para calcular y comprobar direccionamiento IP, para probar un servicio DHCP, para verificar que dos subredes no se ven entre sí... Para estas primeras prácticas partimos de una máquina virtual **ya preparada**, que el profesorado proporciona como archivo **OVA**, en lugar de instalar un sistema operativo desde cero (eso lo veremos más adelante en el curso).
+Varias actividades del módulo (especialmente en la UT2) piden configurar y conectar varias **máquinas virtuales (VM)** entre sí: para calcular y comprobar direccionamiento IP, para verificar que dos subredes no se ven entre sí... Para estas primeras prácticas partimos de una máquina virtual **ya preparada**, que el profesorado proporciona como archivo **OVA**, en lugar de instalar un sistema operativo desde cero (eso lo veremos más adelante en el curso).
 
 Esta guía explica cómo importar esa OVA en **VirtualBox** (versión 7.2, la instalada en los talleres), ajustar sus parámetros y, sobre todo, cómo configurar correctamente su **red**, que es la parte que más confusión suele generar la primera vez.
 
@@ -42,9 +42,6 @@ Esta es la parte **clave** para las actividades de la UT2. Se configura en **Con
 | **Red solo anfitrión** (*Host-only*) | No | Sí, entre ellas y con el equipo físico (host) | No |
 | **Red NAT** (*NAT Network*) | Sí | Sí, entre las VMs de la misma red NAT | No |
 
-!!! warning "Nunca uses Adaptador puente para probar un servidor DHCP"
-    Si configuras un servicio DHCP en una VM con **Adaptador puente**, esa VM pasa a repartir direcciones IP en la red real del taller, pudiendo interferir con las máquinas de tus compañeros. Para la Actividad 2.5 (DHCP vs. IP estática) usa siempre **Red interna**: las VMs implicadas se ven entre sí sin tocar la red del centro.
-
 **Cómo conectar varias VMs entre sí con Red interna:** en cada una de las VMs que quieras que se vean, entra en Configuración > Red > Adaptador 1 > Conectado a: **Red interna**, y escribe **el mismo nombre** en el campo "Nombre" (por ejemplo, `ut2-lab`). Solo las VMs que compartan exactamente ese nombre forman parte de la misma red interna.
 
 ### Qué adaptador usar en cada actividad
@@ -53,13 +50,12 @@ Esta es la parte **clave** para las actividades de la UT2. Se configura en **Con
 | --- | --- | --- |
 | 2.3 — Direccionamiento IP | Red interna | Solo necesitas que la VM tenga una IP configurada y puedas hacer `ping` a otro equipo de la misma red; no hace falta salida a Internet. |
 | 2.4 — Subnetting | Red interna | Igual que la anterior; además te permite comprobar que dos VMs en subredes distintas **no** se alcanzan entre sí, sin riesgo de interferir con la red real. |
-| 2.5 — DHCP vs. IP estática | Red interna (mismo nombre en todas las VMs implicadas) | Evita que tu servidor DHCP de pruebas reparta IPs a otros equipos del aula (ver aviso anterior). |
 
 Si en algún momento necesitas que la VM también tenga salida a Internet (por ejemplo, para actualizar paquetes del sistema), puedes añadir un **segundo adaptador de red** (pestaña **Adaptador 2**) en modo **NAT**, y dejar el Adaptador 1 en Red interna para las pruebas de red del módulo.
 
 ## 4. Instantáneas (snapshots)
 
-Antes de hacer un cambio que pueda romper la configuración de red o del sistema (por ejemplo, antes de instalar y configurar el servidor DHCP), toma una **instantánea**: botón derecho sobre la VM > **Instantánea** > **Tomar**. Si algo falla, puedes **restaurar** esa instantánea y volver al estado anterior sin tener que importar la OVA de nuevo.
+Antes de hacer un cambio que pueda romper la configuración de red o del sistema (por ejemplo, antes de cambiar la configuración de red), toma una **instantánea**: botón derecho sobre la VM > **Instantánea** > **Tomar**. Si algo falla, puedes **restaurar** esa instantánea y volver al estado anterior sin tener que importar la OVA de nuevo.
 
 ## 5. Resumen rápido
 
