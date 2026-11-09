@@ -184,6 +184,7 @@ Usaremos **dnsmasq**, un servidor DHCP ligero y fácil de configurar. Todo se ha
 
     !!! note "Con dos adaptadores verás dos conexiones cableadas"
         En Configuración > Red aparecerán dos tarjetas, normalmente identificadas como **Ethernet (enp0s3)** y **Ethernet (enp0s8)**. Cambia **solo la de `enp0s3`** (Red interna); la de `enp0s8` (NAT) debe seguir en **Automático (DHCP)** para mantener la salida a Internet.
+
 4. **Crea el archivo de configuración** del servicio:
 
     ```bash
