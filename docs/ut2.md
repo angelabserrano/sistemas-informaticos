@@ -416,6 +416,9 @@ c) `172.16.9.130/22`
 
 Configura después la dirección del apartado a) de forma estática en una máquina virtual y verifica la conectividad con `ping` hacia otro equipo de la misma red.
 
+!!! tip "¿Nunca has configurado una IP manual en Ubuntu?"
+    Sigue la [guía de VirtualBox](guia-virtualbox.md): primero el apartado de [configuración de red](guia-virtualbox.md#3-configuracion-de-red) (las dos VMs en la misma **Red interna**) y después el de [configurar la IP en Ubuntu](guia-virtualbox.md#red-ubuntu). Si el `ping` no responde, consulta los [problemas frecuentes](guia-virtualbox.md#problemas-red).
+
 **Actividad 2.4 — Subnetting**
 {: .actividad-titulo}
 
@@ -429,36 +432,10 @@ c) `10.0.1.0/24` en 8 subredes iguales.
 
 Configura después una de las subredes del apartado a) en una máquina virtual y comprueba con `ping` que no se alcanza directamente a un equipo de otra subred.
 
-**Actividad 2.5 — DHCP vs. IP estática**
-{: .actividad-titulo}
+!!! tip "¿Nunca has configurado una IP manual en Ubuntu?"
+    Sigue la [guía de VirtualBox](guia-virtualbox.md): primero el apartado de [configuración de red](guia-virtualbox.md#3-configuracion-de-red) (las dos VMs en la misma **Red interna**) y después el de [configurar la IP en Ubuntu](guia-virtualbox.md#red-ubuntu). Si el `ping` no responde, consulta los [problemas frecuentes](guia-virtualbox.md#problemas-red).
 
-En un entorno con dos máquinas virtuales Ubuntu y un servicio DHCP, observa qué configuración de red recibe automáticamente un cliente. Cambia después esa misma máquina a configuración estática y razona en qué casos (servidor, impresora, PC de usuario) conviene cada modalidad.
-
-Usaremos este escenario (ambas VMs con el Adaptador 1 en **Red interna** `ut2-lab`):
-
-| VM | Papel | Configuración de red (`enp0s3`) |
-| --- | --- | --- |
-| `UT2-SERVIDOR` | Servidor DHCP | Estática: `192.168.100.1/24` · reparte el rango `192.168.100.100` – `192.168.100.150` |
-| `UT2-CLIENTE` | Cliente | Primero **DHCP (automática)**, después **estática** `192.168.100.50/24` |
-
-a) **Prepara el servidor**: asigna a `UT2-SERVIDOR` la IP estática `192.168.100.1/24` y pon en marcha el servicio DHCP siguiendo la guía. *(Si el profesorado te entrega la VM servidor ya preparada, sáltate este paso.)*
-
-b) **Cliente por DHCP**: arranca `UT2-CLIENTE` con la red en modo **Automático (DHCP)**. Anota la IP, la máscara, la puerta de enlace, el servidor DNS y la **duración de la concesión** (*lease*) que ha recibido. Comprueba con `ping 192.168.100.1` que llega al servidor y, en el servidor, localiza la concesión que ha entregado al cliente.
-
-c) **Cliente con IP estática**: cambia el cliente a configuración **Manual** con la IP `192.168.100.50/24`, puerta de enlace `192.168.100.1` y DNS `8.8.8.8`. Verifica la nueva configuración y repite el `ping`.
-
-d) **Reflexiona**: ¿qué ventajas e inconvenientes tiene cada modalidad? ¿Cuál usarías para un servidor, una impresora de red y el PC de un usuario? ¿Por qué el rango que reparte el DHCP (`.100` – `.150`) no debe incluir las IPs fijas como `.1` o `.50`?
-
-Documenta cada apartado con capturas de pantalla.
-
-!!! tip "¿Nunca has configurado la red en Ubuntu?"
-    Tienes todos los pasos, tanto desde el entorno gráfico como desde la terminal, en la guía de VirtualBox:
-
-    - [Configurar la red en Ubuntu: DHCP o IP manual](guia-virtualbox.md#red-ubuntu) (apartados b y c, y también la IP estática del servidor en el apartado a).
-    - [Montar el servidor DHCP de pruebas](guia-virtualbox.md#servidor-dhcp) (apartado a).
-    - [Problemas frecuentes](guia-virtualbox.md#problemas-red) si el cliente no recibe IP.
-
-**Actividad 2.6 — Clasifica por capas**
+**Actividad 2.5 — Clasifica por capas**
 {: .actividad-titulo}
 
 Indica en qué capa del **modelo OSI** y en qué capa del **modelo TCP/IP** trabaja cada uno de los siguientes elementos, y **justifica tu respuesta** en una frase:
@@ -477,7 +454,7 @@ Indica en qué capa del **modelo OSI** y en qué capa del **modelo TCP/IP** trab
 
 Organiza tu respuesta en una tabla con las columnas: *Elemento*, *Capa OSI*, *Capa TCP/IP* y *Justificación*.
 
-**Actividad 2.7 — Sigue el camino de tus paquetes**
+**Actividad 2.6 — Sigue el camino de tus paquetes**
 {: .actividad-titulo}
 
 Desde el equipo del aula, realiza los siguientes pasos y documenta cada uno con una captura de pantalla:
@@ -490,7 +467,7 @@ c) Anota la **dirección IP privada** de tu equipo (`ip a` o `ipconfig`) y comp�
 
 d) Explica, utilizando el concepto de **NAT**, por qué las dos direcciones del apartado anterior son distintas y qué dispositivo realiza esa traducción.
 
-**Actividad 2.8 — Despliegue seguro de una aplicación web**
+**Actividad 2.7 — Despliegue seguro de una aplicación web**
 {: .actividad-titulo}
 
 a) Accede con el navegador a un sitio que utilice HTTPS e inspecciona su **certificado digital** (pulsando el icono situado junto a la dirección). Anota el dominio para el que se emitió, la entidad emisora y sus fechas de validez. Explica qué garantías de TLS (confidencialidad, integridad y autenticidad) te aporta ese certificado.
