@@ -55,7 +55,7 @@ Si en algún momento necesitas que la VM también tenga salida a Internet (por e
 
 ## 4. Instantáneas (snapshots)
 
-Antes de hacer un cambio que pueda romper la configuración de red o del sistema (por ejemplo, antes de cambiar la configuración de red), toma una **instantánea**: botón derecho sobre la VM > **Instantánea** > **Tomar**. Si algo falla, puedes **restaurar** esa instantánea y volver al estado anterior sin tener que importar la OVA de nuevo.
+Antes de hacer un cambio que pueda romper la configuración de red o del sistema (por ejemplo, antes de asignar una IP manual a la VM), toma una **instantánea**: botón derecho sobre la VM > **Instantánea** > **Tomar**. Si algo falla, puedes **restaurar** esa instantánea y volver al estado anterior sin tener que importar la OVA de nuevo.
 
 ## 5. Resumen rápido
 
