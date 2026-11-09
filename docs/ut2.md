@@ -432,10 +432,31 @@ Configura después una de las subredes del apartado a) en una máquina virtual y
 **Actividad 2.5 — DHCP vs. IP estática**
 {: .actividad-titulo}
 
-En un entorno con dos máquinas virtuales y un servicio DHCP, observa qué configuración de red recibe automáticamente un cliente. Cambia después esa misma máquina a configuración estática y razona en qué casos (servidor, impresora, PC de usuario) conviene cada modalidad.
+En un entorno con dos máquinas virtuales Ubuntu y un servicio DHCP, observa qué configuración de red recibe automáticamente un cliente. Cambia después esa misma máquina a configuración estática y razona en qué casos (servidor, impresora, PC de usuario) conviene cada modalidad.
 
-!!! tip "¿Primera vez configurando máquinas virtuales?"
-    Consulta la [guía de configuración de máquinas virtuales en VirtualBox](guia-virtualbox.md) antes de empezar, especialmente el apartado de configuración de red.
+Usaremos este escenario (ambas VMs con el Adaptador 1 en **Red interna** `ut2-lab`):
+
+| VM | Papel | Configuración de red (`enp0s3`) |
+| --- | --- | --- |
+| `UT2-SERVIDOR` | Servidor DHCP | Estática: `192.168.100.1/24` · reparte el rango `192.168.100.100` – `192.168.100.150` |
+| `UT2-CLIENTE` | Cliente | Primero **DHCP (automática)**, después **estática** `192.168.100.50/24` |
+
+a) **Prepara el servidor**: asigna a `UT2-SERVIDOR` la IP estática `192.168.100.1/24` y pon en marcha el servicio DHCP siguiendo la guía. *(Si el profesorado te entrega la VM servidor ya preparada, sáltate este paso.)*
+
+b) **Cliente por DHCP**: arranca `UT2-CLIENTE` con la red en modo **Automático (DHCP)**. Anota la IP, la máscara, la puerta de enlace, el servidor DNS y la **duración de la concesión** (*lease*) que ha recibido. Comprueba con `ping 192.168.100.1` que llega al servidor y, en el servidor, localiza la concesión que ha entregado al cliente.
+
+c) **Cliente con IP estática**: cambia el cliente a configuración **Manual** con la IP `192.168.100.50/24`, puerta de enlace `192.168.100.1` y DNS `8.8.8.8`. Verifica la nueva configuración y repite el `ping`.
+
+d) **Reflexiona**: ¿qué ventajas e inconvenientes tiene cada modalidad? ¿Cuál usarías para un servidor, una impresora de red y el PC de un usuario? ¿Por qué el rango que reparte el DHCP (`.100` – `.150`) no debe incluir las IPs fijas como `.1` o `.50`?
+
+Documenta cada apartado con capturas de pantalla.
+
+!!! tip "¿Nunca has configurado la red en Ubuntu?"
+    Tienes todos los pasos, tanto desde el entorno gráfico como desde la terminal, en la guía de VirtualBox:
+
+    - [Configurar la red en Ubuntu: DHCP o IP manual](guia-virtualbox.md#red-ubuntu) (apartados b y c, y también la IP estática del servidor en el apartado a).
+    - [Montar el servidor DHCP de pruebas](guia-virtualbox.md#servidor-dhcp) (apartado a).
+    - [Problemas frecuentes](guia-virtualbox.md#problemas-red) si el cliente no recibe IP.
 
 **Actividad 2.6 — Clasifica por capas**
 {: .actividad-titulo}

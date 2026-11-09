@@ -69,6 +69,248 @@ Antes de hacer un cambio que pueda romper la configuración de red o del sistema
 4. Toma una instantánea antes de cambios importantes.
 5. Arranca la VM: el sistema operativo ya está instalado, listo para trabajar.
 
+## 6. Configurar la red en Ubuntu: DHCP o IP manual {#red-ubuntu}
+
+Hasta ahora hemos decidido en VirtualBox **a qué red se conecta** la tarjeta de la VM. Falta decidir, **dentro de Ubuntu**, qué dirección IP usa esa tarjeta: una que le asigne un servidor **DHCP** (automática) o una que escribimos nosotros a mano (**estática**).
+
+### 6.1. Identificar la tarjeta de red
+
+Abre una terminal (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>) y ejecuta:
+
+```bash
+ip -br a
+```
+
+Verás algo parecido a esto:
+
+```text
+lo        UNKNOWN   127.0.0.1/8 ::1/128
+enp0s3    UP        192.168.100.112/24 fe80::a00:27ff:fe4e:66a1/64
+```
+
+- `lo` es la interfaz *loopback* (el propio equipo); ignórala.
+- `enp0s3` es la tarjeta correspondiente al **Adaptador 1** de VirtualBox. Si has activado un Adaptador 2, aparecerá como `enp0s8`.
+
+!!! note "En esta guía usamos `enp0s3`"
+    Es el nombre habitual en VirtualBox, pero compruébalo con `ip -br a`: si tu tarjeta se llama distinto, sustitúyelo en todos los comandos.
+
+### 6.2. Consultar la configuración actual
+
+| Qué quieres saber | Comando |
+| --- | --- |
+| IP y máscara | `ip a show enp0s3` |
+| Puerta de enlace | `ip route` (línea que empieza por `default via ...`) |
+| Servidor DNS | `resolvectl status enp0s3` |
+| Todo junto (si usas NetworkManager) | `nmcli device show enp0s3` |
+| Datos de la concesión DHCP (servidor, duración...) | `nmcli -f DHCP4 device show enp0s3` |
+
+!!! tip "¿Cómo sé si la IP la ha dado un DHCP?"
+    En la salida de `ip a show enp0s3`, una dirección obtenida por DHCP aparece con la palabra **`dynamic`** y un tiempo `valid_lft` que va disminuyendo. Una IP estática no tiene `dynamic` y su `valid_lft` es `forever`.
+
+    Si ves una dirección `169.254.x.x` o ninguna dirección IPv4, el equipo **no ha encontrado ningún servidor DHCP**: revisa los [problemas frecuentes](#problemas-red).
+
+### 6.3. Cambiar entre DHCP e IP estática
+
+Elige la pestaña que corresponda a tu máquina: si tiene **escritorio** (ventanas, ratón), la forma más sencilla es la gráfica; si es un **Ubuntu Server** (solo terminal), usa netplan.
+
+=== "Ubuntu Desktop (gráfico)"
+
+    1. Abre **Configuración** (*Settings*) > **Red** (*Network*).
+    2. En el apartado **Cableada** (*Wired*), pulsa el icono del **engranaje** :material-cog: de la conexión.
+    3. Ve a la pestaña **IPv4**.
+    4. Elige el **Método IPv4**:
+        - **Automático (DHCP)**: no hay que rellenar nada más.
+        - **Manual**: rellena los campos:
+
+            | Campo | Ejemplo (cliente de la Actividad 2.5) |
+            | --- | --- |
+            | Dirección | `192.168.100.50` |
+            | Máscara de red | `255.255.255.0` (o `24`) |
+            | Puerta de enlace | `192.168.100.1` |
+            | DNS (desactiva "Automático") | `8.8.8.8` |
+
+    5. Pulsa **Aplicar**.
+    6. **Importante:** los cambios no se aplican hasta reconectar. Desactiva el interruptor de la conexión cableada y vuelve a activarlo.
+    7. Comprueba el resultado en una terminal con `ip a show enp0s3` e `ip route`.
+
+=== "Terminal con nmcli"
+
+    Sirve para Ubuntu Desktop (usa NetworkManager) cuando prefieres la terminal.
+
+    1. Averigua el **nombre de la conexión** (columna `NAME`), que suele ser `Conexión cableada 1`, `Wired connection 1` o `netplan-enp0s3`:
+
+        ```bash
+        nmcli connection show
+        ```
+
+    2. **Pasar a IP estática** (sustituye el nombre de la conexión por el tuyo, entre comillas):
+
+        ```bash
+        sudo nmcli connection modify "Conexión cableada 1" ipv4.method manual ipv4.addresses 192.168.100.50/24 ipv4.gateway 192.168.100.1 ipv4.dns 8.8.8.8
+        ```
+
+    3. **Volver a DHCP** (automática), borrando los valores fijos:
+
+        ```bash
+        sudo nmcli connection modify "Conexión cableada 1" ipv4.method auto ipv4.addresses "" ipv4.gateway "" ipv4.dns ""
+        ```
+
+    4. Tras cualquiera de los dos cambios, **reactiva la conexión** para que se aplique:
+
+        ```bash
+        sudo nmcli connection up "Conexión cableada 1"
+        ```
+
+=== "Ubuntu Server (netplan)"
+
+    En Ubuntu Server la red se define en un archivo **YAML** dentro de `/etc/netplan/`.
+
+    1. Mira qué archivo hay (el nombre varía; suele ser `50-cloud-init.yaml` o `00-installer-config.yaml`):
+
+        ```bash
+        ls /etc/netplan/
+        ```
+
+    2. Ábrelo con el editor `nano` (sustituye el nombre por el tuyo):
+
+        ```bash
+        sudo nano /etc/netplan/50-cloud-init.yaml
+        ```
+
+    3. Deja su contenido como en **una** de estas dos opciones:
+
+        **Opción A: DHCP (automática)**
+
+        ```yaml
+        network:
+          version: 2
+          ethernets:
+            enp0s3:
+              dhcp4: true
+        ```
+
+        **Opción B: IP estática**
+
+        ```yaml
+        network:
+          version: 2
+          ethernets:
+            enp0s3:
+              dhcp4: false
+              addresses:
+                - 192.168.100.50/24
+              routes:
+                - to: default
+                  via: 192.168.100.1
+              nameservers:
+                addresses: [8.8.8.8]
+        ```
+
+    4. Guarda con <kbd>Ctrl</kbd>+<kbd>O</kbd> (y <kbd>Intro</kbd>) y sal con <kbd>Ctrl</kbd>+<kbd>X</kbd>.
+    5. Prueba la configuración. `netplan try` la aplica y, si no confirmas con <kbd>Intro</kbd> en 120 segundos, **deshace el cambio automáticamente** (útil si te equivocas):
+
+        ```bash
+        sudo netplan try
+        ```
+
+    6. Si todo es correcto, aplícala definitivamente:
+
+        ```bash
+        sudo netplan apply
+        ```
+
+    !!! warning "En YAML los espacios importan"
+        La sangría se hace **solo con espacios** (nunca con tabuladores) y cada nivel debe estar alineado exactamente como en el ejemplo. Un espacio de más o de menos provoca un error al ejecutar `netplan try`, que indica la línea del problema.
+
+!!! note "¿Y la puerta de enlace en una Red interna?"
+    En la Red interna `ut2-lab` no hay ningún router real, así que `192.168.100.1` no da salida a Internet: la configuramos para practicar cómo se rellena el campo. Si el equipo tiene además un Adaptador 2 en modo NAT para salir a Internet, **deja vacía la puerta de enlace de `enp0s3`** para no "pisar" la ruta por defecto del adaptador NAT.
+
+## 7. Montar el servidor DHCP de pruebas (Actividad 2.5) {#servidor-dhcp}
+
+*Si el profesorado te proporciona la VM servidor ya preparada, puedes saltarte este apartado.*
+
+Usaremos **dnsmasq**, un servidor DHCP ligero y fácil de configurar. Todo se hace en la VM `UT2-SERVIDOR`.
+
+1. **Da salida a Internet temporalmente** para poder instalar el paquete: con la VM apagada, activa en VirtualBox el **Adaptador 2** en modo **NAT** (el Adaptador 1 sigue en Red interna `ut2-lab`).
+2. Arranca la VM e **instala dnsmasq**:
+
+    ```bash
+    sudo apt update
+    sudo apt install -y dnsmasq
+    ```
+
+    Es normal que al terminar la instalación aparezca un error al arrancar el servicio: todavía no está configurado. Lo arreglamos en el paso 4.
+
+3. **Asigna la IP estática del servidor** a `enp0s3` siguiendo el [apartado 6.3](#red-ubuntu): dirección `192.168.100.1/24`, **sin puerta de enlace** (el servidor sale a Internet por el adaptador NAT) y DNS `8.8.8.8`. Comprueba con `ip -br a` que `enp0s3` tiene la `192.168.100.1`.
+4. **Crea el archivo de configuración** del servicio:
+
+    ```bash
+    sudo nano /etc/dnsmasq.d/ut2-lab.conf
+    ```
+
+    con este contenido:
+
+    ```ini
+    # Desactiva la parte DNS de dnsmasq: solo queremos DHCP
+    # (Ubuntu ya tiene su propio servicio DNS local y chocarían)
+    port=0
+
+    # Atiende peticiones SOLO por la tarjeta de la Red interna
+    interface=enp0s3
+    bind-interfaces
+
+    # Rango de IPs a repartir, máscara y duración de la concesión
+    dhcp-range=192.168.100.100,192.168.100.150,255.255.255.0,12h
+
+    # Puerta de enlace y DNS que se entregan a los clientes
+    dhcp-option=option:router,192.168.100.1
+    dhcp-option=option:dns-server,8.8.8.8
+
+    # Muestra en el registro el detalle de cada petición DHCP
+    log-dhcp
+    ```
+
+5. **Reinicia el servicio** y comprueba que está en marcha (debe aparecer `active (running)` en verde; sal con <kbd>Q</kbd>):
+
+    ```bash
+    sudo systemctl restart dnsmasq
+    ```
+
+    ```bash
+    systemctl status dnsmasq
+    ```
+
+6. **Observa el servicio en acción**: deja abierta esta orden en el servidor y arranca (o reconecta) el cliente. Verás en directo los mensajes **DHCPDISCOVER**, **DHCPOFFER**, **DHCPREQUEST** y **DHCPACK** del proceso de concesión (sal con <kbd>Ctrl</kbd>+<kbd>C</kbd>):
+
+    ```bash
+    sudo journalctl -u dnsmasq -f
+    ```
+
+7. **Consulta las concesiones entregadas** (MAC del cliente, IP asignada, nombre del equipo y hora de caducidad):
+
+    ```bash
+    cat /var/lib/misc/dnsmasq.leases
+    ```
+
+!!! tip "Haz una instantánea"
+    Cuando el servidor funcione, toma una **instantánea** de la VM (ver [apartado 4](#4-instantaneas-snapshots)). Si más adelante algo se estropea, podrás volver a este punto en segundos.
+
+## 8. Problemas frecuentes {#problemas-red}
+
+| Síntoma | Causa probable | Solución |
+| --- | --- | --- |
+| El cliente no recibe IP, o recibe una `169.254.x.x` | El servidor DHCP no está en marcha | En el servidor: `systemctl status dnsmasq`; si hay error, revisa el archivo `/etc/dnsmasq.d/ut2-lab.conf` y reinicia el servicio. |
+| El cliente no recibe IP y el servicio funciona | Las VMs no están en la misma Red interna | En VirtualBox, comprueba que ambas tienen el Adaptador 1 en **Red interna** con **exactamente el mismo nombre** (`ut2-lab`; distingue mayúsculas y minúsculas). |
+| `dnsmasq` no arranca: *unknown interface enp0s3* o *cannot assign requested address* | La tarjeta del servidor no tiene todavía la IP `192.168.100.1` | Configura primero la IP estática del servidor (paso 3) y reinicia `dnsmasq`. |
+| `dnsmasq` no arranca: *address already in use* (puerto 53) | Falta la línea `port=0` | Añádela al archivo de configuración y reinicia el servicio. |
+| He cambiado la configuración en el entorno gráfico pero la IP sigue igual | La conexión no se ha reactivado | Desactiva y vuelve a activar la conexión cableada, o ejecuta `sudo nmcli connection up "<nombre de la conexión>"`. |
+| El cliente tenía IP estática y ahora no recibe IP por DHCP | Quedaron los valores fijos guardados | Vuelve a poner el método en **Automático (DHCP)** y reconecta (ver [apartado 6.3](#red-ubuntu)). |
+| `ping` al servidor no responde | IPs en redes distintas, o error al teclear la máscara | Comprueba con `ip a` que ambas IPs empiezan por `192.168.100.` y tienen `/24`. |
+| Dos VMs importadas de la misma OVA tienen la misma MAC | Al importar se conservaron las direcciones MAC | Con la VM apagada: Configuración > Red > Adaptador 1 > Avanzadas > botón de **regenerar la dirección MAC**. |
+
+!!! tip "Forzar al cliente a pedir de nuevo una IP"
+    Para repetir la petición DHCP sin reiniciar la VM: en Ubuntu Desktop, desactiva y activa la conexión cableada (o `sudo nmcli connection up "<nombre de la conexión>"`); en Ubuntu Server, `sudo netplan apply`.
+
 ## Apéndice: crear una máquina virtual desde cero
 
 *Esto no hace falta para las primeras actividades, en las que se parte de una OVA. Lo veremos más adelante en el curso, cuando toque instalar un sistema operativo desde cero.*
