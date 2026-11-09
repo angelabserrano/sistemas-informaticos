@@ -450,14 +450,3 @@ Indica en qué capa del **modelo OSI** y en qué capa del **modelo TCP/IP** trab
 - `ping` (ICMP)
 
 Organiza tu respuesta en una tabla con las columnas: *Elemento*, *Capa OSI*, *Capa TCP/IP* y *Justificación*.
-
-**Actividad 2.6 — Despliegue seguro de una aplicación web**
-{: .actividad-titulo}
-
-a) Accede con el navegador a un sitio que utilice HTTPS e inspecciona su **certificado digital** (pulsando el icono situado junto a la dirección). Anota el dominio para el que se emitió, la entidad emisora y sus fechas de validez. Explica qué garantías de TLS (confidencialidad, integridad y autenticidad) te aporta ese certificado.
-
-b) Como desarrollador/a web te encuentras en las siguientes situaciones. Para cada una, indica qué **protocolo inseguro** se habría utilizado tradicionalmente, cuál es su **alternativa segura** y qué riesgo concreto evitas al usarla:
-
-1. Subir los archivos de tu aplicación web al servidor de hosting.
-2. Conectarte a la terminal del servidor remoto para administrarlo.
-3. Servir la aplicación a los usuarios que la visitan desde el navegador.
