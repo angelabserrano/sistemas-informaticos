@@ -101,7 +101,7 @@ enp0s3    UP        192.168.100.112/24 fe80::a00:27ff:fe4e:66a1/64
 | IP y máscara | `ip a show enp0s3` |
 | Puerta de enlace | `ip route` (línea que empieza por `default via ...`) |
 | Servidor DNS | `resolvectl status enp0s3` |
-| Todo junto (si usas NetworkManager) | `nmcli device show enp0s3` |
+| Todo junto | `nmcli device show enp0s3` |
 | Datos de la concesión DHCP (servidor, duración...) | `nmcli -f DHCP4 device show enp0s3` |
 
 !!! tip "¿Cómo sé si la IP la ha dado un DHCP?"
@@ -111,9 +111,9 @@ enp0s3    UP        192.168.100.112/24 fe80::a00:27ff:fe4e:66a1/64
 
 ### 6.3. Cambiar entre DHCP e IP estática
 
-Elige la pestaña que corresponda a tu máquina: si tiene **escritorio** (ventanas, ratón), la forma más sencilla es la gráfica; si es un **Ubuntu Server** (solo terminal), usa netplan.
+En Ubuntu Desktop la red la gestiona **NetworkManager**, y puedes cambiarla de dos formas equivalentes: desde el entorno gráfico (la más sencilla si es tu primera vez) o desde la terminal con `nmcli`. Elige la pestaña que prefieras.
 
-=== "Ubuntu Desktop (gráfico)"
+=== "Entorno gráfico"
 
     1. Abre **Configuración** (*Settings*) > **Red** (*Network*).
     2. En el apartado **Cableada** (*Wired*), pulsa el icono del **engranaje** :material-cog: de la conexión.
@@ -135,7 +135,7 @@ Elige la pestaña que corresponda a tu máquina: si tiene **escritorio** (ventan
 
 === "Terminal con nmcli"
 
-    Sirve para Ubuntu Desktop (usa NetworkManager) cuando prefieres la terminal.
+    Hace lo mismo que el entorno gráfico, pero desde la terminal.
 
     1. Averigua el **nombre de la conexión** (columna `NAME`), que suele ser `Conexión cableada 1`, `Wired connection 1` o `netplan-enp0s3`:
 
@@ -161,67 +161,6 @@ Elige la pestaña que corresponda a tu máquina: si tiene **escritorio** (ventan
         sudo nmcli connection up "Conexión cableada 1"
         ```
 
-=== "Ubuntu Server (netplan)"
-
-    En Ubuntu Server la red se define en un archivo **YAML** dentro de `/etc/netplan/`.
-
-    1. Mira qué archivo hay (el nombre varía; suele ser `50-cloud-init.yaml` o `00-installer-config.yaml`):
-
-        ```bash
-        ls /etc/netplan/
-        ```
-
-    2. Ábrelo con el editor `nano` (sustituye el nombre por el tuyo):
-
-        ```bash
-        sudo nano /etc/netplan/50-cloud-init.yaml
-        ```
-
-    3. Deja su contenido como en **una** de estas dos opciones:
-
-        **Opción A: DHCP (automática)**
-
-        ```yaml
-        network:
-          version: 2
-          ethernets:
-            enp0s3:
-              dhcp4: true
-        ```
-
-        **Opción B: IP estática**
-
-        ```yaml
-        network:
-          version: 2
-          ethernets:
-            enp0s3:
-              dhcp4: false
-              addresses:
-                - 192.168.100.50/24
-              routes:
-                - to: default
-                  via: 192.168.100.1
-              nameservers:
-                addresses: [8.8.8.8]
-        ```
-
-    4. Guarda con <kbd>Ctrl</kbd>+<kbd>O</kbd> (y <kbd>Intro</kbd>) y sal con <kbd>Ctrl</kbd>+<kbd>X</kbd>.
-    5. Prueba la configuración. `netplan try` la aplica y, si no confirmas con <kbd>Intro</kbd> en 120 segundos, **deshace el cambio automáticamente** (útil si te equivocas):
-
-        ```bash
-        sudo netplan try
-        ```
-
-    6. Si todo es correcto, aplícala definitivamente:
-
-        ```bash
-        sudo netplan apply
-        ```
-
-    !!! warning "En YAML los espacios importan"
-        La sangría se hace **solo con espacios** (nunca con tabuladores) y cada nivel debe estar alineado exactamente como en el ejemplo. Un espacio de más o de menos provoca un error al ejecutar `netplan try`, que indica la línea del problema.
-
 !!! note "¿Y la puerta de enlace en una Red interna?"
     En la Red interna `ut2-lab` no hay ningún router real, así que `192.168.100.1` no da salida a Internet: la configuramos para practicar cómo se rellena el campo. Si el equipo tiene además un Adaptador 2 en modo NAT para salir a Internet, **deja vacía la puerta de enlace de `enp0s3`** para no "pisar" la ruta por defecto del adaptador NAT.
 
@@ -242,6 +181,9 @@ Usaremos **dnsmasq**, un servidor DHCP ligero y fácil de configurar. Todo se ha
     Es normal que al terminar la instalación aparezca un error al arrancar el servicio: todavía no está configurado. Lo arreglamos en el paso 4.
 
 3. **Asigna la IP estática del servidor** a `enp0s3` siguiendo el [apartado 6.3](#red-ubuntu): dirección `192.168.100.1/24`, **sin puerta de enlace** (el servidor sale a Internet por el adaptador NAT) y DNS `8.8.8.8`. Comprueba con `ip -br a` que `enp0s3` tiene la `192.168.100.1`.
+
+    !!! note "Con dos adaptadores verás dos conexiones cableadas"
+        En Configuración > Red aparecerán dos tarjetas, normalmente identificadas como **Ethernet (enp0s3)** y **Ethernet (enp0s8)**. Cambia **solo la de `enp0s3`** (Red interna); la de `enp0s8` (NAT) debe seguir en **Automático (DHCP)** para mantener la salida a Internet.
 4. **Crea el archivo de configuración** del servicio:
 
     ```bash
@@ -309,7 +251,7 @@ Usaremos **dnsmasq**, un servidor DHCP ligero y fácil de configurar. Todo se ha
 | Dos VMs importadas de la misma OVA tienen la misma MAC | Al importar se conservaron las direcciones MAC | Con la VM apagada: Configuración > Red > Adaptador 1 > Avanzadas > botón de **regenerar la dirección MAC**. |
 
 !!! tip "Forzar al cliente a pedir de nuevo una IP"
-    Para repetir la petición DHCP sin reiniciar la VM: en Ubuntu Desktop, desactiva y activa la conexión cableada (o `sudo nmcli connection up "<nombre de la conexión>"`); en Ubuntu Server, `sudo netplan apply`.
+    Para repetir la petición DHCP sin reiniciar la VM: desactiva y activa la conexión cableada (o ejecuta `sudo nmcli connection up "<nombre de la conexión>"`).
 
 ## Apéndice: crear una máquina virtual desde cero
 
