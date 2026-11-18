@@ -53,6 +53,9 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 
+exclude_docs: |
+  ut4.md
+
 plugins:
   - search:
       lang: es
@@ -65,6 +68,5 @@ nav:
   - "UT2. Redes": ut2.md
   - "UT3. Instalación de sistemas operativos": ut3.md
   - "Plantilla: informe técnico de instalación": plantilla-informe-instalacion.md
-  - "UT4. Configuración de sistemas GNU/Linux": ut4.md
   - "UT5. Administración de sistemas GNU/Linux": ut5.md
   - "UT6. Sistemas operativos en red": ut6.md

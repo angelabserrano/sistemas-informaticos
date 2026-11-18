@@ -13,8 +13,8 @@ Apuntes del módulo profesional **Sistemas Informáticos** (código 0483), del c
 
 - [UT1. Arquitectura y componentes del sistema informático](ut1.md)
 - [UT2. Redes](ut2.md)
-- [UT3. Instalación de sistemas operativos](ut3.md) <span class="badge-proximamente">Próximamente</span>
-- [UT4. Configuración de sistemas GNU/Linux](ut4.md) <span class="badge-proximamente">Próximamente</span>
+- [UT3. Instalación de sistemas operativos](ut3.md)
+- UT4. Configuración de sistemas GNU/Linux <span class="badge-proximamente">Próximamente</span>
 - [UT5. Administración de sistemas GNU/Linux](ut5.md) <span class="badge-proximamente">Próximamente</span>
 - [UT6. Sistemas operativos en red](ut6.md) <span class="badge-proximamente">Próximamente</span>
 
