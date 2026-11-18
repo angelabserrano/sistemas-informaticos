@@ -1,0 +1,1567 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes del módulo Sistemas Informáticos - CFGS Desarrollo de Aplicaciones Web">
+      
+      
+        <meta name="author" content="Angela B. Serrano">
+      
+      
+        <link rel="canonical" href="https://angelabserrano.github.io/sistemas-informaticos/ut3/">
+      
+      
+        <link rel="prev" href="../ut2/">
+      
+      
+        <link rel="next" href="../plantilla-informe-instalacion/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>UT3. Instalación de sistemas operativos - Módulo: Sistemas Informáticos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ut3-instalacion-de-sistemas-operativos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Módulo: Sistemas Informáticos" class="md-header__button md-logo" aria-label="Módulo: Sistemas Informáticos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Módulo: Sistemas Informáticos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UT3. Instalación de sistemas operativos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Módulo: Sistemas Informáticos" class="md-nav__button md-logo" aria-label="Módulo: Sistemas Informáticos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Módulo: Sistemas Informáticos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1. Arquitectura y componentes del sistema informático
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plantilla-ficha-tecnica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plantilla: ficha técnica de un equipo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guia-virtualbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: configuración de máquinas virtuales en VirtualBox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2. Redes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3. Instalación de sistemas operativos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3. Instalación de sistemas operativos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-introduccion-a-los-sistemas-operativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Introducción a los sistemas operativos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Introducción a los sistemas operativos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-concepto-de-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1. Concepto de sistema operativo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-evolucion-historica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2. Evolución histórica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-sistemas-operativos-actuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.3. Sistemas operativos actuales
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-tipos-de-sistemas-operativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Tipos de sistemas operativos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2. Tipos de sistemas operativos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-clasificacion-de-los-sistemas-operativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1. Clasificación de los sistemas operativos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-tipos-de-software-y-licencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2. Tipos de software y licencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-funciones-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Funciones del sistema operativo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Funciones del sistema operativo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-gestion-de-procesos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1. Gestión de procesos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-gestion-de-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2. Gestión de memoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333-gestion-de-archivos-y-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.3. Gestión de archivos y almacenamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#334-gestion-de-dispositivos-de-entradasalida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.4. Gestión de dispositivos de entrada/salida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#335-interfaz-con-el-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.5. Interfaz con el usuario
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#336-seguridad-y-control-de-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.6. Seguridad y control de acceso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#337-gestion-de-red-y-comunicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.7. Gestión de red y comunicaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-virtualizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Virtualización
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-instalacion-de-los-sistemas-operativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. Instalación de los sistemas operativos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5. Instalación de los sistemas operativos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-planificacion-y-procedimiento-de-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1. Planificación y procedimiento de instalación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-gestores-de-arranque-configuracion-y-reparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2. Gestores de arranque: configuración y reparación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-instalacion-desinstalacion-y-actualizacion-de-aplicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3. Instalación, desinstalación y actualización de aplicaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354-actualizacion-y-recuperacion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.4. Actualización y recuperación del sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#355-documentacion-de-instalaciones-e-incidencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.5. Documentación de instalaciones e incidencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#356-herramientas-ofimaticas-y-de-trabajo-colaborativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.6. Herramientas ofimáticas y de trabajo colaborativo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#357-utilidades-de-proposito-general-antimalware-mantenimiento-recuperacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.7. Utilidades de propósito general (antimalware, mantenimiento, recuperación de datos)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actividades
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plantilla-informe-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plantilla: informe técnico de instalación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT5. Administración de sistemas GNU/Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT6. Sistemas operativos en red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ut3-instalacion-de-sistemas-operativos">UT3. Instalación de sistemas operativos<a class="headerlink" href="#ut3-instalacion-de-sistemas-operativos" title="Permanent link">&para;</a></h1>
+<p><a href="../"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span> Volver al índice de todas las unidades</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Duración</p>
+<p>10 horas</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Resultado de aprendizaje que se trabaja</p>
+<p><strong>RA2.</strong> Instala sistemas operativos planificando el proceso e interpretando documentación técnica.</p>
+<p><em>Transversal:</em> <strong>RA7</strong> (parcial) — instalación y uso de aplicaciones informáticas de propósito general (ofimática, trabajo colaborativo y utilidades).</p>
+</div>
+<h2 id="31-introduccion-a-los-sistemas-operativos">3.1. Introducción a los sistemas operativos<a class="headerlink" href="#31-introduccion-a-los-sistemas-operativos" title="Permanent link">&para;</a></h2>
+<h3 id="311-concepto-de-sistema-operativo">3.1.1. Concepto de sistema operativo<a class="headerlink" href="#311-concepto-de-sistema-operativo" title="Permanent link">&para;</a></h3>
+<p>Un <strong>sistema operativo (SO)</strong> es el software que gestiona los recursos hardware de un equipo (procesador, memoria, almacenamiento, periféricos) y ofrece a los programas y al usuario una interfaz para utilizarlos, sin necesidad de conocer los detalles técnicos del hardware subyacente.</p>
+<h3 id="312-evolucion-historica">3.1.2. Evolución histórica<a class="headerlink" href="#312-evolucion-historica" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Sistemas por lotes (batch, años 50-60)</strong>: los trabajos se agrupaban y ejecutaban secuencialmente sin interacción del usuario.</li>
+<li><strong>Sistemas de tiempo compartido (timesharing, años 60-70)</strong>: varios usuarios comparten el mismo equipo mediante turnos muy cortos de CPU, dando sensación de simultaneidad.</li>
+<li><strong>Sistemas multiusuario/multitarea (años 80-90)</strong>: consolidación de Unix y, más adelante, de sistemas personales como MS-DOS y Windows.</li>
+<li><strong>Sistemas gráficos modernos</strong>: Windows, macOS, distribuciones Linux con entorno de escritorio.</li>
+<li><strong>Sistemas móviles y embebidos</strong>: Android, iOS, sistemas orientados a un único dispositivo o tarea concreta.</li>
+</ul>
+<h3 id="313-sistemas-operativos-actuales">3.1.3. Sistemas operativos actuales<a class="headerlink" href="#313-sistemas-operativos-actuales" title="Permanent link">&para;</a></h3>
+<p>Hoy en día el mercado se reparte entre unas pocas grandes familias, cada una dominante en un ámbito distinto:</p>
+<table>
+<thead>
+<tr>
+<th>Familia</th>
+<th>Ámbito principal</th>
+<th>Licencia</th>
+<th>Versiones de referencia (2026)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Microsoft Windows</strong></td>
+<td>Escritorio (sistema más usado en PC) y servidores empresariales</td>
+<td>Propietaria</td>
+<td>Windows 11 (escritorio), Windows Server 2025</td>
+</tr>
+<tr>
+<td><strong>GNU/Linux</strong></td>
+<td>Servidores, nube, supercomputación, desarrollo y también escritorio</td>
+<td>Libre (GPL y otras)</td>
+<td>Ubuntu 24.04/26.04 LTS, Debian 13, Fedora, Red Hat Enterprise Linux 10, Linux Mint</td>
+</tr>
+<tr>
+<td><strong>macOS</strong></td>
+<td>Escritorio y portátiles de Apple</td>
+<td>Propietaria (solo en hardware Apple)</td>
+<td>macOS 26 "Tahoe" y posteriores</td>
+</tr>
+<tr>
+<td><strong>Android</strong></td>
+<td>Móviles y tabletas (sistema más usado del mundo en número de dispositivos)</td>
+<td>Base libre (AOSP) + servicios propietarios de Google</td>
+<td>Android 16 y posteriores</td>
+</tr>
+<tr>
+<td><strong>iOS / iPadOS</strong></td>
+<td>Móviles y tabletas de Apple</td>
+<td>Propietaria</td>
+<td>iOS 26 y posteriores</td>
+</tr>
+<tr>
+<td><strong>ChromeOS</strong></td>
+<td>Portátiles ligeros orientados a la nube, muy extendidos en educación</td>
+<td>Propietaria (basada en Linux)</td>
+<td>Actualización continua</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Características de cada familia:</strong></p>
+<ul>
+<li><strong>Windows</strong>: gran compatibilidad con software comercial y videojuegos, muy implantado en empresas (integración con Active Directory y Microsoft 365). Windows 11 exige hardware relativamente moderno (<strong>TPM 2.0</strong>, <strong>arranque seguro UEFI</strong> y procesadores recientes), lo que deja fuera a muchos equipos antiguos. <strong>Windows 10 dejó de recibir soporte general en octubre de 2025</strong>, por lo que los equipos que siguen con él quedan expuestos a vulnerabilidades sin parchear.</li>
+<li><strong>GNU/Linux</strong>: no es un único sistema, sino un <strong>núcleo (kernel Linux)</strong> sobre el que se construyen numerosas <strong>distribuciones</strong>, que se diferencian en su gestor de paquetes, su entorno de escritorio (GNOME, KDE Plasma, Xfce...) y su ciclo de publicación. Domina en servidores, en la nube y en el 100 % de los superordenadores del TOP500; además, el propio Android usa el kernel Linux.</li>
+<li><strong>macOS</strong>: sistema de tipo Unix (certificado UNIX), muy valorado en diseño y desarrollo de software; solo se puede instalar legalmente en hardware de Apple, que desde 2020 usa sus propios procesadores <strong>Apple Silicon</strong> (arquitectura ARM).</li>
+<li><strong>Android e iOS</strong>: diseñados para pantallas táctiles, con aplicaciones aisladas entre sí (<em>sandboxing</em>) y distribuidas principalmente a través de tiendas oficiales (Google Play, App Store).</li>
+</ul>
+<p><strong>Ciclos de vida y soporte:</strong> a la hora de elegir un SO, especialmente en una empresa, es tan importante su <strong>periodo de soporte</strong> como sus funciones, ya que un sistema sin actualizaciones de seguridad es un riesgo.</p>
+<ul>
+<li><strong>Versiones LTS (<em>Long Term Support</em>)</strong>: reciben actualizaciones de seguridad durante muchos años (p. ej., Ubuntu LTS: 5 años de soporte estándar, ampliables; se publica una cada dos años, en abril de los años pares). Recomendadas para servidores y equipos de empresa.</li>
+<li><strong>Versiones de publicación periódica (<em>point release</em>)</strong>: versiones con fecha fija y soporte más corto (Fedora, las versiones intermedias de Ubuntu).</li>
+<li><strong><em>Rolling release</em></strong>: el sistema se actualiza de forma continua, sin "versiones" como tales, y siempre tiene el software más reciente (Arch Linux, openSUSE Tumbleweed). Más novedades, pero más riesgo de que algo deje de funcionar tras una actualización.</li>
+<li><strong>Windows como servicio</strong>: Windows 11 recibe una gran actualización de funciones al año, y cada una tiene un periodo de soporte limitado; las ediciones <strong>LTSC</strong> (<em>Long-Term Servicing Channel</em>) se usan en entornos que necesitan estabilidad durante años (cajeros, equipos industriales, sanitarios).</li>
+</ul>
+<p><strong>Tendencias actuales:</strong></p>
+<ul>
+<li><strong>Arquitectura ARM</strong> en ordenadores personales (Apple Silicon, portátiles Windows con procesadores Snapdragon), además de la tradicional x86-64.</li>
+<li><strong>Integración de la inteligencia artificial</strong> en el propio sistema operativo (asistentes integrados como Copilot en Windows o Apple Intelligence en macOS/iOS).</li>
+<li><strong>Mayor exigencia de seguridad por hardware</strong>: TPM, arranque seguro, cifrado de disco activado por defecto (BitLocker, FileVault).</li>
+<li><strong>Sistemas orientados a la nube</strong>: ChromeOS, escritorios virtuales y aplicaciones web que reducen la dependencia del SO local.</li>
+<li><strong>Sistemas inmutables</strong>: el sistema base es de solo lectura y se actualiza de forma atómica, como un bloque, pudiendo volver a la versión anterior si algo falla (Fedora Silverblue, SteamOS, ChromeOS).</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Idea clave</p>
+<p>No existe un "mejor sistema operativo" en abstracto: la elección depende del <strong>ámbito de uso</strong> (escritorio, servidor, móvil), del <strong>software que se necesita ejecutar</strong>, del <strong>hardware disponible</strong>, del <strong>coste de licencias</strong> y del <strong>periodo de soporte</strong> que ofrece el fabricante.</p>
+</div>
+<h2 id="32-tipos-de-sistemas-operativos">3.2. Tipos de sistemas operativos<a class="headerlink" href="#32-tipos-de-sistemas-operativos" title="Permanent link">&para;</a></h2>
+<h3 id="321-clasificacion-de-los-sistemas-operativos">3.2.1. Clasificación de los sistemas operativos<a class="headerlink" href="#321-clasificacion-de-los-sistemas-operativos" title="Permanent link">&para;</a></h3>
+<p>Los sistemas operativos pueden clasificarse según distintos criterios. Un mismo sistema pertenece a una categoría de cada criterio: por ejemplo, Windows 11 es multiusuario, multitarea, multiprocesador, con interfaz gráfica, de núcleo híbrido y orientado al escritorio.</p>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Categorías</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Número de usuarios</td>
+<td>Monousuario / Multiusuario</td>
+</tr>
+<tr>
+<td>Número de tareas</td>
+<td>Monotarea / Multitarea</td>
+</tr>
+<tr>
+<td>Número de procesadores atendidos</td>
+<td>Monoprocesador / Multiprocesador</td>
+</tr>
+<tr>
+<td>Tipo de interfaz</td>
+<td>Texto (CLI) / Gráfica (GUI)</td>
+</tr>
+<tr>
+<td>Arquitectura del núcleo</td>
+<td>Monolítico, microkernel, híbrido</td>
+</tr>
+<tr>
+<td>Ámbito de uso</td>
+<td>Escritorio, servidor, móvil, embebido</td>
+</tr>
+</tbody>
+</table>
+<h3 id="322-tipos-de-software-y-licencias">3.2.2. Tipos de software y licencias<a class="headerlink" href="#322-tipos-de-software-y-licencias" title="Permanent link">&para;</a></h3>
+<p><strong>Software de sistema vs. software de aplicación:</strong></p>
+<ul>
+<li><strong>Software de sistema</strong>: el propio SO y las herramientas que gestionan el hardware (drivers, utilidades de sistema).</li>
+<li><strong>Software de aplicación</strong>: programas orientados a que el usuario realice una tarea concreta (ofimática, navegación, edición, etc.).</li>
+</ul>
+<p><strong>Clasificación según el tipo de licencia:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tipo de licencia</th>
+<th>Código fuente</th>
+<th>Coste</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Software libre</td>
+<td>Disponible, se puede modificar y redistribuir</td>
+<td>Puede ser gratuito o de pago</td>
+<td>LibreOffice, GNU/Linux</td>
+</tr>
+<tr>
+<td>Software propietario</td>
+<td>Cerrado</td>
+<td>Habitualmente de pago</td>
+<td>Microsoft Windows, Adobe Photoshop</td>
+</tr>
+<tr>
+<td>Freeware</td>
+<td>No necesariamente disponible</td>
+<td>Gratuito, sin acceso al código</td>
+<td>Adobe Acrobat Reader</td>
+</tr>
+<tr>
+<td>Shareware</td>
+<td>No necesariamente disponible</td>
+<td>Gratuito por tiempo/funciones limitadas, después de pago</td>
+<td>Versiones de prueba (<em>trial</em>)</td>
+</tr>
+<tr>
+<td>Dominio público</td>
+<td>Puede estar disponible</td>
+<td>Gratuito, sin restricciones de autor</td>
+<td>Software con copyright expirado</td>
+</tr>
+<tr>
+<td>OEM</td>
+<td>—</td>
+<td>Vinculado a la venta de hardware</td>
+<td>Windows preinstalado en un equipo nuevo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Licencias de software libre más comunes:</strong> GPL (copyleft: las modificaciones deben mantenerse libres), MIT y BSD (permisivas: permiten uso en proyectos propietarios), Apache 2.0.</p>
+<p><strong>Modalidades de licenciamiento comercial:</strong> licencia individual (<em>retail</em>), licencia por volumen (para empresas/centros educativos), licencia OEM (atada a un equipo), suscripción (SaaS, pago periódico, p. ej. Microsoft 365).</p>
+<div class="admonition note">
+<p class="admonition-title">Idea clave</p>
+<p>"Gratuito" (freeware) y "libre" (open source) no son sinónimos: un programa puede ser gratuito y a la vez cerrado (no se puede ver ni modificar su código).</p>
+</div>
+<h2 id="33-funciones-del-sistema-operativo">3.3. Funciones del sistema operativo<a class="headerlink" href="#33-funciones-del-sistema-operativo" title="Permanent link">&para;</a></h2>
+<p>El sistema operativo actúa a la vez como <strong>gestor de recursos</strong> (reparte el hardware entre los programas que lo necesitan) y como <strong>máquina extendida</strong> (oculta la complejidad del hardware y ofrece a programas y usuarios una forma sencilla de utilizarlo). Estas tareas se agrupan en las siguientes funciones:</p>
+<h3 id="331-gestion-de-procesos">3.3.1. Gestión de procesos<a class="headerlink" href="#331-gestion-de-procesos" title="Permanent link">&para;</a></h3>
+<p>Un <strong>programa</strong> es un archivo ejecutable almacenado en disco; un <strong>proceso</strong> es ese programa <em>en ejecución</em>, con su código, sus datos en memoria, el estado de los registros de la CPU y los recursos que tiene asignados (archivos abiertos, conexiones...). Un mismo programa puede dar lugar a varios procesos (por ejemplo, dos ventanas independientes de un editor de texto).</p>
+<p>El SO se encarga de <strong>crear y finalizar procesos</strong>, de <strong>repartir el tiempo de CPU</strong> entre ellos y de permitir que se <strong>comuniquen y sincronicen</strong> entre sí. Para ello guarda la información de cada proceso en una estructura llamada <strong>bloque de control de proceso (PCB)</strong>, que incluye su identificador (<strong>PID</strong>), su estado, su prioridad y el contenido de los registros de la CPU.</p>
+<p>Durante su vida, un proceso pasa por distintos <strong>estados</strong>:</p>
+<ul>
+<li><strong>Nuevo</strong>: el proceso se está creando y el SO aún no lo ha admitido para ejecutarse.</li>
+<li><strong>Listo (preparado)</strong>: tiene todo lo necesario para ejecutarse y solo espera a que le asignen la CPU.</li>
+<li><strong>En ejecución</strong>: sus instrucciones se están ejecutando en la CPU. En cada núcleo solo puede haber un proceso en este estado a la vez.</li>
+<li><strong>Bloqueado (en espera)</strong>: no puede continuar hasta que ocurra algo externo, como que termine una operación de E/S (lectura de disco, pulsación de una tecla, llegada de datos por la red).</li>
+<li><strong>Terminado</strong>: ha finalizado su ejecución y el SO libera los recursos que tenía asignados.</li>
+</ul>
+<p><img alt="Diagrama de estados de un proceso: Nuevo pasa a Listo al ser admitido; Listo pasa a En ejecución cuando el planificador le asigna la CPU; En ejecución vuelve a Listo al agotar su quantum o ser expropiado, pasa a Bloqueado si espera una E/S o un evento, o a Terminado al finalizar; Bloqueado vuelve a Listo cuando la E/S o el evento se completa" src="../img/ut3_estados_procesos.svg" width="700" /></p>
+<p>Las <strong>transiciones</strong> entre estados son:</p>
+<table>
+<thead>
+<tr>
+<th>Transición</th>
+<th>Cuándo se produce</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nuevo → Listo</td>
+<td>El SO admite el proceso y le reserva los recursos iniciales.</td>
+</tr>
+<tr>
+<td>Listo → En ejecución</td>
+<td>El <strong>planificador</strong> elige ese proceso y le asigna la CPU.</td>
+</tr>
+<tr>
+<td>En ejecución → Listo</td>
+<td>Se agota su porción de tiempo (<strong>quantum</strong>) o llega un proceso de mayor prioridad que lo expulsa (<strong>expropiación</strong>).</td>
+</tr>
+<tr>
+<td>En ejecución → Bloqueado</td>
+<td>El proceso solicita una operación de E/S o espera un evento y no puede continuar.</td>
+</tr>
+<tr>
+<td>Bloqueado → Listo</td>
+<td>La E/S o el evento esperado se completa. El proceso <strong>no</strong> vuelve directamente a ejecución: debe esperar de nuevo su turno.</td>
+</tr>
+<tr>
+<td>En ejecución → Terminado</td>
+<td>El proceso finaliza normalmente, por un error o porque otro proceso (o el usuario) lo termina.</td>
+</tr>
+</tbody>
+</table>
+<p>Cada vez que la CPU pasa de un proceso a otro, el SO realiza un <strong>cambio de contexto</strong>: guarda en el PCB el estado del proceso saliente y carga el del entrante. Al hacerse cientos de veces por segundo, el usuario percibe que todos los programas se ejecutan simultáneamente (<strong>multitarea</strong>).</p>
+<p>El componente que decide qué proceso listo pasa a ejecutarse es el <strong>planificador (scheduler)</strong>, que sigue un <strong>algoritmo de planificación</strong>. Algunos de los más conocidos son:</p>
+<ul>
+<li><strong>FCFS (<em>First Come, First Served</em>)</strong>: por orden de llegada, como una cola.</li>
+<li><strong>SJF (<em>Shortest Job First</em>)</strong>: primero el proceso con la ráfaga de CPU más corta.</li>
+<li><strong>Round Robin (turno rotatorio)</strong>: cada proceso se ejecuta durante un quantum fijo y vuelve al final de la cola. Es la base de los sistemas de tiempo compartido.</li>
+<li><strong>Por prioridades</strong>: se ejecuta antes el proceso con mayor prioridad. Los sistemas actuales combinan prioridades y turnos rotatorios.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Procesos e hilos</p>
+<p>Un proceso puede dividirse en varios <strong>hilos (threads)</strong>: unidades de ejecución que comparten la memoria y los recursos del proceso, pero pueden ejecutarse en paralelo en distintos núcleos. Por ejemplo, un navegador usa un hilo para dibujar la página y otros para descargar contenido al mismo tiempo.</p>
+<p>Puedes ver los procesos de tu equipo, su PID y su estado con el <strong>Administrador de tareas</strong> en Windows, o con <code>ps aux</code>, <code>top</code> o <code>htop</code> en Linux.</p>
+</div>
+<h3 id="332-gestion-de-memoria">3.3.2. Gestión de memoria<a class="headerlink" href="#332-gestion-de-memoria" title="Permanent link">&para;</a></h3>
+<p>La memoria RAM es limitada y la comparten el propio SO y todos los procesos en ejecución. El SO se encarga de:</p>
+<ul>
+<li><strong>Asignar y liberar memoria</strong>: reserva espacio a cada proceso cuando se crea o lo solicita, y lo recupera cuando termina.</li>
+<li><strong>Proteger la memoria</strong>: impide que un proceso lea o modifique la memoria de otro o la del propio SO. Si lo intenta, el SO lo detiene (el típico error de "violación de segmento" o "acceso a memoria no válido").</li>
+<li><strong>Gestionar la memoria virtual</strong>: cada proceso trabaja con un espacio de direcciones propio, que el SO traduce a direcciones físicas de la RAM con ayuda del hardware (<strong>MMU</strong>). La memoria se divide en bloques de tamaño fijo llamados <strong>páginas</strong>; las que no caben o no se usan pueden llevarse temporalmente al disco (<strong>swap</strong> o archivo de paginación, ver punto 3.5.1) y traerse de vuelta cuando se necesitan. Así, se pueden ejecutar más programas de los que cabrían en la RAM física.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Idea clave</p>
+<p>Cuando la RAM se queda corta y el sistema tiene que mover páginas al disco y del disco continuamente, el equipo se ralentiza muchísimo (se dice que "hiperpagina", en inglés <em>thrashing</em>). Por eso ampliar la RAM es una de las mejoras de rendimiento más eficaces.</p>
+</div>
+<h3 id="333-gestion-de-archivos-y-almacenamiento">3.3.3. Gestión de archivos y almacenamiento<a class="headerlink" href="#333-gestion-de-archivos-y-almacenamiento" title="Permanent link">&para;</a></h3>
+<p>Los discos solo almacenan bloques de datos; el SO los organiza mediante un <strong>sistema de archivos</strong> para que el usuario trabaje con <strong>archivos</strong> y <strong>carpetas (directorios)</strong> organizados en una jerarquía. El SO se encarga de:</p>
+<ul>
+<li><strong>Crear, leer, modificar, copiar, mover y eliminar</strong> archivos y directorios.</li>
+<li>Llevar el control de <strong>qué bloques del disco ocupa cada archivo</strong> y cuáles están libres.</li>
+<li>Guardar los <strong>metadatos</strong> de cada archivo: nombre, tamaño, fechas de creación y modificación, propietario y permisos.</li>
+<li><strong>Controlar el acceso</strong>: quién puede leer, modificar o ejecutar cada archivo.</li>
+</ul>
+<p>Cada sistema operativo usa sus propios sistemas de archivos: <strong>NTFS</strong> en Windows, <strong>ext4</strong> o <strong>Btrfs</strong> en Linux, <strong>APFS</strong> en macOS, y <strong>FAT32</strong> o <strong>exFAT</strong> en memorias USB y tarjetas, por ser compatibles con casi todos los sistemas. Se estudian en detalle en la siguiente unidad.</p>
+<h3 id="334-gestion-de-dispositivos-de-entradasalida">3.3.4. Gestión de dispositivos de entrada/salida<a class="headerlink" href="#334-gestion-de-dispositivos-de-entradasalida" title="Permanent link">&para;</a></h3>
+<p>Existen miles de periféricos distintos (teclados, impresoras, discos, tarjetas de red...), cada uno con su propia forma de funcionar. El SO se comunica con ellos a través de <strong>controladores (drivers)</strong>: pequeños programas, normalmente proporcionados por el fabricante, que "traducen" las órdenes genéricas del SO a las instrucciones concretas que entiende cada dispositivo. Gracias a ellos, un programa puede imprimir sin saber qué modelo de impresora hay conectada.</p>
+<p>Además, el SO:</p>
+<ul>
+<li>Atiende las <strong>interrupciones</strong>: avisos que envían los dispositivos a la CPU cuando necesitan atención (por ejemplo, "ha llegado un paquete de red" o "ya he terminado de leer el bloque de disco"), sin que la CPU tenga que estar preguntando continuamente.</li>
+<li>Usa <strong>búferes y colas</strong> para compensar la diferencia de velocidad entre la CPU y los periféricos. Por ejemplo, la <strong>cola de impresión</strong> (<em>spooling</em>) permite enviar varios documentos a la impresora y seguir trabajando mientras se imprimen.</li>
+<li>Detecta los dispositivos al conectarlos y carga su controlador automáticamente (<strong>Plug and Play</strong>).</li>
+</ul>
+<h3 id="335-interfaz-con-el-usuario">3.3.5. Interfaz con el usuario<a class="headerlink" href="#335-interfaz-con-el-usuario" title="Permanent link">&para;</a></h3>
+<p>El SO ofrece al usuario una forma de comunicarse con el equipo:</p>
+<ul>
+<li><strong>Interfaz de línea de comandos (CLI)</strong>: el usuario escribe órdenes en un intérprete de comandos (<em>shell</em>), como <strong>Bash</strong> en Linux o <strong>PowerShell</strong> y <strong>CMD</strong> en Windows. Es más difícil de aprender, pero muy potente y permite <strong>automatizar tareas mediante scripts</strong> y administrar equipos remotos. Es la interfaz habitual en servidores.</li>
+<li><strong>Interfaz gráfica de usuario (GUI)</strong>: ventanas, iconos, menús y puntero (<em>WIMP</em>). Es más intuitiva y la habitual en equipos de escritorio y móviles (en estos últimos, con interfaz <strong>táctil</strong>).</li>
+</ul>
+<p>Además, el SO ofrece a los programas una interfaz propia: las <strong>llamadas al sistema</strong> (<em>system calls</em>), funciones mediante las cuales una aplicación pide al SO que realice por ella operaciones que no puede hacer directamente, como abrir un archivo, crear un proceso o enviar datos por la red.</p>
+<h3 id="336-seguridad-y-control-de-acceso">3.3.6. Seguridad y control de acceso<a class="headerlink" href="#336-seguridad-y-control-de-acceso" title="Permanent link">&para;</a></h3>
+<p>En un sistema multiusuario, el SO debe proteger los datos y recursos de cada usuario y del propio sistema:</p>
+<ul>
+<li><strong>Autenticación</strong>: comprueba la identidad de quien accede, mediante contraseña, PIN, biometría (huella, reconocimiento facial) o varios factores combinados.</li>
+<li><strong>Autorización y permisos</strong>: determina qué puede hacer cada usuario con cada recurso (leer, escribir, ejecutar). Se distingue entre <strong>usuarios estándar</strong> y <strong>administradores</strong> (<em>root</em> en Linux), y las tareas que afectan al sistema exigen elevar privilegios (<strong>UAC</strong> en Windows, <code>sudo</code> en Linux).</li>
+<li><strong>Aislamiento</strong>: los procesos se ejecutan separados entre sí y del núcleo, para que un fallo o un programa malicioso no afecte al resto del sistema.</li>
+<li><strong>Auditoría</strong>: registra los eventos importantes (inicios de sesión, errores, cambios de configuración) en <strong>registros (logs)</strong>: el Visor de eventos en Windows o <code>journalctl</code> y <code>/var/log</code> en Linux.</li>
+</ul>
+<h3 id="337-gestion-de-red-y-comunicaciones">3.3.7. Gestión de red y comunicaciones<a class="headerlink" href="#337-gestion-de-red-y-comunicaciones" title="Permanent link">&para;</a></h3>
+<p>Los sistemas operativos actuales incluyen la <strong>pila de protocolos TCP/IP</strong> y las herramientas necesarias para conectar el equipo a una red: configuración de direcciones IP, resolución de nombres (DNS), cortafuegos integrado y servicios para compartir archivos e impresoras.</p>
+<h2 id="34-virtualizacion">3.4. Virtualización<a class="headerlink" href="#34-virtualizacion" title="Permanent link">&para;</a></h2>
+<p>La <strong>virtualización</strong> permite ejecutar uno o varios sistemas operativos "invitados" (guest) de forma aislada sobre un mismo equipo físico "anfitrión" (host), compartiendo sus recursos hardware.</p>
+<p><strong>Tipos de hipervisor</strong> (software que crea y gestiona las máquinas virtuales):</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo 1 (bare metal)</td>
+<td>Se ejecuta directamente sobre el hardware, sin SO anfitrión</td>
+<td>VMware ESXi, Microsoft Hyper-V, Proxmox VE</td>
+</tr>
+<tr>
+<td>Tipo 2 (hosted)</td>
+<td>Se ejecuta como una aplicación sobre un SO anfitrión ya instalado</td>
+<td>VirtualBox, VMware Workstation, Parallels</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Hipervisor de tipo 1, instalado directamente sobre el hardware y con varias máquinas virtuales encima, frente a hipervisor de tipo 2, que se ejecuta como una aplicación más sobre el sistema operativo anfitrión" src="../img/ut3_hipervisores.svg" width="700" /></p>
+<p><strong>Ventajas de la virtualización:</strong> aislamiento entre sistemas, aprovechamiento del hardware, facilidad para probar sistemas operativos sin arriesgar el equipo real, uso de <strong>instantáneas (snapshots)</strong> para volver a un estado anterior, portabilidad de las máquinas virtuales entre equipos.</p>
+<p><strong>Conceptos relacionados:</strong></p>
+<ul>
+<li><strong>Máquina virtual (VM)</strong>: equipo completo simulado por software, con su propio SO, disco virtual y recursos asignados.</li>
+<li><strong>Contenedores</strong> (Docker, LXC): virtualización a nivel de sistema operativo, más ligera que una VM completa porque comparten el kernel del host; se estudian en detalle en otros módulos, pero conviene conocer la diferencia con una VM tradicional.</li>
+</ul>
+<details class="example" open="open">
+<summary>Ampliación: contenedor vs. máquina virtual con Docker</summary>
+<p>Si ya has terminado las actividades básicas de esta unidad, puedes comprobar por ti mismo/a la diferencia entre contenedor y VM:</p>
+<ol>
+<li>Instala Docker Desktop (o Docker Engine en Linux) en tu equipo o en una VM.</li>
+<li>Arranca el mismo servicio de dos formas: como contenedor (<code>docker run -d -p 8080:80 nginx</code>) y como máquina virtual completa con ese mismo servicio instalado.</li>
+<li>Compara el tiempo desde que lo lanzas hasta que responde, el espacio en disco ocupado y la memoria RAM consumida (<code>docker stats</code> frente al Administrador de tareas/<code>htop</code> de la VM).</li>
+<li>Con <code>docker exec -it &lt;contenedor&gt; bash</code> y luego <code>uname -a</code>, comprueba que el kernel que ve el contenedor es el mismo que el de tu equipo anfitrión — a diferencia de la VM, que tiene el suyo propio.</li>
+</ol>
+<p>No es una actividad evaluada: es una forma de comprobar de primera mano por qué un contenedor no sirve para las actividades de esta unidad (no tiene BIOS/UEFI, gestor de arranque ni disco que particionar) y, en cambio, resulta mucho más ligero y rápido para desplegar un servicio ya construido — algo que se estudiará en detalle en módulos posteriores de despliegue.</p>
+</details>
+<p><strong>Discos virtuales:</strong> cada VM almacena su disco como uno o varios archivos en el sistema de archivos del anfitrión, en formatos como <strong>VDI</strong> (nativo de VirtualBox), <strong>VMDK</strong> (VMware, el más extendido para el intercambio entre plataformas) o <strong>VHD/VHDX</strong> (Hyper-V). Al crear el disco se elige entre:</p>
+<ul>
+<li><strong>Tamaño dinámico</strong>: el archivo ocupa en el anfitrión solo el espacio realmente usado por la VM, y va creciendo hasta el máximo definido. Es la opción recomendada en la mayoría de los casos.</li>
+<li><strong>Tamaño fijo</strong>: reserva de entrada todo el espacio máximo en el anfitrión. Ofrece un rendimiento algo más constante, a costa de ocupar desde el principio todo el espacio, tanto se use como si no.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Idea clave</p>
+<p>Con un disco de tamaño dinámico, el sistema operativo invitado "cree" que dispone de todo el espacio del disco virtual, aunque el anfitrión no le haya asignado aún ese espacio real; si el disco del anfitrión se llena antes de alcanzar ese máximo, la máquina virtual puede fallar de forma abrupta.</p>
+</div>
+<p><strong>Guest Additions / VMware Tools:</strong> paquete de controladores y utilidades que se instala <em>dentro</em> del sistema operativo invitado (no en el anfitrión) y mejora la integración entre ambos: resolución de pantalla ajustable, portapapeles compartido, arrastrar y soltar archivos, carpetas compartidas y mejor rendimiento gráfico y de red. Sin este paquete instalado, la máquina virtual funciona, pero con prestaciones e integración limitadas.</p>
+<p><strong>Exportación e importación de máquinas virtuales:</strong> para trasladar una VM completa a otro equipo o hipervisor se usa el estándar <strong>OVF</strong> (<em>Open Virtualization Format</em>), admitido por VirtualBox, VMware y otros fabricantes. Un paquete OVF consta de un archivo de configuración y uno o varios discos virtuales (normalmente convertidos a VMDK); empaquetado todo junto en un único archivo comprimido, se usa la extensión <strong>OVA</strong>. Esto permite migrar una VM entre plataformas de virtualización distintas, aunque no siempre se conservan todas sus características si el hipervisor de destino no las soporta.</p>
+<h2 id="35-instalacion-de-los-sistemas-operativos">3.5. Instalación de los sistemas operativos<a class="headerlink" href="#35-instalacion-de-los-sistemas-operativos" title="Permanent link">&para;</a></h2>
+<h3 id="351-planificacion-y-procedimiento-de-instalacion">3.5.1. Planificación y procedimiento de instalación<a class="headerlink" href="#351-planificacion-y-procedimiento-de-instalacion" title="Permanent link">&para;</a></h3>
+<p>Antes de instalar un sistema operativo conviene planificar el proceso:</p>
+<ol>
+<li><strong>Comprobar requisitos hardware</strong> (procesador, RAM, espacio en disco, controladores compatibles).</li>
+<li><strong>Elegir el tipo de instalación</strong>:<ul>
+<li><strong>Instalación limpia</strong>: formatea el disco/partición e instala el SO desde cero.</li>
+<li><strong>Actualización (upgrade)</strong>: instala una versión nueva conservando aplicaciones y datos.</li>
+<li><strong>Arranque dual / multiarranque (dual boot)</strong>: instala varios sistemas operativos en particiones distintas del mismo equipo.</li>
+</ul>
+</li>
+<li><strong>Realizar copia de seguridad</strong> de los datos importantes antes de empezar.</li>
+<li><strong>Preparar el medio de instalación</strong>: USB o DVD de arranque, o instalación por red (PXE) en entornos con muchos equipos.</li>
+<li><strong>Planificar el particionado</strong> del disco (tamaño y sistema de archivos de cada partición), incluyendo el espacio para memoria de intercambio si procede (ver más abajo).</li>
+</ol>
+<details class="tip" open="open">
+<summary>Medios de arranque con varios sistemas</summary>
+<p>Herramientas como <strong>Rufus</strong> o <strong>balenaEtcher</strong> graban una única imagen ISO en un USB. Para llevar varias ISO de instalación distintas en el mismo pendrive (varias distribuciones Linux, herramientas de recuperación...) sin tener que reformatearlo cada vez, se usan herramientas de "USB multiboot" como <strong>Ventoy</strong>: se instala una sola vez en el USB y, a partir de ahí, basta con copiar o borrar archivos ISO con el explorador de archivos para añadir o quitar sistemas arrancables.</p>
+</details>
+<p><strong>Memoria de intercambio (swap / archivo de paginación):</strong> además de la RAM física, el sistema operativo puede usar espacio en disco como memoria virtual cuando la RAM se agota, a costa de una velocidad mucho menor.</p>
+<ul>
+<li><strong>Windows</strong> usa un <strong>archivo de paginación</strong> (<code>pagefile.sys</code>), ubicado en la propia partición del sistema y gestionado automáticamente por defecto.</li>
+<li><strong>GNU/Linux</strong> suele reservar una <strong>partición o un archivo swap</strong> independiente, configurable durante el particionado.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>RAM instalada</th>
+<th>Swap orientativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≤ 2 GB</td>
+<td>El doble de la RAM</td>
+</tr>
+<tr>
+<td>2-8 GB</td>
+<td>Igual a la RAM</td>
+</tr>
+<tr>
+<td>&gt; 8 GB</td>
+<td>Entre 4 y 8 GB suele bastar</td>
+</tr>
+</tbody>
+</table>
+<p>Conviene aumentar esta orientación si se va a usar <strong>hibernación</strong> (necesita una swap al menos igual a la RAM instalada, para volcar en ella todo su contenido) o en equipos con cargas de trabajo que consumen mucha memoria. En Linux, el parámetro <code>vm.swappiness</code> (0-100) regula cuánto tiende el sistema a usar la swap en lugar de liberar RAM: un valor bajo (5-10) es preferible en un equipo de escritorio con SSD, para minimizar tanto el impacto en el rendimiento como el desgaste de la unidad.</p>
+<p><strong>Fases típicas del proceso de instalación:</strong></p>
+<ol>
+<li>Arranque desde el medio de instalación (configurando el orden de arranque en la BIOS/UEFI).</li>
+<li>Selección de idioma, zona horaria y distribución de teclado.</li>
+<li>Particionado y selección del sistema de archivos.</li>
+<li>Copia de archivos e instalación del sistema base.</li>
+<li>Configuración inicial: usuario administrador, contraseña, nombre del equipo, red.</li>
+<li>Instalación de controladores y actualizaciones posteriores a la instalación.</li>
+</ol>
+<h3 id="352-gestores-de-arranque-configuracion-y-reparacion">3.5.2. Gestores de arranque: configuración y reparación<a class="headerlink" href="#352-gestores-de-arranque-configuracion-y-reparacion" title="Permanent link">&para;</a></h3>
+<p>Al encender un equipo, el firmware (<strong>BIOS</strong> o <strong>UEFI</strong>) localiza un dispositivo de arranque y cede el control al <strong>gestor de arranque (bootloader)</strong>, el programa encargado de cargar el sistema operativo.</p>
+<p><img alt="Proceso de arranque: encendido, firmware BIOS/UEFI (POST y búsqueda del dispositivo de arranque), gestor de arranque (GRUB2 o Windows Boot Manager), carga del núcleo del sistema operativo y sistema listo para iniciar sesión" src="../img/ut3_proceso_arranque.svg" /></p>
+<p><strong>Estilo de partición del disco:</strong></p>
+<ul>
+<li><strong>MBR (Master Boot Record)</strong>: esquema clásico, máximo 4 particiones primarias, discos de hasta 2 TiB.</li>
+<li><strong>GPT (GUID Partition Table)</strong>: esquema moderno, sin ese límite de particiones ni de tamaño de disco; requiere arranque en modo UEFI.</li>
+</ul>
+<p><img alt="Estructura de un disco con MBR (sector MBR, tres particiones primarias y una extendida con particiones lógicas) frente a uno con GPT (MBR protector, cabecera y tabla GPT, partición EFI, resto de particiones y copia de seguridad de la tabla al final del disco)" src="../img/ut3_mbr_gpt.svg" width="760" /></p>
+<p><strong>Gestores de arranque habituales:</strong></p>
+<ul>
+<li><strong>GRUB2</strong>: gestor de arranque estándar en la mayoría de distribuciones Linux; permite arrancar varios sistemas operativos (multiarranque) mostrando un menú de selección.</li>
+<li><strong>Windows Boot Manager (bootmgr)</strong>: gestor de arranque de los sistemas Windows actuales.</li>
+</ul>
+<p><strong>Reparación del gestor de arranque:</strong> situaciones típicas en las que deja de funcionar (tras instalar otro SO que lo sobrescribe, tras un fallo de disco) y herramientas para repararlo:</p>
+<ul>
+<li>En Windows: entorno de recuperación, comandos como <code>bootrec /fixmbr</code>, <code>bootrec /fixboot</code> y <code>bootrec /rebuildbcd</code>.</li>
+<li>En Linux: reinstalación de GRUB desde un <em>live CD</em> (<code>grub-install</code>, <code>update-grub</code>).</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Multiarranque</p>
+<p>En un sistema con arranque dual, es recomendable instalar primero Windows y después Linux, ya que GRUB puede detectar e incluir automáticamente las instalaciones de Windows en su menú; en el orden inverso, el instalador de Windows suele sobrescribir el gestor de arranque de Linux.</p>
+</div>
+<h3 id="353-instalacion-desinstalacion-y-actualizacion-de-aplicaciones">3.5.3. Instalación, desinstalación y actualización de aplicaciones<a class="headerlink" href="#353-instalacion-desinstalacion-y-actualizacion-de-aplicaciones" title="Permanent link">&para;</a></h3>
+<p><strong>Formas de instalar aplicaciones según el sistema operativo:</strong></p>
+<ul>
+<li><strong>Windows</strong>: instaladores ejecutables (<code>.exe</code>, <code>.msi</code>), tiendas de aplicaciones (Microsoft Store), instalación silenciosa mediante parámetros de línea de comandos (útil para despliegues masivos).</li>
+<li><strong>GNU/Linux</strong>: gestores de paquetes que resuelven automáticamente las dependencias:<ul>
+<li><code>apt</code> / <code>dpkg</code> (Debian, Ubuntu)</li>
+<li><code>dnf</code> / <code>rpm</code> (Fedora, RHEL)</li>
+<li><code>pacman</code> (Arch Linux)</li>
+</ul>
+</li>
+<li><strong>macOS</strong>: paquetes <code>.pkg</code>, aplicaciones <code>.app</code>, App Store.</li>
+</ul>
+<p><strong>Desinstalación:</strong> debe eliminar tanto los archivos del programa como sus entradas de configuración asociadas (registro en Windows, archivos de configuración en <code>/etc</code> o el directorio personal en Linux) para no dejar residuos.</p>
+<p><strong>Actualización de aplicaciones:</strong> puede hacerse de forma manual, mediante el propio gestor de paquetes, o mediante mecanismos de autoactualización integrados en la aplicación.</p>
+<p><strong>Verificación de la integridad del software descargado:</strong></p>
+<ul>
+<li><strong>Sumas de comprobación (checksums)</strong>: valores hash (MD5, SHA-256) que permiten comprobar que el archivo descargado no está corrupto ni manipulado.</li>
+<li><strong>Firma digital</strong>: garantiza la autenticidad del editor del software.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Buena práctica</p>
+<p>Descargar siempre el software desde la web oficial del fabricante o repositorios oficiales, y comprobar la suma de comprobación cuando esté disponible, especialmente en instalaciones de sistemas o software crítico.</p>
+</div>
+<h3 id="354-actualizacion-y-recuperacion-del-sistema">3.5.4. Actualización y recuperación del sistema<a class="headerlink" href="#354-actualizacion-y-recuperacion-del-sistema" title="Permanent link">&para;</a></h3>
+<p><strong>Actualización del sistema operativo:</strong></p>
+<ul>
+<li><strong>Windows Update</strong>: distribuye actualizaciones de seguridad, correcciones y nuevas funciones.</li>
+<li><strong>Gestores de paquetes en Linux</strong> (<code>apt upgrade</code>, <code>dnf upgrade</code>...): actualizan tanto el sistema base como las aplicaciones instaladas desde los repositorios.</li>
+<li>Es recomendable distinguir entre actualizaciones de seguridad (críticas, a aplicar cuanto antes) y actualizaciones de funcionalidad (pueden planificarse).</li>
+</ul>
+<p><strong>Mecanismos de recuperación del sistema:</strong></p>
+<ul>
+<li><strong>Puntos de restauración (Windows)</strong>: permiten volver la configuración del sistema a un estado anterior sin afectar a los archivos personales.</li>
+<li><strong>Partición/entorno de recuperación</strong>: partición oculta con herramientas de diagnóstico y reparación, o entorno de recuperación desde un medio externo.</li>
+<li><strong>Imágenes de sistema (system image / clonado)</strong>: copia completa del disco o partición del sistema, que permite restaurar el equipo por completo tras un fallo grave.</li>
+<li><strong>Modo seguro (Safe Mode) / modo de emergencia</strong>: arranque del sistema con el mínimo de controladores y servicios, útil para diagnosticar problemas.</li>
+</ul>
+<h3 id="355-documentacion-de-instalaciones-e-incidencias">3.5.5. Documentación de instalaciones e incidencias<a class="headerlink" href="#355-documentacion-de-instalaciones-e-incidencias" title="Permanent link">&para;</a></h3>
+<p>Documentar el trabajo técnico es una parte esencial de la profesión: facilita el mantenimiento futuro, permite a otros técnicos entender lo realizado y sirve como evidencia ante el cliente.</p>
+<p><strong>Qué documentar en una instalación:</strong></p>
+<ul>
+<li>Fecha, equipo/s afectados y técnico responsable.</li>
+<li>Versión del sistema operativo y software instalado.</li>
+<li>Configuración aplicada (particionado, red, usuarios).</li>
+<li>Incidencias encontradas durante el proceso y solución aplicada.</li>
+</ul>
+<p><strong>Gestión de incidencias:</strong> en un entorno profesional, las incidencias suelen registrarse en un sistema de <em>tickets</em> (helpdesk) que recoge, como mínimo: descripción del problema, prioridad, técnico asignado, acciones realizadas y estado (abierta, en curso, resuelta).</p>
+<div class="admonition tip">
+<p class="admonition-title">Estructura de un informe técnico</p>
+<p>Un buen informe de instalación o de incidencia debe ser breve, ordenado cronológicamente y reproducible por otra persona: <strong>qué se hizo, por qué, cómo, y qué resultado se obtuvo</strong>.</p>
+</div>
+<h3 id="356-herramientas-ofimaticas-y-de-trabajo-colaborativo">3.5.6. Herramientas ofimáticas y de trabajo colaborativo<a class="headerlink" href="#356-herramientas-ofimaticas-y-de-trabajo-colaborativo" title="Permanent link">&para;</a></h3>
+<p>Las <strong>suites ofimáticas</strong> agrupan aplicaciones para las tareas más comunes en un entorno de oficina:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo de aplicación</th>
+<th>Función</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Procesador de texto</td>
+<td>Redacción y maquetación de documentos</td>
+<td>Word, Writer (LibreOffice), Google Docs</td>
+</tr>
+<tr>
+<td>Hoja de cálculo</td>
+<td>Cálculos, tablas y gráficos</td>
+<td>Excel, Calc, Google Sheets</td>
+</tr>
+<tr>
+<td>Presentaciones</td>
+<td>Diapositivas para exposiciones</td>
+<td>PowerPoint, Impress, Google Slides</td>
+</tr>
+<tr>
+<td>Gestor de bases de datos de escritorio</td>
+<td>Bases de datos sencillas</td>
+<td>Access, Base (LibreOffice)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Suites más habituales:</strong> Microsoft 365 (propietaria, de suscripción), LibreOffice (libre y gratuita), Google Workspace (basada en la nube).</p>
+<p><strong>Herramientas de trabajo colaborativo:</strong></p>
+<ul>
+<li><strong>Almacenamiento y edición compartida en la nube</strong>: Google Drive, OneDrive, Nextcloud, que permiten que varias personas editen un mismo documento simultáneamente.</li>
+<li><strong>Control de versiones de documentos</strong>: historial de cambios y posibilidad de recuperar versiones anteriores.</li>
+</ul>
+<p><strong>Edición colaborativa en tiempo real frente a sincronización de archivos:</strong> son dos modelos distintos, aunque a veces se confunden. Un editor colaborativo (Google Docs, Office Online) mantiene una conexión permanente con el servidor y <strong>fusiona los cambios de cada persona a nivel de carácter</strong>, casi al instante, mediante algoritmos de resolución de conflictos (fuera del alcance de este módulo). Un servicio de sincronización de carpetas (Dropbox, OneDrive/Google Drive de escritorio) sincroniza en cambio <strong>el archivo completo</strong> de vez en cuando: si dos personas editan el mismo archivo sin conexión a la vez, no hay fusión automática y se genera un archivo de "copia en conflicto" que hay que resolver a mano.
+- <strong>Comunicación y videoconferencia</strong>: Google Meet, Microsoft Teams, Zoom.
+- <strong>Gestión de tareas y proyectos en equipo</strong>: Trello, Asana, Microsoft Planner.</p>
+<h3 id="357-utilidades-de-proposito-general-antimalware-mantenimiento-recuperacion-de-datos">3.5.7. Utilidades de propósito general (antimalware, mantenimiento, recuperación de datos)<a class="headerlink" href="#357-utilidades-de-proposito-general-antimalware-mantenimiento-recuperacion-de-datos" title="Permanent link">&para;</a></h3>
+<p><strong>Herramientas antimalware:</strong> software que detecta y elimina programas maliciosos (virus, troyanos, ransomware, spyware). Suelen combinar análisis por firmas (comparación con una base de datos de amenazas conocidas) y análisis heurístico/de comportamiento (detección de patrones sospechosos). Ejemplos: Windows Defender, ClamAV (libre, muy usado en servidores Linux).</p>
+<p><strong>Utilidades de mantenimiento del sistema:</strong> liberación de espacio en disco (archivos temporales, caché), gestión de programas que se inician automáticamente, limpieza de entradas obsoletas de configuración.</p>
+<p><strong>Recuperación de datos:</strong> herramientas capaces de intentar recuperar archivos borrados accidentalmente o dañados por un fallo del sistema de archivos, aprovechando que al borrar un archivo normalmente solo se elimina su referencia en el sistema de archivos, no el contenido en sí (hasta que ese espacio se reutiliza). Ejemplos: Recuva, TestDisk/PhotoRec.</p>
+<p><strong>Utilidades de compresión:</strong> reducen el tamaño de los archivos y permiten agrupar varios en uno solo, facilitando su almacenamiento y transferencia. Formatos habituales: ZIP, RAR, 7z, TAR+GZIP (este último muy usado en Linux).</p>
+<div class="admonition warning">
+<p class="admonition-title">El antimalware no sustituye las buenas prácticas</p>
+<p>Ninguna herramienta antimalware sustituye a unas buenas prácticas básicas: mantener el sistema actualizado, desconfiar de archivos adjuntos y enlaces desconocidos, y hacer copias de seguridad periódicas.</p>
+</div>
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<p class="actividad-titulo"><strong>Actividad 3.1 — Investigación y exposición: un sistema operativo actual</strong></p>
+<p><strong>Actividad en grupo de 2 o 3 personas.</strong> Cada grupo elige un sistema operativo de la lista siguiente, investiga sobre él y prepara una presentación que <strong>expondrá en clase la próxima sesión</strong>. No puede haber dos grupos con el mismo sistema: el orden de elección se decide en clase.</p>
+<p><strong>Sistemas operativos propuestos (por sector):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>Sistemas operativos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Escritorio y uso personal</td>
+<td>Windows 11, macOS, Ubuntu Desktop, Linux Mint, ChromeOS</td>
+</tr>
+<tr>
+<td>Servidores y centros de datos</td>
+<td>Windows Server 2025, Red Hat Enterprise Linux (RHEL), Debian, Ubuntu Server</td>
+</tr>
+<tr>
+<td>Dispositivos móviles</td>
+<td>Android, iOS / iPadOS, HarmonyOS (Huawei)</td>
+</tr>
+<tr>
+<td>Dispositivos vestibles (<em>wearables</em>)</td>
+<td>watchOS (Apple Watch), Wear OS (Google)</td>
+</tr>
+<tr>
+<td>Televisores inteligentes</td>
+<td>Tizen (Samsung), webOS (LG), Google TV</td>
+</tr>
+<tr>
+<td>Videojuegos</td>
+<td>SteamOS (Steam Deck)</td>
+</tr>
+<tr>
+<td>Automoción y sistemas críticos</td>
+<td>QNX, Android Automotive OS</td>
+</tr>
+<tr>
+<td>Internet de las cosas (IoT) y sistemas embebidos</td>
+<td>FreeRTOS, Zephyr</td>
+</tr>
+<tr>
+<td>Ciberseguridad</td>
+<td>Kali Linux</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Contenido mínimo de la presentación:</strong></p>
+<ol>
+<li><strong>Identificación</strong>: nombre, empresa o comunidad que lo desarrolla, año de aparición y versión actual.</li>
+<li><strong>Breve historia</strong>: origen y principales hitos en su evolución.</li>
+<li><strong>Sector y público objetivo</strong>: en qué tipo de dispositivos y por qué usuarios se utiliza, con algún ejemplo real de uso (empresa, organismo, producto).</li>
+<li><strong>Cuota de mercado o implantación</strong> en su sector, con datos y la fuente de la que proceden.</li>
+<li><strong>Tipo de licencia y coste</strong>: propietario, libre o mixto; si es gratuito o de pago y qué modelo de negocio tiene detrás.</li>
+<li><strong>Arquitectura y núcleo</strong>: tipo de núcleo (monolítico, micronúcleo, híbrido), en qué sistema se basa (Unix, Linux, Windows NT...) y qué arquitecturas de procesador admite (x86-64, ARM...).</li>
+<li><strong>Requisitos de hardware</strong> mínimos y recomendados.</li>
+<li><strong>Clasificación</strong> según lo visto en el punto 3.2.1 (monousuario/multiusuario, monotarea/multitarea, tiempo real, de red...).</li>
+<li><strong>Interfaz de usuario</strong>: gráfica, táctil, de comandos, por voz...; incluid capturas de pantalla.</li>
+<li><strong>Sistema de archivos</strong> que utiliza por defecto.</li>
+<li><strong>Seguridad</strong>: mecanismos que incorpora (cuentas y permisos, cifrado, aislamiento de aplicaciones, arranque seguro, actualizaciones...).</li>
+<li><strong>Instalación de software</strong>: cómo se instalan y actualizan las aplicaciones (tienda oficial, gestor de paquetes, instaladores...).</li>
+<li><strong>Ciclo de vida y soporte</strong>: frecuencia de actualizaciones, versiones LTS si las hay y fin de soporte de versiones anteriores.</li>
+<li><strong>Ventajas e inconvenientes</strong> frente a sus principales competidores del mismo sector.</li>
+<li><strong>Conclusión del grupo</strong>: ¿en qué situación recomendaríais este sistema y en cuál no?</li>
+<li><strong>Fuentes consultadas</strong>, citadas en la última diapositiva.</li>
+</ol>
+<p><strong>Formato de la exposición:</strong></p>
+<ul>
+<li>Duración: unos <strong>3 minutos por integrante</strong> (unos 6 minutos en un grupo de 2 y unos 9 en uno de 3), más un par de minutos de preguntas.</li>
+<li>Entre 8 y 12 diapositivas, con poco texto e imágenes, esquemas o tablas en lugar de párrafos largos.</li>
+<li><strong>Todos los miembros del grupo deben exponer</strong> una parte.</li>
+<li>Entregad el archivo de la presentación (PDF) en Aules antes del comienzo de la clase en la que se expone.</li>
+</ul>
+<p class="actividad-titulo"><strong>Actividad 3.2 — Instalación documentada de un SO</strong></p>
+<p>Instala una distribución Linux (por ejemplo, Ubuntu) en una máquina virtual, documentando cada fase del proceso (particionado elegido, configuración inicial, incidencias encontradas) a partir de esta <strong><a href="../plantilla-informe-instalacion/">plantilla de informe técnico de instalación</a></strong>, siguiendo la estructura vista en el punto 3.5.5.</p>
+<p class="actividad-titulo"><strong>Actividad 3.3 — Arranque dual y reparación de GRUB</strong></p>
+<p>En un entorno virtualizado, instala Windows y a continuación Linux en el mismo disco para configurar un arranque dual. Simula después un fallo del gestor de arranque (por ejemplo, reinstalando Windows) y documenta el procedimiento para reparar GRUB desde un <em>live CD</em>.</p>
+<p class="actividad-titulo"><strong>Actividad 3.4 — Snapshots y virtualización</strong></p>
+<p>Crea una máquina virtual, instala una aplicación y toma una instantánea (snapshot). Desinstala después la aplicación y restaura la instantánea, explicando en qué escenarios reales de un departamento de informática resulta útil esta técnica.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../ut2/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: UT2. Redes">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                UT2. Redes
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../plantilla-informe-instalacion/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Plantilla: informe técnico de instalación">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Plantilla: informe técnico de instalación
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.footer", "search.highlight", "search.suggest", "content.code.copy", "toc.follow", "toc.integrate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>
