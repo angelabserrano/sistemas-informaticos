@@ -261,6 +261,24 @@ Antes de instalar un sistema operativo conviene planificar el proceso:
 ???+ tip "Medios de arranque con varios sistemas"
     Herramientas como **Rufus** o **balenaEtcher** graban una única imagen ISO en un USB. Para llevar varias ISO de instalación distintas en el mismo pendrive (varias distribuciones Linux, herramientas de recuperación...) sin tener que reformatearlo cada vez, se usan herramientas de "USB multiboot" como **Ventoy**: se instala una sola vez en el USB y, a partir de ahí, basta con copiar o borrar archivos ISO con el explorador de archivos para añadir o quitar sistemas arrancables.
 
+**Planificación del particionado:** una **partición** es una división lógica del disco que el sistema trata como si fuera una unidad independiente, de modo que borrar o formatear una no afecta al contenido de las demás (los tipos de partición y las herramientas para crearlas se estudian en la UT4, apartado 4.2). Como regla general, conviene reservar:
+
+- **Una partición por cada sistema operativo** instalado (Linux puede necesitar además una partición de intercambio).
+- **Una o varias particiones de datos**, separadas del sistema: si hay que reinstalar o formatear el sistema operativo, los documentos no se pierden.
+
+Ejemplo de reparto para un arranque dual Windows + Linux en un disco de 500 GB:
+
+| Partición | Tamaño orientativo | Sistema de archivos | Uso |
+| --- | --- | --- | --- |
+| Partición del sistema EFI (ESP) | 100-512 MB | FAT32 | Gestores de arranque de ambos sistemas (solo en UEFI/GPT; la comparten los dos) |
+| Windows | 150 GB | NTFS | Sistema Windows y sus programas |
+| Linux (`/`) | 80 GB | ext4 | Sistema Linux y sus programas |
+| Swap | Según la RAM (ver tabla más abajo) | linux-swap | Memoria de intercambio de Linux |
+| Datos | Resto del disco | NTFS o exFAT | Documentos accesibles desde los dos sistemas |
+
+!!! warning "Planifica antes de particionar con MBR"
+    En un disco **MBR** el número de particiones está muy limitado, por lo que el esquema hay que pensarlo antes de empezar. Si se crean **cuatro particiones primarias** y más adelante se necesita una quinta, no basta con reducir una para dejar hueco: habría que **borrar una de las primarias** y crear en su lugar una **partición extendida** con varias **lógicas** dentro. El ejemplo anterior en MBR quedaría con Windows y Linux en particiones primarias, y una extendida que contiene la swap y la partición de datos como lógicas. En **GPT** este problema no existe: todas las particiones son del mismo tipo y caben hasta 128.
+
 **Memoria de intercambio (swap / archivo de paginación):** además de la RAM física, el sistema operativo puede usar espacio en disco como memoria virtual cuando la RAM se agota, a costa de una velocidad mucho menor.
 
 - **Windows** usa un **archivo de paginación** (`pagefile.sys`), ubicado en la propia partición del sistema y gestionado automáticamente por defecto.
@@ -350,6 +368,22 @@ Que la tabla solo tenga sitio para **4 entradas** es justo lo que limita el MBR 
 - **Ambas cosas a la vez.**
 
 En un disco **GPT** el riesgo es menor: la tabla de particiones se guarda **dos veces**, al principio y al final del disco, y si una se corrompe puede restaurarse a partir de la otra.
+
+**Ventajas de GPT frente a MBR:** GPT forma parte del estándar UEFI y es el esquema por defecto en los equipos actuales con Windows, Linux y macOS.
+
+| Característica | MBR | GPT |
+| --- | --- | --- |
+| Número de particiones | 4 primarias (o 3 + 1 extendida con lógicas) | 128 por defecto en Windows, todas del mismo tipo (sin primarias, extendidas ni lógicas) |
+| Tamaño máximo de disco | 2 TiB | 8 ZiB con sectores de 512 bytes (sin límite práctico) |
+| Direcciones de sector | 32 bits | 64 bits |
+| Forma de localizar los datos | LBA, con campos CHS heredados (cilindro-cabeza-sector) | Solo LBA (bloques numerados de forma consecutiva) |
+| Copia de seguridad de la tabla | No: si se corrompe, se pierde el acceso a todas las particiones | Sí: la cabecera y la tabla se repiten al final del disco |
+| Comprobación de integridad | No | Sí: sumas de comprobación (CRC32) que permiten detectar una tabla dañada |
+| Identificación de particiones | Un código de tipo de 1 byte | Un identificador único (GUID) por partición, más un nombre descriptivo |
+
+Para no confundir a herramientas antiguas que solo entienden MBR, el primer sector de un disco GPT contiene un **MBR protector**: una tabla MBR con una única partición de tipo `EE` que ocupa todo el disco, de modo que esas herramientas lo vean "ocupado" en lugar de vacío y no lo sobrescriban por error.
+
+**Herramientas de línea de comandos para GPT en Linux:** las versiones actuales de `fdisk` ya admiten GPT, pero existen también herramientas específicas del paquete *gdisk*, equivalentes a las clásicas para MBR: `gdisk` (interactiva, como `fdisk`), `sgdisk` (por parámetros, útil en scripts, como `sfdisk`) y `cgdisk` (con menús en modo texto, como `cfdisk`). Además, `gdisk` permite **convertir un disco MBR a GPT** sin perder los datos. En Windows, la conversión se hace con `mbr2gpt` o, borrando antes todas las particiones, con `diskpart` (`convert gpt`).
 
 **Gestores de arranque habituales:**
 
