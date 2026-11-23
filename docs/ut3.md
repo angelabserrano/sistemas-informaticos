@@ -317,7 +317,7 @@ Con UEFI el proceso es más directo: el firmware entiende el sistema de archivos
 **Estilo de partición del disco:**
 
 - **MBR (Master Boot Record)**: esquema clásico, máximo 4 particiones primarias, discos de hasta 2 TiB.
-- **GPT (GUID Partition Table)**: esquema moderno, sin ese límite de particiones ni de tamaño de disco; requiere arranque en modo UEFI.
+- **GPT (GUID Partition Table)**: esquema moderno, sin ese límite de particiones ni de tamaño de disco. Windows solo puede arrancar desde un disco GPT en modo UEFI; Linux, en cambio, también puede arrancar desde GPT con BIOS, reservando una pequeña partición de arranque BIOS (*BIOS boot partition*, de 1 MiB) para GRUB.
 
 ![Estructura de un disco con MBR (sector MBR, tres particiones primarias y una extendida con particiones lógicas) frente a uno con GPT (MBR protector, cabecera y tabla GPT, partición EFI, resto de particiones y copia de seguridad de la tabla al final del disco)](img/ut3_mbr_gpt.svg){width=760}
 

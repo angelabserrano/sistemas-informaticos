@@ -508,7 +508,7 @@ La **placa base** (motherboard) es el circuito impreso principal del ordenador: 
 
 1. Al recibir alimentación, la placa base entrega el control al firmware BIOS/UEFI.
 2. El POST comprueba, por orden, la memoria RAM, la tarjeta gráfica, el teclado/ratón y las unidades de almacenamiento conectadas.
-3. Si todo es correcto, el firmware localiza el dispositivo de arranque según el orden configurado y le cede el control (sector de arranque MBR o partición EFI en GPT — ver 1.8).
+3. Si todo es correcto, el firmware localiza el dispositivo de arranque según el orden configurado y le cede el control (sector de arranque MBR o partición EFI en GPT — se estudian en detalle en la [UT3, apartado 3.5.2](ut3.md#352-gestores-de-arranque-configuracion-y-reparacion)).
 4. Si detecta un fallo grave, detiene el arranque y lo notifica: en sistemas con **BIOS heredada (legacy)**, mediante una secuencia de pitidos (*beep codes*) del altavoz interno, ya que todavía no hay salida de vídeo; en el firmware **UEFI** moderno, habitualmente mediante un código o mensaje en pantalla, o un display/LEDs de diagnóstico en la propia placa.
 
 ???+ note "Códigos de pitidos POST (BIOS heredada)"
