@@ -289,12 +289,67 @@ Al encender un equipo, el firmware (**BIOS** o **UEFI**) localiza un dispositivo
 
 ![Proceso de arranque: encendido, firmware BIOS/UEFI (POST y búsqueda del dispositivo de arranque), gestor de arranque (GRUB2 o Windows Boot Manager), carga del núcleo del sistema operativo y sistema listo para iniciar sesión](img/ut3_proceso_arranque.svg)
 
+**BIOS y UEFI:** el hardware por sí solo no es capaz de hacer nada; necesita un primer programa grabado en la placa base que lo ponga en marcha. Ese programa es el **firmware**, y existen dos tecnologías (el POST que ejecutan ambas se vio en la UT1, apartado 1.5):
+
+- **BIOS** (*Basic Input/Output System*): el firmware clásico de los PC, prácticamente sin cambios desde los primeros IBM PC de principios de los años 80. Hoy se considera obsoleta y los equipos actuales la emulan como "modo heredado" (*legacy* o **CSM**).
+- **UEFI** (*Unified Extensible Firmware Interface*): su sustituta, que funciona como un pequeño sistema operativo previo al arranque. Es **extensible**: el fabricante puede añadirle módulos (controladores, herramientas de diagnóstico, actualización del propio firmware...).
+
+| Característica | BIOS | UEFI |
+| --- | --- | --- |
+| Antigüedad | Años 80 | Generalizada desde 2012 |
+| Esquema de particiones con el que arranca | MBR | GPT (y MBR en modo heredado) |
+| Tamaño máximo de disco de arranque | 2 TiB | Sin límite práctico |
+| Dónde busca el cargador | En el primer sector del disco (MBR) | En archivos `.efi` de la **partición del sistema EFI (ESP)**, formateada en FAT32 |
+| Interfaz de configuración | Modo texto, solo teclado | Gráfica, con ratón |
+| Arranque seguro (*Secure Boot*) | No | Sí |
+
+**Arranque seguro (*Secure Boot*):** función de UEFI que solo permite ejecutar cargadores de arranque **firmados digitalmente** con una clave de confianza, lo que impide que un malware se instale en el arranque (*bootkit*) antes que el propio sistema operativo. Desde Windows 8, Microsoft exige a los fabricantes UEFI con Secure Boot activado para certificar sus equipos, y Windows 11 lo exige como requisito de instalación. Las distribuciones Linux más extendidas (Ubuntu, Fedora, Debian...) arrancan con Secure Boot gracias a un pequeño cargador firmado (*shim*); con otras puede ser necesario desactivarlo en la configuración del firmware.
+
+En la práctica, el uso más habitual de la configuración del firmware al instalar un sistema operativo es cambiar el **orden de arranque** para arrancar desde el USB o DVD de instalación. La mayoría de placas ofrecen también un **menú de arranque** puntual (con teclas como `F8`, `F11` o `F12`, según el fabricante) para elegir el dispositivo solo para ese arranque, sin modificar el orden guardado.
+
+**Arranque en dos fases (BIOS + MBR):** en un equipo con BIOS, la carga del sistema desde el disco se hace en dos pasos:
+
+1. **Primera fase**: la BIOS lee el primer sector del disco (el **MBR**) y ejecuta el pequeño programa que contiene. Ese código no carga ningún sistema: solo busca en la tabla de particiones la **partición activa** (la marcada como arrancable) o muestra un menú para elegir una.
+2. **Segunda fase**: se ejecuta el código del **sector de arranque de esa partición** (*VBR, Volume Boot Record*), que carga en memoria el núcleo del sistema operativo concreto, y este toma el control del equipo.
+
+Con UEFI el proceso es más directo: el firmware entiende el sistema de archivos FAT32 de la partición EFI y ejecuta directamente el archivo del gestor de arranque (por ejemplo, `\EFI\Microsoft\Boot\bootmgfw.efi` o `\EFI\ubuntu\shimx64.efi`). Cada sistema instalado deja su propia carpeta en la ESP y su propia entrada en el menú de arranque del firmware.
+
 **Estilo de partición del disco:**
 
 - **MBR (Master Boot Record)**: esquema clásico, máximo 4 particiones primarias, discos de hasta 2 TiB.
 - **GPT (GUID Partition Table)**: esquema moderno, sin ese límite de particiones ni de tamaño de disco; requiere arranque en modo UEFI.
 
 ![Estructura de un disco con MBR (sector MBR, tres particiones primarias y una extendida con particiones lógicas) frente a uno con GPT (MBR protector, cabecera y tabla GPT, partición EFI, resto de particiones y copia de seguridad de la tabla al final del disco)](img/ut3_mbr_gpt.svg){width=760}
+
+**Estructura interna del MBR:** el MBR ocupa el primer sector del disco, es decir, **512 bytes**, repartidos así:
+
+| Bytes | Tamaño | Contenido |
+| --- | --- | --- |
+| 0-445 | 446 bytes | **Código de arranque** (primera fase del gestor de arranque) |
+| 446-509 | 64 bytes | **Tabla de particiones**: 4 entradas de 16 bytes, una por partición primaria |
+| 510-511 | 2 bytes | **Firma** `55 AA`, que indica que el sector es un MBR válido |
+
+Que la tabla solo tenga sitio para **4 entradas** es justo lo que limita el MBR a cuatro particiones primarias (o tres más una extendida). Cada entrada de 16 bytes guarda:
+
+| Bytes | Campo | Detalle |
+| --- | --- | --- |
+| 0 | Indicador de arranque | `80` = partición activa (arrancable); `00` = no activa |
+| 1-3 | Inicio en CHS | Posición inicial en cilindro-cabeza-sector (formato antiguo) |
+| 4 | Tipo de partición | Por ejemplo: `07` NTFS/exFAT, `0C` FAT32, `83` Linux, `82` Linux swap, `05`/`0F` extendida, `EE` GPT protector |
+| 5-7 | Fin en CHS | Posición final en formato CHS |
+| 8-11 | Inicio en LBA | Número del primer sector de la partición (32 bits) |
+| 12-15 | Tamaño | Número de sectores que ocupa la partición (32 bits) |
+
+!!! note "Idea clave"
+    El límite de **2 TiB** del MBR sale de esta tabla: el tamaño de la partición se guarda en 32 bits, así que como máximo puede contar 2³² sectores, y 2³² × 512 bytes = 2 TiB. GPT usa campos de 64 bits y por eso no tiene ese límite en la práctica.
+
+**Si se daña el sector de arranque:** como en él se guardan a la vez la tabla de particiones y la primera fase del gestor de arranque, un fallo en el MBR (por un error de disco, un malware o, lo más frecuente, un error del propio usuario al instalar o particionar) puede provocar:
+
+- **Pérdida de la tabla de particiones**: el disco aparece como "sin asignar" y no se puede acceder a ninguna partición, aunque los datos siguen físicamente en el disco. Herramientas como **TestDisk** pueden analizar el disco, localizar las particiones y reconstruir la tabla.
+- **Pérdida del gestor de arranque**: las particiones y los datos siguen intactos, pero el equipo no arranca ningún sistema operativo. Se soluciona reinstalando el gestor de arranque (ver la reparación más abajo).
+- **Ambas cosas a la vez.**
+
+En un disco **GPT** el riesgo es menor: la tabla de particiones se guarda **dos veces**, al principio y al final del disco, y si una se corrompe puede restaurarse a partir de la otra.
 
 **Gestores de arranque habituales:**
 
