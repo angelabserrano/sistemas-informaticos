@@ -537,7 +537,7 @@ Las **suites ofimáticas** agrupan aplicaciones para las tareas más comunes en 
 **Actividad 3.2 — Instalación documentada de un SO**
 {: .actividad-titulo}
 
-**Actividad individual.** Instala **Ubuntu Desktop** (la versión LTS más reciente) en una máquina virtual de VirtualBox, con un **particionado manual** que tú mismo/a definas, y documenta todo el proceso en un informe técnico siguiendo la **[plantilla de informe técnico de instalación](plantilla-informe-instalacion.md)** y la estructura vista en el punto 3.5.5.
+**Actividad individual.** Instala **Ubuntu Desktop** (la versión LTS más reciente) en una máquina virtual de VirtualBox, con un **particionado manual** que tú mismo/a definas, y elabora un **manual de instalación con capturas de pantalla de cada paso realizado**, de forma que otra persona pueda repetir la instalación siguiéndolo.
 
 **1. Preparación (antes de crear la máquina virtual)**
 
@@ -582,16 +582,21 @@ Durante el resto del asistente configura: idioma español (España), teclado esp
 | `hostnamectl` | El nombre del equipo y la versión del sistema instalada |
 | `ip a` y `ping -c 3 www.google.es` | Que la VM tiene IP y salida a Internet |
 
-**Entrega:** un único **PDF** en Aules con el informe completo, que debe incluir:
+**Entrega:** un **manual con capturas de pantalla de cada paso realizado**, en un único **PDF** subido a Aules.
 
-- Todos los apartados de la plantilla (datos generales, configuración aplicada, incidencias y resumen). Si no surge ninguna incidencia, indícalo expresamente.
-- Capturas de pantalla de las fases principales del instalador (como mínimo, el particionado manual con el esquema final, antes de confirmar) y de la comprobación del SHA-256.
-- Las capturas de verificación del paso 5, con su explicación.
+- **Portada** con tu nombre, la fecha, la versión de Ubuntu instalada y la máquina virtual utilizada.
+- **Un apartado por cada fase** de la actividad (preparación, creación de la VM, instalación, tareas posteriores y verificación), con los **pasos numerados** en el orden en que los has hecho.
+- **Cada paso lleva su captura de pantalla** y una breve explicación de qué se hace y por qué se elige esa opción. Las capturas deben ser tuyas: se tiene que ver el nombre de tu VM, tu equipo o tu usuario.
+- Las capturas de verificación del paso 5, con la frase que explica qué demuestra cada una.
+- Un apartado final de **incidencias** con la tabla de la [plantilla de informe técnico de instalación](plantilla-informe-instalacion.md) (descripción, prioridad, acciones realizadas y estado). Si no surge ninguna, indícalo expresamente.
+
+!!! tip "Haz las capturas sobre la marcha"
+    Captura cada pantalla en el momento en que la ves, no al final: hay pasos del instalador (como el particionado) que no se pueden volver a ver sin reinstalar. En VirtualBox puedes usar **Ver > Tomar captura de pantalla** (tecla Anfitrión + E).
 
 !!! note "Qué se valora"
     - Que el resultado coincida con lo pedido: firmware EFI, tabla GPT, esquema de particiones, nombre del equipo y usuario.
     - Que las verificaciones estén presentes **y explicadas**, no solo pegadas.
-    - Que el informe sea claro, ordenado cronológicamente y reproducible por otra persona (punto 3.5.5).
+    - Que el manual esté completo (ningún paso sin su captura), ordenado y sea reproducible por otra persona (punto 3.5.5).
     - Que las incidencias se documenten con descripción, prioridad, acciones realizadas y estado.
 
 **Actividad 3.3 — Arranque dual y reparación de GRUB**
