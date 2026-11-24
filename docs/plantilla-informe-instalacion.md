@@ -1,6 +1,6 @@
 # Plantilla: informe técnico de instalación
 
-Modelo de informe para completar la **Actividad 3.2**, siguiendo la estructura vista en el punto **3.5.5. Documentación de instalaciones e incidencias**. Se muestra ya relleno con un caso de ejemplo (instalación de Ubuntu en una máquina virtual): copia esta estructura y sustituye los datos por los de tu propia instalación.
+Modelo de informe técnico de una instalación, siguiendo la estructura vista en el punto **3.5.5. Documentación de instalaciones e incidencias**. Se muestra ya relleno con un caso de ejemplo (instalación de Ubuntu en una máquina virtual): copia esta estructura y sustituye los datos por los de tu propia instalación.
 
 !!! abstract "Datos generales"
     | Campo | Detalle |

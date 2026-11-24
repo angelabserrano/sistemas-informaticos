@@ -69,6 +69,9 @@ Antes de hacer un cambio que pueda romper la configuración de red o del sistema
 
 *Esto no hace falta para las primeras actividades, en las que se parte de una OVA. Lo veremos más adelante en el curso, cuando toque instalar un sistema operativo desde cero.*
 
+!!! tip "Instalación completa paso a paso"
+    Para la UT3 tienes una explicación más detallada, que incluye el particionado del disco, en la [guía: tu primera máquina virtual y el particionado](guia-instalacion-ubuntu.md).
+
 1. Abre VirtualBox y pulsa **Nueva**.
 2. En la primera pantalla del asistente, rellena:
     - **VM Name**: un nombre descriptivo (por ejemplo, `UT2-PC1`).

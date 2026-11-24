@@ -539,12 +539,15 @@ Las **suites ofimáticas** agrupan aplicaciones para las tareas más comunes en 
 
 **Actividad individual.** Instala **Ubuntu Desktop** (la versión LTS más reciente) en una máquina virtual de VirtualBox, con un **particionado manual** que tú mismo/a definas, y elabora un **manual de instalación con capturas de pantalla de cada paso realizado**, de forma que otra persona pueda repetir la instalación siguiéndolo.
 
+!!! tip "¿Es la primera vez que creas una máquina virtual o que particionas un disco?"
+    Sigue la **[guía: tu primera máquina virtual y el particionado](guia-instalacion-ubuntu.md)**, que recorre esta actividad paso a paso y explica el porqué de cada opción.
+
 **1. Preparación (antes de crear la máquina virtual)**
 
 - Descarga la ISO desde la web oficial de Ubuntu y **comprueba su suma SHA-256** frente a la publicada en la web (punto 3.5.3): en Windows, con `Get-FileHash archivo.iso` en PowerShell; en Linux, con `sha256sum archivo.iso`.
 - Comprueba que los requisitos mínimos de la versión elegida se cumplen con los recursos que vas a asignar a la VM.
 
-**2. Creación de la máquina virtual** (sigue el [apéndice de la guía de VirtualBox](guia-virtualbox.md#apendice-crear-una-maquina-virtual-desde-cero), **sin** instalación desatendida):
+**2. Creación de la máquina virtual** (**sin** instalación desatendida):
 
 | Parámetro | Valor |
 | --- | --- |
@@ -588,7 +591,7 @@ Durante el resto del asistente configura: idioma español (España), teclado esp
 - **Un apartado por cada fase** de la actividad (preparación, creación de la VM, instalación, tareas posteriores y verificación), con los **pasos numerados** en el orden en que los has hecho.
 - **Cada paso lleva su captura de pantalla** y una breve explicación de qué se hace y por qué se elige esa opción. Las capturas deben ser tuyas: se tiene que ver el nombre de tu VM, tu equipo o tu usuario.
 - Las capturas de verificación del paso 5, con la frase que explica qué demuestra cada una.
-- Un apartado final de **incidencias** con la tabla de la [plantilla de informe técnico de instalación](plantilla-informe-instalacion.md) (descripción, prioridad, acciones realizadas y estado). Si no surge ninguna, indícalo expresamente.
+- Un apartado final de **incidencias** en forma de tabla con su descripción, prioridad, acciones realizadas y estado (punto 3.5.5). Si no surge ninguna, indícalo expresamente.
 
 !!! tip "Haz las capturas sobre la marcha"
     Captura cada pantalla en el momento en que la ves, no al final: hay pasos del instalador (como el particionado) que no se pueden volver a ver sin reinstalar. En VirtualBox puedes usar **Ver > Tomar captura de pantalla** (tecla Anfitrión + E).
