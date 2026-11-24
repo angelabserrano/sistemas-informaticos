@@ -537,7 +537,62 @@ Las **suites ofimáticas** agrupan aplicaciones para las tareas más comunes en 
 **Actividad 3.2 — Instalación documentada de un SO**
 {: .actividad-titulo}
 
-Instala una distribución Linux (por ejemplo, Ubuntu) en una máquina virtual, documentando cada fase del proceso (particionado elegido, configuración inicial, incidencias encontradas) a partir de esta **[plantilla de informe técnico de instalación](plantilla-informe-instalacion.md)**, siguiendo la estructura vista en el punto 3.5.5.
+**Actividad individual.** Instala **Ubuntu Desktop** (la versión LTS más reciente) en una máquina virtual de VirtualBox, con un **particionado manual** que tú mismo/a definas, y documenta todo el proceso en un informe técnico siguiendo la **[plantilla de informe técnico de instalación](plantilla-informe-instalacion.md)** y la estructura vista en el punto 3.5.5.
+
+**1. Preparación (antes de crear la máquina virtual)**
+
+- Descarga la ISO desde la web oficial de Ubuntu y **comprueba su suma SHA-256** frente a la publicada en la web (punto 3.5.3): en Windows, con `Get-FileHash archivo.iso` en PowerShell; en Linux, con `sha256sum archivo.iso`.
+- Comprueba que los requisitos mínimos de la versión elegida se cumplen con los recursos que vas a asignar a la VM.
+
+**2. Creación de la máquina virtual** (sigue el [apéndice de la guía de VirtualBox](guia-virtualbox.md#apendice-crear-una-maquina-virtual-desde-cero), **sin** instalación desatendida):
+
+| Parámetro | Valor |
+| --- | --- |
+| Nombre | `UT3-Ubuntu-<apellido>` |
+| Procesador / RAM | 2 núcleos / 4 GB |
+| Disco | VDI, reservado dinámicamente, 25 GB |
+| Firmware | **EFI habilitado** (Configuración > Sistema > Placa base > *Habilitar EFI*) |
+| Red | Adaptador 1 en **NAT** |
+
+**3. Instalación con particionado manual.** En el paso de particionado elige la opción manual (*"Instalación manual"* / *"Algo más"*), crea una **tabla de particiones GPT** y define este esquema:
+
+| Partición | Tamaño | Sistema de archivos | Punto de montaje |
+| --- | --- | --- | --- |
+| Partición del sistema EFI (ESP) | 512 MB | FAT32 | `/boot/efi` |
+| Sistema | 18 GB | ext4 | `/` |
+| Intercambio | 4 GB | linux-swap | — |
+| Datos de usuario | Resto del disco | ext4 | `/home` |
+
+Durante el resto del asistente configura: idioma español (España), teclado español, zona horaria `Europe/Madrid`, nombre del equipo `ut3-<apellido>` y un usuario con tu nombre (será administrador con `sudo`).
+
+**4. Tareas posteriores a la instalación**
+
+1. Actualiza el sistema: `sudo apt update && sudo apt upgrade -y`.
+2. Instala las **Guest Additions** (Dispositivos > Insertar imagen de CD de las Guest Additions) y comprueba que la pantalla se ajusta al tamaño de la ventana.
+3. Instala una aplicación desde el gestor de paquetes (por ejemplo, `sudo apt install htop`) y comprueba que funciona.
+4. Toma una **instantánea** llamada `Instalación limpia` (la reutilizarás en la Actividad 3.4).
+
+**5. Verificación.** Incluye en el informe una captura de la salida de cada uno de estos comandos, con una frase que explique qué demuestra:
+
+| Comando | Qué debe demostrar |
+| --- | --- |
+| `lsblk -f` | Que las cuatro particiones existen con el tamaño y sistema de archivos planificados |
+| `swapon --show` y `free -h` | Que la swap está activa y la RAM asignada es la correcta |
+| `ls /sys/firmware/efi` | Que el sistema ha arrancado en modo UEFI (si el directorio no existe, arrancó en BIOS) |
+| `hostnamectl` | El nombre del equipo y la versión del sistema instalada |
+| `ip a` y `ping -c 3 www.google.es` | Que la VM tiene IP y salida a Internet |
+
+**Entrega:** un único **PDF** en Aules con el informe completo, que debe incluir:
+
+- Todos los apartados de la plantilla (datos generales, configuración aplicada, incidencias y resumen). Si no surge ninguna incidencia, indícalo expresamente.
+- Capturas de pantalla de las fases principales del instalador (como mínimo, el particionado manual con el esquema final, antes de confirmar) y de la comprobación del SHA-256.
+- Las capturas de verificación del paso 5, con su explicación.
+
+!!! note "Qué se valora"
+    - Que el resultado coincida con lo pedido: firmware EFI, tabla GPT, esquema de particiones, nombre del equipo y usuario.
+    - Que las verificaciones estén presentes **y explicadas**, no solo pegadas.
+    - Que el informe sea claro, ordenado cronológicamente y reproducible por otra persona (punto 3.5.5).
+    - Que las incidencias se documenten con descripción, prioridad, acciones realizadas y estado.
 
 **Actividad 3.3 — Arranque dual y reparación de GRUB**
 {: .actividad-titulo}
