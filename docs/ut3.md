@@ -537,7 +537,77 @@ Las **suites ofimáticas** agrupan aplicaciones para las tareas más comunes en 
 **Actividad 3.2 — Instalación documentada de un SO**
 {: .actividad-titulo}
 
-Instala una distribución Linux (por ejemplo, Ubuntu) en una máquina virtual, documentando cada fase del proceso (particionado elegido, configuración inicial, incidencias encontradas) a partir de esta **[plantilla de informe técnico de instalación](plantilla-informe-instalacion.md)**, siguiendo la estructura vista en el punto 3.5.5.
+**Actividad individual.** Instala **Ubuntu Desktop 24.04 LTS** en una máquina virtual de VirtualBox, con un **particionado manual** que tú mismo/a definas, y elabora un **manual de instalación con capturas de pantalla de cada paso realizado**, de forma que otra persona pueda repetir la instalación siguiéndolo.
+
+!!! tip "Guías de apoyo paso a paso (SomeBooks.es)"
+    Si es la primera vez que creas una máquina virtual o que particionas un disco, apóyate en estas guías de [SomeBooks.es](https://somebooks.es/), con capturas de cada pantalla:
+
+    - [Crear una máquina virtual paso a paso con VirtualBox](https://somebooks.es/crear-una-maquina-virtual-paso-paso-virtualbox/). Usa una versión antigua de VirtualBox, pero los pasos del asistente son los mismos.
+    - [Instalar Ubuntu 24.04 LTS (Noble Numbat) desde cero](https://somebooks.es/instalar-ubuntu-24-04-lts-noble-numbat-desde-cero/): el instalador completo, pantalla a pantalla.
+    - [Configuración manual del disco durante la instalación de Ubuntu 24.04 LTS](https://somebooks.es/configuracion-manual-del-disco-durante-la-instalacion-de-ubuntu-24-04-lts-noble-numbat/): el particionado manual, con las mismas particiones que pide esta actividad (cambian solo los tamaños).
+    - [Instalar VirtualBox Guest Additions sobre Ubuntu o Windows](https://somebooks.es/instalar-virtualbox-guest-additions-sobre-ubuntu-o-windows/). Está hecha con Ubuntu 16.04: en 24.04, antes de lanzar el instalador, ejecuta `sudo apt install -y build-essential bzip2`.
+
+    Las guías te enseñan **cómo** hacerlo; los **valores** (nombre, RAM, tamaños de las particiones...) son siempre los de este enunciado.
+
+**1. Preparación (antes de crear la máquina virtual)**
+
+- Descarga la ISO desde la web oficial de Ubuntu y **comprueba su suma SHA-256** frente a la publicada en la web (punto 3.5.3): en Windows, con `Get-FileHash archivo.iso` en PowerShell; en Linux, con `sha256sum archivo.iso`.
+- Comprueba que los recursos que vas a asignar a la VM cumplen los requisitos mínimos de Ubuntu 24.04 (procesador de doble núcleo, 4 GB de RAM y 25 GB de disco).
+
+**2. Creación de la máquina virtual.** Si el asistente de VirtualBox ofrece la **instalación desatendida** (*Unattended Installation*), desactívala: la instalación debe hacerse a mano, paso a paso.
+
+| Parámetro | Valor |
+| --- | --- |
+| Nombre | `UT3-Ubuntu-<apellido>` |
+| Procesador / RAM | 2 núcleos / 4 GB |
+| Disco | VDI, reservado dinámicamente, 25 GB |
+| Firmware | BIOS: comprueba que *Habilitar EFI* (Configuración > Sistema > Placa base) está **desmarcado** |
+| Red | Adaptador 1 en **NAT** |
+
+**3. Instalación con particionado manual.** En la pantalla *¿Cómo quieres instalar Ubuntu?* elige **Instalación manual**, pulsa **Nueva tabla de particiones** (GPT) y selecciona el disco como **dispositivo para el cargador de arranque**: el instalador creará por su cuenta una pequeña partición de 1 MB para el arranque, que debes dejar como está. Después crea, en este orden, las tres particiones siguientes:
+
+| Partición | Tamaño | Utilizada como | Punto de montaje |
+| --- | --- | --- | --- |
+| Intercambio | 4096 MB (4 GB, igual que la RAM; punto 3.5.1) | Swap | — (no lleva) |
+| Sistema | 18432 MB (18 GB) | Ext4 | `/` |
+| Datos de usuario | Todo el espacio restante (valor por defecto) | Ext4 | `/home` |
+
+Antes de pulsar **Siguiente**, revisa la tabla final y haz la captura: hasta que no continúas con la instalación, ningún cambio se escribe en el disco y puedes corregir lo que haga falta.
+
+Durante el resto del asistente configura: idioma español (España), teclado español, zona horaria `Europe/Madrid`, nombre del equipo `ut3-<apellido>` y un usuario con tu nombre (será administrador con `sudo`).
+
+**4. Tareas posteriores a la instalación**
+
+1. Actualiza el sistema: `sudo apt update && sudo apt upgrade -y`.
+2. Instala las **Guest Additions** (primero `sudo apt install -y build-essential bzip2`; después, Dispositivos > Insertar imagen de CD de las Guest Additions) y comprueba que la pantalla se ajusta al tamaño de la ventana.
+3. Instala una aplicación desde el gestor de paquetes (por ejemplo, `sudo apt install htop`) y comprueba que funciona.
+4. Toma una **instantánea** llamada `Instalación limpia` (la reutilizarás en la Actividad 3.4).
+
+**5. Verificación.** Incluye en el informe una captura de la salida de cada uno de estos comandos, con una frase que explique qué demuestra:
+
+| Comando | Qué debe demostrar |
+| --- | --- |
+| `lsblk -f` | Que las particiones existen con el tamaño, sistema de archivos y punto de montaje planificados |
+| `swapon --show` y `free -h` | Que la swap está activa y la RAM asignada es la correcta |
+| `hostnamectl` | El nombre del equipo y la versión del sistema instalada |
+| `ip a` y `ping -c 3 www.google.es` | Que la VM tiene IP y salida a Internet |
+
+**Entrega:** un **manual con capturas de pantalla de cada paso realizado**, en un único **PDF** subido a Aules.
+
+- **Portada** con tu nombre, la fecha, la versión de Ubuntu instalada y la máquina virtual utilizada.
+- **Un apartado por cada fase** de la actividad (preparación, creación de la VM, instalación, tareas posteriores y verificación), con los **pasos numerados** en el orden en que los has hecho.
+- **Cada paso lleva su captura de pantalla** y una breve explicación de qué se hace y por qué se elige esa opción. Las capturas deben ser tuyas: se tiene que ver el nombre de tu VM, tu equipo o tu usuario.
+- Las capturas de verificación del paso 5, con la frase que explica qué demuestra cada una.
+- Un apartado final de **incidencias** en forma de tabla con su descripción, prioridad, acciones realizadas y estado (punto 3.5.5). Si no surge ninguna, indícalo expresamente.
+
+!!! tip "Haz las capturas sobre la marcha"
+    Captura cada pantalla en el momento en que la ves, no al final: hay pasos del instalador (como el particionado) que no se pueden volver a ver sin reinstalar. En VirtualBox puedes usar **Ver > Tomar captura de pantalla** (tecla Anfitrión + E).
+
+!!! note "Qué se valora"
+    - Que el resultado coincida con lo pedido: tabla GPT, esquema de particiones, nombre del equipo y usuario.
+    - Que las verificaciones estén presentes **y explicadas**, no solo pegadas.
+    - Que el manual esté completo (ningún paso sin su captura), ordenado y sea reproducible por otra persona (punto 3.5.5).
+    - Que las incidencias se documenten con descripción, prioridad, acciones realizadas y estado.
 
 **Actividad 3.3 — Arranque dual y reparación de GRUB**
 {: .actividad-titulo}
