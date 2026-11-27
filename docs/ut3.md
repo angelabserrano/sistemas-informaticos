@@ -562,7 +562,41 @@ Las **suites ofimáticas** agrupan aplicaciones para las tareas más comunes en 
 | Procesador / RAM | 2 núcleos / 4 GB |
 | Disco | VDI, reservado dinámicamente, 25 GB |
 | Firmware | BIOS: comprueba que *Habilitar EFI* (Configuración > Sistema > Placa base) está **desmarcado** |
+| Pantalla | Controladora gráfica **VBoxSVGA**, aceleración 3D **desmarcada**, memoria de vídeo 128 MB |
 | Red | Adaptador 1 en **NAT** |
+
+???+ warning "Problema conocido: pantalla negra al arrancar Ubuntu 24.04 en VirtualBox"
+    **Síntoma:** al arrancar el sistema instalado, la pantalla se queda en los mensajes de arranque (`Starting gdm.service` / `Started gdm.service`) y nunca aparece la pantalla de inicio de sesión, o aparece pero, tras iniciar sesión, se queda en negro.
+
+    **Causa:** hay dos problemas distintos.
+
+    1. **La controladora gráfica VMSVGA** usa el driver del kernel `vmwgfx`, que está hecho para VMware y **no soporta VirtualBox**. En los registros del sistema aparece el error `vmwgfx seems to be running on an unsupported hypervisor`. Por eso no llega a verse la pantalla de inicio de sesión.
+    2. **Sin los paquetes de integración de VirtualBox**, la sesión gráfica se cierra pocos segundos después de iniciar sesión.
+
+    **Solución:**
+
+    1. Con la máquina **apagada**, en *Configuración > Pantalla*: controladora gráfica **VBoxSVGA**, aceleración 3D **desmarcada** y 128 MB de memoria de vídeo.
+    2. Arranca la máquina. Si no ves el escritorio, abre una consola de texto con **Ctrl Derecho + F3** (Ctrl Derecho es la tecla Anfitrión de VirtualBox), inicia sesión con tu usuario y ejecuta:
+
+        ```bash
+        sudo apt update
+        sudo apt install -y virtualbox-guest-utils virtualbox-guest-x11
+        sudo reboot
+        ```
+
+    Para volver a la pantalla gráfica desde la consola de texto, usa **Ctrl Derecho + F1** (o **F2**).
+
+    **Si sigue fallando**, consulta los registros desde la consola de texto:
+
+    ```bash
+    journalctl -b -p err --no-pager    # errores del arranque actual
+    journalctl -b -u gdm --no-pager    # gestor de inicio de sesión (GDM)
+    lspci -k | grep -A3 VGA            # driver de vídeo en uso
+    ```
+
+    Con VBoxSVGA, el driver en uso debe ser `vboxvideo`, **no** `vmwgfx`.
+
+    Si te ocurre, documéntalo en el apartado de **incidencias** de tu manual: es un buen ejemplo de incidencia real (descripción, prioridad, acciones realizadas y estado).
 
 **3. Instalación con particionado manual.** En la pantalla *¿Cómo quieres instalar Ubuntu?* elige **Instalación manual**, pulsa **Nueva tabla de particiones** (GPT) y selecciona el disco como **dispositivo para el cargador de arranque**: el instalador creará por su cuenta una pequeña partición de 1 MB para el arranque, que debes dejar como está. Después crea, en este orden, las tres particiones siguientes:
 
