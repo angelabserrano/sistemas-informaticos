@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" font-family="Arial, sans-serif">
+  <title>Esquema de un encapsulado BGA: el chip se suelda a la placa mediante bolas de soldadura</title>
+  <rect x="80" y="40" width="200" height="50" rx="4" fill="#1b2a41"/>
+  <text x="180" y="71" fill="#ffffff" font-size="16" text-anchor="middle" font-weight="bold">Chip (procesador)</text>
+  <g fill="#b8bcc4" stroke="#6b7280" stroke-width="1">
+    <circle cx="92" cy="98" r="8"/><circle cx="116" cy="98" r="8"/><circle cx="140" cy="98" r="8"/><circle cx="164" cy="98" r="8"/><circle cx="188" cy="98" r="8"/><circle cx="212" cy="98" r="8"/><circle cx="236" cy="98" r="8"/><circle cx="260" cy="98" r="8"/>
+  </g>
+  <rect x="30" y="106" width="300" height="26" fill="#2f6f4f"/>
+  <text x="180" y="124" fill="#ffffff" font-size="13" text-anchor="middle">Placa base (PCB)</text>
+  <line x1="262" y1="92" x2="300" y2="30" stroke="#e8a33d" stroke-width="2"/>
+  <text x="352" y="24" fill="#e8a33d" font-size="13" font-weight="bold" text-anchor="end">Bolas de soldadura</text>
+  <text x="180" y="170" fill="#6b7280" font-size="13" text-anchor="middle">Sin zócalo: el chip queda soldado a la placa</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" font-family="Arial, sans-serif">
+  <title>Comparativa de hipervisores: el de tipo 1 se ejecuta directamente sobre el hardware; el de tipo 2 se ejecuta como una aplicación sobre un sistema operativo anfitrión</title>
+  <rect x="0" y="0" width="760" height="400" rx="10" fill="#f8fafc"/>
+  <g font-size="13" text-anchor="middle">
+    <text x="190" y="36" fill="#1b2a41" font-size="16" font-weight="bold">Tipo 1 (bare metal)</text>
+    <text x="190" y="58" fill="#6b7280" font-size="12">Ej.: VMware ESXi, Hyper-V, Proxmox VE</text>
+    <g>
+      <rect x="20" y="96" width="106" height="158" rx="6" fill="#e8eaf6" stroke="#3949ab"/>
+      <text x="73" y="116" fill="#1b2a41" font-weight="bold">VM 1</text>
+      <rect x="28" y="126" width="90" height="54" rx="4" fill="#c5cae9"/>
+      <text x="73" y="158" fill="#1b2a41">Apps</text>
+      <rect x="28" y="188" width="90" height="56" rx="4" fill="#3949ab"/>
+      <text x="73" y="212" fill="#fff" font-size="12">SO</text>
+      <text x="73" y="228" fill="#fff" font-size="12">invitado</text>
+
+      <rect x="137" y="96" width="106" height="158" rx="6" fill="#e8eaf6" stroke="#3949ab"/>
+      <text x="190" y="116" fill="#1b2a41" font-weight="bold">VM 2</text>
+      <rect x="145" y="126" width="90" height="54" rx="4" fill="#c5cae9"/>
+      <text x="190" y="158" fill="#1b2a41">Apps</text>
+      <rect x="145" y="188" width="90" height="56" rx="4" fill="#3949ab"/>
+      <text x="190" y="212" fill="#fff" font-size="12">SO</text>
+      <text x="190" y="228" fill="#fff" font-size="12">invitado</text>
+
+      <rect x="254" y="96" width="106" height="158" rx="6" fill="#e8eaf6" stroke="#3949ab"/>
+      <text x="307" y="116" fill="#1b2a41" font-weight="bold">VM 3</text>
+      <rect x="262" y="126" width="90" height="54" rx="4" fill="#c5cae9"/>
+      <text x="307" y="158" fill="#1b2a41">Apps</text>
+      <rect x="262" y="188" width="90" height="56" rx="4" fill="#3949ab"/>
+      <text x="307" y="212" fill="#fff" font-size="12">SO</text>
+      <text x="307" y="228" fill="#fff" font-size="12">invitado</text>
+    </g>
+    <rect x="20" y="262" width="340" height="40" rx="4" fill="#e65100"/>
+    <text x="190" y="287" fill="#fff" font-weight="bold">Hipervisor tipo 1</text>
+    <rect x="20" y="310" width="340" height="40" rx="4" fill="#1b2a41"/>
+    <text x="190" y="335" fill="#fff" font-weight="bold">Hardware físico</text>
+    <text x="190" y="380" fill="#6b7280" font-size="12">El hipervisor accede directamente al hardware</text>
+
+    <line x1="380" y1="30" x2="380" y2="360" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+    <text x="570" y="36" fill="#1b2a41" font-size="16" font-weight="bold">Tipo 2 (hosted)</text>
+    <text x="570" y="58" fill="#6b7280" font-size="12">Ej.: VirtualBox, VMware Workstation</text>
+    <g>
+      <rect x="400" y="96" width="104" height="110" rx="6" fill="#e8eaf6" stroke="#3949ab"/>
+      <text x="452" y="114" fill="#1b2a41" font-weight="bold">VM 1</text>
+      <rect x="408" y="122" width="88" height="34" rx="4" fill="#c5cae9"/>
+      <text x="452" y="144" fill="#1b2a41">Apps</text>
+      <rect x="408" y="162" width="88" height="36" rx="4" fill="#3949ab"/>
+      <text x="452" y="185" fill="#fff" font-size="12">SO invitado</text>
+
+      <rect x="516" y="96" width="104" height="110" rx="6" fill="#e8eaf6" stroke="#3949ab"/>
+      <text x="568" y="114" fill="#1b2a41" font-weight="bold">VM 2</text>
+      <rect x="524" y="122" width="88" height="34" rx="4" fill="#c5cae9"/>
+      <text x="568" y="144" fill="#1b2a41">Apps</text>
+      <rect x="524" y="162" width="88" height="36" rx="4" fill="#3949ab"/>
+      <text x="568" y="185" fill="#fff" font-size="12">SO invitado</text>
+    </g>
+    <rect x="400" y="214" width="220" height="40" rx="4" fill="#e65100"/>
+    <text x="510" y="239" fill="#fff" font-weight="bold">Hipervisor tipo 2</text>
+    <rect x="630" y="214" width="110" height="40" rx="4" fill="#c5cae9"/>
+    <text x="685" y="239" fill="#1b2a41">Otras apps</text>
+    <rect x="400" y="262" width="340" height="40" rx="4" fill="#2f6f4f"/>
+    <text x="570" y="287" fill="#fff" font-weight="bold">SO anfitrión (Windows, Linux, macOS)</text>
+    <rect x="400" y="310" width="340" height="40" rx="4" fill="#1b2a41"/>
+    <text x="570" y="335" fill="#fff" font-weight="bold">Hardware físico</text>
+    <text x="570" y="380" fill="#6b7280" font-size="12">El hipervisor es una aplicación más del SO anfitrión</text>
+  </g>
+</svg>
